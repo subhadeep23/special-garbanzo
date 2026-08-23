@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L1 · What Probability Really Means — UGC-NET 107</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<header class="lh">
+  <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 1</div>
+  <h1>What Probability Really Means</h1>
+  <p class="sub">Starting from zero, in plain language. No formulas until we actually need them. ~10 min.</p>
+</header>
+
+<p><span class="tag">TODAY'S WIN</span> &nbsp;By the end you'll be able to say, in your own words, what probability <em>is</em>, and the three simple rules every probability must follow — using three new words you'll meet gently along the way.</p>
+
+<h2>1 · The plain idea</h2>
+<p>Probability is just a way of putting a <strong>number on how likely something is</strong>.</p>
+<p>We agree on a scale from <strong>0 to 1</strong>:</p>
+<div class="card">
+  <p style="margin:.3rem 0">• <strong>0</strong> means "this never happens."</p>
+  <p style="margin:.3rem 0">• <strong>1</strong> means "this always happens, for sure."</p>
+  <p style="margin:.3rem 0">• <strong>0.5</strong> means "it's a coin toss — half the time."</p>
+</div>
+<p>That's the whole heart of it. A weather app saying "70% chance of rain" is just saying the probability of rain is <strong>0.7</strong> — closer to the "sure" end than the "never" end. Everything else in this subject is built on top of this one simple idea.</p>
+
+<h2>2 · Three words, introduced gently</h2>
+<p>To talk about likelihood precisely, we need three small words. You already understand all three from daily life — we're just giving them their proper names.</p>
+
+<h3>Word 1 — outcome</h3>
+<p>An <strong>outcome</strong> is <em>one single thing that could happen</em>. Roll a die: getting a <strong>4</strong> is one outcome. Getting a <strong>6</strong> is another.</p>
+
+<h3>Word 2 — sample space</h3>
+<p>Now imagine a bag holding <em>every</em> outcome that's possible. That whole collection is the <strong>sample space</strong>. For a die, the sample space is the six faces: <strong>{1, 2, 3, 4, 5, 6}</strong>. Nothing outside the bag can happen; everything inside might.</p>
+<blockquote>Think of it as the complete "list of everything that could occur." Later you'll see it written with the symbol \(\Omega\) (the Greek letter <em>omega</em>) — but the symbol is just shorthand for "the bag of all outcomes." Don't let the symbol worry you.</blockquote>
+
+<h3>Word 3 — event</h3>
+<p>An <strong>event</strong> is a <em>question you can answer yes-or-no</em> about the result — usually a group of outcomes you care about. "Did the die show an even number?" is an event. It's happy with three outcomes: <strong>2, 4, or 6</strong>. So an event is simply <em>a chosen bunch of outcomes from the bag</em>.</p>
+
+<table>
+<tr><th>Everyday word</th><th>Proper name</th><th>Die example</th></tr>
+<tr><td>one thing that happens</td><td>outcome</td><td>rolling a 4</td></tr>
+<tr><td>bag of all possibilities</td><td>sample space</td><td>{1,2,3,4,5,6}</td></tr>
+<tr><td>a yes/no question</td><td>event</td><td>"even number?" = {2,4,6}</td></tr>
+</table>
+
+<h2>3 · The three rules probability must obey</h2>
+<p>Whatever numbers we hand out as probabilities, they have to make common sense. It turns out <em>three</em> simple rules are enough to keep everything honest. Here they are in plain words first:</p>
+
+<div class="card">
+  <div class="axiom"><span class="n">1</span><span><strong>No negatives.</strong> A likelihood can't be less than zero. The smallest allowed is 0 ("never").</span></div>
+  <div class="axiom"><span class="n">2</span><span><strong>Something must happen.</strong> The probability that <em>some</em> outcome in the bag occurs is exactly 1. (The die shows <em>a</em> face — guaranteed.)</span></div>
+  <div class="axiom"><span class="n">3</span><span><strong>Separate things add up.</strong> If two events can't happen together, the chance of "one <em>or</em> the other" is just their chances added. Chance of rolling a 2 <em>or</em> a 5 = chance of 2 + chance of 5.</span></div>
+</div>
+
+<p>That's it. These three are called the <strong>axioms of probability</strong> — "axiom" is just the academic word for <em>a starting rule we agree to, and build everything else on</em>. They were written down in this clean form by a Russian mathematician, <strong>Kolmogorov</strong>, in 1933. You don't need his machinery today; you just need the three common-sense rules above.</p>
+
+<div class="insight">
+<h3>Why this matters for you</h3>
+<p>Almost every result you'll meet later — adding probabilities, "at least one", complements — is <em>squeezed out of these three rules</em>. So if a formula ever slips your mind in the exam, you can often rebuild it from these three sentences. That's the real payoff of starting here: fewer things to memorize, more things you can <em>reconstruct</em>.</p>
+</div>
+
+<h2>4 · One tiny result, to see the rules working</h2>
+<p>Here's the pattern you'll use constantly. Suppose the chance of rain tomorrow is <strong>0.7</strong>. What's the chance of <strong>no rain</strong>?</p>
+<p>"Rain" and "no rain" can't both happen, and together they cover everything (Rule 2 says everything totals 1). So:</p>
+<p style="text-align:center;font-size:1.15rem">chance of <em>no</em> rain &nbsp;=&nbsp; 1 − 0.7 &nbsp;=&nbsp; <strong>0.3</strong></p>
+<p>This "1 minus the chance" move has a name — the <strong>complement rule</strong> — and we didn't have to memorize it. It fell straight out of Rules 2 and 3. That's the whole spirit of this course.</p>
+
+<div class="quiz" data-quiz>
+<h3>Quick check — from memory, not by peeking</h3>
+
+<div class="q" data-answer="1">
+<p class="stem">A probability value is always a number that sits…</p>
+<button>between minus one and positive one</button>
+<button>between zero and one, inclusive</button>
+<button>between one and one hundred always</button>
+<button>between zero and infinity in total</button>
+<p class="fb" data-good="0 means never, 1 means certain, and everything possible lives in between." data-bad="It runs from 0 (never) to 1 (certain). Percentages like 70% are just 0.7 in disguise."></p>
+</div>
+
+<div class="q" data-answer="2">
+<p class="stem">The "bag of every possible outcome" is properly called the…</p>
+<button>event of the random experiment</button>
+<button>outcome of the random experiment</button>
+<button>sample space of the experiment</button>
+<button>complement of the experiment</button>
+<p class="fb" data-good="The sample space is the full collection of everything that could happen — the whole bag." data-bad="That's the sample space. An outcome is one item in the bag; an event is a chosen group of them."></p>
+</div>
+
+<div class="q" data-answer="0">
+<p class="stem">"The die shows an even number" is best described as an…</p>
+<button>event — a yes/no question on outcomes</button>
+<button>outcome — one single face result</button>
+<button>sample space — the whole set of six</button>
+<button>axiom — a basic agreed starting rule</button>
+<p class="fb" data-good="It's an event: a chosen bunch of outcomes ({2,4,6}) that answers a yes/no question." data-bad="It's an event — a group of outcomes ({2,4,6}). A single outcome would be just one face, like 'a 4'."></p>
+</div>
+
+<div class="q" data-answer="3">
+<p class="stem">If the chance a train is late is 0.2, the chance it is on time is…</p>
+<button>zero point two, the very same value</button>
+<button>one point two by simply adding one</button>
+<button>zero point five as a fair coin toss</button>
+<button>zero point eight, using one minus it</button>
+<p class="fb" data-good="Late and on-time can't both happen and cover everything, so on-time = 1 − 0.2 = 0.8 (the complement rule)." data-bad="On-time = 1 − 0.2 = 0.8. 'Late' and 'on time' are opposites that together must total 1."></p>
+</div>
+</div>
+
+<h2>5 · If you'd like to read a little</h2>
+<p><span class="tag">GENTLE SOURCE</span> <a href="https://www.mathsisfun.com/data/probability.html" target="_blank" rel="noopener">Maths Is Fun — Probability</a>: the same ideas, friendly pictures, five-minute read. When you're ready for a proper textbook later, we'll move to Rohatgi &amp; Saleh, Chapter 1 — but not yet.</p>
+
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> If any word above still feels slippery, ask me in the chat and I'll re-explain it a different way. No question is too small; that's exactly what I'm here for.</div>
+
+<div class="nav">
+  <span>← (start)</span>
+  <span>Next: <strong>L2 · "Given that…" — Conditional Probability</strong>, once this clicks</span>
+</div>
+
+<footer class="lf">
+UGC-NET Statistics (107) · Unit I · Lesson 1 · plain-language foundation<br>
+Do the four checks above, then tell me it clicked — and we'll build Lesson 2 on top of it.
+</footer>
+<script src="../assets/quiz.js"></script>
+</body>
+</html>
