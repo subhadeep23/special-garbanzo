@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 3 — The 0/0 toolkit: four moves</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/check.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">ISC Class 11 · Unit 4 Calculus · Lesson 3 of 8</p>
+<h1>The 0/0 toolkit</h1>
+<p class="sub">Four moves clear an indeterminate form. She chooses by what she sees, not by trial and error.</p>
+
+<p class="mission"><b>Why this lesson.</b> Lesson 2 taught her to read the signal.
+This lesson is what she does after the signal. Most of the algebraic limit marks in
+the ISC paper are here. The lesson is longer than the others, so split it across two
+sittings if needed: moves 1 and 2 first, then moves 3 and 4.</p>
+
+<div class="plain">
+  <span class="tag">Say it simply</span>
+  <p class="big">A <span class="f"><span class="n">0</span><span class="d">0</span></span>
+  form means the top and the bottom <b>both</b> vanish at <i>x</i> = <i>a</i>. Two
+  expressions that vanish at the same place share a factor. <b>That shared factor is
+  what hides the answer.</b> Find it, cancel it, and the answer is simply sitting
+  there.</p>
+  <p>All four moves do the one job: <b>expose the shared factor.</b> They differ only
+  in how the expression is dressed.</p>
+</div>
+
+<div class="kitchen">
+  <span class="tag">The same idea in her kitchen</span>
+  <p class="big">The recipe is written badly. It says <i>"take nothing, and share it
+  between nobody"</i>. That is not a wrong recipe — it is a recipe that has not been
+  written out properly yet. <b>She rewrites the recipe. She does not change the dish.</b></p>
+  <p>The top and the bottom both vanish at <i>x</i> = <i>a</i> because they contain
+  <b>the same ingredient</b>. That shared ingredient sits on both sides of the line
+  and cancels out. Take it out of the written recipe, and the dish is unchanged, but
+  now she can taste it.</p>
+  <div class="scroll">
+  <table class="ref">
+  <tr><th>Move</th><th>What she sees</th><th>In the kitchen</th></tr>
+  <tr><td><b>1</b> Factorise</td><td>Polynomial over polynomial</td>
+      <td>Split both sides into their ingredients, then remove the one they share</td></tr>
+  <tr><td><b>2</b> <i>x<sup>n</sup></i> &minus; <i>a<sup>n</sup></i></td><td>A large or fractional power</td>
+      <td>The same removal, done by a formula instead of by hand, because splitting it by hand would take all evening</td></tr>
+  <tr><td><b>3</b> Rationalise</td><td>A square root</td>
+      <td>The shared ingredient is trapped under the root. Multiply by the conjugate to bring it out where she can reach it</td></tr>
+  <tr><td><b>4</b> LCM</td><td>Two fractions subtracted</td>
+      <td>Two half-written recipes. Put them on one line first, then look again</td></tr>
+  </table>
+  </div>
+  <div class="fix">
+    <span class="tag">Why the cancelling is honest, in her words</span>
+    <p>She never actually uses the exact amount <i>a</i>. She only creeps up on it. So
+    the shared ingredient is never truly zero while she works — it is a tiny amount,
+    and dividing by a tiny amount is completely allowed. <b>Cancelling is not a trick.
+    It is the same dish, written in a form she can taste.</b></p>
+  </div>
+</div>
+
+<h2>Why cancelling is legal — do not skip this</h2>
+
+<p>She will cancel (<i>x</i> &minus; 2) from top and bottom. Her instinct says that is
+cheating, because at <i>x</i> = 2 that factor is zero, and dividing by zero is
+forbidden. She is right to be suspicious. Here is the answer.</p>
+
+<div class="fix">
+  <span class="tag">The reason, in one sentence</span>
+  <p>Inside a limit, <i>x</i> <b>approaches</b> 2 but never equals 2. So
+  (<i>x</i> &minus; 2) is never zero during the whole process. It is a small non-zero
+  number. <b>Dividing by a small non-zero number is completely legal.</b></p>
+</div>
+
+<p>This is the deepest idea in the unit and it takes 60 seconds. Lesson 1 already
+built it: a limit never looks at the point itself. So the two functions</p>
+
+<p class="mth">
+  <span class="f"><span class="n"><i>x</i><sup>2</sup> &minus; 4</span><span class="d"><i>x</i> &minus; 2</span></span>
+  &nbsp;&nbsp;and&nbsp;&nbsp; <i>x</i> + 2
+</p>
+
+<p>are <b>the same function everywhere except at one single point</b>, <i>x</i> = 2.
+The first has a hole there; the second does not. A limit cannot tell them apart,
+because a limit never inspects that point. So they have the same limit, and the second
+one is easy.</p>
+
+<p>Ask her this out loud, and make her answer it: <i>"Why may you cancel
+(x &minus; 2)?"</i> The answer must be <i>"because x is never equal to 2."</i> Not
+"because it cancels".</p>
+
+<h2>Choose the move by what she sees</h2>
+
+<div class="scroll">
+<table class="ref">
+<tr><th>What she sees</th><th>Move</th><th>Name</th></tr>
+<tr><td>Polynomial over polynomial</td><td><b>1</b></td><td>Factorise and cancel</td></tr>
+<tr><td>A large power or a fractional power, over (<i>x</i> &minus; <i>a</i>)</td><td><b>2</b></td><td>The <i>x<sup>n</sup></i> &minus; <i>a<sup>n</sup></i> form</td></tr>
+<tr><td>A square root anywhere</td><td><b>3</b></td><td>Rationalise with the conjugate</td></tr>
+<tr><td>Two fractions subtracted, or &infin; &minus; &infin;</td><td><b>4</b></td><td>Take the LCM first</td></tr>
+</table>
+</div>
+
+<p>She looks, she names the move, then she writes. The naming takes two seconds and it
+saves the whole question. A sum that needs two moves is common — take the LCM, and
+then factorise what appears.</p>
+
+<hr>
+
+<div class="move">
+  <span class="num">1</span>
+  <div class="body">
+    <h3>Factorise and cancel</h3>
+    <p><b>Trigger:</b> both the top and the bottom are polynomials.</p>
+
+    <div class="worked">
+      <div class="head">Worked example 1</div>
+      <div class="body">
+        <p class="mth left"><span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>
+          <span class="f"><span class="n"><i>x</i><sup>2</sup> &minus; 4</span><span class="d"><i>x</i><sup>2</sup> &minus; 5<i>x</i> + 6</span></span></p>
+        <p class="step">Step 1 — substitute, to read the signal.</p>
+        <p class="mth left">= <span class="f"><span class="n">4 &minus; 4</span><span class="d">4 &minus; 10 + 6</span></span>
+          = <span class="f"><span class="n">0</span><span class="d">0</span></span> &nbsp;&mdash;&nbsp; work needed</p>
+        <p class="step">Step 2 — factorise both. The shared factor must be (<i>x</i> &minus; 2), because <i>x</i> = 2 is what made each one zero.</p>
+        <p class="mth left">= <span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>
+          <span class="f"><span class="n">(<i>x</i> &minus; 2)(<i>x</i> + 2)</span><span class="d">(<i>x</i> &minus; 2)(<i>x</i> &minus; 3)</span></span></p>
+        <p class="step">Step 3 — cancel, because <i>x</i> &ne; 2 throughout.</p>
+        <p class="mth left">= <span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>
+          <span class="f"><span class="n"><i>x</i> + 2</span><span class="d"><i>x</i> &minus; 3</span></span></p>
+        <p class="step">Step 4 — substitute again. Now the bottom is not zero.</p>
+        <p class="mth left">= <span class="f"><span class="n">4</span><span class="d">&minus;1</span></span>
+          = <span class="res">&minus;4</span></p>
+      </div>
+    </div>
+
+    <div class="fix">
+      <span class="tag">The shortcut that finds the factor instantly</span>
+      <p>If substituting <i>x</i> = <i>a</i> makes an expression zero, then
+      (<i>x</i> &minus; <i>a</i>) <b>is</b> a factor of it. That is the factor theorem,
+      and it means she never has to search. The approach point tells her the factor
+      before she starts. <i>x</i> &rarr; 2 means look for (<i>x</i> &minus; 2), every
+      time.</p>
+    </div>
+
+    <p>For a cubic, use the factor theorem then divide. Example:
+    <i>x</i><sup>3</sup> &minus; 8 has <i>x</i> = 2 as a root, so
+    (<i>x</i> &minus; 2) is a factor, giving
+    (<i>x</i> &minus; 2)(<i>x</i><sup>2</sup> + 2<i>x</i> + 4). Keep the standard
+    identities to hand:</p>
+    <p class="mth left"><i>a</i><sup>2</sup> &minus; <i>b</i><sup>2</sup> = (<i>a</i>&minus;<i>b</i>)(<i>a</i>+<i>b</i>)
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <i>a</i><sup>3</sup> &minus; <i>b</i><sup>3</sup> = (<i>a</i>&minus;<i>b</i>)(<i>a</i><sup>2</sup>+<i>ab</i>+<i>b</i><sup>2</sup>)
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <i>a</i><sup>3</sup> + <i>b</i><sup>3</sup> = (<i>a</i>+<i>b</i>)(<i>a</i><sup>2</sup>&minus;<i>ab</i>+<i>b</i><sup>2</sup>)</p>
+  </div>
+</div>
+
+<div class="move">
+  <span class="num">2</span>
+  <div class="body">
+    <h3>The <i>x<sup>n</sup></i> &minus; <i>a<sup>n</sup></i> form</h3>
+    <p><b>Trigger:</b> a power too large to factorise by hand, or a fractional power,
+    sitting over (<i>x</i> &minus; <i>a</i>).</p>
+
+    <div class="plain">
+      <span class="tag">The standard result — learn it exactly</span>
+      <p class="mth left"><span class="lim">lim<span class="to"><i>x</i>&rarr;<i>a</i></span></span>
+        <span class="f"><span class="n"><i>x<sup>n</sup></i> &minus; <i>a<sup>n</sup></i></span><span class="d"><i>x</i> &minus; <i>a</i></span></span>
+        = <i>n a</i><sup><i>n</i>&minus;1</sup></p>
+      <p>This holds for <b>every</b> real <i>n</i>, not only whole numbers.<a class="cite" href="#n2">2</a>
+      It is move 1 done in advance and stored as a formula.</p>
+    </div>
+
+    <div class="worked">
+      <div class="head">Worked example 2 — a large power</div>
+      <div class="body">
+        <p class="mth left"><span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>
+          <span class="f"><span class="n"><i>x</i><sup>5</sup> &minus; 32</span><span class="d"><i>x</i> &minus; 2</span></span></p>
+        <p class="step">Recognise 32 = 2<sup>5</sup>. So this is the standard form with <i>n</i> = 5 and <i>a</i> = 2.</p>
+        <p class="mth left">= 5 &middot; 2<sup>4</sup> = <span class="res">80</span></p>
+        <p>Factorising <i>x</i><sup>5</sup> &minus; 32 by hand would take five minutes
+        and invite errors. The formula takes five seconds.</p>
+      </div>
+    </div>
+
+    <div class="worked">
+      <div class="head">Worked example 3 — a fractional power</div>
+      <div class="body">
+        <p class="mth left"><span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span>
+          <span class="f"><span class="n"><i>x</i><sup>3/2</sup> &minus; 1</span><span class="d"><i>x</i> &minus; 1</span></span>
+          &nbsp;&nbsp;with <i>n</i> = <span class="f"><span class="n">3</span><span class="d">2</span></span>, <i>a</i> = 1</p>
+        <p class="mth left">= <span class="f"><span class="n">3</span><span class="d">2</span></span> &middot; 1<sup>1/2</sup>
+          = <span class="res"><span class="f"><span class="n">3</span><span class="d">2</span></span></span></p>
+      </div>
+    </div>
+
+    <div class="plain">
+      <span class="tag">The extended form — worth 30 seconds of memory</span>
+      <p class="mth left"><span class="lim">lim<span class="to"><i>x</i>&rarr;<i>a</i></span></span>
+        <span class="f"><span class="n"><i>x<sup>n</sup></i> &minus; <i>a<sup>n</sup></i></span><span class="d"><i>x<sup>m</sup></i> &minus; <i>a<sup>m</sup></i></span></span>
+        = <span class="f"><span class="n"><i>n</i></span><span class="d"><i>m</i></span></span> <i>a</i><sup><i>n</i>&minus;<i>m</i></sup>
+      </p>
+      <p>Divide the top and the bottom by (<i>x</i> &minus; <i>a</i>) and apply the
+      standard result twice. She should be able to derive it in one line, and that is
+      better than memorising it.</p>
+    </div>
+  </div>
+</div>
+
+<div class="move">
+  <span class="num">3</span>
+  <div class="body">
+    <h3>Rationalise with the conjugate</h3>
+    <p><b>Trigger:</b> a square root anywhere in the expression.</p>
+
+    <p>Factorising cannot reach inside a root. So remove the root first. Multiply the
+    top and the bottom by the <b>conjugate</b> — the same expression with the middle
+    sign flipped. The identity
+    (<i>a</i>&minus;<i>b</i>)(<i>a</i>+<i>b</i>) = <i>a</i><sup>2</sup>&minus;<i>b</i><sup>2</sup>
+    then squares the root away.</p>
+
+    <div class="worked">
+      <div class="head">Worked example 4</div>
+      <div class="body">
+        <p class="mth left"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+          <span class="f"><span class="n"><span class="rt">&radic;<span class="ov"><i>x</i> + 4</span></span> &minus; 2</span><span class="d"><i>x</i></span></span></p>
+        <p class="step">Step 1 — substitute: (2 &minus; 2)/0 = 0/0. Work needed. A root is present, so rationalise.</p>
+        <p class="step">Step 2 — multiply top and bottom by the conjugate of the top.</p>
+        <p class="mth left">= <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+          <span class="f"><span class="n">(<span class="rt">&radic;<span class="ov"><i>x</i>+4</span></span> &minus; 2)(<span class="rt">&radic;<span class="ov"><i>x</i>+4</span></span> + 2)</span><span class="d"><i>x</i>(<span class="rt">&radic;<span class="ov"><i>x</i>+4</span></span> + 2)</span></span></p>
+        <p class="step">Step 3 — the top is now a difference of squares: (<i>x</i>+4) &minus; 4 = <i>x</i>.</p>
+        <p class="mth left">= <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+          <span class="f"><span class="n"><i>x</i></span><span class="d"><i>x</i>(<span class="rt">&radic;<span class="ov"><i>x</i>+4</span></span> + 2)</span></span></p>
+        <p class="step">Step 4 — the shared factor <i>x</i> has appeared. Cancel it, because <i>x</i> &ne; 0.</p>
+        <p class="mth left">= <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+          <span class="f"><span class="n">1</span><span class="d"><span class="rt">&radic;<span class="ov"><i>x</i>+4</span></span> + 2</span></span>
+          = <span class="f"><span class="n">1</span><span class="d">2 + 2</span></span>
+          = <span class="res"><span class="f"><span class="n">1</span><span class="d">4</span></span></span></p>
+      </div>
+    </div>
+
+    <div class="trap">
+      <span class="tag">Two things she will get wrong here</span>
+      <p><b>1. Do not expand the bottom.</b> Leave it as
+      <i>x</i>(&radic;(<i>x</i>+4) + 2). The whole point is to keep the factor
+      <i>x</i> visible so it can cancel. A student who multiplies the bottom out
+      destroys the very thing she was working towards.</p>
+      <p><b>2. Rationalise the side that has the root.</b> If the root is on the
+      bottom, multiply by the conjugate of the <b>bottom</b>. If roots are on both
+      sides, do one side, cancel, then look again.</p>
+    </div>
+  </div>
+</div>
+
+<div class="move">
+  <span class="num">4</span>
+  <div class="body">
+    <h3>Take the LCM first</h3>
+    <p><b>Trigger:</b> two fractions subtracted, so substitution gives
+    &infin; &minus; &infin; rather than 0/0.</p>
+
+    <p>&infin; &minus; &infin; is also indeterminate, and it is not something she can
+    work with. Combine the two fractions into one, and the form usually turns into
+    0/0. Then use move 1.</p>
+
+    <div class="worked">
+      <div class="head">Worked example 5 — two moves chained</div>
+      <div class="body">
+        <p class="mth left"><span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span>
+          <span class="f"><span class="n">1</span><span class="d"><i>x</i> &minus; 1</span></span>
+          &minus;
+          <span class="f"><span class="n">2</span><span class="d"><i>x</i><sup>2</sup> &minus; 1</span></span></p>
+        <p class="step">Step 1 — substitute: 1/0 &minus; 2/0, which is &infin; &minus; &infin;. Not usable. Take the LCM.</p>
+        <p class="step">Step 2 — factorise the second denominator to find the LCM: <i>x</i><sup>2</sup> &minus; 1 = (<i>x</i>&minus;1)(<i>x</i>+1). So the LCM is (<i>x</i>&minus;1)(<i>x</i>+1).</p>
+        <p class="mth left">= <span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span>
+          <span class="f"><span class="n">(<i>x</i> + 1) &minus; 2</span><span class="d">(<i>x</i> &minus; 1)(<i>x</i> + 1)</span></span></p>
+        <p class="step">Step 3 — simplify the top. It becomes <i>x</i> &minus; 1, which is the shared factor.</p>
+        <p class="mth left">= <span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span>
+          <span class="f"><span class="n"><i>x</i> &minus; 1</span><span class="d">(<i>x</i> &minus; 1)(<i>x</i> + 1)</span></span>
+          = <span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span>
+          <span class="f"><span class="n">1</span><span class="d"><i>x</i> + 1</span></span>
+          = <span class="res"><span class="f"><span class="n">1</span><span class="d">2</span></span></span></p>
+        <p>Notice the shape of the work. The LCM converted &infin; &minus; &infin; into
+        0/0, and then move 1 finished it. <b>Chaining two moves is normal.</b></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<h2>Warm-up drill A — name the move only</h2>
+
+<p>Do not solve these. Only name the move. Type <code>factorise</code>,
+<code>formula</code>, <code>rationalise</code>, or <code>lcm</code>. Target: three
+seconds each. This is the decision, and the decision is the skill.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span><span class="f"><span class="n"><i>x</i><sup>2</sup>&minus;9</span><span class="d"><i>x</i><sup>2</sup>&minus;2<i>x</i>&minus;3</span></span></td>
+  <td><input data-a="factorise|factorize|factor|1" data-why="Polynomial over polynomial, so factorise both and cancel the shared (x − 3)."></td></tr>
+<tr><td class="n">2</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><span class="rt">&radic;<span class="ov">1+<i>x</i></span></span>&minus;1</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="rationalise|rationalize|conjugate|3" data-why="A square root is present, so rationalise with the conjugate. Factorising cannot reach inside a root."></td></tr>
+<tr><td class="n">3</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span><span class="f"><span class="n"><i>x</i><sup>7</sup>&minus;128</span><span class="d"><i>x</i>&minus;2</span></span></td>
+  <td><input data-a="formula|2|xn-an|standard" data-why="A seventh power over (x − 2). Use the xⁿ − aⁿ formula with n = 7 and a = 2. Note 128 = 2⁷."></td></tr>
+<tr><td class="n">4</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>[<span class="f"><span class="n">1</span><span class="d"><i>x</i></span></span> &minus; <span class="f"><span class="n">1</span><span class="d"><i>x</i><sup>2</sup>+<i>x</i></span></span>]</td>
+  <td><input data-a="lcm|4|combine" data-why="Two fractions subtracted, giving ∞ − ∞. Take the LCM first to turn it into 0/0."></td></tr>
+<tr><td class="n">5</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span><span class="f"><span class="n"><i>x</i><sup>2/3</sup>&minus;1</span><span class="d"><i>x</i>&minus;1</span></span></td>
+  <td><input data-a="formula|2|xn-an|standard" data-why="A fractional power over (x − 1). The xⁿ − aⁿ formula works for every real n, not only whole numbers."></td></tr>
+<tr><td class="n">6</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;4</span></span><span class="f"><span class="n"><i>x</i>&minus;4</span><span class="d"><span class="rt">&radic;<span class="ov"><i>x</i></span></span>&minus;2</span></span></td>
+  <td><input data-a="rationalise|rationalize|conjugate|3" data-why="The root is on the BOTTOM this time, so rationalise using the conjugate of the bottom: √x + 2."></td></tr>
+<tr><td class="n">7</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;&minus;1</span></span><span class="f"><span class="n"><i>x</i><sup>3</sup>+1</span><span class="d"><i>x</i>+1</span></span></td>
+  <td><input data-a="factorise|factorize|factor|1|formula|2" data-why="Either works. Factorise using a³ + b³, or use the formula with a = −1 and n = 3. Both give 3. Naming either one is correct."></td></tr>
+<tr><td class="n">8</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span><span class="f"><span class="n"><span class="rt">&radic;<span class="ov"><i>x</i>+1</span></span>&minus;2</span><span class="d"><i>x</i><sup>2</sup>&minus;9</span></span></td>
+  <td><input data-a="rationalise|rationalize|conjugate|3" data-why="Rationalise first, because the root blocks everything else. Then factorise the bottom. Two moves chained — rationalise always comes first."></td></tr>
+</table>
+</div>
+
+<h2>Warm-up drill B — now compute</h2>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span><span class="f"><span class="n"><i>x</i><sup>2</sup>&minus;9</span><span class="d"><i>x</i>&minus;3</span></span></td>
+  <td><input data-a="6" data-why="Factorise the top: (x−3)(x+3). Cancel (x−3). Substitute into x + 3 to get 6."></td></tr>
+<tr><td class="n">2</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span><span class="f"><span class="n"><i>x</i><sup>2</sup>&minus;4</span><span class="d"><i>x</i><sup>2</sup>&minus;3<i>x</i>+2</span></span></td>
+  <td><input data-a="4" data-why="Top: (x−2)(x+2). Bottom: (x−2)(x−1). Cancel (x−2), then substitute: 4/1 = 4."></td></tr>
+<tr><td class="n">3</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span><span class="f"><span class="n"><i>x</i><sup>4</sup>&minus;16</span><span class="d"><i>x</i>&minus;2</span></span></td>
+  <td><input data-a="32" data-why="Standard form with n = 4 and a = 2, since 16 = 2⁴. So the answer is 4 · 2³ = 32."></td></tr>
+<tr><td class="n">4</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span><span class="f"><span class="n"><i>x</i><sup>10</sup>&minus;1</span><span class="d"><i>x</i>&minus;1</span></span></td>
+  <td><input data-a="10" data-why="n = 10 and a = 1, so the answer is 10 · 1⁹ = 10. Whenever a = 1, the answer is simply n."></td></tr>
+<tr><td class="n">5</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><span class="rt">&radic;<span class="ov"><i>x</i>+9</span></span>&minus;3</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="1/6|0.166666667" data-why="Multiply by the conjugate √(x+9) + 3. The top becomes x, which cancels. Left with 1/(√(x+9)+3) → 1/6."></td></tr>
+<tr><td class="n">6</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;4</span></span><span class="f"><span class="n"><i>x</i>&minus;4</span><span class="d"><span class="rt">&radic;<span class="ov"><i>x</i></span></span>&minus;2</span></span></td>
+  <td><input data-a="4" data-why="Multiply by √x + 2. The bottom becomes x − 4, which cancels with the top. Left with √x + 2 → 4."></td></tr>
+<tr><td class="n">7</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;&minus;2</span></span><span class="f"><span class="n"><i>x</i><sup>3</sup>+8</span><span class="d"><i>x</i>+2</span></span></td>
+  <td><input data-a="12" data-why="Factorise: (x+2)(x²−2x+4). Cancel (x+2), then substitute: 4 + 4 + 4 = 12. Or use the formula: 3(−2)² = 12."></td></tr>
+<tr><td class="n">8</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span><span class="f"><span class="n"><i>x</i><sup>1/2</sup>&minus;1</span><span class="d"><i>x</i>&minus;1</span></span></td>
+  <td><input data-a="1/2|0.5" data-why="Standard form with n = 1/2 and a = 1. So the answer is (1/2) · 1^(−1/2) = 1/2."></td></tr>
+<tr><td class="n">9</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span><span class="f"><span class="n"><i>x</i><sup>2</sup>&minus;9</span><span class="d"><i>x</i>+3</span></span></td>
+  <td><input data-a="0" data-why="TRAP. Substitute first: top is 0, bottom is 6. So 0/6 = 0. There was never a 0/0 here, so no move was needed. Read the denominator before reaching for a tool."></td></tr>
+<tr><td class="n">10</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>[<span class="f"><span class="n">1</span><span class="d"><i>x</i>&minus;2</span></span> &minus; <span class="f"><span class="n">4</span><span class="d"><i>x</i><sup>2</sup>&minus;4</span></span>]</td>
+  <td><input data-a="1/4|0.25" data-why="LCM is (x−2)(x+2). Top becomes (x+2) − 4 = x − 2. Cancel it, leaving 1/(x+2) → 1/4."></td></tr>
+</table>
+</div>
+
+<h2>Exercise set</h2>
+
+<div class="exset">
+<ol>
+
+<li><span class="pill easy">Easy</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;5</span></span>
+<span class="f"><span class="n"><i>x</i><sup>2</sup>&minus;25</span><span class="d"><i>x</i><sup>2</sup>&minus;7<i>x</i>+10</span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>Polynomial over polynomial. Move 1.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>The approach point is 5, so (<i>x</i>&minus;5) is a factor of both.</details>
+<details class="hint sol"><summary>Answer</summary>
+= (<i>x</i>&minus;5)(<i>x</i>+5) / (<i>x</i>&minus;5)(<i>x</i>&minus;2)
+= (<i>x</i>+5)/(<i>x</i>&minus;2) &rarr; 10/3. Answer <b>10/3</b>.</details>
+</li>
+
+<li><span class="pill easy">Easy</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span>
+<span class="f"><span class="n"><i>x</i><sup>6</sup>&minus;729</span><span class="d"><i>x</i>&minus;3</span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>A sixth power. Move 2. Ask what 729 is.</details>
+<details class="hint sol"><summary>Answer</summary>
+729 = 3<sup>6</sup>, so <i>n</i> = 6 and <i>a</i> = 3.
+Answer = 6 &middot; 3<sup>5</sup> = 6 &middot; 243 = <b>1458</b>.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n"><span class="rt">&radic;<span class="ov">1+<i>x</i></span></span> &minus; <span class="rt">&radic;<span class="ov">1&minus;<i>x</i></span></span></span><span class="d"><i>x</i></span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>Two roots on top. Move 3.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>The conjugate of &radic;(1+<i>x</i>) &minus; &radic;(1&minus;<i>x</i>) is &radic;(1+<i>x</i>) + &radic;(1&minus;<i>x</i>).</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>The new top is (1+<i>x</i>) &minus; (1&minus;<i>x</i>) = 2<i>x</i>. Keep the bottom unexpanded.</details>
+<details class="hint sol"><summary>Answer</summary>
+= 2<i>x</i> / [<i>x</i>(&radic;(1+<i>x</i>) + &radic;(1&minus;<i>x</i>))]
+= 2 / (&radic;(1+<i>x</i>) + &radic;(1&minus;<i>x</i>)) &rarr; 2/(1+1) = <b>1</b>.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span>
+<span class="f"><span class="n"><i>x</i><sup>4</sup>&minus;1</span><span class="d"><i>x</i><sup>3</sup>&minus;1</span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>Both top and bottom are of the <i>x<sup>n</sup></i>&minus;<i>a<sup>n</sup></i> shape, but neither denominator is (<i>x</i>&minus;1) on its own.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>Divide the top and the bottom by (<i>x</i>&minus;1), then take each limit separately. Or use the extended form.</details>
+<details class="hint sol"><summary>Answer</summary>
+Divide top and bottom by (<i>x</i>&minus;1):<br>
+= [(<i>x</i><sup>4</sup>&minus;1)/(<i>x</i>&minus;1)] &divide; [(<i>x</i><sup>3</sup>&minus;1)/(<i>x</i>&minus;1)]
+&rarr; (4 &middot; 1<sup>3</sup>) / (3 &middot; 1<sup>2</sup>) = <b>4/3</b>.<br>
+By the extended form: (<i>n</i>/<i>m</i>)<i>a</i><sup><i>n</i>&minus;<i>m</i></sup>
+= (4/3) &middot; 1<sup>1</sup> = 4/3.</details>
+</li>
+
+<li><span class="pill hard">Hard</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span>
+<span class="f"><span class="n"><span class="rt">&radic;<span class="ov"><i>x</i>+1</span></span> &minus; 2</span><span class="d"><i>x</i><sup>2</sup> &minus; 9</span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>Two moves. A root is present, so rationalise <b>first</b>, then factorise.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>Multiply by &radic;(<i>x</i>+1) + 2. Factorise the bottom as (<i>x</i>&minus;3)(<i>x</i>+3) at the same time.</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>The new top is (<i>x</i>+1) &minus; 4 = <i>x</i> &minus; 3. That is the shared factor.</details>
+<details class="hint sol"><summary>Answer</summary>
+= (<i>x</i>&minus;3) / [(<i>x</i>&minus;3)(<i>x</i>+3)(&radic;(<i>x</i>+1)+2)]<br>
+= 1 / [(<i>x</i>+3)(&radic;(<i>x</i>+1)+2)] &rarr; 1/(6 &times; 4) = <b>1/24</b>.<br>
+The order matters. Rationalise first, always, because the root blocks the factorising.</details>
+</li>
+
+<li><span class="pill hard">Hard</span>
+Find <i>a</i> and <i>b</i> if
+<span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span>
+<span class="f"><span class="n"><i>a x</i><sup>2</sup> + <i>b x</i> &minus; 5</span><span class="d"><i>x</i> &minus; 1</span></span> = 7.
+<details class="hint"><summary>Hint 1 — the type</summary>Work backwards. The bottom is 0 at <i>x</i> = 1, and the limit exists, so what must the top be?</details>
+<details class="hint"><summary>Hint 2 — the move</summary>Condition 1: the top must be zero at <i>x</i> = 1, giving one equation. Then factorise and apply the limit for the second equation.</details>
+<details class="hint"><summary>Hint 3 — the first line</summary><i>a</i> + <i>b</i> &minus; 5 = 0, so <i>b</i> = 5 &minus; <i>a</i>.</details>
+<details class="hint sol"><summary>Answer</summary>
+Since the limit exists and the bottom &rarr; 0, the top must also &rarr; 0:<br>
+<i>a</i> + <i>b</i> &minus; 5 = 0, so <i>b</i> = 5 &minus; <i>a</i>. &nbsp;(1)<br>
+Substitute: top = <i>ax</i><sup>2</sup> + (5&minus;<i>a</i>)<i>x</i> &minus; 5.
+At <i>x</i> = 1 it is zero, so (<i>x</i>&minus;1) is a factor:<br>
+top = (<i>x</i>&minus;1)(<i>ax</i> + 5).<br>
+So the limit = <span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span>(<i>ax</i>+5) = <i>a</i> + 5 = 7, giving <b><i>a</i> = 2</b> and <b><i>b</i> = 3</b>.<br>
+Check: (2<i>x</i><sup>2</sup>+3<i>x</i>&minus;5)/(<i>x</i>&minus;1) = (<i>x</i>&minus;1)(2<i>x</i>+5)/(<i>x</i>&minus;1) &rarr; 7. Correct.</details>
+</li>
+
+<li><span class="pill stretch">Stretch</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">1</span><span class="d"><i>x</i></span></span>
+[<span class="f"><span class="n">1</span><span class="d"><span class="rt">&radic;<span class="ov">1+<i>x</i></span></span></span></span> &minus; 1].
+<details class="hint"><summary>Hint 1 — the type</summary>Both a root and a difference of fractions. Simplify the bracket first.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>The bracket becomes (1 &minus; &radic;(1+<i>x</i>)) / &radic;(1+<i>x</i>). Now rationalise that numerator.</details>
+<details class="hint sol"><summary>Answer</summary>
+Bracket = (1 &minus; &radic;(1+<i>x</i>)) / &radic;(1+<i>x</i>).<br>
+Multiply the numerator by its conjugate (1 + &radic;(1+<i>x</i>)):
+numerator becomes 1 &minus; (1+<i>x</i>) = &minus;<i>x</i>.<br>
+So the whole expression =
+&minus;<i>x</i> / [<i>x</i> &middot; &radic;(1+<i>x</i>) &middot; (1 + &radic;(1+<i>x</i>))].
+Cancel <i>x</i>:<br>
+= &minus;1 / [&radic;(1+<i>x</i>)(1 + &radic;(1+<i>x</i>))] &rarr; &minus;1/(1 &times; 2) = <b>&minus;1/2</b>.<br>
+Sanity check on the sign: for small positive <i>x</i>, &radic;(1+<i>x</i>) is slightly
+more than 1, so 1/&radic;(1+<i>x</i>) is slightly less than 1, so the bracket is
+negative. A negative bracket divided by a positive <i>x</i> is negative. The answer
+must be negative, and it is.</details>
+</li>
+
+</ol>
+</div>
+
+<div class="fix">
+  <span class="tag">Close the lesson — she says this, not you</span>
+  <p>"0/0 means the top and the bottom share a factor. I choose the move by what I see:
+  polynomials means factorise, a big or fractional power over (<i>x</i>&minus;<i>a</i>)
+  means the formula, a root means rationalise, and two fractions means LCM. I may cancel
+  the shared factor because <i>x</i> never equals <i>a</i>."</p>
+  <p>Her kitchen version: <i>"The top and the bottom share an ingredient. I take that
+  shared ingredient out of the written recipe. The dish does not change — only the way
+  it is written changes — and now I can taste it."</i></p>
+</div>
+
+<div class="src">
+  <span class="tag">Read this before the next lesson</span>
+  <p><b>Primary source:</b>
+  <a href="https://tutorial.math.lamar.edu/classes/calci/computinglimits.aspx">Paul's Online Math Notes — Computing Limits</a>
+  (Paul Dawkins, Lamar University). The clearest free treatment of these four moves,
+  with every solution written out in full. For more repetitions, use the
+  <a href="https://tutorial.math.lamar.edu/problems/calci/computinglimits.aspx">practice problems</a>,
+  which show worked solutions.</p>
+  <p><b>Written homework:</b> NCERT Chapter 12, <b>Exercise 12.1, questions 9 to 22</b>.
+  These are the algebraic ones, and they hit all four moves.</p>
+</div>
+
+<div class="ask">
+  <span class="tag">If anything here is unclear</span>
+  <p>Ask. The most common place to get stuck is choosing between move 1 and move 2.
+  If she is unsure, either will work on a small power — move 2 is only a time-saver.
+  Ask before she spends fifteen minutes factorising <i>x</i><sup>7</sup> &minus; 128
+  by hand.</p>
+</div>
+
+<div class="nav">
+  <a href="0002-substitute-first.html">&larr; Lesson 2 — Substitute first</a>
+  <a href="../index.html">Course home</a>
+  <a href="0004-trigonometric-limits.html">Lesson 4 — Trigonometric limits &rarr;</a>
+</div>
+
+<div class="notes">
+<ol>
+  <li>Scope: CISCE, <i>ISC Mathematics (860), Class XI</i>, Unit 4 — "Limits of algebraic
+  ... functions", with the note that indeterminate forms must be introduced.
+  See <a href="../SYLLABUS.md">SYLLABUS.md</a> section 3.</li>
+  <li id="n2">The result
+  <span class="lim">lim<span class="to"><i>x</i>&rarr;<i>a</i></span></span>(<i>x<sup>n</sup></i>&minus;<i>a<sup>n</sup></i>)/(<i>x</i>&minus;<i>a</i>)
+  = <i>n a</i><sup><i>n</i>&minus;1</sup> is Theorem 2 in NCERT Class 11, Chapter 12.
+  NCERT states and proves it for positive integers, then notes it holds for all real
+  <i>n</i>.</li>
+  <li>The four algebraic techniques and the ordering rule (rationalise before
+  factorising): Paul's Online Math Notes, Calculus I — Computing Limits; OpenStax,
+  <i>Calculus Volume 1</i>, section 2.3.</li>
+</ol>
+</div>
+
+</div>
+</body>
+</html>

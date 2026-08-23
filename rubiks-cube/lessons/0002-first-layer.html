@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 02 · The First Layer</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .step { border-left:3px solid var(--rule); padding:0.2rem 0 0.2rem 1.1rem; margin:1.3rem 0; }
+  .step h3 { margin-top:0; }
+  .twocol { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media (max-width:560px){ .twocol{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<p class="eyebrow">Lesson 02 · ~10 minutes · cube in hand</p>
+<h1>The first layer — by feel, not by rote</h1>
+<p class="lede">You solved a cube following J Perm. Now do the opening stage with the video <em>closed</em>.
+The first layer is the one part with <strong>no algorithm to memorise</strong> — it's pure intuition,
+which makes it the perfect place to prove notation has stuck.</p>
+
+<div class="why">
+  <span class="label">Why this is the confidence win</span>
+  Stages 2–4 are memorised algorithms (later lessons). The first layer is <em>logic</em> — you can always
+  reason your way out. If you can build it unaided, you've removed the biggest chunk of the solve from your
+  "needs the video" list. That's real progress toward the mission: <a href="../reference/notation.html">solve unaided</a>.
+</div>
+
+<h2>The goal state</h2>
+<p>White face fully solved <strong>and</strong> the side stickers of that whole layer matching their centres —
+a clean white face with a one-colour "skirt" wrapping each side. Centres never move, so they are your
+compass: the white centre defines white's home; each side centre defines that side's colour.</p>
+
+<h2>Part A — The white cross (do it on the bottom)</h2>
+<p>Pro habit from J Perm: build the cross on the <strong>D</strong> (bottom) face, white down. Slower to see,
+but it sets you up for the whole rest of the solve without re-rotating.</p>
+
+<div class="step">
+  <h3>1. Find a white edge</h3>
+  <p>Any piece with white + one other colour. Read its other colour — that names which centre it belongs under.</p>
+</div>
+<div class="step">
+  <h3>2. Line it under its centre, then drop it in</h3>
+  <p>Get the edge into the top layer above its target side, with colours matched to the side centre, then turn
+  that face <strong>180°</strong> to bring it straight down. Example: blue-white edge above the blue centre →
+  <span class="moves">F2</span> (if front is blue) sends it home.</p>
+</div>
+<div class="note">
+  <span class="label">Petals-up check</span>
+  Done right, the four white edges form a "+" on the bottom AND each side colour runs in a straight line up to
+  its centre. If a side colour zig-zags, that edge is flipped — take it out and re-seat it the other way.
+</div>
+
+<h2>Part B — The white corners</h2>
+<p>Each white corner has three colours: white + two sides. It lives where those two side colours meet.</p>
+
+<div class="step">
+  <h3>1. Park the corner under its slot</h3>
+  <p>Find the corner in the top layer. Spin <strong>U</strong> until it sits directly <em>below</em> the corner gap
+  it belongs in (between its two matching side centres).</p>
+</div>
+<div class="step">
+  <h3>2. The corner cycle — one move, repeat</h3>
+  <p>With the slot at front-right-top and corner waiting at front-right-bottom, repeat:</p>
+  <p style="text-align:center; font-size:1.3rem;"><span class="moves">R U R' U'</span></p>
+  <p>...until the white sticker drops in correctly. The same <strong>sexy move</strong> from Lesson 01 — at most
+  it cycles 3 times. Reset <span class="moves">U</span> between attempts if the corner pops to the wrong spot.</p>
+</div>
+
+<div class="win">
+  <span class="label">Your win today</span>
+  A solved white face + matching skirt, built with the video closed. You just did a third of a full solve
+  from memory. Scramble and rebuild it twice more to lock the intuition in.
+</div>
+
+<h2>Recall check</h2>
+<p>Cube down, answer from memory.</p>
+<div class="quiz" id="q"></div>
+
+<div class="lesson-footer">
+  <strong>Primary source:</strong>
+  <a href="https://www.jperm.net/3x3">J Perm — 3x3</a> (re-watch only the white-cross + corners section if stuck).
+  <br>Reference: <a href="../reference/notation.html">Notation</a> ·
+  Prev: <a href="0001-notation-fluency.html">01 · Notation Fluency</a>.
+
+  <div class="ask">
+    <strong>I'm your teacher — ask me.</strong> Edge keeps landing flipped? Corner won't seat? Tell me the exact
+    state and I'll diagnose it. When you can build the first layer unaided twice in a row, say so —
+    Lesson 03 is the <em>second layer</em>, your first real memorised algorithm.
+  </div>
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script>
+Quiz("#q", [
+  { q: "Which stage of the solve has NO fixed algorithm?",
+    options: ["The first layer here", "The second-layer edges", "The yellow-cross step", "The last-layer corners"],
+    answer: 0,
+    feedback: "The first layer is intuitive — you reason it out, no memorised sequence needed." },
+  { q: "What tells you where a white edge piece belongs?",
+    options: ["Its non-white colour", "Its overall weight", "The nearest corner", "Whichever slot is open"],
+    answer: 0,
+    feedback: "The edge's other colour names the side centre it must sit under." },
+  { q: "To seat a parked white corner, you repeat which sequence?",
+    options: ["R U R prime U prime", "F two then B two now", "U R U two R two", "L prime U L now"],
+    answer: 0,
+    feedback: "The sexy move (R U R' U') cycles the corner in — same pattern as Lesson 01." },
+  { q: "Why build the white cross on the bottom (D), not the top?",
+    options: ["Sets up later stages", "It is simply faster", "Centres can then move", "Avoids any algorithm"],
+    answer: 0,
+    feedback: "White-down means you never re-flip the cube before the second-layer and last-layer stages." }
+]);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2 — Substitute first, then read the signal</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/check.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">ISC Class 11 · Unit 4 Calculus · Lesson 2 of 8</p>
+<h1>Substitute first, then read the signal</h1>
+<p class="sub">Every limit sum begins the same way. Put the number in. What comes out tells you what to do next.</p>
+
+<p class="mission"><b>Why this lesson.</b> Most limits in the ISC paper need no
+technique at all — substitution finishes them. The rest announce which technique they
+need, and they announce it in a code she can learn in one sitting. This is the
+shortest lesson in the pack and it prevents more lost marks than any other.
+The board asks for it directly: <i>"Indeterminate forms are to be introduced while
+calculating limits."</i><a class="cite" href="#n1">1</a></p>
+
+<div class="plain">
+  <span class="tag">Say it simply</span>
+  <p class="big">Never start a limit by looking for a trick. <b>Put the number in
+  first.</b> Then look at what you got. The result is a signal, and there are only
+  three signals.</p>
+</div>
+
+<div class="kitchen">
+  <span class="tag">The same idea in her kitchen</span>
+  <p class="big">Before she reaches for any technique, she <b>puts the ingredient in
+  the recipe and tastes it</b>. The taste tells her what to do next.</p>
+  <div class="scroll">
+  <table class="ref">
+  <tr><th>Substitution gives</th><th>In the kitchen</th><th>What she does</th></tr>
+  <tr><td>A number</td>
+      <td>The recipe works. The dish has a taste</td>
+      <td><b>Stop.</b> That is the answer</td></tr>
+  <tr><td><span class="f"><span class="n">non-zero</span><span class="d">0</span></span></td>
+      <td>The recipe divides the dish between <b>zero</b> people. That has no meaning, and no amount of cooking repairs it</td>
+      <td><b>Stop.</b> The limit does not exist</td></tr>
+  <tr><td><span class="f"><span class="n">0</span><span class="d">0</span></span></td>
+      <td>Nothing on top, nothing on the bottom. The recipe says nothing at all yet</td>
+      <td><b>Work.</b> Rewrite the recipe first</td></tr>
+  </table>
+  </div>
+  <p><b>The word "indeterminate" in her words:</b> the recipe has not told her the taste
+  yet. It has not refused. It has not answered. She must rewrite the recipe into a form
+  that can answer, and Lesson 3 gives the four ways.</p>
+  <p>Full word list: <a href="../reference/kitchen-dictionary.html">the kitchen dictionary</a>.</p>
+</div>
+
+<h2>Why substitution is allowed at all</h2>
+
+<p>She may substitute because of the limit laws. The syllabus asks for these
+<b>as statements only</b> — she states them and uses them, she never proves
+them.<a class="cite" href="#n1">1</a> That saves a session. Spend it on practice.</p>
+
+<p>Suppose <span class="lim">lim<span class="to"><i>x</i>&rarr;a</span></span><i>f</i>(<i>x</i>) = <i>L</i>
+and <span class="lim">lim<span class="to"><i>x</i>&rarr;a</span></span><i>g</i>(<i>x</i>) = <i>M</i>.
+Then:</p>
+
+<div class="scroll">
+<table class="ref">
+<tr><th>Law</th><th>Statement</th><th>In plain words</th></tr>
+<tr><td>Sum</td>
+  <td><span class="lim">lim<span class="to"></span></span>[<i>f</i> + <i>g</i>] = <i>L</i> + <i>M</i></td>
+  <td>Take the limit of each piece, then add</td></tr>
+<tr><td>Difference</td>
+  <td><span class="lim">lim<span class="to"></span></span>[<i>f</i> &minus; <i>g</i>] = <i>L</i> &minus; <i>M</i></td>
+  <td>Same, then subtract</td></tr>
+<tr><td>Constant multiple</td>
+  <td><span class="lim">lim<span class="to"></span></span>[<i>k f</i>] = <i>k L</i></td>
+  <td>A constant walks straight through</td></tr>
+<tr><td>Product</td>
+  <td><span class="lim">lim<span class="to"></span></span>[<i>f</i> &middot; <i>g</i>] = <i>L</i> &middot; <i>M</i></td>
+  <td>Same, then multiply</td></tr>
+<tr><td>Quotient</td>
+  <td><span class="lim">lim<span class="to"></span></span><span class="f"><span class="n"><i>f</i></span><span class="d"><i>g</i></span></span> = <span class="f"><span class="n"><i>L</i></span><span class="d"><i>M</i></span></span>, &nbsp;<b>only if <i>M</i> &ne; 0</b></td>
+  <td>Same, then divide. <b>The condition is the whole lesson</b></td></tr>
+<tr><td>Power</td>
+  <td><span class="lim">lim<span class="to"></span></span>[<i>f</i>]<sup><i>n</i></sup> = <i>L</i><sup><i>n</i></sup></td>
+  <td>The power waits outside</td></tr>
+<tr><td>Constant</td>
+  <td><span class="lim">lim<span class="to"><i>x</i>&rarr;a</span></span><i>k</i> = <i>k</i></td>
+  <td>A constant does not move</td></tr>
+<tr><td>Identity</td>
+  <td><span class="lim">lim<span class="to"><i>x</i>&rarr;a</span></span><i>x</i> = <i>a</i></td>
+  <td><i>x</i> heads to <i>a</i>. Obviously</td></tr>
+</table>
+</div>
+
+<div class="fix">
+  <span class="tag">What the laws add up to</span>
+  <p>Put the constant law, the identity law, and the sum, product, and power laws
+  together. They give this, for <b>every polynomial</b>:</p>
+  <p class="mth left">
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;a</span></span><i>p</i>(<i>x</i>) = <i>p</i>(<i>a</i>)
+  </p>
+  <p>For a polynomial, substitution <b>is</b> the method. It is not a shortcut and it
+  is not an approximation. It is the answer, and it earns full marks. For a rational
+  function it works too, and for the same reason — <b>as long as the denominator is
+  not zero.</b> Look at the condition on the quotient law again. Every hard limit in
+  this unit is a limit where that one condition fails.</p>
+</div>
+
+<h2>The decision tree</h2>
+
+<p>Substitute <i>x</i> = <i>a</i>. Exactly one of these three happens.</p>
+
+<div class="move">
+  <span class="num">1</span>
+  <div class="body">
+    <h3>You get a number. That number is the answer. Stop.</h3>
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>
+      <span class="f"><span class="n"><i>x</i><sup>2</sup> + 3</span><span class="d"><i>x</i> + 1</span></span>
+      = <span class="f"><span class="n">4 + 3</span><span class="d">3</span></span>
+      = <span class="res"><span class="f"><span class="n">7</span><span class="d">3</span></span></span>
+    </p>
+    <p>Write the answer and move to the next question. Around half the limit marks in
+    the paper are here. She loses them by hunting for a technique that the sum does
+    not need.</p>
+    <p><b>Zero on top is still a number.</b>
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span>
+      <span class="f"><span class="n"><i>x</i> &minus; 3</span><span class="d"><i>x</i><sup>2</sup> + 1</span></span>
+      = <span class="f"><span class="n">0</span><span class="d">10</span></span>
+      = <span class="res">0</span>. The answer is 0, and the sum is finished. This
+      case catches almost everyone, because a zero appeared and she assumed trouble.
+      Zero on top is an answer. Zero on the <b>bottom</b> is the trouble.</p>
+  </div>
+</div>
+
+<div class="move">
+  <span class="num">2</span>
+  <div class="body">
+    <h3>You get <span class="f"><span class="n">0</span><span class="d">0</span></span>. This is a signal. Do algebra.</h3>
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span>
+      <span class="f"><span class="n"><i>x</i><sup>2</sup> &minus; 1</span><span class="d"><i>x</i> &minus; 1</span></span>
+      = <span class="f"><span class="n">0</span><span class="d">0</span></span>
+      &nbsp;&mdash;&nbsp; indeterminate
+    </p>
+    <p><b>Indeterminate</b> means "not yet determined". It does not mean impossible,
+    and it does not mean zero, and it does not mean one. It means the sum has not
+    started. Something on the top and something on the bottom both vanish at
+    <i>x</i> = <i>a</i>, which means they share a common factor, and that factor is
+    hiding the answer. Cancel it and the answer appears.</p>
+    <p>Here the answer is 2. Lesson 3 gives the four moves that get it.</p>
+    <p><b>Proof that <span class="f"><span class="n">0</span><span class="d">0</span></span>
+    cannot be a number.</b> Show her these three, together:</p>
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">3<i>x</i></span><span class="d"><i>x</i></span></span> = 3
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><i>x</i></span><span class="d"><i>x</i></span></span> = 1
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><i>x</i><sup>2</sup></span><span class="d"><i>x</i></span></span> = 0
+    </p>
+    <p>All three substitute to <span class="f"><span class="n">0</span><span class="d">0</span></span>.
+    The answers are 3, 1, and 0. So the form
+    <span class="f"><span class="n">0</span><span class="d">0</span></span> carries no
+    information about the answer, and that is exactly what "indeterminate" means. Once
+    she sees this, she stops writing
+    <span class="f"><span class="n">0</span><span class="d">0</span></span> = 1.</p>
+  </div>
+</div>
+
+<div class="move">
+  <span class="num">3</span>
+  <div class="body">
+    <h3>You get <span class="f"><span class="n">non-zero</span><span class="d">0</span></span>. The limit does not exist.</h3>
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span>
+      <span class="f"><span class="n"><i>x</i><sup>2</sup> + 1</span><span class="d"><i>x</i> &minus; 3</span></span>
+      = <span class="f"><span class="n">10</span><span class="d">0</span></span>
+      &nbsp;&mdash;&nbsp; <span class="res">does not exist</span>
+    </p>
+    <p>This form is <b>not</b> indeterminate. It is fully determined, and what it
+    determines is failure. A fixed non-zero top divided by a bottom shrinking to zero
+    grows without bound. There is no finite flavour to name, so there is no limit.</p>
+    <p>No algebra helps here, and she must not look for any. There is no common factor
+    to cancel, because the top is not zero. <b>Recognising this saves her five minutes
+    of hunting per sum.</b></p>
+    <p>For extra marks she may describe the two sides: from the right the values rise
+    to +&infin;, from the left they fall to &minus;&infin;. Then state that the limit
+    does not exist.</p>
+  </div>
+</div>
+
+<div class="plain">
+  <span class="tag">The three-line table she must know cold</span>
+  <div class="scroll">
+  <table class="ref">
+  <tr><th>Substitution gives</th><th>Name</th><th>What to do</th><th>Example answer</th></tr>
+  <tr><td><span class="f"><span class="n">0</span><span class="d">5</span></span></td>
+      <td>Determinate</td><td><b>Stop.</b> The answer is 0</td><td>0</td></tr>
+  <tr><td><span class="f"><span class="n">5</span><span class="d">0</span></span></td>
+      <td>Determinate</td><td><b>Stop.</b> The limit does not exist</td><td>DNE</td></tr>
+  <tr><td><span class="f"><span class="n">0</span><span class="d">0</span></span></td>
+      <td>Indeterminate</td><td><b>Work.</b> Factorise, rationalise, or use a standard form</td><td>anything at all</td></tr>
+  </table>
+  </div>
+  <p>Three rows. She confuses them constantly, and every confusion costs a whole
+  question. Drill this table until she can fill it from memory in 20 seconds.</p>
+</div>
+
+<h2>The other indeterminate forms</h2>
+
+<p>Seven forms are indeterminate. ISC Class 11 uses three of them. Name all three
+now, so that later lessons have somewhere to attach.</p>
+
+<div class="scroll">
+<table class="ref">
+<tr><th>Form</th><th>Where she meets it</th><th>Lesson</th></tr>
+<tr><td><span class="f"><span class="n">0</span><span class="d">0</span></span></td>
+    <td>Algebraic fractions, and every trigonometric limit</td><td>Lessons 3, 4, 5</td></tr>
+<tr><td><span class="f"><span class="n">&infin;</span><span class="d">&infin;</span></span></td>
+    <td><i>x</i> &rarr; &infin; in a rational function</td><td>Lesson 5</td></tr>
+<tr><td>&infin; &minus; &infin;</td>
+    <td>Differences of surds, and differences of fractions</td><td>Lessons 3, 5</td></tr>
+</table>
+</div>
+
+<div class="trap">
+  <span class="tag">The three mistakes this lesson prevents</span>
+  <p><b>1.</b> She writes
+  <span class="f"><span class="n">0</span><span class="d">0</span></span> = 1, because
+  "anything over itself is 1".<br>
+  <b>The real gap:</b> the rule <i>a</i>/<i>a</i> = 1 needs <i>a</i> &ne; 0. It has
+  always needed that. Zero is the case the rule excludes.</p>
+  <p><b>2.</b> She sees
+  <span class="f"><span class="n">10</span><span class="d">0</span></span> and hunts
+  for something to factorise.<br>
+  <b>The real gap:</b> she treats every zero denominator as the same event. Factorising
+  can only help when top <b>and</b> bottom vanish together, because only then is there
+  a shared factor.</p>
+  <p><b>3.</b> She sees
+  <span class="f"><span class="n">0</span><span class="d">10</span></span> and writes
+  "does not exist".<br>
+  <b>The real gap:</b> she has learned "zero means trouble" instead of "zero
+  <i>downstairs</i> means trouble". Ask her: is 0 &divide; 10 a legal division? Yes.
+  So the answer is 0.</p>
+</div>
+
+<h2>Warm-up drill A — read the signal</h2>
+
+<p>Substitute, and write only what the substitution gives. Write <code>0/0</code>,
+or <code>5/0</code>-type as <code>DNE</code>, or the number itself.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>(<i>x</i><sup>2</sup> + 3<i>x</i>)</td>
+  <td><input data-a="10" data-why="A polynomial. Substitute: 4 + 6 = 10. Substitution IS the method for polynomials."></td></tr>
+<tr><td class="n">2</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span><span class="f"><span class="n"><i>x</i><sup>2</sup>&minus;1</span><span class="d"><i>x</i>&minus;1</span></span></td>
+  <td><input data-a="0/0" data-why="Top: 1 − 1 = 0. Bottom: 1 − 1 = 0. So 0/0 — indeterminate. This is a signal to do algebra, not an answer."></td></tr>
+<tr><td class="n">3</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span><span class="f"><span class="n"><i>x</i>&minus;3</span><span class="d"><i>x</i><sup>2</sup>+1</span></span></td>
+  <td><input data-a="0" data-why="Top is 0, bottom is 10. That is 0/10 = 0. A legal division, so 0 is the final answer. Zero on top is fine."></td></tr>
+<tr><td class="n">4</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span><span class="f"><span class="n"><i>x</i><sup>2</sup>+1</span><span class="d"><i>x</i>&minus;3</span></span></td>
+  <td><input data-a="dne" data-why="Top is 10, bottom is 0. That is 10/0 — determinate failure. No algebra can help, because the top is not zero, so there is no shared factor."></td></tr>
+<tr><td class="n">5</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><i>x</i><sup>2</sup>+5</span><span class="d"><i>x</i>+2</span></span></td>
+  <td><input data-a="5/2|2.5" data-why="Top is 5, bottom is 2. The bottom is not zero, so the quotient law applies directly: 5/2."></td></tr>
+<tr><td class="n">6</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;4</span></span><span class="f"><span class="n"><i>x</i><sup>2</sup>&minus;16</span><span class="d"><i>x</i>&minus;4</span></span></td>
+  <td><input data-a="0/0" data-why="Top: 16 − 16 = 0. Bottom: 4 − 4 = 0. So 0/0. Both vanish together, so they share the factor (x − 4)."></td></tr>
+<tr><td class="n">7</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">7</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="dne" data-why="Top is 7, bottom is 0. That is 7/0, so the limit does not exist. The two sides also disagree in sign."></td></tr>
+<tr><td class="n">8</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;&minus;2</span></span>(<i>x</i><sup>3</sup> + 8)</td>
+  <td><input data-a="0" data-why="A polynomial, so substitute: (−8) + 8 = 0. The answer is 0. There is no denominator here, so nothing can go wrong."></td></tr>
+<tr><td class="n">9</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;&minus;2</span></span><span class="f"><span class="n"><i>x</i><sup>3</sup>+8</span><span class="d"><i>x</i>+2</span></span></td>
+  <td><input data-a="0/0" data-why="Top: (−8) + 8 = 0. Bottom: −2 + 2 = 0. So 0/0. Note how question 8 and question 9 differ by one denominator — and that changes everything."></td></tr>
+<tr><td class="n">10</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span><span class="f"><span class="n"><i>x</i>&minus;1</span><span class="d"><i>x</i>+1</span></span></td>
+  <td><input data-a="0" data-why="Top is 0, bottom is 2. So 0/2 = 0. Compare it with question 2, where the bottom was also zero. One character of difference, and a completely different sum."></td></tr>
+</table>
+</div>
+
+<h2>Warm-up drill B — finish the ones that substitution finishes</h2>
+
+<p>Every sum here is finished by substitution alone. She must resist doing more.
+Speed matters: the target is 20 seconds each.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span>(4<i>x</i> &minus; 5)</td>
+  <td><input data-a="7" data-why="12 − 5 = 7."></td></tr>
+<tr><td class="n">2</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;&minus;1</span></span>(<i>x</i><sup>2</sup> + 2<i>x</i> + 3)</td>
+  <td><input data-a="2" data-why="1 − 2 + 3 = 2. Take care with the sign of the middle term."></td></tr>
+<tr><td class="n">3</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><i>x</i>+3</span><span class="d"><i>x</i>&minus;4</span></span></td>
+  <td><input data-a="-3/4|-0.75" data-why="3 divided by −4, which is −3/4. Keep the minus sign."></td></tr>
+<tr><td class="n">4</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>(<i>x</i>&minus;1)<sup>5</sup></td>
+  <td><input data-a="1" data-why="The power law lets the power wait outside: (2 − 1)^5 = 1^5 = 1."></td></tr>
+<tr><td class="n">5</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;4</span></span><span class="rt">&radic;<span class="ov"><i>x</i> + 5</span></span></td>
+  <td><input data-a="3" data-why="Inside the root: 4 + 5 = 9, and √9 = 3. The root is continuous here, so substitution is legal."></td></tr>
+<tr><td class="n">6</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>(3 &minus; 2<i>x</i>)(<i>x</i> + 4)</td>
+  <td><input data-a="12" data-why="Use the product law: (3)(4) = 12. Do not expand first — that wastes time."></td></tr>
+<tr><td class="n">7</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;&pi;</span></span>sin <i>x</i></td>
+  <td><input data-a="0" data-why="sin π = 0. Sine has no break, so substitution is legal. Not every trigonometric limit needs a technique."></td></tr>
+<tr><td class="n">8</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">sin <i>x</i></span><span class="d"><i>x</i> + 1</span></span></td>
+  <td><input data-a="0" data-why="Top: sin 0 = 0. Bottom: 0 + 1 = 1. So 0/1 = 0. Watch out — this LOOKS like the sin x / x standard limit, but the denominator is x + 1, not x. Always read the denominator."></td></tr>
+</table>
+</div>
+
+<h2>Exercise set</h2>
+
+<div class="exset">
+<ol>
+
+<li><span class="pill easy">Easy</span>
+Evaluate
+<span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>
+<span class="f"><span class="n"><i>x</i><sup>3</sup> &minus; 2<i>x</i> + 1</span><span class="d"><i>x</i><sup>2</sup> + 1</span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>
+Check the denominator at <i>x</i> = 2 before anything else.</details>
+<details class="hint sol"><summary>Answer</summary>
+Bottom = 5, which is not zero, so substitute. Top = 8 &minus; 4 + 1 = 5.
+Answer = <b>1</b>.</details>
+</li>
+
+<li><span class="pill easy">Easy</span>
+Explain why
+<span class="lim">lim<span class="to"><i>x</i>&rarr;5</span></span>
+<span class="f"><span class="n"><i>x</i> &minus; 5</span><span class="d"><i>x</i> + 5</span></span> = 0
+but
+<span class="lim">lim<span class="to"><i>x</i>&rarr;&minus;5</span></span>
+<span class="f"><span class="n"><i>x</i> &minus; 5</span><span class="d"><i>x</i> + 5</span></span>
+does not exist.
+<details class="hint"><summary>Hint 1 — the type</summary>
+The same expression, two different approach points. Substitute into each separately.</details>
+<details class="hint sol"><summary>Answer</summary>
+At <i>x</i> = 5: top = 0, bottom = 10, so 0/10 = <b>0</b>. A legal division.<br>
+At <i>x</i> = &minus;5: top = &minus;10, bottom = 0, so &minus;10/0 &mdash;
+<b>the limit does not exist</b>. It is the position of the zero that decides, never
+the presence of a zero.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+For each, write only the form that substitution gives, and state whether it is
+determinate or indeterminate.
+(a) <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">sin <i>x</i></span><span class="d"><i>x</i></span></span> &nbsp;
+(b) <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">cos <i>x</i></span><span class="d"><i>x</i></span></span> &nbsp;
+(c) <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><i>x</i></span><span class="d">cos <i>x</i></span></span>
+<details class="hint"><summary>Hint 1 — the type</summary>
+Substitution practice on trigonometric functions. Recall sin 0 = 0 and cos 0 = 1.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Compute the top and the bottom separately, each time. Do not guess from the shape of
+the expression.</details>
+<details class="hint sol"><summary>Answer</summary>
+(a) 0/0 — <b>indeterminate</b>. Work needed. This is the famous one, and Lesson 4
+shows the answer is 1.<br>
+(b) 1/0 — <b>determinate</b>. The limit does not exist. No work is possible.<br>
+(c) 0/1 = <b>0</b> — <b>determinate</b>, and finished.<br>
+Three expressions built from the same two functions, and three completely different
+outcomes. This is why she substitutes first, every time.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+A student writes: "<span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>
+<span class="f"><span class="n"><i>x</i><sup>2</sup>&minus;4</span><span class="d"><i>x</i>&minus;2</span></span>
+= <span class="f"><span class="n">0</span><span class="d">0</span></span> = 1."
+Find the error, and give the correct answer.
+<details class="hint"><summary>Hint 1 — the type</summary>
+Error hunting. The error is in the second equals sign, not the first.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Which condition does the rule <i>a</i>/<i>a</i> = 1 require?</details>
+<details class="hint sol"><summary>Answer</summary>
+The first step is right: substitution does give 0/0. The error is treating that form
+as a value. The rule <i>a</i>/<i>a</i> = 1 requires <i>a</i> &ne; 0, so it says
+nothing about 0/0.<br>
+Correct working: factorise the top as (<i>x</i>&minus;2)(<i>x</i>+2), cancel
+(<i>x</i>&minus;2), then substitute into <i>x</i> + 2. Answer = <b>4</b>.<br>
+Note that 4 &ne; 1, which proves the shortcut was wrong.</details>
+</li>
+
+<li><span class="pill hard">Hard</span>
+Find every value of <i>k</i> for which
+<span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span>
+<span class="f"><span class="n"><i>x</i><sup>2</sup> + <i>k</i></span><span class="d"><i>x</i> &minus; 3</span></span>
+can possibly exist.
+<details class="hint"><summary>Hint 1 — the type</summary>
+Work backwards from the decision tree. The bottom is zero at <i>x</i> = 3, and she
+cannot change that.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+The bottom is 0. So the only branch that leaves any hope is 0/0. What must the top be?</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>
+Require top = 0 at <i>x</i> = 3: &nbsp; 9 + <i>k</i> = 0.</details>
+<details class="hint sol"><summary>Answer</summary>
+The bottom is always 0 at <i>x</i> = 3. So if the top is non-zero, the form is
+non-zero/0 and the limit certainly fails. The only hope is 0/0, which needs
+9 + <i>k</i> = 0, so <b><i>k</i> = &minus;9</b>.<br>
+Check it: with <i>k</i> = &minus;9 the expression becomes
+<span class="f"><span class="n"><i>x</i><sup>2</sup>&minus;9</span><span class="d"><i>x</i>&minus;3</span></span>,
+which cancels to <i>x</i> + 3, and the limit is 6. So <i>k</i> = &minus;9 works, and
+no other value can.</details>
+</li>
+
+<li><span class="pill stretch">Stretch</span>
+Give an example of each: two limits that both substitute to 0/0, where the first
+equals 100 and the second does not exist.
+<details class="hint"><summary>Hint 1 — the type</summary>
+A construction question. She must build the functions, so she must understand what
+0/0 does and does not tell her.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+For the first, put the answer she wants in the numerator as a factor. For the second,
+recall <i>x</i>/<i>x</i><sup>2</sup> and what that does at 0.</details>
+<details class="hint sol"><summary>Answer</summary>
+First: <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">100<i>x</i></span><span class="d"><i>x</i></span></span>
+= 100, and substitution gives 0/0.<br>
+Second: <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n"><i>x</i></span><span class="d"><i>x</i><sup>2</sup></span></span>
+= <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">1</span><span class="d"><i>x</i></span></span>, which
+does not exist, and substitution also gives 0/0.<br>
+Together they prove the point of the whole lesson: <b>0/0 tells her that work is
+needed, and nothing whatever about the answer.</b> The answer can be any number, or
+there may be no answer at all.</details>
+</li>
+
+</ol>
+</div>
+
+<div class="fix">
+  <span class="tag">Close the lesson — she says this, not you</span>
+  <p>"I always substitute first. If I get a number, that is the answer. If I get
+  something non-zero over zero, the limit does not exist. Only 0/0 means I have work
+  to do, and it tells me nothing about what the answer will be."</p>
+  <p>Her kitchen version: <i>"I taste it first. A taste is the answer. Sharing between
+  nobody is a dead end. Nothing over nothing means the recipe has not told me anything
+  yet, so I rewrite it."</i></p>
+</div>
+
+<div class="src">
+  <span class="tag">Read this before the next lesson</span>
+  <p><b>Primary source:</b>
+  <a href="https://openstax.org/books/calculus-volume-1/pages/2-3-the-limit-laws">OpenStax, <i>Calculus Volume 1</i>, section 2.3 — The Limit Laws</a>.
+  Read the limit laws, then the part headed "Additional Limit Evaluation Techniques".
+  It states the laws in the same form ISC uses.</p>
+  <p><b>Written homework:</b> NCERT Chapter 12, section 12.3.1 (algebra of limits) and
+  section 12.3.2 (limits of polynomials and rational functions). Then
+  <b>Exercise 12.1, questions 1 to 8</b> — every one of those is finished by
+  substitution, which is exactly the skill of this lesson.</p>
+</div>
+
+<div class="ask">
+  <span class="tag">If anything here is unclear</span>
+  <p>Ask. If the three-row table (0/5, 5/0, 0/0) still feels slippery, say so now.
+  Every later lesson stands on that table, so it is worth ten more minutes today.</p>
+</div>
+
+<div class="nav">
+  <a href="0001-what-a-limit-really-is.html">&larr; Lesson 1 — What a limit really is</a>
+  <a href="../index.html">Course home</a>
+  <a href="0003-the-zero-over-zero-toolkit.html">Lesson 3 — The 0/0 toolkit &rarr;</a>
+</div>
+
+<div class="notes">
+<ol>
+  <li id="n1">CISCE, <i>ISC Mathematics (860), Class XI</i>, Unit 4: "Fundamental theorems on
+  limits (statement only)" and the note "Indeterminate forms are to be introduced while
+  calculating limits." See <a href="../SYLLABUS.md">SYLLABUS.md</a> section 3.</li>
+  <li>Limit laws, including the non-zero denominator condition on the quotient law:
+  OpenStax, <i>Calculus Volume 1</i>, section 2.3; NCERT Class 11, Chapter 12, Theorem 1.</li>
+  <li>Limits of polynomials and rational functions by substitution: NCERT Class 11,
+  Chapter 12, section 12.3.2.</li>
+</ol>
+</div>
+
+</div>
+</body>
+</html>

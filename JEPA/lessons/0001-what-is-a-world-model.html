@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1 — What is a world model?</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">JEPA Course · Lesson 1 · Conceptual fluency</p>
+  <h1>What is a world model — and why not predict the pixels?</h1>
+  <p class="dek">The one idea LeCun's whole vision hangs from. No math. Just the hook
+  everything else clips onto.</p>
+
+  <h2>1 · The everyday version</h2>
+  <p>Right now, without thinking, you know that if you knock the glass on your desk
+  it will fall, spill, maybe shatter. You didn't run an experiment. You have a little
+  <em>simulator</em> in your head that predicts what happens next in the world. LeCun calls
+  this a <strong>world model</strong>, and his claim is simple but heavy:</p>
+
+  <blockquote>An intelligent agent — human, animal, or machine — needs a world model so it
+  can imagine the consequences of its actions <em>before</em> acting. Planning is just
+  running that simulator forward.</blockquote>
+
+  <p>Babies build theirs by <em>watching</em>. Nobody hands an infant a labelled dataset.
+  They observe, the world reveals what happens next, and the prediction error teaches them.
+  That "learn by watching, with no labels" idea has a name.</p>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> learning from raw observation by hiding
+    part of it and predicting the hidden part — the data is its own answer key.</span>
+    <span class="chip stat">STAT</span><span class="term">the target is a held-out part of the observation, not an external label</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">self-supervised learning (SSL)</span>
+  </div>
+
+  <h2>2 · The trap: predicting everything</h2>
+  <p>Here's the obvious first idea for building a machine world model: show it video,
+  and train it to predict the <em>next frame, pixel by pixel</em>. This is the
+  <strong>generative</strong> approach — and LeCun argues it is the wrong goal.</p>
+
+  <p>Why? Picture a video of a pen balanced on its tip, about to fall. It <em>will</em>
+  fall — but left or right? The exact way it topples, the precise swirl of a coffee
+  pour, the exact leaves that flutter — these are <strong>unpredictable in detail</strong>.
+  A pixel-predictor is graded on getting all that detail right, so it burns its capacity
+  trying to predict noise it can never nail. It either fails, or hedges into a blurry average.</p>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> trying to predict the future in full
+    detail — every pixel — when most of that detail is genuinely unpredictable.</span>
+    <span class="chip stat">STAT</span><span class="term">modelling the full conditional distribution p(x_future | x_past) in the original high-dimensional data space</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">generative / reconstruction-based prediction</span>
+  </div>
+
+  <div class="callout">
+    <span class="label">The pivot — hold onto this</span>
+    LeCun's move: <strong>don't predict the pixels. Predict an abstract summary.</strong>
+    Predict "the pen falls over" — not the exact final photograph. Throw away the detail
+    you can't predict, and only predict what's predictable. That abstract summary has a name too.
+  </div>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> a compact, abstract summary that keeps
+    what matters and discards the noise.</span>
+    <span class="chip stat">STAT</span><span class="term">a set of derived features / latent variables</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">a representation, or embedding — a vector <code>z</code> in latent space</span>
+  </div>
+
+  <p>That single swap — <em>predict in representation space, not pixel space</em> — is the
+  seed of <strong>JEPA</strong>, which is Lesson 2. Everything else (energy-based models,
+  the collapse problem, the full cognitive architecture) grows out of this one decision.</p>
+
+  <h2>3 · Why this matters for LeCun's LLM critique</h2>
+  <p>A large language model predicts the next <em>token</em> in full detail — it's a
+  generative predictor, just over words instead of pixels. LeCun's bet is that this is
+  fine for text but a dead-end for understanding the physical world, because the world's
+  future is far too rich to predict token-by-token. That's the argument you're building
+  toward being able to make yourself — and defend.</p>
+
+  <hr>
+
+  <div class="quiz" id="quiz">
+    <p class="q">Q. Why does LeCun reject training a world model to predict the next video frame pixel-by-pixel?</p>
+    <button data-ok="0">It is too slow to compute on modern hardware</button>
+    <button data-ok="1">Much future detail is unpredictable, so it wastes effort on noise</button>
+    <button data-ok="0">Video data is too expensive to collect at large scale</button>
+    <button data-ok="0">Pixels cannot be represented as numbers for a neural network</button>
+    <p class="feedback" id="fb"></p>
+  </div>
+
+  <div class="source">
+    <span class="label">Primary source — read/watch this next</span>
+    LeCun, <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf"><strong>A Path Towards
+    Autonomous Machine Intelligence</strong></a> (2022) — read the <em>Introduction</em> and
+    skim §2 ("Overview"). You'll now recognise the world-model idea. Prefer video? Watch
+    <a href="https://www.youtube.com/watch?v=yUmDRxV0krg">LeCun's talk on SSL, JEPA &amp; world models</a>.
+  </div>
+
+  <div class="lesson-foot">
+    <strong>Your win this lesson:</strong> you can now explain what a world model is, what
+    self-supervised learning is, and <em>why</em> predicting the pixels is the wrong goal.<br><br>
+    → New vocabulary logged in the <a href="../reference/glossary.html">Glossary</a>.<br>
+    → <strong>Next — Lesson 2:</strong> JEPA — "predict the representation, not the pixels" made concrete.
+  </div>
+
+  <div class="ask">
+    📣 <strong>I'm your teacher — use me.</strong> Unsure why the "blurry average" happens?
+    Want the statistician's version of any idea here? Want to jump straight to JEPA? Just ask.
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('#quiz button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var fb = document.getElementById('fb');
+      document.querySelectorAll('#quiz button').forEach(function (x) { x.disabled = true; });
+      if (b.dataset.ok === '1') {
+        b.classList.add('correct');
+        fb.textContent = '✓ Exactly. The future is rich in detail you cannot predict; a pixel-predictor is forced to model that noise, so it fails or blurs. LeCun predicts an abstract representation instead.';
+      } else {
+        b.classList.add('wrong');
+        document.querySelector('#quiz button[data-ok="1"]').classList.add('correct');
+        fb.textContent = 'Not the core reason. The real objection is about predictability: much future detail is genuinely unpredictable, so pixel-level prediction wastes capacity on noise (highlighted in green).';
+      }
+    });
+  });
+</script>
+</body>
+</html>

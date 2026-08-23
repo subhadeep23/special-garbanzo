@@ -1,0 +1,223 @@
+/* ============================================================
+   JEPA course — shared stylesheet (Tufte-inspired)
+   Linked by every lesson and reference doc so the course
+   reads as one consistent, print-friendly whole.
+   ============================================================ */
+
+:root {
+  --ink:        #1a1a1a;
+  --ink-soft:   #4a4a46;
+  --paper:      #fdfcf9;
+  --paper-edge: #f2efe6;
+  --rule:       #d8d3c4;
+  --accent:     #7a1f1f;     /* deep oxblood — LeCun-diagram red */
+  --accent-2:   #1f4e79;     /* deep blue for the "CS term" chips */
+  --stat:       #2e6b4f;     /* green for the "statistician term" chips */
+  --code-bg:    #f1eee6;
+  --maxw:       42rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:        #e8e6df;
+    --ink-soft:   #b3afa2;
+    --paper:      #16150f;
+    --paper-edge: #1e1d16;
+    --rule:       #3a382e;
+    --accent:     #e8837f;
+    --accent-2:   #7fb0e0;
+    --stat:       #6fc79a;
+    --code-bg:    #211f18;
+  }
+}
+
+html { font-size: 18px; }
+
+body {
+  margin: 0;
+  padding: 3.5rem 1.5rem 6rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--maxw); margin: 0 auto; }
+
+/* ---------- masthead ---------- */
+.eyebrow {
+  font-family: "Gill Sans", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+h1 {
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+.dek {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.12rem;
+  margin: 0 0 2rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin: 2.6rem 0 0.6rem;
+  font-weight: 600;
+}
+h3 { font-size: 1.08rem; margin: 1.8rem 0 0.4rem; }
+
+p { margin: 0.8rem 0; }
+a { color: var(--accent); text-underline-offset: 2px; }
+
+/* ---------- rules & structure ---------- */
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2.4rem 0;
+}
+
+blockquote {
+  margin: 1.4rem 0;
+  padding: 0.2rem 0 0.2rem 1.2rem;
+  border-left: 3px solid var(--accent);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ---------- the vocabulary bridge (mission-critical component) ---------- */
+.bridge {
+  background: var(--paper-edge);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin: 1.6rem 0;
+  font-family: "Gill Sans", system-ui, sans-serif;
+  font-size: 0.95rem;
+}
+.bridge .plain { display: block; margin-bottom: 0.6rem; }
+.chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  margin-right: 0.4rem;
+  color: #fff;
+  vertical-align: middle;
+}
+.chip.stat { background: var(--stat); }
+.chip.cs   { background: var(--accent-2); }
+.term { font-weight: 600; }
+
+/* ---------- callouts ---------- */
+.callout {
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent-2);
+  border-radius: 4px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+  background: var(--paper-edge);
+  font-size: 0.98rem;
+}
+.callout .label {
+  font-family: "Gill Sans", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  color: var(--accent-2);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-family: "SF Mono", "Consolas", monospace;
+  font-size: 0.88em;
+}
+
+/* ---------- quiz widget ---------- */
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.1rem 1.2rem;
+  margin: 1.4rem 0;
+  background: var(--paper-edge);
+}
+.quiz .q {
+  font-family: "Gill Sans", system-ui, sans-serif;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+.quiz button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-size: 0.95rem;
+  margin: 0.4rem 0;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.quiz button:hover { border-color: var(--accent-2); }
+.quiz button.correct { background: #d8efdf; border-color: var(--stat); color:#14361f; }
+.quiz button.wrong   { background: #f6dede; border-color: var(--accent); color:#4a1414; }
+.quiz .feedback {
+  margin-top: 0.7rem;
+  font-size: 0.92rem;
+  min-height: 1.2rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- footer nav ---------- */
+.lesson-foot {
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 2px solid var(--rule);
+  font-family: "Gill Sans", system-ui, sans-serif;
+  font-size: 0.92rem;
+}
+.ask {
+  margin-top: 1.6rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--paper-edge);
+  border: 1px dashed var(--accent);
+  border-radius: 6px;
+  font-family: "Gill Sans", system-ui, sans-serif;
+  font-size: 0.92rem;
+}
+.source {
+  font-family: "Gill Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  background: var(--paper-edge);
+  border-radius: 6px;
+  padding: 0.8rem 1.1rem;
+  margin: 1.6rem 0;
+}
+.source .label {
+  text-transform: uppercase; letter-spacing: 0.12em;
+  font-size: 0.66rem; color: var(--accent); display:block; margin-bottom:0.3rem;
+}
+
+/* ---------- print ---------- */
+@media print {
+  body { background: #fff; color: #000; padding: 0; font-size: 11pt; }
+  .quiz button { break-inside: avoid; }
+  .ask, .lesson-foot { break-inside: avoid; }
+  a { color: #000; text-decoration: underline; }
+}

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 7 — The derivative, from first principles</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/check.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">ISC Class 11 · Unit 4 Calculus · Lesson 7 of 8</p>
+<h1>The derivative, from first principles</h1>
+<p class="sub">The derivative is one limit. It measures how sensitive the output is to a small change in the input.</p>
+
+<p class="mission"><b>Why this lesson.</b> The syllabus names "differentiation using
+first principles" explicitly, so the board can ask for the full working and refuse a
+formula.<a class="cite" href="#n1">1</a> This is also the lesson that pays next year:
+every one of the 35 Class 12 calculus marks stands on the idea built here. Give it the
+full 45 minutes even when time is short.</p>
+
+<div class="plain">
+  <span class="tag">Say it simply</span>
+  <p class="big">Change the input a little. See how much the output changes. Divide
+  the change in the output by the change in the input. Then make the change in the
+  input shrink to nothing. <b>That number is the derivative.</b></p>
+</div>
+
+<div class="kitchen">
+  <span class="tag">The same idea in her kitchen</span>
+  <p class="big">She adds <b>one more pinch of salt</b> and asks: how much did the
+  taste move? Not what the taste is — <b>how much it moved, per pinch.</b> That is the
+  derivative.</p>
+  <p>She already tastes while she cooks. That was the limit. The derivative is the next
+  question she naturally asks in the same kitchen: <b>how sensitive is this dish to
+  salt?</b></p>
+  <div class="scroll">
+  <table class="ref">
+  <tr><th>Symbol</th><th>In the kitchen</th></tr>
+  <tr><td><i>h</i></td><td>The extra pinch she adds. A small amount, never zero</td></tr>
+  <tr><td><i>f</i>(<i>x</i> + <i>h</i>) &minus; <i>f</i>(<i>x</i>)</td><td>How much the <b>taste</b> moved</td></tr>
+  <tr><td><span class="f"><span class="n"><i>f</i>(<i>x</i>+<i>h</i>) &minus; <i>f</i>(<i>x</i>)</span><span class="d"><i>h</i></span></span></td>
+      <td>Taste moved <b>per pinch</b> — the average sensitivity over that pinch</td></tr>
+  <tr><td><span class="lim">lim<span class="to"><i>h</i>&rarr;0</span></span> of that</td>
+      <td>The sensitivity for a pinch so small it is barely a pinch — <b>the sensitivity right here</b></td></tr>
+  </table>
+  </div>
+  <p><b>Two dishes, to make it concrete.</b> A thin soup changes flavour a lot from one
+  pinch, so its derivative is large. A heavy stew barely moves, so its derivative is
+  small. Same pinch, different sensitivity. <b>The derivative belongs to the recipe,
+  not to the pinch.</b></p>
+  <p><b>And the sign.</b> A positive derivative means more salt makes it saltier. A
+  negative derivative means more of the ingredient moves the taste the other way — more
+  water makes it blander. Zero means one more pinch changes nothing, which is exactly
+  what happens at the top of a hill.</p>
+</div>
+
+<h2>Why it must be a limit, and not a division</h2>
+
+<p>Ask her to compute the sensitivity at exactly one point, using no limit. She will
+write:</p>
+
+<p class="mth">
+  <span class="f"><span class="n"><i>f</i>(<i>x</i>) &minus; <i>f</i>(<i>x</i>)</span><span class="d"><i>x</i> &minus; <i>x</i></span></span>
+  = <span class="f"><span class="n">0</span><span class="d">0</span></span>
+</p>
+
+<div class="fix">
+  <span class="tag">The whole reason calculus exists</span>
+  <p>Sensitivity at a single point is a 0/0. Lesson 2 named that form. Lesson 3 showed
+  how to clear it. <b>The derivative is the reason those two lessons were taught.</b>
+  She needed two points to measure a change, and the derivative asks for a change at
+  one point, so the two points must slide together — and that sliding is a limit.</p>
+  <p>Say this to her once, plainly: <i>"Everything we did with 0/0 was preparation for
+  this."</i> It is true, and it makes the earlier work feel paid for.</p>
+</div>
+
+<h2>The two pictures ISC wants</h2>
+
+<div class="move">
+  <span class="num">1</span>
+  <div class="body">
+    <h3>Rate of change</h3>
+    <p>If <i>s</i>(<i>t</i>) is the distance travelled at time <i>t</i>, then over a
+    short interval <i>h</i>:</p>
+    <p class="mth left">
+      average speed = <span class="f"><span class="n"><i>s</i>(<i>t</i>+<i>h</i>) &minus; <i>s</i>(<i>t</i>)</span><span class="d"><i>h</i></span></span>
+      &nbsp;&nbsp;&rarr;&nbsp;&nbsp; speed right now, as <i>h</i> &rarr; 0
+    </p>
+    <p>So the derivative of distance is <b>speed</b>. This is the board's own example —
+    it names "rate of change ... of distance function" in the topic
+    text.<a class="cite" href="#n1">1</a> A speedometer reads a derivative.</p>
+  </div>
+</div>
+
+<div class="move">
+  <span class="num">2</span>
+  <div class="body">
+    <h3>Slope of the tangent</h3>
+    <p>Take two points on the curve, at <i>x</i> and at <i>x</i> + <i>h</i>. The line
+    through them is a <b>chord</b>, and its slope is</p>
+    <p class="mth left">
+      <span class="f"><span class="n">rise</span><span class="d">run</span></span>
+      = <span class="f"><span class="n"><i>f</i>(<i>x</i>+<i>h</i>) &minus; <i>f</i>(<i>x</i>)</span><span class="d">(<i>x</i>+<i>h</i>) &minus; <i>x</i></span></span>
+      = <span class="f"><span class="n"><i>f</i>(<i>x</i>+<i>h</i>) &minus; <i>f</i>(<i>x</i>)</span><span class="d"><i>h</i></span></span>
+    </p>
+    <p>Now slide the second point towards the first. The chord turns, and it settles on
+    the <b>tangent</b> — the line that just touches the curve at that one point. So:</p>
+    <p class="mth left">the derivative at <i>x</i> = the slope of the tangent at <i>x</i></p>
+    <p><b>Draw this once, by hand, with three chords getting shorter.</b> Two minutes of
+    drawing does more than a page of words. The syllabus asks for the geometrical
+    interpretation, so this drawing is directly examinable.</p>
+  </div>
+</div>
+
+<div class="plain">
+  <span class="tag">Two pictures, one number</span>
+  <p>Rate of change and slope of the tangent are <b>not two topics</b>. They are two
+  ways of reading the same limit. She should be able to say that sentence.</p>
+</div>
+
+<h2>The definition, and the notation</h2>
+
+<div class="plain">
+  <span class="tag">First principles — learn this exactly</span>
+  <p class="mth left">
+    <i>f</i>&prime;(<i>x</i>) =
+    <span class="lim">lim<span class="to"><i>h</i>&rarr;0</span></span>
+    <span class="f"><span class="n"><i>f</i>(<i>x</i> + <i>h</i>) &minus; <i>f</i>(<i>x</i>)</span><span class="d"><i>h</i></span></span>
+  </p>
+  <p>At one particular point <i>x</i> = <i>a</i>, there are two accepted forms. Both
+  earn full marks, so she should learn the first and recognise the second.</p>
+  <p class="mth left">
+    <i>f</i>&prime;(<i>a</i>) =
+    <span class="lim">lim<span class="to"><i>h</i>&rarr;0</span></span>
+    <span class="f"><span class="n"><i>f</i>(<i>a</i> + <i>h</i>) &minus; <i>f</i>(<i>a</i>)</span><span class="d"><i>h</i></span></span>
+    &nbsp;&nbsp;=&nbsp;&nbsp;
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;<i>a</i></span></span>
+    <span class="f"><span class="n"><i>f</i>(<i>x</i>) &minus; <i>f</i>(<i>a</i>)</span><span class="d"><i>x</i> &minus; <i>a</i></span></span>
+  </p>
+</div>
+
+<div class="scroll">
+<table class="ref">
+<tr><th>Written</th><th>Said aloud</th><th>When to use it</th></tr>
+<tr><td><i>f</i>&prime;(<i>x</i>)</td><td>"<i>f</i> dash of <i>x</i>"</td><td>When the function has a name</td></tr>
+<tr><td><span class="f"><span class="n"><i>dy</i></span><span class="d"><i>dx</i></span></span></td><td>"<i>dy</i> by <i>dx</i>"</td><td>When the work is written as <i>y</i> = something</td></tr>
+<tr><td><span class="f"><span class="n"><i>d</i></span><span class="d"><i>dx</i></span></span>[<i>f</i>(<i>x</i>)]</td><td>"<i>d</i> by <i>dx</i> of ..."</td><td>As an instruction: "differentiate this"</td></tr>
+</table>
+</div>
+
+<div class="trap">
+  <span class="tag">dy/dx is not a fraction</span>
+  <p>It is a single symbol that means "the derivative of <i>y</i> with respect to
+  <i>x</i>". She must not cancel the <i>d</i>s. The notation is deliberately shaped
+  like a fraction because it came from one, and in Class 12 it behaves like one in
+  places — but at Class 11 it is one symbol. <b>Cancelling the <i>d</i>s is the mark of
+  a student who has not understood the definition.</b></p>
+</div>
+
+<h2>The four steps — she writes all four, every time</h2>
+
+<div class="fix">
+  <span class="tag">The procedure</span>
+  <ol>
+    <li><b>Write <i>f</i>(<i>x</i> + <i>h</i>).</b> Replace every <i>x</i> in the
+    formula by (<i>x</i> + <i>h</i>). Use the brackets.</li>
+    <li><b>Subtract <i>f</i>(<i>x</i>) and simplify the top.</b> Everything without an
+    <i>h</i> must cancel. If something without an <i>h</i> survives, there is an error
+    above.</li>
+    <li><b>Divide by <i>h</i>.</b> Every surviving term has an <i>h</i> in it, so this
+    always works.</li>
+    <li><b>Let <i>h</i> &rarr; 0.</b> Now substitute, because the 0/0 has gone.</li>
+  </ol>
+  <p><b>Step 2 is the self-check.</b> Teach her to stop and look: if a term with no
+  <i>h</i> is left on the top, she has made a slip and she can find it herself, before
+  she wastes the rest of the sum.</p>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 1 — <i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup></div>
+  <div class="body">
+    <p class="step">Step 1</p>
+    <p class="mth left"><i>f</i>(<i>x</i>+<i>h</i>) = (<i>x</i>+<i>h</i>)<sup>2</sup> = <i>x</i><sup>2</sup> + 2<i>xh</i> + <i>h</i><sup>2</sup></p>
+    <p class="step">Step 2 — subtract. The <i>x</i><sup>2</sup> cancels, as it must.</p>
+    <p class="mth left"><i>f</i>(<i>x</i>+<i>h</i>) &minus; <i>f</i>(<i>x</i>) = 2<i>xh</i> + <i>h</i><sup>2</sup> = <i>h</i>(2<i>x</i> + <i>h</i>)</p>
+    <p class="step">Step 3 — divide by <i>h</i>. This is legal because <i>h</i> is never zero, exactly as in Lesson 3.</p>
+    <p class="mth left"><span class="f"><span class="n"><i>h</i>(2<i>x</i>+<i>h</i>)</span><span class="d"><i>h</i></span></span> = 2<i>x</i> + <i>h</i></p>
+    <p class="step">Step 4 — now let <i>h</i> &rarr; 0.</p>
+    <p class="mth left"><i>f</i>&prime;(<i>x</i>) = <span class="lim">lim<span class="to"><i>h</i>&rarr;0</span></span>(2<i>x</i> + <i>h</i>) = <span class="res">2<i>x</i></span></p>
+    <p><b>Read the answer as sensitivity.</b> At <i>x</i> = 1 the derivative is 2. At
+    <i>x</i> = 5 it is 10. The same curve is five times more sensitive at 5 than at 1.
+    In her kitchen: the same recipe reacts more sharply to one more pinch once there is
+    already a lot of salt in it.</p>
+  </div>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 2 — <i>f</i>(<i>x</i>) = 1/<i>x</i>, the LCM appears</div>
+  <div class="body">
+    <p class="step">Step 1 and 2 together. Take the LCM on the top — this is move 4 from Lesson 3.</p>
+    <p class="mth left">
+      <span class="f"><span class="n">1</span><span class="d"><i>x</i>+<i>h</i></span></span>
+      &minus; <span class="f"><span class="n">1</span><span class="d"><i>x</i></span></span>
+      = <span class="f"><span class="n"><i>x</i> &minus; (<i>x</i>+<i>h</i>)</span><span class="d"><i>x</i>(<i>x</i>+<i>h</i>)</span></span>
+      = <span class="f"><span class="n">&minus;<i>h</i></span><span class="d"><i>x</i>(<i>x</i>+<i>h</i>)</span></span>
+    </p>
+    <p class="step">Step 3 — divide by <i>h</i>.</p>
+    <p class="mth left">
+      = <span class="f"><span class="n">&minus;1</span><span class="d"><i>x</i>(<i>x</i>+<i>h</i>)</span></span>
+    </p>
+    <p class="step">Step 4 — let <i>h</i> &rarr; 0.</p>
+    <p class="mth left">
+      <i>f</i>&prime;(<i>x</i>) = <span class="res">&minus;<span class="f"><span class="n">1</span><span class="d"><i>x</i><sup>2</sup></span></span></span>
+    </p>
+    <p><b>The sign is the teaching.</b> The derivative is negative everywhere, which
+    says that increasing <i>x</i> always decreases 1/<i>x</i>. She can check that
+    without any calculus: 1/2 &gt; 1/3 &gt; 1/4. The algebra and the common sense agree,
+    and she should notice that they do.</p>
+  </div>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 3 — <i>f</i>(<i>x</i>) = &radic;<i>x</i>, the conjugate appears</div>
+  <div class="body">
+    <p class="step">Steps 1 and 2. The top is a difference of roots, so rationalise — move 3 from Lesson 3.</p>
+    <p class="mth left">
+      <span class="f">
+        <span class="n"><span class="rt">&radic;<span class="ov"><i>x</i>+<i>h</i></span></span> &minus; <span class="rt">&radic;<span class="ov"><i>x</i></span></span></span>
+        <span class="d"><i>h</i></span>
+      </span>
+      &times;
+      <span class="f">
+        <span class="n"><span class="rt">&radic;<span class="ov"><i>x</i>+<i>h</i></span></span> + <span class="rt">&radic;<span class="ov"><i>x</i></span></span></span>
+        <span class="d"><span class="rt">&radic;<span class="ov"><i>x</i>+<i>h</i></span></span> + <span class="rt">&radic;<span class="ov"><i>x</i></span></span></span>
+      </span>
+    </p>
+    <p class="step">The top becomes (<i>x</i>+<i>h</i>) &minus; <i>x</i> = <i>h</i>.</p>
+    <p class="mth left">
+      = <span class="f">
+        <span class="n"><i>h</i></span>
+        <span class="d"><i>h</i>(<span class="rt">&radic;<span class="ov"><i>x</i>+<i>h</i></span></span> + <span class="rt">&radic;<span class="ov"><i>x</i></span></span>)</span>
+      </span>
+      = <span class="f">
+        <span class="n">1</span>
+        <span class="d"><span class="rt">&radic;<span class="ov"><i>x</i>+<i>h</i></span></span> + <span class="rt">&radic;<span class="ov"><i>x</i></span></span></span>
+      </span>
+    </p>
+    <p class="step">Step 4 — let <i>h</i> &rarr; 0.</p>
+    <p class="mth left">
+      <i>f</i>&prime;(<i>x</i>) = <span class="res"><span class="f"><span class="n">1</span><span class="d">2<span class="rt">&radic;<span class="ov"><i>x</i></span></span></span></span></span>
+    </p>
+    <p><b>Notice what this lesson is really testing.</b> Every first-principles sum is a
+    Lesson 3 sum wearing a different hat. Move 1, move 3, and move 4 all appeared above.
+    Tell her that, and the lesson stops feeling like new material.</p>
+  </div>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 4 — <i>f</i>(<i>x</i>) = sin <i>x</i></div>
+  <div class="body">
+    <p class="step">Step 2 uses the identity sin <i>C</i> &minus; sin <i>D</i> = 2 cos((<i>C</i>+<i>D</i>)/2) sin((<i>C</i>&minus;<i>D</i>)/2), from Unit 1(iii).</p>
+    <p class="mth left">
+      sin(<i>x</i>+<i>h</i>) &minus; sin <i>x</i>
+      = 2 cos(<i>x</i> + <span class="f"><span class="n"><i>h</i></span><span class="d">2</span></span>)
+        sin <span class="f"><span class="n"><i>h</i></span><span class="d">2</span></span>
+    </p>
+    <p class="step">Step 3 — divide by <i>h</i>, and arrange the sine part to match Lesson 4.</p>
+    <p class="mth left">
+      = cos(<i>x</i> + <span class="f"><span class="n"><i>h</i></span><span class="d">2</span></span>)
+      &times;
+      <span class="f">
+        <span class="n">sin(<i>h</i>/2)</span>
+        <span class="d"><i>h</i>/2</span>
+      </span>
+    </p>
+    <p class="step">Step 4 — let <i>h</i> &rarr; 0. The second factor is the Lesson 4 standard form and gives 1.</p>
+    <p class="mth left">
+      <i>f</i>&prime;(<i>x</i>) = cos <i>x</i> &times; 1 = <span class="res">cos <i>x</i></span>
+    </p>
+    <p>By the same working, the derivative of cos <i>x</i> is <b>&minus;sin <i>x</i></b>.
+    <b>This sum is the reason Lesson 4 was taught.</b> Say so out loud — it turns a
+    formula she memorised into a tool she just used.</p>
+  </div>
+</div>
+
+<div class="plain">
+  <span class="tag">The results she may now quote</span>
+  <p>Once a derivative has been found from first principles, she may use it as a
+  formula — <b>unless the question says "from first principles"</b>, and then she must
+  show all four steps.</p>
+  <div class="scroll">
+  <table class="ref">
+  <tr><th><i>f</i>(<i>x</i>)</th><th><i>k</i></th><th><i>x</i></th><th><i>x</i><sup><i>n</i></sup></th><th>1/<i>x</i></th><th>&radic;<i>x</i></th><th>sin <i>x</i></th><th>cos <i>x</i></th></tr>
+  <tr><td><i>f</i>&prime;(<i>x</i>)</td><td>0</td><td>1</td><td><i>n x</i><sup><i>n</i>&minus;1</sup></td>
+      <td>&minus;1/<i>x</i><sup>2</sup></td>
+      <td>1/(2&radic;<i>x</i>)</td><td>cos <i>x</i></td><td>&minus;sin <i>x</i></td></tr>
+  </table>
+  </div>
+  <p>Note that 1/<i>x</i> and &radic;<i>x</i> are both special cases of
+  <i>x</i><sup><i>n</i></sup>, with <i>n</i> = &minus;1 and <i>n</i> = 1/2. She should
+  check that herself — it turns eight facts into five.</p>
+</div>
+
+<div class="trap">
+  <span class="tag">The four mistakes this lesson prevents</span>
+  <p><b>1.</b> She writes <i>f</i>(<i>x</i>+<i>h</i>) = <i>f</i>(<i>x</i>) + <i>h</i>,
+  or (<i>x</i>+<i>h</i>)<sup>2</sup> = <i>x</i><sup>2</sup> + <i>h</i><sup>2</sup>.<br>
+  <b>The real gap:</b> she is putting <i>h</i> outside the function instead of inside
+  it. <i>f</i>(<i>x</i>+<i>h</i>) means: take the whole formula and replace <b>every</b>
+  <i>x</i> by (<i>x</i>+<i>h</i>), brackets included. In her words: the recipe takes the
+  <b>new amount</b> of the ingredient, not the old dish plus a pinch.</p>
+  <p><b>2.</b> She puts <i>h</i> = 0 at step 1 or step 2.<br>
+  <b>The real gap:</b> she is substituting before clearing the 0/0. That gives 0/0
+  every time. <b>The <i>h</i> must survive until it has been cancelled from the
+  bottom.</b> This is Lesson 3 again, with the same reason: <i>h</i> approaches 0 and is
+  never equal to 0.</p>
+  <p><b>3.</b> She cancels the <i>d</i>s in dy/dx.<br>
+  <b>The real gap:</b> she reads it as a fraction. It is one symbol.</p>
+  <p><b>4.</b> She quotes <i>n x</i><sup><i>n</i>&minus;1</sup> when the question says
+  "from first principles".<br>
+  <b>The real gap:</b> she does not read what the question is testing. The formula gets
+  <b>zero</b> marks there, however correct the answer. Teach her to underline the words
+  "first principles" the moment she sees them.</p>
+</div>
+
+<h2>Warm-up drill A — step 1 only</h2>
+
+<p>Write <i>f</i>(<i>x</i> + <i>h</i>), simplified. This one step is where most of the
+marks are lost, so drill it on its own.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td><td class="q"><i>f</i>(<i>x</i>) = 3<i>x</i> + 1</td>
+  <td><input data-a="3x+3h+1|3(x+h)+1" data-why="Replace every x by (x+h): 3(x+h) + 1 = 3x + 3h + 1. The 1 does not move."></td></tr>
+<tr><td class="n">2</td><td class="q"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup> + 5</td>
+  <td><input data-a="x^2+2xh+h^2+5|x2+2xh+h2+5" data-why="(x+h)² = x² + 2xh + h². The middle term 2xh is the one that gets dropped. Then add the 5."></td></tr>
+<tr><td class="n">3</td><td class="q"><i>f</i>(<i>x</i>) = 4</td>
+  <td><input data-a="4" data-why="A constant recipe. There is no x in it, so nothing changes. This is why the derivative of a constant is 0."></td></tr>
+<tr><td class="n">4</td><td class="q"><i>f</i>(<i>x</i>) = 2/<i>x</i></td>
+  <td><input data-a="2/(x+h)" data-why="Replace the x in the denominator: 2/(x+h). Do not write 2/x + h."></td></tr>
+<tr><td class="n">5</td><td class="q"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup> &minus; 3<i>x</i></td>
+  <td><input data-a="x^2+2xh+h^2-3x-3h|x2+2xh+h2-3x-3h" data-why="Both terms change: (x+h)² − 3(x+h) = x² + 2xh + h² − 3x − 3h. Watch the sign on the 3h."></td></tr>
+</table>
+</div>
+
+<h2>Warm-up drill B — the whole derivative</h2>
+
+<p>Use first principles or a known result, whichever she prefers here. Write the answer
+in terms of <i>x</i>. For 1/<i>x</i><sup>2</sup> write <code>-1/x^2</code>.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td><td class="q"><i>f</i>(<i>x</i>) = 7</td>
+  <td><input data-a="0" data-why="A constant never changes, so one more pinch moves nothing. The derivative is 0."></td></tr>
+<tr><td class="n">2</td><td class="q"><i>f</i>(<i>x</i>) = <i>x</i></td>
+  <td><input data-a="1" data-why="[(x+h) − x]/h = h/h = 1. The output moves exactly as much as the input, so the sensitivity is 1."></td></tr>
+<tr><td class="n">3</td><td class="q"><i>f</i>(<i>x</i>) = 5<i>x</i></td>
+  <td><input data-a="5" data-why="[5(x+h) − 5x]/h = 5h/h = 5. A straight line has the same slope everywhere, and here it is 5."></td></tr>
+<tr><td class="n">4</td><td class="q"><i>f</i>(<i>x</i>) = <i>x</i><sup>3</sup></td>
+  <td><input data-a="3x^2|3x2|3x²" data-why="Use n x^(n−1) with n = 3, giving 3x². From first principles the top is 3x²h + 3xh² + h³, and dividing by h leaves 3x² + 3xh + h², which heads to 3x²."></td></tr>
+<tr><td class="n">5</td><td class="q"><i>f</i>(<i>x</i>) = <i>x</i><sup>10</sup></td>
+  <td><input data-a="10x^9|10x9" data-why="n x^(n−1) with n = 10. Subtract 1 from the power; do not divide by it."></td></tr>
+<tr><td class="n">6</td><td class="q"><i>f</i>(<i>x</i>) = 1/<i>x</i></td>
+  <td><input data-a="-1/x^2|-1/x2|-x^-2" data-why="Worked example 2. The sign is negative because increasing x decreases 1/x."></td></tr>
+<tr><td class="n">7</td><td class="q"><i>f</i>(<i>x</i>) = cos <i>x</i></td>
+  <td><input data-a="-sinx|-sin x|-sin(x)" data-why="The minus sign is the whole question. Just after x = 0, cos x is falling, so the derivative must be negative there."></td></tr>
+<tr><td class="n">8</td><td class="q">The slope of the tangent to <i>y</i> = <i>x</i><sup>2</sup> at <i>x</i> = 3</td>
+  <td><input data-a="6" data-why="The derivative is 2x, so at x = 3 the slope is 6. 'Slope of the tangent at a point' means: differentiate, then substitute the point."></td></tr>
+<tr><td class="n">9</td><td class="q"><i>s</i>(<i>t</i>) = <i>t</i><sup>2</sup> metres. The speed at <i>t</i> = 4 seconds.</td>
+  <td><input data-a="8" data-why="Speed is the derivative of distance: s′(t) = 2t, so at t = 4 the speed is 8 metres per second. Give the unit in a written answer."></td></tr>
+<tr><td class="n">10</td><td class="q">At what <i>x</i> is the tangent to <i>y</i> = <i>x</i><sup>2</sup> horizontal?</td>
+  <td><input data-a="0|x=0" data-why="A horizontal tangent means slope 0, so 2x = 0, so x = 0. That is the bottom of the parabola — one more pinch changes nothing there."></td></tr>
+</table>
+</div>
+
+<h2>Exercise set</h2>
+
+<div class="exset">
+<ol>
+
+<li><span class="pill easy">Easy</span>
+Find the derivative of <i>f</i>(<i>x</i>) = 4<i>x</i> &minus; 7 from first principles.
+<details class="hint"><summary>Hint 1 — the type</summary>
+First principles on a straight line. All four steps must appear.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Write <i>f</i>(<i>x</i>+<i>h</i>) = 4(<i>x</i>+<i>h</i>) &minus; 7, then subtract.</details>
+<details class="hint sol"><summary>Answer</summary>
+Top = [4<i>x</i> + 4<i>h</i> &minus; 7] &minus; [4<i>x</i> &minus; 7] = 4<i>h</i>.<br>
+Divide by <i>h</i>: 4. Let <i>h</i> &rarr; 0: <b><i>f</i>&prime;(<i>x</i>) = 4</b>.<br>
+The answer has no <i>x</i> in it, and that is correct — a straight line has the same
+slope everywhere.</details>
+</li>
+
+<li><span class="pill easy">Easy</span>
+Find the derivative of <i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup> + 3<i>x</i> from
+first principles.
+<details class="hint"><summary>Hint 1 — the type</summary>
+First principles on a quadratic. Expand (<i>x</i>+<i>h</i>)<sup>2</sup> carefully.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+After subtracting, check that every surviving term contains an <i>h</i>. If one does
+not, find the slip before going on.</details>
+<details class="hint sol"><summary>Answer</summary>
+Top = [<i>x</i><sup>2</sup> + 2<i>xh</i> + <i>h</i><sup>2</sup> + 3<i>x</i> + 3<i>h</i>]
+&minus; [<i>x</i><sup>2</sup> + 3<i>x</i>] = 2<i>xh</i> + <i>h</i><sup>2</sup> + 3<i>h</i>.<br>
+Factor out <i>h</i>: <i>h</i>(2<i>x</i> + <i>h</i> + 3). Divide by <i>h</i>:
+2<i>x</i> + <i>h</i> + 3. Let <i>h</i> &rarr; 0:
+<b><i>f</i>&prime;(<i>x</i>) = 2<i>x</i> + 3</b>.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Find the derivative of <i>f</i>(<i>x</i>) = 1/(<i>x</i> + 2) from first principles.
+<details class="hint"><summary>Hint 1 — the type</summary>
+First principles with a fraction. The LCM move from Lesson 3 is needed on the top.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+1/(<i>x</i>+<i>h</i>+2) &minus; 1/(<i>x</i>+2). Take the LCM as
+(<i>x</i>+<i>h</i>+2)(<i>x</i>+2).</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>
+The top of the combined fraction is (<i>x</i>+2) &minus; (<i>x</i>+<i>h</i>+2) =
+&minus;<i>h</i>.</details>
+<details class="hint sol"><summary>Answer</summary>
+The expression becomes &minus;<i>h</i> &divide; [<i>h</i>(<i>x</i>+<i>h</i>+2)(<i>x</i>+2)]
+= &minus;1/[(<i>x</i>+<i>h</i>+2)(<i>x</i>+2)].<br>
+Let <i>h</i> &rarr; 0: <b><i>f</i>&prime;(<i>x</i>) = &minus;1/(<i>x</i>+2)<sup>2</sup></b>.<br>
+Compare it with the derivative of 1/<i>x</i>. The shape is identical, with
+<i>x</i> replaced by <i>x</i>+2 — which is exactly what she should expect.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Find the equation of the tangent to <i>y</i> = <i>x</i><sup>2</sup> at the point
+(2, 4).
+<details class="hint"><summary>Hint 1 — the type</summary>
+Two subjects in one question: a derivative for the slope, then straight-line geometry
+from Unit 3(i).</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Find dy/dx, substitute <i>x</i> = 2 to get the slope, then use
+<i>y</i> &minus; <i>y</i><sub>1</sub> = <i>m</i>(<i>x</i> &minus; <i>x</i><sub>1</sub>).</details>
+<details class="hint sol"><summary>Answer</summary>
+dy/dx = 2<i>x</i>, so at <i>x</i> = 2 the slope is <i>m</i> = <b>4</b>.<br>
+<i>y</i> &minus; 4 = 4(<i>x</i> &minus; 2), so <b><i>y</i> = 4<i>x</i> &minus; 4</b>.<br>
+Check it: at <i>x</i> = 2 the line gives <i>y</i> = 4, so it passes through the point.
+<b>This question shape — "find the tangent at a point" — is the most likely derivative
+question in the ISC paper.</b></details>
+</li>
+
+<li><span class="pill hard">Hard</span>
+Find the derivative of <i>f</i>(<i>x</i>) = &radic;(2<i>x</i> + 1) from first
+principles.
+<details class="hint"><summary>Hint 1 — the type</summary>
+First principles with a root. Rationalise the top — move 3 from Lesson 3.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Multiply the top and the bottom by
+&radic;(2<i>x</i>+2<i>h</i>+1) + &radic;(2<i>x</i>+1).</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>
+The top becomes (2<i>x</i>+2<i>h</i>+1) &minus; (2<i>x</i>+1) = 2<i>h</i>.</details>
+<details class="hint sol"><summary>Answer</summary>
+After rationalising, the expression is
+2<i>h</i> &divide; [<i>h</i>(&radic;(2<i>x</i>+2<i>h</i>+1) + &radic;(2<i>x</i>+1))]
+= 2 &divide; [&radic;(2<i>x</i>+2<i>h</i>+1) + &radic;(2<i>x</i>+1)].<br>
+Let <i>h</i> &rarr; 0: 2 &divide; [2&radic;(2<i>x</i>+1)] =
+<b>1/&radic;(2<i>x</i>+1)</b>.<br>
+<b>Where the 2 came from matters.</b> The top gave 2<i>h</i> rather than <i>h</i>
+because of the 2 inside the root. Next year that 2 gets a name — the chain rule — but
+first principles produces it with no new rule at all.</details>
+</li>
+
+<li><span class="pill stretch">Stretch</span>
+Show from first principles that <i>f</i>(<i>x</i>) = |<i>x</i>| has no derivative at
+<i>x</i> = 0, and say what that means for the graph.
+<details class="hint"><summary>Hint 1 — the type</summary>
+First principles combined with Lesson 6. The definition produces a limit, and that
+limit must be checked from both sides.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Write the definition at <i>a</i> = 0: [<i>f</i>(0+<i>h</i>) &minus; <i>f</i>(0)]/<i>h</i>
+= |<i>h</i>|/<i>h</i>. She has met that expression before.</details>
+<details class="hint sol"><summary>Answer</summary>
+<i>f</i>(0) = 0, so the quotient is |<i>h</i>|/<i>h</i>.<br>
+From below (<i>h</i> &lt; 0) it is &minus;1. From above (<i>h</i> &gt; 0) it is +1.<br>
+LHL &ne; RHL, so the limit does not exist, so <b>the derivative does not exist at
+<i>x</i> = 0</b>.<br>
+<b>What it means for the graph.</b> The graph has a sharp corner at the origin. On the
+left the slope is &minus;1; on the right it is +1. No single line touches the curve at
+that point, so there is no tangent, and therefore no slope to report.<br><br>
+<b>In her kitchen:</b> the recipe switches at that exact amount. The cook coming from
+below reports one sensitivity, the cook from above reports another, and no single
+answer covers both.<br><br>
+<b>Why this question is here.</b> It shows that a derivative is not guaranteed. Class 12
+gives this a name — differentiability — so meeting it now, with the tool she already
+has, makes next year cheaper.</details>
+</li>
+
+</ol>
+</div>
+
+<div class="fix">
+  <span class="tag">Close the lesson — she says this, not you</span>
+  <p>"The derivative is the limit of [<i>f</i>(<i>x</i>+<i>h</i>) &minus;
+  <i>f</i>(<i>x</i>)]/<i>h</i> as <i>h</i> goes to 0. It is the rate of change, and it
+  is the slope of the tangent, and those are the same number. I write all four steps
+  when the question says first principles."</p>
+  <p>Her kitchen version: <i>"How much does the taste move for one more pinch, when the
+  pinch is made as small as possible? A big number means a sensitive dish. Zero means
+  one more pinch changes nothing."</i></p>
+</div>
+
+<div class="src">
+  <span class="tag">Read this before the next lesson</span>
+  <p><b>Primary source:</b> NCERT Class 11 Mathematics,
+  <a href="../source-documents/NCERT-Class11-Ch12-Limits-and-Derivatives.pdf">Chapter 12</a>,
+  section 12.5 — Derivatives. The worked examples there are in exactly the ISC style.
+  Then do <b>Exercise 12.2, questions 1 to 6</b>, which are all first principles.</p>
+  <p><b>Also useful:</b>
+  <a href="https://www.youtube.com/watch?v=9vKqVkMQHKk">3Blue1Brown, <i>The Essence of Calculus</i>, Chapter 2 — The paradox of the derivative</a>.
+  Seventeen minutes, and it is the best free explanation of why the derivative must be
+  a limit.</p>
+  <p><b>Before the next lesson</b>, check she can differentiate
+  <i>x</i><sup>2</sup>, <i>x</i><sup>5</sup>, 1/<i>x</i>, and sin <i>x</i> without
+  looking. Lesson 8 combines these, so a shaky base makes the product rule twice as
+  hard.</p>
+</div>
+
+<div class="ask">
+  <span class="tag">If anything here is unclear</span>
+  <p>Ask. The one question worth asking early: <i>"why can I put <i>h</i> = 0 at step 4
+  when I could not at step 1?"</i> The answer is Lesson 3: at step 1 the <i>h</i> is
+  still on the bottom, so putting <i>h</i> = 0 divides by zero. By step 4 the <i>h</i>
+  has been cancelled from the bottom, so nothing illegal happens. If that still feels
+  like a trick, say so — it is the single most important idea in the unit.</p>
+</div>
+
+<div class="nav">
+  <a href="0006-one-sided-limits.html">&larr; Lesson 6 — One-sided limits</a>
+  <a href="../index.html">Course home</a>
+  <a href="0008-rules-of-differentiation.html">Lesson 8 — The rules of differentiation &rarr;</a>
+</div>
+
+<div class="notes">
+<ol>
+  <li id="n1">Scope: CISCE, <i>ISC Mathematics (860), Class XI</i>, Unit 4 — "Derivative
+  introduced as rate of change both as that of distance function and geometrically",
+  "Meaning and geometrical interpretation of derivative", and "Differentiation using
+  first principles". See <a href="../SYLLABUS.md">SYLLABUS.md</a> section 3. The board's
+  phrase "scope of tangent of the curve" is a typing error for <i>slope</i> of the
+  tangent.</li>
+  <li>The first-principles definition and the derivatives of
+  <i>x</i><sup><i>n</i></sup>, sin <i>x</i>, and cos <i>x</i>: NCERT Class 11
+  Mathematics, Chapter 12, section 12.5.</li>
+  <li>The identity sin <i>C</i> &minus; sin <i>D</i> = 2 cos((<i>C</i>+<i>D</i>)/2)
+  sin((<i>C</i>&minus;<i>D</i>)/2) is CISCE Class XI, Unit 1(iii).</li>
+  <li>Slope and the point-slope form of a line: CISCE Class XI, Unit 3(i).</li>
+  <li><b>Not taught here, on purpose:</b> the chain rule, differentiability as a formal
+  definition, and second derivatives. All three are Class 12.</li>
+</ol>
+</div>
+
+</div>
+</body>
+</html>

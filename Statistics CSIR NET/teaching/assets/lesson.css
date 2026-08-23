@@ -1,0 +1,49 @@
+/* Shared stylesheet for all UGC-NET 107 lessons. Tufte-inspired, print-friendly, theme-aware. */
+:root{
+  --bg:#fdfcf9; --ink:#1a1a17; --muted:#6b6b63; --rule:#e4e1d6;
+  --accent:#7a1f1f; --accent2:#1f3a5f; --card:#f6f4ec; --ok:#1c6b3a; --no:#9a2b2b;
+  --serif:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+  --sans:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#16150f;--ink:#e9e6db;--muted:#9c988a;--rule:#33312a;
+        --accent:#e08585;--accent2:#8fb3dd;--card:#201e17;--ok:#7bd39b;--no:#e79191;}
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);
+  line-height:1.6;max-width:46rem;margin:0 auto;padding:3rem 1.4rem 6rem;font-size:1.05rem}
+header.lh{border-bottom:2px solid var(--accent);padding-bottom:.8rem;margin-bottom:2rem}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);font-weight:600}
+h1{font-size:1.9rem;line-height:1.15;margin:.3rem 0 .2rem;font-weight:600}
+h2{font-family:var(--sans);font-size:1.15rem;margin:2.4rem 0 .6rem;font-weight:650;
+  border-left:3px solid var(--accent2);padding-left:.6rem}
+h3{font-family:var(--sans);font-size:.95rem;margin:1.4rem 0 .3rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.06em}
+.sub{color:var(--muted);font-style:italic;font-size:.95rem}
+p{margin:.7rem 0}
+a{color:var(--accent2);text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-bottom-color:var(--accent2)}
+code,.mono{font-family:"SF Mono",Consolas,monospace;font-size:.92em;
+  background:var(--card);padding:.08em .35em;border-radius:3px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;
+  padding:1rem 1.2rem;margin:1.2rem 0}
+.axiom{display:flex;gap:.8rem;align-items:baseline;margin:.5rem 0}
+.axiom .n{font-family:var(--sans);font-weight:700;color:var(--accent);min-width:1.4rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.95rem}
+th,td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--rule)}
+th{font-family:var(--sans);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+blockquote{border-left:3px solid var(--rule);margin:1rem 0;padding:.2rem 0 .2rem 1rem;color:var(--muted)}
+.insight{background:linear-gradient(0deg,var(--card),var(--card));border:1px dashed var(--accent);
+  border-radius:8px;padding:.9rem 1.1rem;margin:1.4rem 0}
+.insight h3{color:var(--accent);margin-top:0}
+.tag{font-family:var(--sans);font-size:.7rem;padding:.15em .5em;border-radius:99px;
+  background:var(--accent);color:#fff;letter-spacing:.04em}
+.src{font-family:var(--sans);font-size:.82rem;color:var(--muted)}
+footer.lf{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);
+  font-family:var(--sans);font-size:.85rem;color:var(--muted)}
+.nav{display:flex;justify-content:space-between;font-family:var(--sans);font-size:.85rem;margin-top:2rem}
+.ask{background:var(--card);border-radius:8px;padding:.7rem 1rem;font-family:var(--sans);
+  font-size:.85rem;border:1px solid var(--rule);margin-top:1.5rem}
+@media print{body{max-width:none;font-size:11pt;padding:0}
+  .quiz,.ask,.nav{display:none}a{color:inherit;border:none}}

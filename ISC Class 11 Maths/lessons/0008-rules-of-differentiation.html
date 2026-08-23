@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 8 — The rules of differentiation</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/check.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">ISC Class 11 · Unit 4 Calculus · Lesson 8 of 8</p>
+<h1>The rules of differentiation</h1>
+<p class="sub">Five rules replace the four steps. Two of them are not what a student guesses, and those two are where the marks are.</p>
+
+<p class="mission"><b>Why this lesson.</b> First principles is correct but slow. The
+syllabus names the derivative of a sum, a difference, a product, and a
+quotient.<a class="cite" href="#n1">1</a> The sum and difference rules are what she
+would guess. <b>The product and quotient rules are not.</b> Teach the two surprising
+ones hard, and prove to her once that the guess is wrong, or she will keep using it
+under time pressure.</p>
+
+<div class="plain">
+  <span class="tag">Say it simply</span>
+  <p class="big">Adding is easy: differentiate each piece and add. <b>Multiplying is
+  not.</b> When two things change at the same time, the total change has <b>two</b>
+  sources, and she must count both.</p>
+</div>
+
+<div class="kitchen">
+  <span class="tag">The same idea in her kitchen</span>
+  <p class="big">Two recipes, cooked together. Adding two dishes to the same plate is
+  easy. <b>Multiplying is where the surprise is.</b></p>
+  <p><b>The sum rule.</b> Rice on one side of the plate, dal on the other. Change the
+  ingredient, and each side changes on its own. The two do not interfere. So she works
+  out each change and adds them.</p>
+  <p><b>The product rule.</b> Now think of the total salt in a pot:</p>
+  <p class="mth left">total salt = (salt per litre) &times; (litres in the pot)</p>
+  <p>Suppose <b>both</b> are changing. She adds a little salt, and at the same time
+  more liquid boils in. How much did the total salt move? <b>Two things caused it:</b></p>
+  <ul>
+    <li>the concentration changed, over the volume she already had, and</li>
+    <li>the volume changed, at the concentration she already had.</li>
+  </ul>
+  <p>Add those two contributions, and that is the product rule. Written out:</p>
+  <p class="mth left">(<i>uv</i>)&prime; = <i>u</i>&prime;<i>v</i> + <i>uv</i>&prime;</p>
+  <p><b>This is why <i>u</i>&prime;<i>v</i>&prime; is wrong.</b> That answer counts
+  neither contribution properly. It multiplies two rates together, and a rate times a
+  rate is not a rate. In the kitchen it is the claim that nothing changes unless
+  <i>both</i> change at once, which is plainly false — pouring in salt changes the total
+  even when the volume sits still.</p>
+</div>
+
+<h2>The three easy rules</h2>
+
+<div class="plain">
+  <span class="tag">These three behave exactly as she expects</span>
+  <div class="scroll">
+  <table class="ref">
+  <tr><th>Rule</th><th>Statement</th><th>Example</th></tr>
+  <tr><td>Power</td>
+      <td><span class="f"><span class="n"><i>d</i></span><span class="d"><i>dx</i></span></span>(<i>x</i><sup><i>n</i></sup>) = <i>n x</i><sup><i>n</i>&minus;1</sup></td>
+      <td><i>x</i><sup>6</sup> &rarr; 6<i>x</i><sup>5</sup></td></tr>
+  <tr><td>Constant multiple</td>
+      <td>(<i>k f</i>)&prime; = <i>k f</i>&prime;</td>
+      <td>5<i>x</i><sup>3</sup> &rarr; 15<i>x</i><sup>2</sup></td></tr>
+  <tr><td>Sum and difference</td>
+      <td>(<i>f</i> &plusmn; <i>g</i>)&prime; = <i>f</i>&prime; &plusmn; <i>g</i>&prime;</td>
+      <td><i>x</i><sup>2</sup> &minus; sin <i>x</i> &rarr; 2<i>x</i> &minus; cos <i>x</i></td></tr>
+  </table>
+  </div>
+  <p><b>The power rule works for every <i>n</i></b> — positive, negative, or
+  fractional. That single fact removes three separate results she would otherwise
+  memorise.</p>
+  <p class="mth left">
+    <span class="f"><span class="n">1</span><span class="d"><i>x</i></span></span> = <i>x</i><sup>&minus;1</sup>
+    &nbsp;&rarr;&nbsp; &minus;1<i>x</i><sup>&minus;2</sup> = &minus;<span class="f"><span class="n">1</span><span class="d"><i>x</i><sup>2</sup></span></span>
+    &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;
+    <span class="rt">&radic;<span class="ov"><i>x</i></span></span> = <i>x</i><sup>1/2</sup>
+    &nbsp;&rarr;&nbsp; <span class="f"><span class="n">1</span><span class="d">2</span></span><i>x</i><sup>&minus;1/2</sup>
+    = <span class="f"><span class="n">1</span><span class="d">2<span class="rt">&radic;<span class="ov"><i>x</i></span></span></span></span>
+  </p>
+  <p>Both agree with the first-principles answers from Lesson 7. Make her check that
+  herself. It is the best evidence that the rules are shortcuts and not new magic.</p>
+</div>
+
+<div class="fix">
+  <span class="tag">The habit that saves the most time</span>
+  <p><b>Rewrite before differentiating.</b> Turn every root and every fraction into a
+  power first. Then the power rule alone finishes many sums that look as if they need
+  the quotient rule.</p>
+  <p class="mth left">
+    <span class="f"><span class="n"><i>x</i><sup>3</sup> + 2<i>x</i></span><span class="d"><i>x</i></span></span>
+    = <i>x</i><sup>2</sup> + 2 &nbsp;&rarr;&nbsp; <span class="res">2<i>x</i></span>
+  </p>
+  <p>No quotient rule was needed, and the sum took four seconds. <b>Look for this every
+  time she sees a fraction.</b> ISC sets at least one question a year that is far easier
+  after a rewrite.</p>
+</div>
+
+<h2>The product rule</h2>
+
+<div class="plain">
+  <span class="tag">Learn it in this exact form</span>
+  <p class="mth left">(<i>uv</i>)&prime; = <i>u</i>&prime;<i>v</i> + <i>uv</i>&prime;</p>
+  <p>Said aloud: <b>"first differentiated times second, plus first times second
+  differentiated."</b> Make her say it while she writes it, for the first ten sums.</p>
+</div>
+
+<div class="trap">
+  <span class="tag">Prove the guess wrong once, with numbers</span>
+  <p>Take <i>f</i>(<i>x</i>) = <i>x</i> &times; <i>x</i>. Then <i>f</i>(<i>x</i>) =
+  <i>x</i><sup>2</sup>, so the true derivative is <b>2<i>x</i></b>.</p>
+  <p>The guess <i>u</i>&prime;<i>v</i>&prime; gives 1 &times; 1 = <b>1</b>.</p>
+  <p>The product rule gives (1)(<i>x</i>) + (<i>x</i>)(1) = <b>2<i>x</i></b>. Correct.</p>
+  <p><b>Do this on the board before teaching the rule, not after.</b> She then learns the
+  rule as the answer to a problem she has already seen, and not as an arbitrary formula.</p>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 1 — <i>y</i> = <i>x</i><sup>2</sup> sin <i>x</i></div>
+  <div class="body">
+    <p class="step">Step 1 — label the two parts. Write them down. Do not hold them in her head.</p>
+    <p class="mth left">
+      <i>u</i> = <i>x</i><sup>2</sup>, &nbsp; <i>u</i>&prime; = 2<i>x</i>
+      &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;
+      <i>v</i> = sin <i>x</i>, &nbsp; <i>v</i>&prime; = cos <i>x</i>
+    </p>
+    <p class="step">Step 2 — put them into the rule, in order.</p>
+    <p class="mth left">
+      <span class="f"><span class="n"><i>dy</i></span><span class="d"><i>dx</i></span></span>
+      = (2<i>x</i>)(sin <i>x</i>) + (<i>x</i><sup>2</sup>)(cos <i>x</i>)
+      = <span class="res">2<i>x</i> sin <i>x</i> + <i>x</i><sup>2</sup> cos <i>x</i></span>
+    </p>
+    <p><b>Do not expand or "tidy" this.</b> It is a finished answer. She may factorise
+    to <i>x</i>(2 sin <i>x</i> + <i>x</i> cos <i>x</i>) if she wishes, and both forms
+    earn the mark.</p>
+  </div>
+</div>
+
+<h2>The quotient rule</h2>
+
+<div class="plain">
+  <span class="tag">Learn it in this exact form</span>
+  <p class="mth left">
+    (<span class="f"><span class="n"><i>u</i></span><span class="d"><i>v</i></span></span>)&prime;
+    = <span class="f">
+        <span class="n"><i>u</i>&prime;<i>v</i> &minus; <i>uv</i>&prime;</span>
+        <span class="d"><i>v</i><sup>2</sup></span>
+      </span>
+  </p>
+  <p>Said aloud: <b>"top differentiated times bottom, minus top times bottom
+  differentiated, all over bottom squared."</b></p>
+</div>
+
+<div class="trap">
+  <span class="tag">The order is the whole rule</span>
+  <p>The product rule has a plus, so the order of the two terms does not matter. <b>The
+  quotient rule has a minus, so the order decides the sign of the whole answer.</b>
+  Writing <i>uv</i>&prime; &minus; <i>u</i>&prime;<i>v</i> gives the correct answer with
+  the wrong sign, every single time.</p>
+  <p>The fix that works: <b>the term that starts with the differentiated top comes
+  first.</b> She says "top-dash-bottom, minus top-bottom-dash" out loud as she writes.
+  Three seconds, and it removes the most common error in the whole unit.</p>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 2 — <i>y</i> = sin <i>x</i> / <i>x</i></div>
+  <div class="body">
+    <p class="step">Step 1 — label. The top is <i>u</i>, the bottom is <i>v</i>.</p>
+    <p class="mth left">
+      <i>u</i> = sin <i>x</i>, &nbsp; <i>u</i>&prime; = cos <i>x</i>
+      &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;
+      <i>v</i> = <i>x</i>, &nbsp; <i>v</i>&prime; = 1
+    </p>
+    <p class="step">Step 2 — put them in, keeping the order.</p>
+    <p class="mth left">
+      <span class="f"><span class="n"><i>dy</i></span><span class="d"><i>dx</i></span></span>
+      = <span class="f">
+          <span class="n">(cos <i>x</i>)(<i>x</i>) &minus; (sin <i>x</i>)(1)</span>
+          <span class="d"><i>x</i><sup>2</sup></span>
+        </span>
+      = <span class="res"><span class="f">
+          <span class="n"><i>x</i> cos <i>x</i> &minus; sin <i>x</i></span>
+          <span class="d"><i>x</i><sup>2</sup></span>
+        </span></span>
+    </p>
+  </div>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 3 — tan <i>x</i>, and where sec<sup>2</sup> <i>x</i> comes from</div>
+  <div class="body">
+    <p>tan <i>x</i> = sin <i>x</i> / cos <i>x</i>, so the quotient rule applies.</p>
+    <p class="mth left">
+      <i>u</i> = sin <i>x</i>, &nbsp; <i>u</i>&prime; = cos <i>x</i>
+      &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;
+      <i>v</i> = cos <i>x</i>, &nbsp; <i>v</i>&prime; = &minus;sin <i>x</i>
+    </p>
+    <p class="mth left">
+      = <span class="f">
+          <span class="n">(cos <i>x</i>)(cos <i>x</i>) &minus; (sin <i>x</i>)(&minus;sin <i>x</i>)</span>
+          <span class="d">cos<sup>2</sup> <i>x</i></span>
+        </span>
+      = <span class="f">
+          <span class="n">cos<sup>2</sup> <i>x</i> + sin<sup>2</sup> <i>x</i></span>
+          <span class="d">cos<sup>2</sup> <i>x</i></span>
+        </span>
+      = <span class="f">
+          <span class="n">1</span>
+          <span class="d">cos<sup>2</sup> <i>x</i></span>
+        </span>
+      = <span class="res">sec<sup>2</sup> <i>x</i></span>
+    </p>
+    <p><b>Watch the double minus.</b> <i>v</i>&prime; = &minus;sin <i>x</i>, and the rule
+    already has a minus, so the two make a plus. That is what turns the top into the
+    Pythagorean identity. <b>Most errors in this sum are one missing minus sign, not a
+    misunderstanding of the rule.</b></p>
+  </div>
+</div>
+
+<div class="plain">
+  <span class="tag">The full list she may quote by the end of the unit</span>
+  <div class="scroll">
+  <table class="ref">
+  <tr><th><i>f</i>(<i>x</i>)</th><th><i>f</i>&prime;(<i>x</i>)</th><th>Where it came from</th></tr>
+  <tr><td><i>k</i></td><td>0</td><td>A constant never moves</td></tr>
+  <tr><td><i>x</i><sup><i>n</i></sup></td><td><i>n x</i><sup><i>n</i>&minus;1</sup></td><td>The power rule, for every <i>n</i></td></tr>
+  <tr><td>sin <i>x</i></td><td>cos <i>x</i></td><td>First principles, Lesson 7</td></tr>
+  <tr><td>cos <i>x</i></td><td>&minus;sin <i>x</i></td><td>First principles, Lesson 7</td></tr>
+  <tr><td>tan <i>x</i></td><td>sec<sup>2</sup> <i>x</i></td><td>The quotient rule, above</td></tr>
+  <tr><td>cot <i>x</i></td><td>&minus;cosec<sup>2</sup> <i>x</i></td><td>The quotient rule, the same way</td></tr>
+  <tr><td>sec <i>x</i></td><td>sec <i>x</i> tan <i>x</i></td><td>The quotient rule on 1/cos <i>x</i></td></tr>
+  <tr><td>cosec <i>x</i></td><td>&minus;cosec <i>x</i> cot <i>x</i></td><td>The quotient rule on 1/sin <i>x</i></td></tr>
+  </table>
+  </div>
+  <p><b>Only the first four need memorising.</b> The other four she derives in under a
+  minute each. Make her derive cot <i>x</i> at least once, so she knows she can rebuild
+  the row if her memory fails in the exam.</p>
+</div>
+
+<div class="trap">
+  <span class="tag">The four mistakes this lesson prevents</span>
+  <p><b>1.</b> She writes (<i>uv</i>)&prime; = <i>u</i>&prime;<i>v</i>&prime;.<br>
+  <b>The real gap:</b> she is carrying the sum rule across to products. The sum rule
+  works because the two pieces do not interfere. In a product they do — changing one
+  changes the effect of the other. Send her back to the <i>x</i> &times; <i>x</i>
+  check.</p>
+  <p><b>2.</b> She writes the quotient rule with the terms reversed.<br>
+  <b>The real gap:</b> she memorised a shape and not an order. The minus sign is not
+  decoration. Make her say "top-dash-bottom first" aloud.</p>
+  <p><b>3.</b> She uses the quotient rule on
+  (<i>x</i><sup>3</sup> + 2<i>x</i>)/<i>x</i>.<br>
+  <b>The real gap:</b> she matches the tool to the appearance instead of to the sum.
+  Divide the terms out first, and the power rule finishes it. <b>Always look for the
+  rewrite before choosing a rule.</b></p>
+  <p><b>4.</b> She writes d/dx(<i>x</i><sup>&minus;3</sup>) =
+  &minus;3<i>x</i><sup>&minus;2</sup>.<br>
+  <b>The real gap:</b> she moved the power towards zero instead of subtracting 1.
+  Subtracting 1 from &minus;3 gives &minus;4, not &minus;2. The rule is the same for
+  negative powers, and the arithmetic is where it breaks.</p>
+</div>
+
+<h2>Warm-up drill A — the power rule alone</h2>
+
+<p>Write the derivative. Use <code>^</code> for a power, so
+3<i>x</i><sup>2</sup> is <code>3x^2</code>.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td><td class="q"><i>x</i><sup>7</sup></td>
+  <td><input data-a="7x^6|7x6" data-why="Bring the 7 down, then subtract 1 from the power: 7x⁶."></td></tr>
+<tr><td class="n">2</td><td class="q">4<i>x</i><sup>3</sup></td>
+  <td><input data-a="12x^2|12x2|12x²" data-why="The constant 4 waits outside. 4 × 3x² = 12x²."></td></tr>
+<tr><td class="n">3</td><td class="q"><i>x</i><sup>2</sup> + 5<i>x</i> &minus; 9</td>
+  <td><input data-a="2x+5" data-why="Differentiate term by term. The constant −9 gives 0, so it disappears."></td></tr>
+<tr><td class="n">4</td><td class="q"><i>x</i><sup>&minus;3</sup></td>
+  <td><input data-a="-3x^-4|-3x^(-4)|-3/x^4" data-why="Subtract 1 from −3 to get −4, not −2. The answer is −3x⁻⁴."></td></tr>
+<tr><td class="n">5</td><td class="q"><span class="rt">&radic;<span class="ov"><i>x</i></span></span></td>
+  <td><input data-a="1/(2sqrtx)|1/(2√x)|1/(2x^(1/2))|0.5x^-1/2|(1/2)x^(-1/2)" data-why="Write it as x^(1/2) first. Then (1/2)x^(−1/2), which is 1/(2√x). This matches the first-principles answer from Lesson 7."></td></tr>
+<tr><td class="n">6</td><td class="q"><span class="f"><span class="n"><i>x</i><sup>4</sup> + <i>x</i><sup>2</sup></span><span class="d"><i>x</i><sup>2</sup></span></span></td>
+  <td><input data-a="2x" data-why="Rewrite first: it is x² + 1. Then the derivative is 2x. No quotient rule was needed — always look for the rewrite."></td></tr>
+</table>
+</div>
+
+<h2>Warm-up drill B — choose the rule, then use it</h2>
+
+<p>For each, decide first: rewrite, sum, product, or quotient. Then differentiate.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td><td class="q"><i>y</i> = <i>x</i> sin <i>x</i></td>
+  <td><input data-a="sinx+xcosx|sin x + x cos x|xcosx+sinx" data-why="Product rule: u = x gives u′ = 1, v = sin x gives v′ = cos x. So (1)(sin x) + (x)(cos x)."></td></tr>
+<tr><td class="n">2</td><td class="q"><i>y</i> = <i>x</i><sup>2</sup> cos <i>x</i></td>
+  <td><input data-a="2xcosx-x^2sinx|2x cos x - x^2 sin x|2xcosx-x2sinx" data-why="Product rule: (2x)(cos x) + (x²)(−sin x). The minus comes from the derivative of cos x, not from the rule."></td></tr>
+<tr><td class="n">3</td><td class="q"><i>y</i> = <span class="f"><span class="n"><i>x</i></span><span class="d">sin <i>x</i></span></span></td>
+  <td><input data-a="(sinx-xcosx)/sin^2x|(sinx-xcosx)/(sinx)^2|(sin x - x cos x)/sin^2 x" data-why="Quotient rule: [(1)(sin x) − (x)(cos x)] / sin² x. Top differentiated times bottom comes FIRST."></td></tr>
+<tr><td class="n">4</td><td class="q"><i>y</i> = <span class="f"><span class="n"><i>x</i><sup>5</sup></span><span class="d"><i>x</i><sup>2</sup></span></span></td>
+  <td><input data-a="3x^2|3x2|3x²" data-why="Rewrite first: x³. Then 3x². Using the quotient rule here is legal but takes four times as long."></td></tr>
+<tr><td class="n">5</td><td class="q"><i>y</i> = (<i>x</i>+1)(<i>x</i>+2)</td>
+  <td><input data-a="2x+3" data-why="Two ways, same answer. Expand to x² + 3x + 2 and differentiate, or use the product rule: (1)(x+2) + (x+1)(1) = 2x + 3."></td></tr>
+<tr><td class="n">6</td><td class="q"><i>y</i> = 3 sin <i>x</i> &minus; 2 cos <i>x</i></td>
+  <td><input data-a="3cosx+2sinx|3 cos x + 2 sin x" data-why="Sum rule with constants: 3 cos x − 2(−sin x) = 3 cos x + 2 sin x. The double minus becomes a plus."></td></tr>
+<tr><td class="n">7</td><td class="q"><i>y</i> = tan <i>x</i></td>
+  <td><input data-a="sec^2x|sec2x|sec^2 x|(secx)^2" data-why="Worked example 3. She may quote it, or rebuild it with the quotient rule on sin x / cos x."></td></tr>
+<tr><td class="n">8</td><td class="q"><i>y</i> = <i>x</i><sup>3</sup> + 4, find dy/dx at <i>x</i> = 2</td>
+  <td><input data-a="12" data-why="Differentiate first: 3x². Then substitute: 3(4) = 12. Never substitute before differentiating — that gives 0 every time."></td></tr>
+</table>
+</div>
+
+<h2>Exercise set</h2>
+
+<div class="exset">
+<ol>
+
+<li><span class="pill easy">Easy</span>
+Differentiate <i>y</i> = 5<i>x</i><sup>4</sup> &minus; 3<i>x</i><sup>2</sup> +
+2<i>x</i> &minus; 8.
+<details class="hint"><summary>Hint 1 — the type</summary>
+Sum rule and power rule, term by term. No product or quotient anywhere.</details>
+<details class="hint sol"><summary>Answer</summary>
+<b>dy/dx = 20<i>x</i><sup>3</sup> &minus; 6<i>x</i> + 2</b>. The constant &minus;8
+gives 0 and vanishes.</details>
+</li>
+
+<li><span class="pill easy">Easy</span>
+Differentiate <i>y</i> = <i>x</i><sup>3</sup> cos <i>x</i>.
+<details class="hint"><summary>Hint 1 — the type</summary>
+A product of two different kinds of function, so the product rule is needed.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Label <i>u</i> = <i>x</i><sup>3</sup> and <i>v</i> = cos <i>x</i>, and write
+<i>u</i>&prime; and <i>v</i>&prime; before touching the rule.</details>
+<details class="hint sol"><summary>Answer</summary>
+<i>u</i>&prime; = 3<i>x</i><sup>2</sup>, <i>v</i>&prime; = &minus;sin <i>x</i>.<br>
+<b>dy/dx = 3<i>x</i><sup>2</sup> cos <i>x</i> &minus; <i>x</i><sup>3</sup> sin
+<i>x</i></b>.<br>
+The minus sign came from <i>v</i>&prime;, not from the rule. The product rule itself
+has a plus.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Differentiate <i>y</i> =
+<span class="f"><span class="n"><i>x</i><sup>2</sup> + 1</span><span class="d"><i>x</i> &minus; 1</span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>
+A genuine quotient — the top does not divide cleanly by the bottom, so no rewrite
+helps.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+<i>u</i> = <i>x</i><sup>2</sup>+1 and <i>v</i> = <i>x</i>&minus;1. Say "top-dash-bottom
+first" as she writes.</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>
+dy/dx = [(2<i>x</i>)(<i>x</i>&minus;1) &minus; (<i>x</i><sup>2</sup>+1)(1)] /
+(<i>x</i>&minus;1)<sup>2</sup></details>
+<details class="hint sol"><summary>Answer</summary>
+Top = 2<i>x</i><sup>2</sup> &minus; 2<i>x</i> &minus; <i>x</i><sup>2</sup> &minus; 1
+= <i>x</i><sup>2</sup> &minus; 2<i>x</i> &minus; 1.<br>
+<b>dy/dx = (<i>x</i><sup>2</sup> &minus; 2<i>x</i> &minus; 1) /
+(<i>x</i>&minus;1)<sup>2</sup></b>.<br>
+Leave the bottom as (<i>x</i>&minus;1)<sup>2</sup>. Expanding it earns nothing and
+risks a slip.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Find the slope of the tangent to <i>y</i> = <i>x</i> sin <i>x</i> at
+<i>x</i> = &pi;/2.
+<details class="hint"><summary>Hint 1 — the type</summary>
+Product rule, then substitute. Two steps, in that order.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Recall sin(&pi;/2) = 1 and cos(&pi;/2) = 0. Differentiate first, substitute second.</details>
+<details class="hint sol"><summary>Answer</summary>
+dy/dx = sin <i>x</i> + <i>x</i> cos <i>x</i>.<br>
+At <i>x</i> = &pi;/2: 1 + (&pi;/2)(0) = <b>1</b>.<br>
+The second term vanished because the cosine is zero there. Watch for that — students
+often compute (&pi;/2)(0) as &pi;/2.</details>
+</li>
+
+<li><span class="pill hard">Hard</span>
+Differentiate <i>y</i> = <i>x</i><sup>2</sup> sin <i>x</i> cos <i>x</i>.
+<details class="hint"><summary>Hint 1 — the type</summary>
+Three factors, and she has a rule for two. There are two good routes.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Either group it as <i>u</i> = <i>x</i><sup>2</sup> and <i>v</i> = sin <i>x</i> cos
+<i>x</i>, applying the product rule twice, or use the identity
+sin <i>x</i> cos <i>x</i> = &frac12; sin 2<i>x</i> first.</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>
+Grouping route: first find (sin <i>x</i> cos <i>x</i>)&prime; = cos<sup>2</sup>
+<i>x</i> &minus; sin<sup>2</sup> <i>x</i>.</details>
+<details class="hint sol"><summary>Answer</summary>
+Inner product: (sin <i>x</i> cos <i>x</i>)&prime; = (cos <i>x</i>)(cos <i>x</i>) +
+(sin <i>x</i>)(&minus;sin <i>x</i>) = cos<sup>2</sup> <i>x</i> &minus; sin<sup>2</sup>
+<i>x</i>.<br>
+Then the outer product rule:<br>
+<b>dy/dx = 2<i>x</i> sin <i>x</i> cos <i>x</i> + <i>x</i><sup>2</sup>(cos<sup>2</sup>
+<i>x</i> &minus; sin<sup>2</sup> <i>x</i>)</b>.<br><br>
+<b>The identity route.</b> <i>y</i> = &frac12; <i>x</i><sup>2</sup> sin 2<i>x</i>. This
+is neater, but differentiating sin 2<i>x</i> needs the chain rule, which is Class 12.
+So at Class 11 the grouping route is the one she must use. <b>Recognising that a
+shortcut needs a tool she does not have yet is itself a skill.</b></details>
+</li>
+
+<li><span class="pill stretch">Stretch</span>
+Derive the quotient rule from the product rule. Start by writing <i>u</i> =
+(<i>u</i>/<i>v</i>) &times; <i>v</i>.
+<details class="hint"><summary>Hint 1 — the type</summary>
+A derivation, not a calculation. It shows the two rules are one rule.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Call <i>q</i> = <i>u</i>/<i>v</i>. Then <i>u</i> = <i>qv</i>. Differentiate both sides
+with the product rule, then make <i>q</i>&prime; the subject.</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>
+<i>u</i>&prime; = <i>q</i>&prime;<i>v</i> + <i>qv</i>&prime;</details>
+<details class="hint sol"><summary>Answer</summary>
+From <i>u</i>&prime; = <i>q</i>&prime;<i>v</i> + <i>qv</i>&prime;, make
+<i>q</i>&prime; the subject:<br>
+<i>q</i>&prime;<i>v</i> = <i>u</i>&prime; &minus; <i>qv</i>&prime; = <i>u</i>&prime;
+&minus; (<i>u</i>/<i>v</i>)<i>v</i>&prime;.<br>
+Divide by <i>v</i>: <i>q</i>&prime; = <i>u</i>&prime;/<i>v</i> &minus;
+<i>uv</i>&prime;/<i>v</i><sup>2</sup>.<br>
+Put it over one denominator: <b><i>q</i>&prime; = (<i>u</i>&prime;<i>v</i> &minus;
+<i>uv</i>&prime;)/<i>v</i><sup>2</sup></b>. That is the quotient rule.<br><br>
+<b>Why this is worth twenty minutes.</b> The minus sign is no longer something to
+remember — it appears from the algebra, in front of her. A student who has done this
+once stops reversing the order. It is also a fair ISC question, because the syllabus
+names both rules.</details>
+</li>
+
+</ol>
+</div>
+
+<div class="fix">
+  <span class="tag">Close the lesson — she says this, not you</span>
+  <p>"Sums differentiate term by term. Products do not: I use
+  <i>u</i>&prime;<i>v</i> + <i>uv</i>&prime;, because two things changing at once give
+  two contributions. Quotients use
+  (<i>u</i>&prime;<i>v</i> &minus; <i>uv</i>&prime;)/<i>v</i><sup>2</sup>, and the
+  order matters because of the minus. Before I choose a rule, I check whether a rewrite
+  makes it a power-rule sum."</p>
+  <p>Her kitchen version: <i>"Two dishes on one plate just add. But the total salt in a
+  pot depends on the concentration and the volume together, so when both move I count
+  both contributions."</i></p>
+</div>
+
+<div class="fix">
+  <span class="tag">The unit is now complete — what to do next</span>
+  <p>All eight lessons are done. The next session should be a <b>mixed test</b>, not a
+  new topic. Pull questions from every lesson, shuffled, so that she must decide the
+  type before she can start. That decision is the skill the paper actually tests. See
+  <a href="../TEACHING-PLAN.md">TEACHING-PLAN.md</a> section 5, week 3.</p>
+  <p>Then space the retrieval: one mixed set after 2 days, another after 7, another
+  after 21. Write what closed in
+  <a href="../learning-records/">learning-records/</a>.</p>
+</div>
+
+<div class="src">
+  <span class="tag">Read this after the lesson</span>
+  <p><b>Primary source:</b> NCERT Class 11 Mathematics,
+  <a href="../source-documents/NCERT-Class11-Ch12-Limits-and-Derivatives.pdf">Chapter 12</a>,
+  section 12.5.2 — Algebra of derivative of functions. Then
+  <b>Exercise 12.2, questions 7 to 11</b>, and the <b>Miscellaneous Exercise</b>, which
+  is the closest thing in NCERT to an ISC-style mixed set.</p>
+  <p><b>Also useful:</b>
+  <a href="https://tutorial.math.lamar.edu/classes/calci/ProductQuotientRule.aspx">Paul's Online Notes — Product and Quotient Rule</a>.
+  It works through more examples than any one lesson can hold, with full solutions.</p>
+</div>
+
+<div class="ask">
+  <span class="tag">If anything here is unclear</span>
+  <p>Ask. The one question worth asking early: <i>"how do I know which rule to use?"</i>
+  The order is fixed. First ask whether a rewrite turns it into powers. If not, ask
+  whether the parts are added, multiplied, or divided. The structure of the expression
+  chooses the rule — she never has to guess.</p>
+</div>
+
+<div class="nav">
+  <a href="0007-the-derivative.html">&larr; Lesson 7 — The derivative</a>
+  <a href="../index.html">Course home</a>
+  <span>End of Unit 4</span>
+</div>
+
+<div class="notes">
+<ol>
+  <li id="n1">Scope: CISCE, <i>ISC Mathematics (860), Class XI</i>, Unit 4 — "Derivative
+  of sum, difference, product and quotient of functions" and "Derivatives of polynomial
+  and trigonometric functions". See <a href="../SYLLABUS.md">SYLLABUS.md</a> section 3.</li>
+  <li>The product rule, the quotient rule, and the algebra of derivatives: NCERT Class 11
+  Mathematics, Chapter 12, section 12.5.2.</li>
+  <li>The identity sin<sup>2</sup> <i>x</i> + cos<sup>2</sup> <i>x</i> = 1 is CISCE
+  Class XI, Unit 1(iii).</li>
+  <li><b>Not taught here, on purpose:</b> the chain rule, logarithmic differentiation,
+  implicit differentiation, and second derivatives. All are Class 12. Exercise 5 above
+  meets the edge of the chain rule deliberately, so that she recognises the boundary of
+  her own toolkit.</li>
+</ol>
+</div>
+
+</div>
+</body>
+</html>

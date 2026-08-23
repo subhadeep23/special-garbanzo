@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 6 — One-sided limits</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/check.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">ISC Class 11 · Unit 4 Calculus · Lesson 6 of 8</p>
+<h1>One-sided limits</h1>
+<p class="sub">Three functions break the rule that substitution works. For those three, she must check both sides, every time.</p>
+
+<p class="mission"><b>Why this lesson.</b> Lesson 2 taught her to substitute first.
+This lesson names the exact cases where substituting first is <b>wrong</b>. There are
+only three of them — modulus, greatest integer, and piecewise — and they are easy to
+spot. ISC asks them because they separate the students who understand a limit from the
+students who follow a procedure.</p>
+
+<div class="plain">
+  <span class="tag">Say it simply</span>
+  <p class="big">Some functions have a different rule on the left of a point and on
+  the right of it. For those, one substitution cannot answer the question, because
+  there is no single rule to substitute into. <b>She must work the two sides
+  separately, then compare.</b></p>
+</div>
+
+<div class="kitchen">
+  <span class="tag">The same idea in her kitchen</span>
+  <p class="big">Two cooks make the same dish. One creeps up on 2 grams of salt from
+  <b>below</b>, adding pinch by pinch. The other starts over-salted and dilutes down to
+  2 grams from <b>above</b>. If both taste the same flavour, that flavour is the limit.
+  If they taste two different flavours, <b>there is no single flavour to name</b>, so
+  the limit does not exist.</p>
+  <p>The three troublesome functions are recipes with a <b>switch</b> in them. The
+  recipe card says: <i>"below 2 grams, do it this way. Above 2 grams, do it that way."</i>
+  A cook coming from below follows one instruction. A cook coming from above follows a
+  different one. That is why one taste cannot answer for both.</p>
+  <div class="scroll">
+  <table class="ref">
+  <tr><th>Maths word</th><th>In the kitchen</th></tr>
+  <tr><td>LHL &nbsp;<span class="lim">lim<span class="to"><i>x</i>&rarr;a<sup>&minus;</sup></span></span></td>
+      <td>The cook who arrives from <b>below</b> the amount</td></tr>
+  <tr><td>RHL &nbsp;<span class="lim">lim<span class="to"><i>x</i>&rarr;a<sup>+</sup></span></span></td>
+      <td>The cook who arrives from <b>above</b> the amount</td></tr>
+  <tr><td>The limit exists</td><td>Both cooks report the <b>same</b> flavour</td></tr>
+  <tr><td>A jump</td><td>The two cooks report different flavours. Neither is wrong. There is simply no single answer</td></tr>
+  </table>
+  </div>
+  <p><b>Say "from below" and "from above", never "before" and "after".</b> The two
+  cooks are not separated in time. They are separated by which side of the amount they
+  come from. Lesson 1 gave this warning, and this is the lesson where it earns its
+  keep.</p>
+</div>
+
+<h2>The rule, in the exact form ISC wants</h2>
+
+<div class="plain">
+  <span class="tag">The existence rule</span>
+  <p class="mth left">
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;a</span></span><i>f</i>(<i>x</i>)
+    exists &nbsp;&hArr;&nbsp;
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;a<sup>&minus;</sup></span></span><i>f</i>(<i>x</i>)
+    = <span class="lim">lim<span class="to"><i>x</i>&rarr;a<sup>+</sup></span></span><i>f</i>(<i>x</i>)
+    = a finite number
+  </p>
+  <p>Her written answer must show <b>three lines</b>: the LHL, the RHL, and the
+  comparison. A correct final answer with no comparison line loses marks, because the
+  comparison <i>is</i> the reasoning the question asks for.</p>
+</div>
+
+<div class="fix">
+  <span class="tag">The substitution that makes both sides easy</span>
+  <p>Working "just to the left of <i>a</i>" is hard to write. So replace <i>x</i> by
+  a number that is definitely on the correct side, and let <i>h</i> shrink to zero.</p>
+  <p class="mth left">
+    LHL: put <i>x</i> = <i>a</i> &minus; <i>h</i> &nbsp;&nbsp;&nbsp;&nbsp;
+    RHL: put <i>x</i> = <i>a</i> + <i>h</i> &nbsp;&nbsp;&nbsp;&nbsp;
+    where <i>h</i> &rarr; 0 and <i>h</i> &gt; 0
+  </p>
+  <p><b>The condition <i>h</i> &gt; 0 is what does the work.</b> It fixes the sign of
+  every quantity in the sum, and the sign is the whole question. Make her write
+  "<i>h</i> &gt; 0" on the page, every time. It is one second and it prevents the
+  commonest error in the lesson.</p>
+</div>
+
+<h2>Case 1 — the modulus function</h2>
+
+<p>The modulus has a switch built into its definition. Write the definition every time
+before working:</p>
+
+<p class="mth">
+  |<i>u</i>| = <i>u</i> when <i>u</i> &ge; 0, &nbsp;&nbsp;&nbsp;
+  |<i>u</i>| = &minus;<i>u</i> when <i>u</i> &lt; 0
+</p>
+
+<div class="trap">
+  <span class="tag">Read this twice</span>
+  <p>The switch is on the sign of <b>what is inside the bars</b>, not on the sign of
+  <i>x</i>. For |<i>x</i> &minus; 5|, the switch is at <i>x</i> = 5, not at
+  <i>x</i> = 0. She must find where the inside becomes zero. <b>That point is where
+  the break is.</b></p>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 1</div>
+  <div class="body">
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span>
+      <span class="f"><span class="n">|<i>x</i> &minus; 3|</span><span class="d"><i>x</i> &minus; 3</span></span>
+    </p>
+    <p class="step">Step 1 — the inside is zero at <i>x</i> = 3, and that is the point in question. So the two sides must be checked.</p>
+    <p class="step">Step 2 — LHL. Put <i>x</i> = 3 &minus; <i>h</i> with <i>h</i> &gt; 0. Then <i>x</i> &minus; 3 = &minus;<i>h</i>, which is negative, so the bars flip the sign.</p>
+    <p class="mth left">
+      LHL = <span class="lim">lim<span class="to"><i>h</i>&rarr;0</span></span>
+      <span class="f"><span class="n">|&minus;<i>h</i>|</span><span class="d">&minus;<i>h</i></span></span>
+      = <span class="lim">lim<span class="to"><i>h</i>&rarr;0</span></span>
+      <span class="f"><span class="n"><i>h</i></span><span class="d">&minus;<i>h</i></span></span>
+      = <span class="res">&minus;1</span>
+    </p>
+    <p class="step">Step 3 — RHL. Put <i>x</i> = 3 + <i>h</i> with <i>h</i> &gt; 0. Then <i>x</i> &minus; 3 = <i>h</i>, which is positive, so the bars do nothing.</p>
+    <p class="mth left">
+      RHL = <span class="lim">lim<span class="to"><i>h</i>&rarr;0</span></span>
+      <span class="f"><span class="n"><i>h</i></span><span class="d"><i>h</i></span></span>
+      = <span class="res">+1</span>
+    </p>
+    <p class="step">Step 4 — compare. This line is compulsory.</p>
+    <p><b>LHL = &minus;1 and RHL = +1. LHL &ne; RHL, so the limit does not exist.</b>
+    Note that both one-sided limits exist perfectly well. They simply disagree. Say
+    that in the answer.</p>
+  </div>
+</div>
+
+<h2>Case 2 — the greatest integer function</h2>
+
+<p>[<i>x</i>] means <b>the largest integer that is not greater than <i>x</i></b>. It is
+also written &lfloor;<i>x</i>&rfloor; and is called the floor function or the step
+function.</p>
+
+<div class="scroll">
+<table class="ref">
+<tr><th><i>x</i></th><th>2.7</th><th>3</th><th>3.001</th><th>&minus;2.7</th><th>&minus;3</th><th>&minus;0.4</th></tr>
+<tr><td>[<i>x</i>]</td><td>2</td><td>3</td><td>3</td><td><b>&minus;3</b></td><td>&minus;3</td><td><b>&minus;1</b></td></tr>
+</table>
+</div>
+
+<div class="trap">
+  <span class="tag">The negative values are where she will lose the mark</span>
+  <p>[&minus;2.7] is <b>&minus;3</b>, not &minus;2. The rule is "not greater than",
+  and &minus;3 &lt; &minus;2.7 &lt; &minus;2. So the largest integer that stays below
+  is &minus;3. <b>It rounds down, never towards zero.</b></p>
+  <p>Make her fill this row from memory before the lesson goes on:
+  [1.2], [&minus;1.2], [4], [&minus;4], [0.9], [&minus;0.9].
+  Answers: 1, &minus;2, 4, &minus;4, 0, &minus;1.</p>
+</div>
+
+<div class="plain">
+  <span class="tag">The one fact that solves every [x] limit</span>
+  <p class="big">At an <b>integer</b> <i>n</i>, the graph jumps by exactly 1.</p>
+  <p class="mth left">
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;<i>n</i><sup>&minus;</sup></span></span>[<i>x</i>]
+    = <span class="res"><i>n</i> &minus; 1</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;<i>n</i><sup>+</sup></span></span>[<i>x</i>]
+    = <span class="res"><i>n</i></span>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    [<i>n</i>] = <span class="res"><i>n</i></span>
+  </p>
+  <p>So at every integer, <b>the limit does not exist</b>. Between integers, [<i>x</i>]
+  is a constant, so the limit is that constant and there is nothing to check.</p>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 2</div>
+  <div class="body">
+    <p class="mth left">
+      Find <span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>[<i>x</i>]
+      and <span class="lim">lim<span class="to"><i>x</i>&rarr;2.5</span></span>[<i>x</i>].
+    </p>
+    <p class="step">First one. 2 is an integer, so check both sides.</p>
+    <p>Just below 2, the values of <i>x</i> are 1.9, 1.99, 1.999, and [<i>x</i>] = 1
+    for all of them. So LHL = 1.<br>
+    Just above 2, the values are 2.001, 2.01, and [<i>x</i>] = 2. So RHL = 2.<br>
+    <b>LHL &ne; RHL, so the limit does not exist.</b></p>
+    <p class="step">Second one. 2.5 is not an integer, so there is no break nearby.</p>
+    <p>Every <i>x</i> between 2 and 3 gives [<i>x</i>] = 2. So both sides give 2, and
+    <b>the limit is 2</b>. In the kitchen: between the marks the recipe has no switch
+    at all, so both cooks follow the same instruction.</p>
+  </div>
+</div>
+
+<h2>Case 3 — piecewise functions</h2>
+
+<p>Here the switch is written out openly, which makes these the easiest of the three.
+The question always sits exactly at the switch point.</p>
+
+<div class="worked">
+  <div class="head">Worked example 3 — find the value of <i>k</i></div>
+  <div class="body">
+    <p class="mth left">
+      <i>f</i>(<i>x</i>) = 3<i>x</i> + 1 &nbsp;for <i>x</i> &lt; 2, &nbsp;&nbsp;&nbsp;
+      <i>f</i>(<i>x</i>) = <i>kx</i> &minus; 3 &nbsp;for <i>x</i> &ge; 2
+    </p>
+    <p>Find <i>k</i> so that
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span><i>f</i>(<i>x</i>) exists.</p>
+    <p class="step">Step 1 — LHL uses the rule for <i>x</i> &lt; 2, because the cook comes from below.</p>
+    <p class="mth left">LHL = 3(2) + 1 = <span class="res">7</span></p>
+    <p class="step">Step 2 — RHL uses the rule for <i>x</i> &ge; 2.</p>
+    <p class="mth left">RHL = <i>k</i>(2) &minus; 3 = <span class="res">2<i>k</i> &minus; 3</span></p>
+    <p class="step">Step 3 — for the limit to exist, set them equal.</p>
+    <p class="mth left">2<i>k</i> &minus; 3 = 7 &nbsp;&rArr;&nbsp; 2<i>k</i> = 10 &nbsp;&rArr;&nbsp; <i>k</i> = <span class="res">5</span></p>
+    <p><b>This shape — "find <i>k</i> so the limit exists" — is the most likely
+    one-sided question in the paper.</b> It is three lines of work and it is worth full
+    marks. Drill it until it is automatic.</p>
+  </div>
+</div>
+
+<div class="trap">
+  <span class="tag">The four mistakes this lesson prevents</span>
+  <p><b>1.</b> She substitutes straight into a modulus sum and gets 0/0, then
+  factorises.<br>
+  <b>The real gap:</b> she treats every 0/0 as a Lesson 3 sum. A modulus 0/0 has no
+  shared factor to cancel. The bars are a switch, not an algebraic expression. The
+  trigger to look for is the bars themselves, before any substitution.</p>
+  <p><b>2.</b> She writes [&minus;2.7] = &minus;2.<br>
+  <b>The real gap:</b> she is rounding towards zero, which is what a calculator's
+  "integer part" button does. [<i>x</i>] rounds <b>down</b>, always. Fix it by drawing
+  the number line and asking which integers are below &minus;2.7.</p>
+  <p><b>3.</b> She finds LHL = 2 and RHL = 6 and writes 4, or writes "the limit is 2
+  and 6".<br>
+  <b>The real gap:</b> she believes every question has a numerical answer. "Does not
+  exist" <i>is</i> the answer here, and it earns the full mark. Averaging earns zero.</p>
+  <p><b>4.</b> She computes both sides correctly and writes the answer with no
+  comparison line.<br>
+  <b>The real gap:</b> she thinks the marks are for the numbers. The question asks
+  whether the limit exists, so the comparison sentence is the answer. The two numbers
+  are only the evidence.</p>
+</div>
+
+<h2>Warm-up drill A — the two functions themselves</h2>
+
+<p>No limits yet. Just the values, so that the limit work later is not slowed by
+arithmetic.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td><td class="q">[3.9]</td>
+  <td><input data-a="3" data-why="The largest integer not greater than 3.9 is 3."></td></tr>
+<tr><td class="n">2</td><td class="q">[&minus;3.9]</td>
+  <td><input data-a="-4" data-why="It rounds DOWN, never towards zero. −4 < −3.9 < −3, so the largest integer below is −4."></td></tr>
+<tr><td class="n">3</td><td class="q">[5]</td>
+  <td><input data-a="5" data-why="At an exact integer, [x] is that integer itself. 5 is not greater than 5."></td></tr>
+<tr><td class="n">4</td><td class="q">[&minus;0.5]</td>
+  <td><input data-a="-1" data-why="−1 < −0.5 < 0, so the answer is −1. Not 0, and not −0."></td></tr>
+<tr><td class="n">5</td><td class="q">|&minus;7|</td>
+  <td><input data-a="7" data-why="The inside is negative, so the bars flip the sign: −(−7) = 7."></td></tr>
+<tr><td class="n">6</td><td class="q">|2 &minus; 9|</td>
+  <td><input data-a="7" data-why="Work the inside first: 2 − 9 = −7. Then the bars give 7. Never take the bars term by term."></td></tr>
+<tr><td class="n">7</td><td class="q">At which <i>x</i> does |<i>x</i> &minus; 4| break?</td>
+  <td><input data-a="4|x=4" data-why="The switch is where the INSIDE becomes zero: x − 4 = 0, so x = 4. Not x = 0."></td></tr>
+<tr><td class="n">8</td><td class="q">At which <i>x</i> does |2<i>x</i> + 6| break?</td>
+  <td><input data-a="-3|x=-3" data-why="Set the inside to zero: 2x + 6 = 0, so x = −3."></td></tr>
+</table>
+</div>
+
+<h2>Warm-up drill B — one-sided limits</h2>
+
+<p>Write the number, or <code>DNE</code> when the limit does not exist.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3<sup>+</sup></span></span>[<i>x</i>]</td>
+  <td><input data-a="3" data-why="Just above 3 the values are 3.001, 3.01, and [x] = 3 for all of them. From above at an integer n, the answer is n."></td></tr>
+<tr><td class="n">2</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3<sup>&minus;</sup></span></span>[<i>x</i>]</td>
+  <td><input data-a="2" data-why="Just below 3 the values are 2.9, 2.99, and [x] = 2. From below at an integer n, the answer is n − 1."></td></tr>
+<tr><td class="n">3</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3</span></span>[<i>x</i>]</td>
+  <td><input data-a="dne" data-why="LHL = 2 and RHL = 3. They disagree, so the limit does not exist. At every integer, [x] jumps by 1."></td></tr>
+<tr><td class="n">4</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;3.4</span></span>[<i>x</i>]</td>
+  <td><input data-a="3" data-why="3.4 is not an integer, so there is no break nearby. Every x between 3 and 4 gives 3, so the limit is 3."></td></tr>
+<tr><td class="n">5</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0<sup>+</sup></span></span><span class="f"><span class="n">|<i>x</i>|</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="1" data-why="For x > 0 the bars do nothing, so the fraction is x/x = 1."></td></tr>
+<tr><td class="n">6</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0<sup>&minus;</sup></span></span><span class="f"><span class="n">|<i>x</i>|</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="-1" data-why="For x < 0 the bars flip the sign, so the fraction is (−x)/x = −1."></td></tr>
+<tr><td class="n">7</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">|<i>x</i>|</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="dne" data-why="LHL = −1 and RHL = +1. Both exist, and they disagree, so the limit does not exist. Say both parts in the answer."></td></tr>
+<tr><td class="n">8</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;5</span></span>|<i>x</i> &minus; 5|</td>
+  <td><input data-a="0" data-why="This is the modulus on its own, with no denominator. Both sides head to 0, so the limit is 0. Bars alone do not break a limit — a bar OVER something is what breaks it."></td></tr>
+<tr><td class="n">9</td>
+  <td class="q"><i>f</i>(<i>x</i>) = <i>x</i>+1 for <i>x</i>&lt;1, and 3<i>x</i> for <i>x</i>&ge;1. Find the LHL at 1.</td>
+  <td><input data-a="2" data-why="From below, use the rule for x < 1: 1 + 1 = 2."></td></tr>
+<tr><td class="n">10</td>
+  <td class="q">Same <i>f</i>. Find <span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span><i>f</i>(<i>x</i>).</td>
+  <td><input data-a="dne" data-why="LHL = 2 and RHL = 3(1) = 3. They disagree, so the limit does not exist."></td></tr>
+</table>
+</div>
+
+<h2>Exercise set</h2>
+
+<div class="exset">
+<ol>
+
+<li><span class="pill easy">Easy</span>
+Evaluate the LHL and the RHL of <i>f</i>(<i>x</i>) =
+<span class="f"><span class="n">|<i>x</i> &minus; 2|</span><span class="d"><i>x</i> &minus; 2</span></span>
+at <i>x</i> = 2, and state whether the limit exists.
+<details class="hint"><summary>Hint 1 — the type</summary>
+A modulus over its own inside. Never substitute — write the definition of the modulus
+first.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Put <i>x</i> = 2 &minus; <i>h</i> for the LHL and <i>x</i> = 2 + <i>h</i> for the RHL,
+with <i>h</i> &gt; 0.</details>
+<details class="hint sol"><summary>Answer</summary>
+LHL: <i>x</i> &minus; 2 = &minus;<i>h</i> &lt; 0, so the bars flip:
+<i>h</i>/(&minus;<i>h</i>) = <b>&minus;1</b>.<br>
+RHL: <i>x</i> &minus; 2 = <i>h</i> &gt; 0, so <i>h</i>/<i>h</i> = <b>+1</b>.<br>
+LHL &ne; RHL, so <b>the limit does not exist</b>. Both one-sided limits do exist.</details>
+</li>
+
+<li><span class="pill easy">Easy</span>
+Evaluate
+<span class="lim">lim<span class="to"><i>x</i>&rarr;4<sup>&minus;</sup></span></span>[<i>x</i>],
+<span class="lim">lim<span class="to"><i>x</i>&rarr;4<sup>+</sup></span></span>[<i>x</i>],
+and [4].
+<details class="hint"><summary>Hint 1 — the type</summary>
+The greatest integer function at an integer. Use the number line, not a formula.</details>
+<details class="hint sol"><summary>Answer</summary>
+LHL = <b>3</b> (values just below 4 give 3). RHL = <b>4</b>. [4] = <b>4</b>.<br>
+So the limit does not exist at <i>x</i> = 4, and the value at the point equals the
+RHL. That is the shape of every jump in [<i>x</i>].</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+<i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup> + 1 for <i>x</i> &le; 1, and
+<i>f</i>(<i>x</i>) = 5<i>x</i> &minus; 3 for <i>x</i> &gt; 1. Does
+<span class="lim">lim<span class="to"><i>x</i>&rarr;1</span></span><i>f</i>(<i>x</i>)
+exist? What is <i>f</i>(1)?
+<details class="hint"><summary>Hint 1 — the type</summary>
+A piecewise function at its switch point. Two separate substitutions, then compare.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+The LHL uses the rule for <i>x</i> &le; 1. The RHL uses the rule for <i>x</i> &gt; 1.
+The value <i>f</i>(1) is a third, separate question.</details>
+<details class="hint sol"><summary>Answer</summary>
+LHL = 1 + 1 = <b>2</b>. RHL = 5 &minus; 3 = <b>2</b>. They agree, so
+<b>the limit exists and equals 2</b>.<br>
+<i>f</i>(1) uses the rule for <i>x</i> &le; 1, so <i>f</i>(1) = <b>2</b> as well.<br>
+Here the limit and the value happen to agree. Lesson 1 showed they need not. Make her
+say which of the three questions each line answered.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Find <i>a</i> and <i>b</i> so that
+<span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span><i>f</i>(<i>x</i>)
+exists and equals <i>f</i>(2), where <i>f</i>(<i>x</i>) = <i>ax</i> + 1 for
+<i>x</i> &lt; 2, <i>f</i>(2) = 7, and <i>f</i>(<i>x</i>) = <i>bx</i> &minus; 5 for
+<i>x</i> &gt; 2.
+<details class="hint"><summary>Hint 1 — the type</summary>
+Two unknowns, so she needs two equations. Each condition in the question gives one.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Condition A: LHL = 7. Condition B: RHL = 7. Solve them separately — they do not
+interact.</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>
+LHL = 2<i>a</i> + 1, and this must equal 7.</details>
+<details class="hint sol"><summary>Answer</summary>
+2<i>a</i> + 1 = 7 gives <b><i>a</i> = 3</b>.<br>
+2<i>b</i> &minus; 5 = 7 gives <b><i>b</i> = 6</b>.<br>
+Check: LHL = 7, RHL = 7, <i>f</i>(2) = 7. All three agree.<br>
+<b>Note what she has just built.</b> A function whose limit equals its value at a point
+is called <i>continuous</i> there. That word is Class 12 work, so do not define it
+formally — but she has now met the idea, and next year it will feel familiar rather
+than new.</details>
+</li>
+
+<li><span class="pill hard">Hard</span>
+Evaluate
+<span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>
+<span class="f"><span class="n"><i>x</i> &minus; 2</span><span class="d">|<i>x</i> &minus; 2|</span></span>
+&nbsp;and&nbsp;
+<span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">|<i>x</i>|</span><span class="d"><i>x</i></span></span> + <i>x</i>.
+Explain why the two answers differ in kind.
+<details class="hint"><summary>Hint 1 — the type</summary>
+Two modulus sums. The first is the earlier one turned upside down. The second adds a
+harmless term to it.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+For the first, note that flipping a fraction upside down also flips &minus;1 and +1 —
+which changes nothing, because 1/(&minus;1) = &minus;1.</details>
+<details class="hint sol"><summary>Answer</summary>
+<b>First.</b> LHL = (&minus;<i>h</i>)/<i>h</i> = &minus;1. RHL = <i>h</i>/<i>h</i> = +1.
+They disagree, so <b>the limit does not exist</b>. Turning the fraction over does not
+repair a jump.<br>
+<b>Second.</b> LHL = &minus;1 + 0 = &minus;1. RHL = +1 + 0 = +1. Again
+<b>the limit does not exist</b>.<br>
+<b>Why they are the same in kind, not different.</b> Adding <i>x</i> adds 0 to each
+side, so it moves neither one. <b>A jump cannot be repaired by adding a well-behaved
+function to it.</b> The gap of 2 between the two sides survives every such addition.
+That is the point of the question, and it is worth saying aloud.</details>
+</li>
+
+<li><span class="pill stretch">Stretch</span>
+Evaluate
+<span class="lim">lim<span class="to"><i>x</i>&rarr;2</span></span>([<i>x</i>] + [&minus;<i>x</i>]).
+Then evaluate it at <i>x</i> &rarr; 2.5.
+<details class="hint"><summary>Hint 1 — the type</summary>
+Two greatest integer functions added. Do not add the rules — build a small table of
+both sides.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Take <i>x</i> = 1.9. Then [<i>x</i>] = 1 and &minus;<i>x</i> = &minus;1.9, so
+[&minus;<i>x</i>] = &minus;2. Now take <i>x</i> = 2.1 and do the same.</details>
+<details class="hint sol"><summary>Answer</summary>
+<b>At <i>x</i> &rarr; 2.</b><br>
+From below (<i>x</i> = 1.9): 1 + (&minus;2) = &minus;1. So LHL = &minus;1.<br>
+From above (<i>x</i> = 2.1): 2 + (&minus;3) = &minus;1. So RHL = &minus;1.<br>
+They agree, so <b>the limit is &minus;1</b> — even though each part on its own jumps
+at 2. The two jumps cancel.<br>
+Note that the value at the point is different: [2] + [&minus;2] = 2 + (&minus;2) = 0.
+So the limit is &minus;1 and the value is 0. That is Lesson 1 again.<br><br>
+<b>At <i>x</i> &rarr; 2.5.</b> Every <i>x</i> near 2.5 gives [<i>x</i>] = 2 and
+[&minus;<i>x</i>] = &minus;3, so the limit is <b>&minus;1</b> and the value is also
+&minus;1.<br><br>
+<b>The idea worth taking away:</b> a sum of two functions can have a limit even when
+neither part does. So she must never argue "this part has no limit, therefore the whole
+thing has no limit". She must check the whole expression.</details>
+</li>
+
+</ol>
+</div>
+
+<div class="fix">
+  <span class="tag">Close the lesson — she says this, not you</span>
+  <p>"When I see a modulus, a greatest integer, or a piecewise rule, I do not
+  substitute. I work the left-hand limit and the right-hand limit separately, using
+  <i>x</i> = <i>a</i> &minus; <i>h</i> and <i>x</i> = <i>a</i> + <i>h</i> with
+  <i>h</i> &gt; 0, and then I compare them. If they differ, the limit does not exist,
+  and that is a full answer."</p>
+  <p>Her kitchen version: <i>"Two cooks, one from below and one from above. If they
+  taste the same flavour, that is the limit. If not, there is nothing to name."</i></p>
+</div>
+
+<div class="src">
+  <span class="tag">Read this before the next lesson</span>
+  <p><b>Primary source:</b>
+  <a href="https://openstax.org/books/calculus-volume-1/pages/2-2-the-limit-of-a-function">OpenStax, <i>Calculus Volume 1</i>, section 2.2</a>,
+  the part headed "One-Sided Limits". The graphs there are the clearest free ones for a
+  jump.</p>
+  <p><b>Written homework:</b> NCERT Chapter 12, the modulus and piecewise questions in
+  <b>Exercise 12.1, questions 19 to 22</b>, plus any greatest-integer question in her
+  school textbook.</p>
+  <p><b>Before the next lesson</b>, check she is fluent with the slope of a straight
+  line through two points: <i>m</i> = (<i>y</i><sub>2</sub> &minus;
+  <i>y</i><sub>1</sub>)/(<i>x</i><sub>2</sub> &minus; <i>x</i><sub>1</sub>). Lesson 7
+  is that formula and nothing else.<a class="cite" href="#n2">2</a> If she is slow with
+  it, revise Unit 3(i) first — that revision is worth more than the first ten minutes
+  of Lesson 7.</p>
+</div>
+
+<div class="ask">
+  <span class="tag">If anything here is unclear</span>
+  <p>Ask. The one question worth asking early: <i>"how do I know a sum needs two
+  sides?"</i> The answer is a list of three triggers, and nothing else: modulus bars,
+  square brackets [<i>x</i>], or a rule written in pieces. If none of the three is
+  present, Lesson 2 applies and she substitutes.</p>
+</div>
+
+<div class="nav">
+  <a href="0005-exponential-and-log-limits.html">&larr; Lesson 5 — Exponential and log limits</a>
+  <a href="../index.html">Course home</a>
+  <a href="0007-the-derivative.html">Lesson 7 — The derivative &rarr;</a>
+</div>
+
+<div class="notes">
+<ol>
+  <li id="n1">Scope: CISCE, <i>ISC Mathematics (860), Class XI</i>, Unit 4 — "Notion and
+  meaning of limits". The modulus and greatest integer functions themselves are Unit
+  1(ii). See <a href="../SYLLABUS.md">SYLLABUS.md</a> sections 3 and 5.</li>
+  <li id="n2">Slope of a line: CISCE Class XI, Unit 3(i) Straight Lines.</li>
+  <li>One-sided limit notation and the existence rule: NCERT Class 11 Mathematics,
+  Chapter 12, section 12.3.</li>
+  <li><b>Not taught here, on purpose:</b> continuity and differentiability. Both are
+  Class 12 topics. Exercise 4 above meets the idea without the word, which is
+  deliberate.</li>
+</ol>
+</div>
+
+</div>
+</body>
+</html>

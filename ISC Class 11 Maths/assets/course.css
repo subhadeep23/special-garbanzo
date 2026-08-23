@@ -1,0 +1,328 @@
+/* ============================================================
+   ISC Class 11 Maths — shared course stylesheet
+   Used by every lesson and every reference sheet.
+   No CDN, no fonts to download, no JavaScript needed to render.
+   Works offline. Prints clean on A4.
+   ============================================================ */
+
+:root {
+  --paper:      #fdfcf8;
+  --paper-2:    #f6f3ea;
+  --ink:        #21201c;
+  --ink-soft:   #5c574e;
+  --ink-faint:  #8a8377;
+  --rule:       #dcd6c8;
+  --accent:     #1c4f6b;   /* structure, headings, links      */
+  --accent-2:   #7a4a12;   /* "say it simply" boxes           */
+  --warn:       #9a3412;   /* traps and common mistakes       */
+  --warn-bg:    #fdf3ee;
+  --good:       #14603c;   /* correct, the fix                */
+  --good-bg:    #eef6f1;
+  --hint:       #4c3d78;   /* hints and scaffolds             */
+  --hint-bg:    #f3f1f9;
+  --serif:      "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans:       "Segoe UI", Inter, system-ui, -apple-system, Arial, sans-serif;
+  --mono:       "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace;
+  --measure:    35rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #1a1917; --paper-2: #232120; --ink: #ece7dd; --ink-soft: #b3aa9c;
+    --ink-faint: #857d70; --rule: #3a3733; --accent: #7db8d6; --accent-2: #d9a75f;
+    --warn: #f0a58a; --warn-bg: #2c211d; --good: #86c9a4; --good-bg: #1c2822;
+    --hint: #b6a8e0; --hint-bg: #232135;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1.0625rem/1.65 var(--serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 3rem 1.35rem 5rem; }
+.wrap.wide { max-width: 52rem; }
+
+/* ---------- headings ---------- */
+h1, h2, h3, h4 { font-family: var(--serif); line-height: 1.22; color: var(--ink); }
+h1 { font-size: 2.1rem; margin: .2rem 0 .5rem; letter-spacing: -.01em; }
+h2 {
+  font-size: 1.32rem; margin: 2.6rem 0 .8rem;
+  padding-bottom: .35rem; border-bottom: 1px solid var(--rule);
+}
+h3 { font-size: 1.08rem; margin: 1.7rem 0 .5rem; }
+h4 { font-size: .97rem; margin: 1.2rem 0 .35rem; color: var(--ink-soft); }
+
+.eyebrow {
+  font: 600 .7rem/1 var(--sans); letter-spacing: .13em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 .7rem;
+}
+.sub { font-size: 1.06rem; color: var(--ink-soft); font-style: italic; margin: 0 0 1.8rem; }
+
+p { margin: 0 0 1.05rem; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+strong { font-weight: 700; }
+ul, ol { margin: 0 0 1.05rem; padding-left: 1.35rem; }
+li { margin-bottom: .38rem; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.4rem 0; }
+
+/* ---------- the "why this lesson" strip ---------- */
+.mission {
+  font: .84rem/1.5 var(--sans); color: var(--ink-soft);
+  background: var(--paper-2); border-left: 3px solid var(--accent);
+  padding: .7rem .95rem; margin: 0 0 2rem; border-radius: 0 4px 4px 0;
+}
+.mission b { color: var(--ink); }
+
+/* ============================================================
+   MATHS RENDERING — pure CSS. No library.
+   <span class="f"><span class="n">top</span><span class="d">bottom</span></span>
+   <span class="lim">lim<span class="to">x &rarr; 3</span></span>
+   <span class="rt">&radic;<span class="ov">x+3</span></span>
+   .mth = display maths on its own centred line
+   ============================================================ */
+i, .v { font-style: italic; font-family: var(--serif); }
+
+.mth {
+  text-align: center; font-size: 1.16rem; line-height: 2.5;
+  margin: 1.25rem 0; overflow-x: auto; padding: .15rem 0;
+}
+.mth.left { text-align: left; }
+
+.f { display: inline-block; vertical-align: middle; text-align: center; margin: 0 .18em; }
+.f > .n { display: block; border-bottom: 1.1px solid currentColor; padding: 0 .3em .08em; }
+.f > .d { display: block; padding: .08em .3em 0; }
+
+.lim { display: inline-block; text-align: center; vertical-align: middle; margin-right: .3em; }
+.lim > .to { display: block; font-size: .66em; line-height: 1.1; white-space: nowrap; }
+
+.rt { white-space: nowrap; }
+.rt > .ov { border-top: 1.1px solid currentColor; padding: .1em .18em 0 .05em; }
+
+sup, sub { font-size: .72em; line-height: 0; }
+
+/* small inline result chip, e.g. = 6 */
+.res { font-weight: 700; color: var(--good); }
+
+/* ---------- "say it simply" — the plain-language core ---------- */
+.plain {
+  background: var(--paper-2); border: 1px solid var(--rule);
+  border-radius: 6px; padding: 1.05rem 1.2rem; margin: 1.5rem 0;
+}
+.plain > .tag {
+  display: block; font: 600 .68rem/1 var(--sans); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent-2); margin-bottom: .5rem;
+}
+.plain p:last-child { margin-bottom: 0; }
+.plain .big { font-size: 1.14rem; }
+
+/* ---------- the kitchen frame — her own analogy, used in every lesson ----------
+   She understands a function as a recipe and a limit as tasting while cooking.
+   This box holds that picture and nothing else, so she can find it on any page.
+   Keep the vocabulary fixed. See reference/kitchen-dictionary.html.           */
+.kitchen {
+  background: var(--paper-2);
+  border: 1px dashed var(--accent-2);
+  border-radius: 6px; padding: 1rem 1.15rem; margin: 1.5rem 0;
+}
+.kitchen > .tag {
+  display: block; font: 700 .68rem/1 var(--sans); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent-2); margin-bottom: .5rem;
+}
+.kitchen > .tag::before { content: "\1F944\00A0\00A0"; }
+.kitchen > :last-child { margin-bottom: 0; }
+.kitchen .big { font-size: 1.1rem; }
+.kitchen table.ref { margin: .8rem 0 .2rem; }
+
+/* one-line kitchen translation inside a row of the misconception map */
+p.kit {
+  background: var(--paper-2); border-left: 3px solid var(--accent-2);
+  border-radius: 0 4px 4px 0; padding: .55rem .8rem; margin: .8rem 0;
+  font-size: .97rem;
+}
+p.kit b { color: var(--accent-2); }
+p.kit::before { content: "\1F944\00A0\00A0"; }
+
+/* ---------- numbered move cards ---------- */
+.move {
+  display: grid; grid-template-columns: 2.1rem 1fr; gap: 0 .85rem;
+  margin: 1.4rem 0; padding-bottom: 1.1rem; border-bottom: 1px dashed var(--rule);
+}
+.move:last-of-type { border-bottom: 0; }
+.move > .num {
+  font: 700 1rem/1.9 var(--sans); text-align: center;
+  color: var(--paper); background: var(--accent); border-radius: 50%;
+  width: 2.1rem; height: 2.1rem;
+}
+.move > .body > :first-child { margin-top: 0; }
+.move > .body > h3 { margin-top: 0; }
+
+/* ---------- worked example ---------- */
+.worked {
+  border: 1px solid var(--rule); border-radius: 6px;
+  margin: 1.5rem 0; overflow: hidden;
+}
+.worked > .head {
+  font: 600 .78rem/1 var(--sans); letter-spacing: .06em; text-transform: uppercase;
+  background: var(--paper-2); color: var(--ink-soft);
+  padding: .6rem .95rem; border-bottom: 1px solid var(--rule);
+}
+.worked > .body { padding: .9rem 1.1rem; }
+.worked > .body > :last-child { margin-bottom: 0; }
+.step { font: .82rem/1.5 var(--sans); color: var(--ink-soft); margin: .1rem 0 -.4rem; }
+
+/* ---------- traps and fixes ---------- */
+.trap, .fix {
+  border-radius: 6px; padding: .95rem 1.15rem; margin: 1.3rem 0;
+  font-size: 1rem;
+}
+.trap { background: var(--warn-bg); border-left: 3px solid var(--warn); }
+.fix  { background: var(--good-bg); border-left: 3px solid var(--good); }
+.trap > .tag, .fix > .tag {
+  display: block; font: 700 .69rem/1 var(--sans); letter-spacing: .1em;
+  text-transform: uppercase; margin-bottom: .45rem;
+}
+.trap > .tag { color: var(--warn); }
+.fix  > .tag { color: var(--good); }
+.trap > :last-child, .fix > :last-child { margin-bottom: 0; }
+
+/* ---------- hints: progressive scaffold ---------- */
+details.hint {
+  background: var(--hint-bg); border: 1px solid var(--rule);
+  border-radius: 5px; padding: .5rem .8rem; margin: .5rem 0;
+  font-size: .97rem;
+}
+details.hint > summary {
+  cursor: pointer; font: 600 .8rem/1.4 var(--sans);
+  color: var(--hint); list-style: none;
+}
+details.hint > summary::-webkit-details-marker { display: none; }
+details.hint > summary::before { content: "\25B8  "; }
+details.hint[open] > summary::before { content: "\25BE  "; }
+details.hint[open] > summary { margin-bottom: .5rem; }
+details.hint > :last-child { margin-bottom: 0; }
+details.hint.sol { background: var(--good-bg); }
+details.hint.sol > summary { color: var(--good); }
+
+/* ---------- drills: type the answer, get instant feedback ---------- */
+.drill { margin: 1.4rem 0; }
+.drill > table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+.drill td { padding: .5rem .5rem .5rem 0; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+.drill td.q { width: 58%; }
+.drill td.n { width: 2rem; color: var(--ink-faint); font: .82rem/1 var(--sans); }
+.drill input {
+  font: 1rem var(--mono); width: 100%; max-width: 10rem;
+  padding: .32rem .5rem; border: 1px solid var(--rule); border-radius: 4px;
+  background: var(--paper); color: var(--ink);
+}
+.drill input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.drill input.ok  { border-color: var(--good); background: var(--good-bg); }
+.drill input.no  { border-color: var(--warn); background: var(--warn-bg); }
+.mark { font: 700 1.05rem/1 var(--sans); margin-left: .5rem; }
+.mark.ok { color: var(--good); }
+.mark.no { color: var(--warn); }
+.why {
+  font: .82rem/1.45 var(--sans); color: var(--warn);
+  margin: .3rem 0 0; display: none;
+}
+.why.show { display: block; }
+.score {
+  font: 600 .85rem/1 var(--sans); color: var(--ink-soft);
+  margin-top: .9rem; padding-top: .7rem; border-top: 2px solid var(--rule);
+}
+
+/* ---------- exercise sets ---------- */
+.exset { margin: 1.3rem 0; }
+.exset > ol { padding-left: 1.5rem; }
+.exset > ol > li { margin-bottom: .85rem; }
+.pill {
+  display: inline-block; font: 700 .63rem/1 var(--sans); letter-spacing: .08em;
+  text-transform: uppercase; padding: .28rem .5rem; border-radius: 3px;
+  vertical-align: .12em; margin-right: .45rem;
+}
+.pill.easy    { background: #e3f0e8; color: #14603c; }
+.pill.med     { background: #fdf0dc; color: #7a4a12; }
+.pill.hard    { background: #fbe4dc; color: #9a3412; }
+.pill.stretch { background: #e9e5f7; color: #4c3d78; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .pill.easy    { background: #1c2822; color: #86c9a4; }
+  :root:not([data-theme="light"]) .pill.med     { background: #2c2519; color: #d9a75f; }
+  :root:not([data-theme="light"]) .pill.hard    { background: #2c211d; color: #f0a58a; }
+  :root:not([data-theme="light"]) .pill.stretch { background: #232135; color: #b6a8e0; }
+}
+
+/* ---------- tables (reference sheets) ---------- */
+table.ref { width: 100%; border-collapse: collapse; font-size: .96rem; margin: 1.2rem 0; }
+table.ref th {
+  text-align: left; font: 600 .72rem/1.3 var(--sans); letter-spacing: .07em;
+  text-transform: uppercase; color: var(--ink-soft);
+  border-bottom: 2px solid var(--rule); padding: .55rem .6rem .45rem 0;
+  vertical-align: bottom;
+}
+table.ref td { border-bottom: 1px solid var(--rule); padding: .62rem .6rem .62rem 0; vertical-align: top; }
+table.ref tr:last-child td { border-bottom: 0; }
+.scroll { overflow-x: auto; }
+
+/* ---------- source + community boxes ---------- */
+.src, .ask {
+  font: .9rem/1.55 var(--sans); border: 1px solid var(--rule);
+  border-radius: 6px; padding: .9rem 1.1rem; margin: 1.6rem 0;
+}
+.src { background: var(--paper-2); }
+.src > .tag, .ask > .tag {
+  display: block; font: 700 .68rem/1 var(--sans); letter-spacing: .11em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: .45rem;
+}
+.src > :last-child, .ask > :last-child { margin-bottom: 0; }
+.ask { border-style: dashed; }
+.ask > .tag { color: var(--accent-2); }
+
+/* ---------- citations ---------- */
+.cite { font: .68rem/1 var(--sans); vertical-align: super; color: var(--accent); text-decoration: none; }
+.notes { font: .84rem/1.5 var(--sans); color: var(--ink-soft); margin-top: 2.6rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.notes ol { padding-left: 1.3rem; }
+.notes li { margin-bottom: .45rem; }
+
+/* ---------- navigation ---------- */
+.nav {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  font: .85rem/1.4 var(--sans); margin-top: 3rem; padding-top: 1.1rem;
+  border-top: 2px solid var(--rule);
+}
+.nav a { text-decoration: none; }
+.nav a:hover { text-decoration: underline; }
+
+.tocgrid { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); margin: 1.3rem 0; }
+.tocgrid a {
+  display: block; text-decoration: none; border: 1px solid var(--rule);
+  border-radius: 6px; padding: .8rem .95rem; background: var(--paper-2);
+}
+.tocgrid a:hover { border-color: var(--accent); }
+.tocgrid .k { display: block; font: 600 .66rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: .35rem; }
+.tocgrid .t { display: block; font-size: 1.02rem; color: var(--ink); }
+
+/* ---------- print: A4, teacher's copy shows everything ---------- */
+@media print {
+  @page { size: A4; margin: 15mm 16mm; }
+  :root {
+    --paper: #fff; --paper-2: #f6f6f6; --ink: #000; --ink-soft: #333;
+    --rule: #bbb; --accent: #000; --accent-2: #000; --warn: #000; --good: #000;
+    --hint: #000; --warn-bg: #f7f7f7; --good-bg: #f7f7f7; --hint-bg: #f7f7f7;
+  }
+  body { font-size: 10.5pt; background: #fff; }
+  .wrap { max-width: 100%; padding: 0; }
+  .nav, .score, button { display: none !important; }
+  details.hint { border: 1px solid #bbb; }
+  details.hint > summary { color: #000; }
+  h2, h3 { page-break-after: avoid; }
+  .worked, .move, .trap, .fix, .plain, .kitchen, .drill tr { page-break-inside: avoid; }
+  .kitchen { border: 1px dashed #999; }
+  p.kit { border-left: 3px solid #999; page-break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .drill input { border-bottom: 1px solid #000; border-top: 0; border-left: 0; border-right: 0; border-radius: 0; }
+}

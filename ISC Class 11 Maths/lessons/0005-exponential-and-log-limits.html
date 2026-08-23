@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 5 — Exponential and logarithmic limits</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/check.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">ISC Class 11 · Unit 4 Calculus · Lesson 5 of 8</p>
+<h1>Exponential and logarithmic limits</h1>
+<p class="sub">Three more recipes she knows by heart. The technique is the one she already has from Lesson 4.</p>
+
+<p class="mission"><b>Why this lesson.</b> The board names exponential and logarithmic
+limits in the topic text for Unit 4.<a class="cite" href="#n1">1</a> They cost 30
+minutes, because the method is not new — it is Lesson 4 again, with three new standard
+forms. Teach nothing new here except the three forms. Everything else is revision, and
+she should be told that at the start, so she does not brace for a hard lesson.</p>
+
+<div class="plain">
+  <span class="tag">Say it simply</span>
+  <p class="big">These three results are given. She does not derive them. She learns
+  to <b>recognise</b> them and to <b>force the match</b>, exactly as she did with
+  sin&nbsp;<i>x</i>/<i>x</i>.</p>
+</div>
+
+<div class="kitchen">
+  <span class="tag">The same idea in her kitchen</span>
+  <p class="big">Lesson 4 gave her one recipe she knows by heart. This lesson gives her
+  three more. <b>The cooking method does not change.</b> Only the number of memorised
+  recipes changes.</p>
+  <p>Every one of them is written for a <b>pinch</b> — the ingredient must go to zero.
+  Every one of them wants <b>the same ingredient on the top and on the bottom</b>. When
+  they do not match, she scales the measuring cup until they do, exactly as before.</p>
+  <p><b>Why this lesson is short:</b> she is not learning to cook a new dish. She is
+  adding three cards to a recipe box she already knows how to use. Say that to her in
+  the first minute of the session.</p>
+</div>
+
+<h2>The three standard forms</h2>
+
+<div class="plain">
+  <span class="tag">Learn these three exactly</span>
+  <p class="mth left">
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+    <span class="f"><span class="n"><i>e</i><sup><i>x</i></sup> &minus; 1</span><span class="d"><i>x</i></span></span>
+    = <span class="res">1</span>
+  </p>
+  <p class="mth left">
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+    <span class="f"><span class="n"><i>a</i><sup><i>x</i></sup> &minus; 1</span><span class="d"><i>x</i></span></span>
+    = <span class="res">log<sub><i>e</i></sub> <i>a</i></span>
+    &nbsp;&nbsp;(for <i>a</i> &gt; 0)
+  </p>
+  <p class="mth left">
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+    <span class="f"><span class="n">log<sub><i>e</i></sub>(1 + <i>x</i>)</span><span class="d"><i>x</i></span></span>
+    = <span class="res">1</span>
+  </p>
+  <p>The first is a special case of the second, because log<sub><i>e</i></sub> <i>e</i>
+  = 1. Show her that once. Two of the three then collapse into one thing to remember.</p>
+</div>
+
+<div class="fix">
+  <span class="tag">The shape they share — this is the whole lesson</span>
+  <p>Look at all three. Each one is</p>
+  <p class="mth left">
+    <span class="f"><span class="n">(something that becomes 0)</span><span class="d">(the same something)</span></span>
+    &nbsp;&rarr;&nbsp; a fixed number
+  </p>
+  <p>That is the identical shape as sin&nbsp;<i>x</i>/<i>x</i>. So the identical
+  technique works: <b>check the ingredient goes to zero, then force the match.</b>
+  She has no new skill to learn today.</p>
+</div>
+
+<div class="trap">
+  <span class="tag">Notation — settle this before any sum</span>
+  <p>In this unit <b>log <i>x</i> always means log<sub><i>e</i></sub> <i>x</i></b>, the
+  natural logarithm. Some books write it ln <i>x</i>. NCERT and ISC write log <i>x</i>
+  and mean base <i>e</i>. If a question ever means base 10, it says
+  log<sub>10</sub> explicitly.</p>
+  <p>She must also know log 1 = 0. That single fact is why the third form is a 0/0 and
+  not something else. Make her check it: at <i>x</i> = 0 the top is log(1 + 0) = log 1
+  = 0, and the bottom is 0. So it is 0/0, and a standard form is allowed.</p>
+</div>
+
+<h2>Force the match — three worked examples</h2>
+
+<div class="worked">
+  <div class="head">Worked example 1 — the coefficient does not match</div>
+  <div class="body">
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n"><i>e</i><sup>5<i>x</i></sup> &minus; 1</span><span class="d"><i>x</i></span></span>
+    </p>
+    <p class="step">Step 1 — substitute first, as always. Top: <i>e</i><sup>0</sup> &minus; 1 = 0. Bottom: 0. So it is 0/0, and a standard form is allowed.</p>
+    <p class="step">Step 2 — the recipe wants 5<i>x</i> on the bottom. Put it there, and multiply by 5 outside.</p>
+    <p class="mth left">
+      = <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n"><i>e</i><sup>5<i>x</i></sup> &minus; 1</span><span class="d">5<i>x</i></span></span>
+      &times; 5
+      = 1 &times; 5 = <span class="res">5</span>
+    </p>
+    <p class="step">Step 3 — say why the standard form applied: as <i>x</i> &rarr; 0, the quantity 5<i>x</i> &rarr; 0 too. Both conditions hold.</p>
+  </div>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 2 — base <i>a</i>, not base <i>e</i></div>
+  <div class="body">
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n">3<sup>2<i>x</i></sup> &minus; 1</span><span class="d"><i>x</i></span></span>
+    </p>
+    <p class="step">Step 1 — substitute: 3<sup>0</sup> &minus; 1 = 0 over 0. It is 0/0.</p>
+    <p class="step">Step 2 — force the match to 2<i>x</i>.</p>
+    <p class="mth left">
+      = <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n">3<sup>2<i>x</i></sup> &minus; 1</span><span class="d">2<i>x</i></span></span>
+      &times; 2
+      = (log<sub><i>e</i></sub> 3) &times; 2 = <span class="res">2 log<sub><i>e</i></sub> 3</span>
+    </p>
+    <p>She may also write the answer as log<sub><i>e</i></sub> 9, because
+    2 log 3 = log 3<sup>2</sup>. Both earn the mark. Encourage the second form only if
+    she is fluent with log laws, and never at the cost of a slip.</p>
+  </div>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 3 — a ratio of two standard forms</div>
+  <div class="body">
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n"><i>e</i><sup>4<i>x</i></sup> &minus; 1</span><span class="d">log<sub><i>e</i></sub>(1 + 3<i>x</i>)</span></span>
+    </p>
+    <p class="step">Step 1 — substitute: 0 on top, log 1 = 0 on the bottom. So 0/0.</p>
+    <p class="step">Step 2 — neither part matches. Divide the top and the bottom by <i>x</i>, so that each becomes a standard form on its own.</p>
+    <p class="mth left">
+      = <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f">
+        <span class="n">(<i>e</i><sup>4<i>x</i></sup> &minus; 1) &divide; <i>x</i></span>
+        <span class="d">log<sub><i>e</i></sub>(1 + 3<i>x</i>) &divide; <i>x</i></span>
+      </span>
+      = <span class="f"><span class="n">4</span><span class="d">3</span></span>
+      = <span class="res"><span class="f"><span class="n">4</span><span class="d">3</span></span></span>
+    </p>
+    <p>The top forces to 4<i>x</i> and gives 4. The bottom forces to 3<i>x</i> and gives
+    3. Then the quotient law finishes it, because the bottom limit 3 is not zero.
+    <b>Two standard forms in one sum is the normal ISC question shape.</b></p>
+  </div>
+</div>
+
+<h2>The two limits that define <i>e</i></h2>
+
+<p>Two more results appear in textbooks. She should recognise them and not fear them.
+ISC Class 11 rarely asks them directly.</p>
+
+<p class="mth">
+  <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>(1 + <i>x</i>)<sup>1/<i>x</i></sup>
+  = <span class="res"><i>e</i></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span class="lim">lim<span class="to"><i>x</i>&rarr;&infin;</span></span>
+  (1 + <span class="f"><span class="n">1</span><span class="d"><i>x</i></span></span>)<sup><i>x</i></sup>
+  = <span class="res"><i>e</i></span>
+</p>
+
+<p>These two are the <b>definition</b> of the number <i>e</i>, not a result to derive.
+<i>e</i> = 2.71828… Tell her that, show her the two forms once, and move on. Spending a
+session here earns nothing.</p>
+
+<h2>Limits at infinity — the <span class="f"><span class="n">&infin;</span><span class="d">&infin;</span></span> form</h2>
+
+<p>Lesson 2 promised this form here. It appears when <i>x</i> &rarr; &infin; in a
+rational function. There is one move, and it always works.</p>
+
+<div class="plain">
+  <span class="tag">The move — divide by the highest power in the denominator</span>
+  <p>Then use the single fact that carries every one of these sums:</p>
+  <p class="mth left">
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;&infin;</span></span>
+    <span class="f"><span class="n">1</span><span class="d"><i>x</i><sup><i>n</i></sup></span></span>
+    = <span class="res">0</span> &nbsp;&nbsp; for every <i>n</i> &gt; 0
+  </p>
+</div>
+
+<div class="worked">
+  <div class="head">Worked example 4</div>
+  <div class="body">
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;&infin;</span></span>
+      <span class="f"><span class="n">3<i>x</i><sup>2</sup> + 5<i>x</i> &minus; 1</span><span class="d">7<i>x</i><sup>2</sup> &minus; 2</span></span>
+    </p>
+    <p class="step">Step 1 — the highest power on the bottom is <i>x</i><sup>2</sup>. Divide every term, top and bottom, by <i>x</i><sup>2</sup>.</p>
+    <p class="mth left">
+      = <span class="lim">lim<span class="to"><i>x</i>&rarr;&infin;</span></span>
+      <span class="f">
+        <span class="n">3 + 5/<i>x</i> &minus; 1/<i>x</i><sup>2</sup></span>
+        <span class="d">7 &minus; 2/<i>x</i><sup>2</sup></span>
+      </span>
+      = <span class="f"><span class="n">3 + 0 &minus; 0</span><span class="d">7 &minus; 0</span></span>
+      = <span class="res"><span class="f"><span class="n">3</span><span class="d">7</span></span></span>
+    </p>
+  </div>
+</div>
+
+<div class="fix">
+  <span class="tag">The shortcut, once she has done five by hand</span>
+  <p>Compare the highest power on the top with the highest power on the bottom.</p>
+  <div class="scroll">
+  <table class="ref">
+  <tr><th>Case</th><th>Answer</th><th>Why</th></tr>
+  <tr><td>Top power &lt; bottom power</td><td><b>0</b></td><td>The bottom grows faster, so the fraction shrinks</td></tr>
+  <tr><td>Top power = bottom power</td><td><b>Ratio of the leading coefficients</b></td><td>They grow at the same rate</td></tr>
+  <tr><td>Top power &gt; bottom power</td><td><b>Does not exist</b></td><td>It grows without bound. Say &rarr; &infin; as a description</td></tr>
+  </table>
+  </div>
+  <p><b>She must still show the dividing step in the answer.</b> The shortcut is for
+  checking her answer, never for replacing the working. ISC marks the method.</p>
+</div>
+
+<div class="trap">
+  <span class="tag">The three mistakes this lesson prevents</span>
+  <p><b>1.</b> She writes
+  <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+  <span class="f"><span class="n"><i>e</i><sup>5<i>x</i></sup>&minus;1</span><span class="d"><i>x</i></span></span>
+  = 1, because "that is the formula".<br>
+  <b>The real gap:</b> she matched the shape and not the ingredient. The formula needs
+  the same quantity on the top and the bottom. This is the identical error as
+  sin&nbsp;3<i>x</i>/<i>x</i> = 1 from Lesson 4, so name it as the same error, not a
+  new one.</p>
+  <p><b>2.</b> She writes
+  <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+  <span class="f"><span class="n">log <i>x</i></span><span class="d"><i>x</i></span></span>
+  = 1.<br>
+  <b>The real gap:</b> the standard form is log(1 + <i>x</i>), not log <i>x</i>. At
+  <i>x</i> = 0, log <i>x</i> is not even defined — 0 is outside the domain of the log.
+  In her words: <b>the recipe rejects that ingredient.</b></p>
+  <p><b>3.</b> She treats &infin; as a number and writes &infin;/&infin; = 1.<br>
+  <b>The real gap:</b> the same gap as 0/0 = 1 from Lesson 2. It is an indeterminate
+  form, so it carries no information. She divides by the highest power instead.</p>
+</div>
+
+<h2>Warm-up drill A — name the form and the match</h2>
+
+<p>Write only the number that the bottom must become, so that the standard form
+applies. For example, for (<i>e</i><sup>7<i>x</i></sup>&minus;1)/<i>x</i> the bottom
+must become 7<i>x</i>, so she writes <code>7x</code>.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td>
+  <td class="q"><span class="f"><span class="n"><i>e</i><sup>2<i>x</i></sup>&minus;1</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="2x" data-why="The ingredient in the exponent is 2x, so the bottom must be 2x. Multiply outside by 2 to keep the value unchanged."></td></tr>
+<tr><td class="n">2</td>
+  <td class="q"><span class="f"><span class="n">log(1+9<i>x</i>)</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="9x" data-why="Inside the log the ingredient is 9x, so the bottom must be 9x. The answer will be 9."></td></tr>
+<tr><td class="n">3</td>
+  <td class="q"><span class="f"><span class="n">5<sup><i>x</i>/2</sup>&minus;1</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="x/2|0.5x|(1/2)x" data-why="The exponent is x/2, so the bottom must be x/2. The answer will be (1/2) log 5."></td></tr>
+<tr><td class="n">4</td>
+  <td class="q"><span class="f"><span class="n"><i>e</i><sup><i>x</i></sup>&minus;1</span><span class="d">3<i>x</i></span></span></td>
+  <td><input data-a="x" data-why="The exponent is already x, so the bottom must be x. Here she pulls the 3 out as a constant instead: the answer is 1/3."></td></tr>
+<tr><td class="n">5</td>
+  <td class="q"><span class="f"><span class="n"><i>e</i><sup><i>x</i><sup>2</sup></sup>&minus;1</span><span class="d"><i>x</i><sup>2</sup></span></span></td>
+  <td><input data-a="x^2|x2|xsquared|x²" data-why="The ingredient is x², and the bottom is already x². It matches, so the answer is 1. As x → 0, x² → 0 as well, so the condition holds."></td></tr>
+</table>
+</div>
+
+<h2>Warm-up drill B — now compute</h2>
+
+<p>Every limit here is as <i>x</i> &rarr; 0 unless it says otherwise. Write
+<code>log 3</code> for log<sub><i>e</i></sub> 3.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><i>e</i><sup>3<i>x</i></sup>&minus;1</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="3" data-why="Force the bottom to 3x and multiply by 3 outside: 1 × 3 = 3."></td></tr>
+<tr><td class="n">2</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">log(1+4<i>x</i>)</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="4" data-why="Force the bottom to 4x and multiply by 4 outside: 1 × 4 = 4."></td></tr>
+<tr><td class="n">3</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">2<sup><i>x</i></sup>&minus;1</span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="log2|loge2|ln2|log(2)" data-why="This is the a^x form exactly as written, so the answer is log₍e₎ 2. Do not write 1 — that is only for base e."></td></tr>
+<tr><td class="n">4</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><i>e</i><sup><i>x</i></sup>&minus;1</span><span class="d">5<i>x</i></span></span></td>
+  <td><input data-a="1/5|0.2" data-why="Take 1/5 outside as a constant. The rest is the standard form and gives 1. So the answer is 1/5."></td></tr>
+<tr><td class="n">5</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><i>e</i><sup>2<i>x</i></sup>&minus;1</span><span class="d">log(1+3<i>x</i>)</span></span></td>
+  <td><input data-a="2/3" data-why="Divide top and bottom by x. The top gives 2, the bottom gives 3, so the answer is 2/3."></td></tr>
+<tr><td class="n">6</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">3<sup><i>x</i></sup>&minus;1</span><span class="d">2<sup><i>x</i></sup>&minus;1</span></span></td>
+  <td><input data-a="log3/log2|(log3)/(log2)|log(3)/log(2)|ln3/ln2" data-why="Divide top and bottom by x. Each becomes an a^x standard form, giving (log 3)/(log 2)."></td></tr>
+<tr><td class="n">7</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;&infin;</span></span><span class="f"><span class="n">5<i>x</i>+2</span><span class="d">2<i>x</i>&minus;7</span></span></td>
+  <td><input data-a="5/2|2.5" data-why="Equal highest powers, so the answer is the ratio of the leading coefficients: 5/2. Show the dividing-by-x step in the written answer."></td></tr>
+<tr><td class="n">8</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;&infin;</span></span><span class="f"><span class="n">4<i>x</i>+1</span><span class="d"><i>x</i><sup>2</sup>+3</span></span></td>
+  <td><input data-a="0" data-why="The bottom power is higher, so the bottom grows faster and the fraction shrinks to 0."></td></tr>
+<tr><td class="n">9</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">sin 2<i>x</i></span><span class="d"><i>e</i><sup>3<i>x</i></sup>&minus;1</span></span></td>
+  <td><input data-a="2/3" data-why="Divide top and bottom by x. The top is a Lesson 4 form and gives 2. The bottom gives 3. So the answer is 2/3. Standard forms mix freely."></td></tr>
+<tr><td class="n">10</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><i>e</i><sup><i>x</i></sup>&minus;1</span><span class="d"><i>x</i>+2</span></span></td>
+  <td><input data-a="0" data-why="Substitute first. The top is 0 and the bottom is 2, so it is 0/2 = 0. No standard form is needed. Always substitute before reaching for a formula."></td></tr>
+</table>
+</div>
+
+<h2>Exercise set</h2>
+
+<div class="exset">
+<ol>
+
+<li><span class="pill easy">Easy</span>
+Evaluate
+<span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n"><i>e</i><sup>7<i>x</i></sup> &minus; 1</span><span class="d"><i>x</i></span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>
+A single standard form with a coefficient that does not match.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Put 7<i>x</i> on the bottom and multiply by 7 outside.</details>
+<details class="hint sol"><summary>Answer</summary>
+= <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n"><i>e</i><sup>7<i>x</i></sup>&minus;1</span><span class="d">7<i>x</i></span></span> &times; 7
+= 1 &times; 7 = <b>7</b>.</details>
+</li>
+
+<li><span class="pill easy">Easy</span>
+Evaluate
+<span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">log(1 + 5<i>x</i>)</span><span class="d">2<i>x</i></span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>
+A log standard form, with a constant on the bottom as well as a mismatch.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Handle the two separately: take 1/2 outside as a constant, then force the match to 5<i>x</i>.</details>
+<details class="hint sol"><summary>Answer</summary>
+= <span class="f"><span class="n">1</span><span class="d">2</span></span> &times;
+<span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">log(1+5<i>x</i>)</span><span class="d">5<i>x</i></span></span> &times; 5
+= <span class="f"><span class="n">1</span><span class="d">2</span></span> &times; 1 &times; 5
+= <b>5/2</b>.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Evaluate
+<span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">4<sup><i>x</i></sup> &minus; 3<sup><i>x</i></sup></span><span class="d"><i>x</i></span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>
+Two exponentials in a difference. Neither one is a standard form on its own, because
+neither has a &minus; 1.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Add and subtract 1 on the top. That splits it into two standard forms.</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>
+4<sup><i>x</i></sup> &minus; 3<sup><i>x</i></sup> = (4<sup><i>x</i></sup> &minus; 1)
+&minus; (3<sup><i>x</i></sup> &minus; 1)</details>
+<details class="hint sol"><summary>Answer</summary>
+Split it: = <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">4<sup><i>x</i></sup>&minus;1</span><span class="d"><i>x</i></span></span>
+&minus; <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">3<sup><i>x</i></sup>&minus;1</span><span class="d"><i>x</i></span></span>
+= log 4 &minus; log 3 = <b>log(4/3)</b>.<br>
+<b>Learn the move, not the answer.</b> "Add and subtract 1" is the standard trick for
+every difference of two exponentials, and ISC likes it.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Evaluate
+<span class="lim">lim<span class="to"><i>x</i>&rarr;&infin;</span></span>
+<span class="f"><span class="n">(2<i>x</i> &minus; 1)<sup>2</sup>(3<i>x</i> + 4)</span><span class="d">6<i>x</i><sup>3</sup> + <i>x</i> &minus; 5</span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>
+A limit at infinity. Find the highest power on the top without expanding everything.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+The top has degree 2 + 1 = 3. The bottom has degree 3. They are equal, so use the
+leading coefficients only.</details>
+<details class="hint sol"><summary>Answer</summary>
+Leading term on the top: (2<i>x</i>)<sup>2</sup>(3<i>x</i>) = 12<i>x</i><sup>3</sup>.
+Leading term on the bottom: 6<i>x</i><sup>3</sup>. Equal degrees, so the limit is
+12/6 = <b>2</b>.<br>
+In the written answer, divide the top and the bottom by <i>x</i><sup>3</sup> and show
+that every remaining term with an <i>x</i> underneath goes to 0.</details>
+</li>
+
+<li><span class="pill hard">Hard</span>
+Evaluate
+<span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n"><i>e</i><sup>3<i>x</i></sup> &minus; <i>e</i><sup>2<i>x</i></sup></span><span class="d">sin 4<i>x</i></span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>
+A difference of exponentials on the top, a Lesson 4 form on the bottom. Substitution
+gives 0/0.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Two choices for the top. Either add and subtract 1, or take <i>e</i><sup>2<i>x</i></sup>
+out as a common factor. Then divide the whole thing by <i>x</i>.</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>
+Divide the top and the bottom by <i>x</i>, then write the top as
+<span class="f"><span class="n"><i>e</i><sup>3<i>x</i></sup>&minus;1</span><span class="d"><i>x</i></span></span>
+&minus;
+<span class="f"><span class="n"><i>e</i><sup>2<i>x</i></sup>&minus;1</span><span class="d"><i>x</i></span></span>.</details>
+<details class="hint sol"><summary>Answer</summary>
+Top &divide; <i>x</i> &rarr; 3 &minus; 2 = 1. Bottom &divide; <i>x</i>:
+sin 4<i>x</i>/<i>x</i> &rarr; 4. So the answer is <b>1/4</b>.<br>
+The quotient law applies because the bottom limit 4 is not zero. Say that in the
+answer — it is a mark.</details>
+</li>
+
+<li><span class="pill stretch">Stretch</span>
+A student says: "log(1 + <i>x</i>)/<i>x</i> &rarr; 1, so for very small <i>x</i> we
+may write log(1 + <i>x</i>) &asymp; <i>x</i>." Is that a legitimate statement? Use it
+to predict log(1.002), then check the prediction on a calculator.
+<details class="hint"><summary>Hint 1 — the type</summary>
+A question about what a limit actually claims. It is a reasoning question, and the
+calculator is the evidence.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>
+Write 1.002 as 1 + 0.002. So the prediction is log(1.002) &asymp; 0.002.</details>
+<details class="hint sol"><summary>Answer</summary>
+<b>Yes, it is legitimate as an approximation for small <i>x</i>, and no, it is not an
+equation.</b> The limit says the ratio heads to 1, so the two quantities become close
+<i>relative to each other</i> as <i>x</i> shrinks. It never says they are equal.<br>
+Prediction: 0.002. Calculator: log<sub><i>e</i></sub>(1.002) = 0.0019980…<br>
+The prediction is right to five decimal places at <i>x</i> = 0.002, and it gets worse
+as <i>x</i> grows: at <i>x</i> = 1, log 2 = 0.693, not 1.<br><br>
+<b>Why this matters.</b> Every standard limit in this pack is exactly this kind of
+statement — a claim about behaviour <i>near</i> a point, never an identity. The same
+reading applies to sin <i>x</i> &asymp; <i>x</i> from Lesson 4.</details>
+</li>
+
+</ol>
+</div>
+
+<div class="fix">
+  <span class="tag">Close the lesson — she says this, not you</span>
+  <p>"There are three more standard forms: <i>e</i><sup><i>x</i></sup>&minus;1 over
+  <i>x</i> goes to 1, <i>a</i><sup><i>x</i></sup>&minus;1 over <i>x</i> goes to log
+  <i>a</i>, and log(1+<i>x</i>) over <i>x</i> goes to 1. I use them the same way as
+  sin <i>x</i>/<i>x</i>: substitute first, check the ingredient goes to zero, then
+  force the match."</p>
+  <p>Her kitchen version: <i>"Three more cards for the recipe box. Same box, same
+  method. Each one is written for a pinch, and each one wants the same ingredient top
+  and bottom."</i></p>
+</div>
+
+<div class="src">
+  <span class="tag">Read this before the next lesson</span>
+  <p><b>Primary source:</b>
+  <a href="https://openstax.org/books/calculus-volume-1/pages/2-2-the-limit-of-a-function">OpenStax, <i>Calculus Volume 1</i>, section 2.2</a>
+  for one-sided limits, which Lesson 6 needs. For the exponential and log forms
+  themselves, the cleanest short treatment is
+  <a href="https://tutorial.math.lamar.edu/classes/calci/ComputingLimits.aspx">Paul's Online Notes — Computing Limits</a>.</p>
+  <p><b>Written homework:</b> the exponential and log forms are not in NCERT Chapter 12
+  in the rationalised edition. Use the six exercise sums above, then a school textbook
+  set if she wants more. <b>Do not spend more than 30 minutes here</b> — the marks are
+  in Lessons 3, 4, and 7.</p>
+  <p><b>Before the next lesson</b>, check she can sketch <i>y</i> = |<i>x</i>| and can
+  evaluate [2.7] and [&minus;2.7]. If not, revise the modulus and greatest integer
+  functions from Unit 1(ii) first.<a class="cite" href="#n2">2</a></p>
+</div>
+
+<div class="ask">
+  <span class="tag">If anything here is unclear</span>
+  <p>Ask. The one question worth asking early: <i>"why is the answer log <i>a</i> and
+  not 1?"</i> The short answer is that <i>e</i> is the one base where the growth rate
+  at the start is exactly 1, and every other base is that rate scaled by log <i>a</i>.
+  She does not need to prove that. She needs to stop writing 1 for base 2.</p>
+</div>
+
+<div class="nav">
+  <a href="0004-trigonometric-limits.html">&larr; Lesson 4 — Trigonometric limits</a>
+  <a href="../index.html">Course home</a>
+  <a href="0006-one-sided-limits.html">Lesson 6 — One-sided limits &rarr;</a>
+</div>
+
+<div class="notes">
+<ol>
+  <li id="n1">Scope: CISCE, <i>ISC Mathematics (860), Class XI</i>, Unit 4 — the topic
+  paragraph names "Limits of polynomials and rational functions trigonometric,
+  exponential and logarithmic functions". See <a href="../SYLLABUS.md">SYLLABUS.md</a>
+  section 3, note 4, for how this mismatch with the scope bullets is handled.</li>
+  <li id="n2">Modulus and greatest integer functions are Unit 1(ii) of the same
+  syllabus. See <a href="../SYLLABUS.md">SYLLABUS.md</a> section 5.</li>
+  <li>Limits at infinity and the divide-by-the-highest-power method: OpenStax,
+  <i>Calculus Volume 1</i>, section 4.6.</li>
+  <li><b>Not taught here, on purpose:</b> L'Hôpital's rule. It is in no part of the
+  ISC syllabus, Class 11 or Class 12.</li>
+</ol>
+</div>
+
+</div>
+</body>
+</html>

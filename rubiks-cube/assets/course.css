@@ -1,0 +1,145 @@
+/* Shared course stylesheet — every lesson and reference links this.
+   Goal: clean, Tufte-flavoured typography that reads well on screen and prints well. */
+
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #555;
+  --paper: #fdfcfa;
+  --rule: #e2ded7;
+  --accent: #b1361e;        /* cube-red */
+  --accent-soft: #f6e9e5;
+  --good: #1f7a3d;
+  --good-soft: #e7f3eb;
+  --bad: #b1361e;
+  --bad-soft: #f6e9e5;
+  --maxw: 720px;
+
+  /* Cube sticker colours, for diagrams */
+  --c-white:  #fafafa;
+  --c-yellow: #f2d22e;
+  --c-red:    #c0392b;
+  --c-orange: #e07b1a;
+  --c-blue:   #2d6cc0;
+  --c-green:  #2e9e57;
+  --c-grey:   #cfcabf;   /* unknown / not-yet-solved */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.55;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+  font-size: 18px;
+}
+
+.eyebrow {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+
+h1 { font-size: 2.1rem; line-height: 1.15; margin: 0 0 0.6rem; }
+h2 { font-size: 1.35rem; margin: 2.4rem 0 0.6rem; }
+h3 { font-size: 1.05rem; margin: 1.6rem 0 0.4rem; }
+
+.lede { font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 1.4rem; }
+
+p, li { color: var(--ink); }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+hr { border: none; border-top: 1px solid var(--rule); margin: 2.4rem 0; }
+
+code, kbd, .moves {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+}
+
+/* A move sequence chip, e.g. R U R' U' */
+.moves {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.15em 0.5em;
+  font-size: 0.95em;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* Callout boxes */
+.note, .why, .win {
+  border-left: 3px solid var(--rule);
+  padding: 0.8rem 1.1rem;
+  margin: 1.4rem 0;
+  background: #fff;
+  border-radius: 0 6px 6px 0;
+}
+.win { border-left-color: var(--good); background: var(--good-soft); }
+.why { border-left-color: var(--accent); background: var(--accent-soft); }
+.note .label, .why .label, .win .label {
+  font-family: ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* Reference / cheat-sheet tables */
+table { border-collapse: collapse; width: 100%; margin: 1.2rem 0; font-size: 0.95rem; }
+th, td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule); }
+th { font-family: ui-monospace, monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+
+/* Footer with primary source + ask-the-teacher reminder */
+.lesson-footer {
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 2px solid var(--ink);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+.lesson-footer .ask {
+  background: var(--accent-soft);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  margin-top: 1rem;
+  color: var(--ink);
+}
+
+/* Quiz widget (paired with quiz.js) */
+.quiz { margin: 1.6rem 0; }
+.quiz .q { font-weight: 600; margin: 1.4rem 0 0.6rem; }
+.quiz .opts { display: grid; gap: 0.5rem; }
+.quiz button.opt {
+  font: inherit;
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.quiz button.opt:hover { border-color: var(--ink-soft); }
+.quiz button.opt:disabled { cursor: default; opacity: 1; }
+.quiz button.opt.correct { background: var(--good-soft); border-color: var(--good); }
+.quiz button.opt.wrong   { background: var(--bad-soft);  border-color: var(--bad); }
+.quiz .fb { font-size: 0.92rem; margin-top: 0.5rem; min-height: 1.2em; color: var(--ink-soft); }
+.quiz .score {
+  margin-top: 1.6rem; font-family: ui-monospace, monospace;
+  font-size: 0.95rem; padding: 0.7rem 1rem; border: 1px dashed var(--rule); border-radius: 8px;
+}
+
+@media print {
+  body { font-size: 12pt; max-width: 100%; }
+  .quiz button.opt { border: 1px solid #999; }
+  a { color: var(--ink); text-decoration: none; }
+}

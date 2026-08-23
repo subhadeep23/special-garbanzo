@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 4 — Trigonometric limits</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/check.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">ISC Class 11 · Unit 4 Calculus · Lesson 4 of 8</p>
+<h1>Trigonometric limits</h1>
+<p class="sub">One standard result carries almost every sum. It has two conditions, and she must check both.</p>
+
+<p class="mission"><b>Why this lesson.</b> ISC asks a trigonometric limit almost every
+year. There is essentially one formula, and the marks are lost not on the formula but
+on its two conditions. Teach the conditions harder than the formula.</p>
+
+<div class="plain">
+  <span class="tag">Say it simply</span>
+  <p class="big">For a <b>very small</b> angle, sin&nbsp;<i>x</i> and <i>x</i> are
+  almost the same number. So their ratio heads to 1.</p>
+  <p>Check it on a calculator, in <b>radian</b> mode. sin(0.01) = 0.00999983…
+  That is 0.01 to four decimal places. The smaller the angle, the closer they get. That
+  is the entire content of the formula, and she should see it once with her own hands.</p>
+</div>
+
+<div class="kitchen">
+  <span class="tag">The same idea in her kitchen</span>
+  <p class="big">A standard limit is a <b>recipe she already knows by heart</b>. She may
+  use it without any working. But a known recipe only works when she gives it the
+  ingredient it asks for.</p>
+  <p>The recipe reads: <b>sin(&#9723;) &divide; (&#9723;) &rarr; 1</b>, and the two boxes
+  must hold the <b>same</b> ingredient. If the recipe asks for 3<i>x</i> and she has
+  <i>x</i> on the bottom, it is not that recipe. It is a different dish, and it gives a
+  different taste.</p>
+  <div class="scroll">
+  <table class="ref">
+  <tr><th>Condition</th><th>In the kitchen</th><th>If it fails</th></tr>
+  <tr><td>The angle must go to 0</td>
+      <td>The known recipe is written for a <b>pinch</b>. It says nothing about a spoonful</td>
+      <td>The sum is not indeterminate at all. Substitute, as in Lesson 2</td></tr>
+  <tr><td>The angle must match the denominator</td>
+      <td>The recipe asks for the <b>same</b> ingredient top and bottom</td>
+      <td>Force the match. Put the right ingredient in, and correct the amount outside</td></tr>
+  </table>
+  </div>
+  <div class="fix">
+    <span class="tag">"Force the match" in her words</span>
+    <p>The recipe needs 3<i>x</i> on the bottom, and she has <i>x</i>. So she writes
+    3<i>x</i> on the bottom and multiplies by 3 outside. <b>She scales the measuring
+    cup, not the dish.</b> The dish is unchanged, so the move is always legal.</p>
+  </div>
+  <p><b>Radians are the unit the recipe is written in.</b> Degrees are a different unit,
+  and a recipe measured in cups gives the wrong dish when she reads the numbers as
+  spoons. In degrees the answer becomes &pi;/180, not 1.</p>
+</div>
+
+<h2>The three standard results</h2>
+
+<div class="plain">
+  <span class="tag">Learn these three exactly</span>
+  <p class="mth left">
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+    <span class="f"><span class="n">sin <i>x</i></span><span class="d"><i>x</i></span></span> = <span class="res">1</span>
+  </p>
+  <p class="mth left">
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+    <span class="f"><span class="n">1 &minus; cos <i>x</i></span><span class="d"><i>x</i></span></span> = <span class="res">0</span>
+  </p>
+  <p class="mth left">
+    <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+    <span class="f"><span class="n">tan <i>x</i></span><span class="d"><i>x</i></span></span> = <span class="res">1</span>
+  </p>
+  <p>The first two are stated as the two important limits in NCERT.<a class="cite" href="#n2">2</a>
+  The third follows at once, because tan <i>x</i> = sin <i>x</i> / cos <i>x</i>, and
+  cos <i>x</i> &rarr; 1.</p>
+</div>
+
+<p>And one more, which the paper likes because students guess it wrongly:</p>
+
+<p class="mth">
+  <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+  <span class="f"><span class="n">1 &minus; cos <i>x</i></span><span class="d"><i>x</i><sup>2</sup></span></span>
+  = <span class="res"><span class="f"><span class="n">1</span><span class="d">2</span></span></span>
+</p>
+
+<p>Note carefully that (1 &minus; cos <i>x</i>)/<i>x</i> &rarr; 0 while
+(1 &minus; cos <i>x</i>)/<i>x</i><sup>2</sup> &rarr; 1/2. One extra power of <i>x</i>
+changes 0 into 1/2. She must read the denominator, not recognise the numerator.
+Section 4 below derives the 1/2.</p>
+
+<h2>The two conditions</h2>
+
+<p>Here is where the marks go. The formula sin&nbsp;<i>x</i>/<i>x</i> &rarr; 1 needs
+<b>both</b> of these to be true.</p>
+
+<div class="move">
+  <span class="num">1</span>
+  <div class="body">
+    <h3>The angle must go to zero</h3>
+    <p>Not <i>x</i>. <b>The angle.</b> If the angle does not head to 0, the formula
+    does not apply, and usually plain substitution finishes the sum instead.</p>
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;&pi;/2</span></span>
+      <span class="f"><span class="n">sin <i>x</i></span><span class="d"><i>x</i></span></span>
+      = <span class="f"><span class="n">sin(&pi;/2)</span><span class="d">&pi;/2</span></span>
+      = <span class="f"><span class="n">1</span><span class="d">&pi;/2</span></span>
+      = <span class="res"><span class="f"><span class="n">2</span><span class="d">&pi;</span></span></span>
+    </p>
+    <p>Here <i>x</i> &rarr; &pi;/2, so the angle does not go to zero. The form is 1/(&pi;/2),
+    which is a perfectly good number. So there is nothing indeterminate, and no formula
+    is needed. <b>Substituting first, as in Lesson 2, catches this automatically.</b></p>
+  </div>
+</div>
+
+<div class="move">
+  <span class="num">2</span>
+  <div class="body">
+    <h3>The angle must match the denominator, exactly</h3>
+    <p>The formula is sin(<b>&#9723;</b>) / (<b>&#9723;</b>) &rarr; 1, where the two
+    boxes hold <b>the same thing</b>. sin&nbsp;3<i>x</i> over <i>x</i> is not the
+    formula. sin&nbsp;3<i>x</i> over 3<i>x</i> is.</p>
+
+    <div class="fix">
+      <span class="tag">The technique — force the match</span>
+      <p>Multiply and divide by whatever makes the bottom match the angle. Multiplying
+      and dividing by the same non-zero number changes nothing, so the move is always
+      legal.</p>
+      <p class="mth left">
+        <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+        <span class="f"><span class="n">sin 3<i>x</i></span><span class="d"><i>x</i></span></span>
+        = <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+        <span class="f"><span class="n">sin 3<i>x</i></span><span class="d">3<i>x</i></span></span>
+        &times; 3
+        = 1 &times; 3 = <span class="res">3</span>
+      </p>
+      <p>Read the middle step aloud: "I need 3<i>x</i> on the bottom, so I put 3<i>x</i>
+      there and multiply by 3 outside to keep the value the same."</p>
+    </div>
+
+    <p><b>The pattern, once she trusts it:</b></p>
+    <p class="mth left">
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n">sin <i>kx</i></span><span class="d"><i>x</i></span></span> = <i>k</i>
+      &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n">sin <i>ax</i></span><span class="d">sin <i>bx</i></span></span>
+      = <span class="f"><span class="n"><i>a</i></span><span class="d"><i>b</i></span></span>
+      &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n">tan <i>ax</i></span><span class="d">sin <i>bx</i></span></span>
+      = <span class="f"><span class="n"><i>a</i></span><span class="d"><i>b</i></span></span>
+    </p>
+    <p><b>Do not let her memorise these three.</b> Make her produce each one by forcing
+    the match. The memorised version fails the moment the paper writes
+    sin&nbsp;<i>x</i><sup>2</sup>/<i>x</i><sup>2</sup> or sin(<i>x</i>/4)/<i>x</i>. The
+    technique never fails.</p>
+  </div>
+</div>
+
+<div class="trap">
+  <span class="tag">Radians, not degrees. This is not a detail</span>
+  <p>The result sin <i>x</i>/<i>x</i> &rarr; 1 is <b>only true in radians</b>. In
+  degrees the answer is &pi;/180, which is about 0.01745.</p>
+  <p>Every angle in calculus is in radians. If her calculator says
+  sin(0.01) = 0.0001745, the calculator is in degree mode. Make her fix the mode
+  before she checks anything, or she will disbelieve the correct formula.</p>
+</div>
+
+<h2>Where the formula comes from</h2>
+
+<p>ISC asks for the intuitive idea, so this is one board and 90 seconds. Do it once,
+because it explains why radians are compulsory, and that stops the degree mistake for
+good.</p>
+
+<p>For a small positive angle <i>x</i> in radians, comparing areas or arc lengths in
+the unit circle gives:</p>
+
+<p class="mth">cos <i>x</i> &nbsp;&lt;&nbsp;
+  <span class="f"><span class="n">sin <i>x</i></span><span class="d"><i>x</i></span></span>
+  &nbsp;&lt;&nbsp; 1</p>
+
+<p>As <i>x</i> &rarr; 0, the left side cos <i>x</i> &rarr; 1 and the right side is
+already 1. So sin&nbsp;<i>x</i>/<i>x</i> is squeezed between two quantities that both
+head to 1. It has nowhere else to go.</p>
+
+<div class="plain">
+  <span class="tag">The Sandwich Theorem — state it, do not prove it</span>
+  <p>If <i>f</i>(<i>x</i>) &le; <i>g</i>(<i>x</i>) &le; <i>h</i>(<i>x</i>) for all
+  <i>x</i> near <i>a</i>, and
+  <span class="lim">lim<span class="to"><i>x</i>&rarr;<i>a</i></span></span><i>f</i>(<i>x</i>)
+  = <span class="lim">lim<span class="to"><i>x</i>&rarr;<i>a</i></span></span><i>h</i>(<i>x</i>)
+  = <i>L</i>, then
+  <span class="lim">lim<span class="to"><i>x</i>&rarr;<i>a</i></span></span><i>g</i>(<i>x</i>)
+  = <i>L</i>.<a class="cite" href="#n2">2</a></p>
+  <p>Two walls close in on the middle function, so the middle function must arrive
+  where the walls arrive. That is the whole theorem, and the syllabus asks for the
+  statement only.</p>
+</div>
+
+<p>The unit-circle inequality also shows why the angle must be in radians. The arc
+length of a unit circle equals the angle <b>only when the angle is measured in
+radians</b>. That is the whole reason.</p>
+
+<h2>The 1 &minus; cos <i>x</i> family</h2>
+
+<p>Everything here comes from one identity, taken from Unit 1(iii) Trigonometry:</p>
+
+<p class="mth">1 &minus; cos <i>x</i> = 2 sin<sup>2</sup>
+  <span class="f"><span class="n"><i>x</i></span><span class="d">2</span></span></p>
+
+<p>Check she knows this cold before continuing. Without it, nothing in this section
+works.</p>
+
+<div class="worked">
+  <div class="head">Worked example — the 1/2 result</div>
+  <div class="body">
+    <p class="mth left"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n">1 &minus; cos <i>x</i></span><span class="d"><i>x</i><sup>2</sup></span></span></p>
+    <p class="step">Step 1 — substitute: (1&minus;1)/0 = 0/0. Work needed.</p>
+    <p class="step">Step 2 — replace the top using the identity.</p>
+    <p class="mth left">= <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n">2 sin<sup>2</sup>(<i>x</i>/2)</span><span class="d"><i>x</i><sup>2</sup></span></span></p>
+    <p class="step">Step 3 — the angle is <i>x</i>/2, so force the denominator to match it. Write <i>x</i><sup>2</sup> = 4(<i>x</i>/2)<sup>2</sup>.</p>
+    <p class="mth left">= <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      <span class="f"><span class="n">2 sin<sup>2</sup>(<i>x</i>/2)</span><span class="d">4 (<i>x</i>/2)<sup>2</sup></span></span>
+      = <span class="f"><span class="n">1</span><span class="d">2</span></span>
+      <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+      [<span class="f"><span class="n">sin(<i>x</i>/2)</span><span class="d"><i>x</i>/2</span></span>]<sup>2</sup></p>
+    <p class="step">Step 4 — the bracket &rarr; 1, so its square &rarr; 1.</p>
+    <p class="mth left">= <span class="f"><span class="n">1</span><span class="d">2</span></span> &times; 1
+      = <span class="res"><span class="f"><span class="n">1</span><span class="d">2</span></span></span></p>
+  </div>
+</div>
+
+<p>The general version, by the same route:</p>
+<p class="mth">
+  <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+  <span class="f"><span class="n">1 &minus; cos <i>kx</i></span><span class="d"><i>x</i><sup>2</sup></span></span>
+  = <span class="f"><span class="n"><i>k</i><sup>2</sup></span><span class="d">2</span></span>
+</p>
+
+<h2>When the angle does not go to zero: substitute</h2>
+
+<p>The paper will sometimes send <i>x</i> to &pi; or to <i>a</i>, and still expect the
+standard formula. The move is a change of variable, so that the new variable goes to
+zero.</p>
+
+<div class="worked">
+  <div class="head">Worked example — <i>x</i> &rarr; &pi;</div>
+  <div class="body">
+    <p class="mth left"><span class="lim">lim<span class="to"><i>x</i>&rarr;&pi;</span></span>
+      <span class="f"><span class="n">sin <i>x</i></span><span class="d">&pi; &minus; <i>x</i></span></span></p>
+    <p class="step">Step 1 — substitute: sin &pi; = 0 and &pi; &minus; &pi; = 0. So 0/0.</p>
+    <p class="step">Step 2 — put <i>h</i> = &pi; &minus; <i>x</i>. Then <i>x</i> = &pi; &minus; <i>h</i>, and as <i>x</i> &rarr; &pi; the new variable <i>h</i> &rarr; 0.</p>
+    <p class="step">Step 3 — sin(&pi; &minus; <i>h</i>) = sin <i>h</i>, from Unit 1(iii).</p>
+    <p class="mth left">= <span class="lim">lim<span class="to"><i>h</i>&rarr;0</span></span>
+      <span class="f"><span class="n">sin <i>h</i></span><span class="d"><i>h</i></span></span>
+      = <span class="res">1</span></p>
+    <p>The substitution <i>h</i> = <i>x</i> &minus; <i>a</i>, or <i>h</i> = <i>a</i> &minus; <i>x</i>,
+    turns any approach point into zero. It is the same trick that first principles uses
+    in Lesson 7, so it is worth the practice now.</p>
+  </div>
+</div>
+
+<h2>Warm-up drill</h2>
+
+<p>All of these send <i>x</i> &rarr; 0 unless stated. Force the match. Do not guess.</p>
+
+<div class="drill">
+<table>
+<tr><td class="n">1</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">sin 5<i>x</i></span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="5" data-why="Force the match: write 5x on the bottom and multiply by 5 outside. So (sin 5x / 5x) × 5 → 1 × 5 = 5."></td></tr>
+<tr><td class="n">2</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">sin 3<i>x</i></span><span class="d">sin 7<i>x</i></span></span></td>
+  <td><input data-a="3/7" data-why="Divide top and bottom by x. Top → 3, bottom → 7. So the answer is 3/7."></td></tr>
+<tr><td class="n">3</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">tan 4<i>x</i></span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="4" data-why="tan x / x → 1 as well, so the same matching works: (tan 4x / 4x) × 4 → 4."></td></tr>
+<tr><td class="n">4</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n"><i>x</i></span><span class="d">sin 2<i>x</i></span></span></td>
+  <td><input data-a="1/2|0.5" data-why="The formula also works upside down, because 1/1 = 1. Here (2x / sin 2x) × 1/2 → 1/2."></td></tr>
+<tr><td class="n">5</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">1&minus;cos <i>x</i></span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="0" data-why="This is the second standard result: it is 0. Watch the denominator — it is x, not x²."></td></tr>
+<tr><td class="n">6</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">1&minus;cos <i>x</i></span><span class="d"><i>x</i><sup>2</sup></span></span></td>
+  <td><input data-a="1/2|0.5" data-why="Now the denominator is x², so the answer is 1/2. Compare with question 5: one power of x changes 0 into 1/2."></td></tr>
+<tr><td class="n">7</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">1&minus;cos 2<i>x</i></span><span class="d"><i>x</i><sup>2</sup></span></span></td>
+  <td><input data-a="2" data-why="Use k²/2 with k = 2, giving 4/2 = 2. Or use 1 − cos 2x = 2sin²x directly."></td></tr>
+<tr><td class="n">8</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">sin <i>x</i></span><span class="d">3<i>x</i></span></span></td>
+  <td><input data-a="1/3" data-why="The 3 is a constant, so pull it out: (1/3)(sin x / x) → 1/3."></td></tr>
+<tr><td class="n">9</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;&pi;/2</span></span><span class="f"><span class="n">sin <i>x</i></span><span class="d"><i>x</i></span></span></td>
+  <td><input data-a="2/pi" data-why="TRAP. The angle does not go to zero here. Substitute instead: sin(π/2) = 1, so the answer is 1/(π/2) = 2/π. No formula is needed."></td></tr>
+<tr><td class="n">10</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">sin <i>x</i><sup>2</sup></span><span class="d"><i>x</i><sup>2</sup></span></span></td>
+  <td><input data-a="1" data-why="The angle is x², and the denominator is x². They already match, and x² → 0. So the answer is 1 straight away."></td></tr>
+<tr><td class="n">11</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">sin<sup>2</sup> <i>x</i></span><span class="d"><i>x</i><sup>2</sup></span></span></td>
+  <td><input data-a="1" data-why="This is (sin x / x)², and the square of something heading to 1 heads to 1. Take care: sin²x means (sin x)², while sin x² means sin(x²). Question 10 and question 11 are different sums that happen to share an answer."></td></tr>
+<tr><td class="n">12</td>
+  <td class="q"><span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span><span class="f"><span class="n">sin 4<i>x</i></span><span class="d">tan 3<i>x</i></span></span></td>
+  <td><input data-a="4/3" data-why="Divide top and bottom by x. Top → 4, bottom → 3. So 4/3."></td></tr>
+</table>
+</div>
+
+<h2>Exercise set</h2>
+
+<div class="exset">
+<ol>
+
+<li><span class="pill easy">Easy</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">sin 7<i>x</i></span><span class="d">2<i>x</i></span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>Matching, with a constant on the bottom.</details>
+<details class="hint sol"><summary>Answer</summary>
+= (1/2)(sin 7<i>x</i>/7<i>x</i>)(7) &rarr; (1/2)(1)(7) = <b>7/2</b>.</details>
+</li>
+
+<li><span class="pill easy">Easy</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n"><i>x</i> + sin <i>x</i></span><span class="d"><i>x</i></span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>Split it into two fractions before doing anything else.</details>
+<details class="hint sol"><summary>Answer</summary>
+= <span class="lim">lim<span class="to"></span></span>[<i>x</i>/<i>x</i> + sin <i>x</i>/<i>x</i>]
+= 1 + 1 = <b>2</b>. Splitting is legal by the sum law.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">1 &minus; cos 4<i>x</i></span><span class="d">1 &minus; cos 6<i>x</i></span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>Two members of the 1 &minus; cos family, one over the other.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>Divide the top and the bottom by <i>x</i><sup>2</sup>, and use the <i>k</i><sup>2</sup>/2 result on each.</details>
+<details class="hint sol"><summary>Answer</summary>
+Top/<i>x</i><sup>2</sup> &rarr; 4<sup>2</sup>/2 = 8. Bottom/<i>x</i><sup>2</sup> &rarr; 6<sup>2</sup>/2 = 18.
+So the answer is 8/18 = <b>4/9</b>.<br>
+By identity instead: 2sin<sup>2</sup>2<i>x</i> / 2sin<sup>2</sup>3<i>x</i>
+= (sin 2<i>x</i>/sin 3<i>x</i>)<sup>2</sup> &rarr; (2/3)<sup>2</sup> = 4/9. Same answer.</details>
+</li>
+
+<li><span class="pill med">Medium</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">tan <i>x</i> &minus; sin <i>x</i></span><span class="d"><i>x</i><sup>3</sup></span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>Take out the common factor sin <i>x</i> from the top first.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>tan <i>x</i> &minus; sin <i>x</i> = sin <i>x</i>(1/cos <i>x</i> &minus; 1)
+= sin <i>x</i> &middot; (1 &minus; cos <i>x</i>)/cos <i>x</i>.</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>Now the expression is
+(sin <i>x</i>/<i>x</i>) &middot; ((1&minus;cos <i>x</i>)/<i>x</i><sup>2</sup>) &middot; (1/cos <i>x</i>).
+Take the limit of each factor.</details>
+<details class="hint sol"><summary>Answer</summary>
+= (1) &times; (1/2) &times; (1) = <b>1/2</b>.<br>
+This sum is worth doing slowly. Notice the shape of the method: break the expression
+into a product of pieces, where every piece is a standard limit.</details>
+</li>
+
+<li><span class="pill hard">Hard</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;&pi;/4</span></span>
+<span class="f"><span class="n">cos <i>x</i> &minus; sin <i>x</i></span><span class="d"><i>x</i> &minus; &pi;/4</span></span>.
+<details class="hint"><summary>Hint 1 — the type</summary>The angle does not go to zero, so change the variable.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>Put <i>h</i> = <i>x</i> &minus; &pi;/4, so <i>x</i> = <i>h</i> + &pi;/4 and <i>h</i> &rarr; 0. Expand cos and sin of the sum.</details>
+<details class="hint"><summary>Hint 3 — the first line</summary>cos(<i>h</i>+&pi;/4) &minus; sin(<i>h</i>+&pi;/4)
+= (1/&radic;2)[(cos <i>h</i> &minus; sin <i>h</i>) &minus; (sin <i>h</i> + cos <i>h</i>)]
+= (1/&radic;2)(&minus;2 sin <i>h</i>).</details>
+<details class="hint sol"><summary>Answer</summary>
+The expression becomes
+(&minus;2/&radic;2)(sin <i>h</i>/<i>h</i>) &rarr; &minus;2/&radic;2 = <b>&minus;&radic;2</b>.<br>
+Sanity check: at <i>x</i> = &pi;/4, cos <i>x</i> = sin <i>x</i>, so the top is 0 and
+the bottom is 0. Good, it was a genuine 0/0. Just past &pi;/4, cosine is smaller than
+sine, so the top is negative and the bottom is positive. The answer must be negative,
+and it is.</details>
+</li>
+
+<li><span class="pill stretch">Stretch</span>
+Evaluate <span class="lim">lim<span class="to"><i>x</i>&rarr;0</span></span>
+<span class="f"><span class="n">sin <i>x</i> &minus; <i>x</i> cos <i>x</i></span><span class="d"><i>x</i><sup>3</sup></span></span>,
+using only the standard results in this lesson.
+<details class="hint"><summary>Hint 1 — the type</summary>Split the fraction into pieces that are each standard. Do not expand anything.</details>
+<details class="hint"><summary>Hint 2 — the move</summary>Write the top as
+(sin <i>x</i> &minus; <i>x</i>) + <i>x</i>(1 &minus; cos <i>x</i>). Handle the second
+piece first, because it is standard.</details>
+<details class="hint sol"><summary>Answer</summary>
+Split: <br>
+<span class="f"><span class="n">sin <i>x</i> &minus; <i>x</i></span><span class="d"><i>x</i><sup>3</sup></span></span>
++ <span class="f"><span class="n"><i>x</i>(1&minus;cos <i>x</i>)</span><span class="d"><i>x</i><sup>3</sup></span></span><br>
+The second piece is (1&minus;cos <i>x</i>)/<i>x</i><sup>2</sup> &rarr; 1/2.<br>
+The first piece is (sin <i>x</i> &minus; <i>x</i>)/<i>x</i><sup>3</sup> &rarr; &minus;1/6.
+This one is <b>beyond the ISC Class 11 toolkit</b> — it needs a series or a repeated
+derivative argument.<br>
+So the answer is &minus;1/6 + 1/2 = <b>1/3</b>.<br><br>
+<b>The real lesson here.</b> The correct response to this question in an exam is to
+recognise that it needs a tool she does not have, and to move on. Knowing the edge of
+her toolkit is a skill. This is the only sum in the pack that sits outside the
+syllabus, and it is here on purpose, so that she meets that edge with me and not in
+the exam hall.</details>
+</li>
+
+</ol>
+</div>
+
+<div class="fix">
+  <span class="tag">Close the lesson — she says this, not you</span>
+  <p>"sin of something over that same something goes to 1, but only when the something
+  goes to zero and the angle matches the bottom exactly. If they do not match, I
+  multiply and divide to force the match. Everything is in radians."</p>
+  <p>Her kitchen version: <i>"It is a recipe I know by heart, so I may use it without
+  working. But it only works for a pinch, and it wants the same ingredient top and
+  bottom. If they do not match, I scale the measuring cup until they do."</i></p>
+</div>
+
+<div class="src">
+  <span class="tag">Read this before the next lesson</span>
+  <p><b>Primary source:</b> NCERT Class 11 Mathematics,
+  <a href="../source-documents/NCERT-Class11-Ch12-Limits-and-Derivatives.pdf">Chapter 12</a>,
+  section 12.4 — Limits of Trigonometric Functions. It gives the Sandwich Theorem
+  (Theorem 4) and the two important limits (Theorem 5) in exactly the form ISC expects.
+  Then do <b>Exercise 12.1, questions 23 to 32</b>.</p>
+  <p><b>Before the next lesson</b>, check she can state
+  1 &minus; cos <i>x</i> = 2 sin<sup>2</sup>(<i>x</i>/2) from memory. If not, revise
+  the multiple-angle identities in Unit 1(iii) first.</p>
+</div>
+
+<div class="ask">
+  <span class="tag">If anything here is unclear</span>
+  <p>Ask. The one question worth asking early: <i>"how do I know whether to force the
+  match or just substitute?"</i> The answer is always Lesson 2 — substitute first. If
+  it gives a number, stop. Only 0/0 sends her to the formula.</p>
+</div>
+
+<div class="nav">
+  <a href="0003-the-zero-over-zero-toolkit.html">&larr; Lesson 3 — The 0/0 toolkit</a>
+  <a href="../index.html">Course home</a>
+  <a href="0005-exponential-and-log-limits.html">Lesson 5 — Exponential and log limits &rarr;</a>
+</div>
+
+<div class="notes">
+<ol>
+  <li>Scope: CISCE, <i>ISC Mathematics (860), Class XI</i>, Unit 4 — "Limits of
+  algebraic and trigonometric functions". See <a href="../SYLLABUS.md">SYLLABUS.md</a> section 3.</li>
+  <li id="n2">The Sandwich Theorem (Theorem 4) and the two important limits
+  sin&nbsp;<i>x</i>/<i>x</i> &rarr; 1 and (1&minus;cos <i>x</i>)/<i>x</i> &rarr; 0
+  (Theorem 5): NCERT Class 11 Mathematics, Chapter 12, section 12.4.</li>
+  <li>Unit-circle inequality cos <i>x</i> &lt; sin <i>x</i>/<i>x</i> &lt; 1 and the
+  radian requirement: NCERT Class 11, Chapter 12, section 12.4; OpenStax,
+  <i>Calculus Volume 1</i>, section 2.3 (The Squeeze Theorem).</li>
+  <li>The identity 1 &minus; cos <i>x</i> = 2 sin<sup>2</sup>(<i>x</i>/2) is from
+  CISCE Class XI Unit 1(iii), "Identities related to sin 2x, cos 2x ...".</li>
+</ol>
+</div>
+
+</div>
+</body>
+</html>

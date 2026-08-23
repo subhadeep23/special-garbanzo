@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2 — JEPA: predict the representation, not the pixels</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">JEPA Course · Lesson 2 · Conceptual fluency</p>
+  <h1>JEPA — predict the representation, not the pixels</h1>
+  <p class="dek">Lesson 1 gave you the pivot. This lesson makes it concrete: the actual
+  shape of the machine LeCun proposes, and exactly how it sidesteps the blurry average.</p>
+
+  <h2>1 · Recap the pivot — and the blur we're escaping</h2>
+  <p>Last lesson ended on one move: <em>don't predict the pixels, predict an abstract
+  summary.</em> You now know <em>why</em> pixel-prediction fails — a model graded on
+  squared pixel error is forced to output the <strong>average of all possible futures</strong>,
+  and when several futures are possible (the pen falls left <em>or</em> right) that average
+  is a ghost that matches none of them. The blur.</p>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> the safest single guess, when you're
+    graded on squared error, is the average of everything that might happen.</span>
+    <span class="chip stat">STAT</span><span class="term">the conditional mean E[x_future | x_past] is the minimiser of expected squared error — and it's a blur whenever that conditional distribution is multi-modal</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">MSE reconstruction loss collapses a multi-modal target onto its mean</span>
+  </div>
+
+  <p>JEPA's whole trick is to <strong>change what gets graded.</strong> Grade the guess on
+  an abstract summary instead of on pixels, and the unpredictable detail can simply be
+  left out of the summary — so there's nothing left to average, and nothing to blur.</p>
+
+  <h2>2 · The shape of the machine</h2>
+  <p>Take two chunks of an observation — call them <code>x</code> and <code>y</code>. For a
+  video, <code>x</code> is what you've seen so far and <code>y</code> is what comes next.
+  For an image, <code>x</code> is the visible part and <code>y</code> is a patch you've
+  hidden. JEPA wires up <strong>three</strong> pieces:</p>
+
+  <ul>
+    <li><strong>An encoder for <code>x</code></strong> — squashes the visible part into an
+      abstract summary vector, <code>s_x</code>.</li>
+    <li><strong>An encoder for <code>y</code></strong> — squashes the target part into its
+      own abstract summary vector, <code>s_y</code>. <em>This is the crucial one.</em></li>
+    <li><strong>A predictor</strong> — looks at <code>s_x</code> and tries to guess
+      <code>s_y</code>. The training signal is simply: <em>how close was the guess to
+      <code>s_y</code>?</em></li>
+  </ul>
+
+  <p>Read the name off the picture. Both inputs are turned into embeddings — that's the
+  <strong>Joint Embedding</strong>. One embedding is used to predict the other — that's
+  <strong>Predictive</strong>. It's a blueprint for a family of models — an
+  <strong>Architecture</strong>. Joint Embedding Predictive Architecture. JEPA.</p>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> the little machine that reads raw input
+    and boils it down to its abstract summary vector.</span>
+    <span class="chip stat">STAT</span><span class="term">a learned map from high-dimensional data to a lower-dimensional feature vector</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">an encoder — a neural network mapping input <code>x</code> to an embedding <code>s = enc(x)</code></span>
+  </div>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> summarise both pieces, then predict one
+    summary from the other — never touching the raw pixels in the prediction.</span>
+    <span class="chip stat">STAT</span><span class="term">model the relationship between two <em>latent representations</em>, not between the raw observations</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">Joint Embedding Predictive Architecture (JEPA): predict <code>s_y</code> from <code>s_x</code> in latent space</span>
+  </div>
+
+  <h2>3 · Why this dodges the blur</h2>
+  <p>Here's the payoff, and it's worth sitting with. In pixel-prediction, the model was
+  <em>forced</em> to reproduce every detail of <code>y</code> — including the pen's
+  left-or-right that it could never know. In JEPA the target isn't <code>y</code> itself,
+  it's <code>s_y</code> — <code>y</code>'s <em>summary</em>. And a summary is allowed to
+  <strong>throw the unpredictable part away.</strong></p>
+
+  <p>The summary can encode "a pen, now fallen, lying flat" and simply <em>not carry</em>
+  which direction it fell. If the target vector never records the coin-flip, the predictor
+  is never graded on it — so it never has to average over it, and the blur never arises.
+  You only ever predict what's predictable. That is the entire idea, delivered.</p>
+
+  <div class="callout">
+    <span class="label">The one-sentence version to memorise</span>
+    JEPA predicts the <strong>representation</strong> of the future from the
+    <strong>representation</strong> of the past — so the unpredictable detail can be
+    discarded by the encoder instead of blurred by the predictor.
+  </div>
+
+  <h2>4 · The catch waiting for us (Lesson 5's hook)</h2>
+  <p>One uncomfortable question should be nagging you. If the goal is just "make
+  <code>s_x</code>'s guess match <code>s_y</code>," what stops the machine from cheating —
+  making <em>every</em> summary the same constant vector? Then the guess is always trivially
+  perfect, and the model has learned <strong>nothing.</strong> That failure has a name, and
+  it is the central problem in training these models.</p>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> the model cheats by making all summaries
+    identical, so matching is trivial and it has learned nothing.</span>
+    <span class="chip stat">STAT</span><span class="term">the representation degenerates to a constant — zero variance, no information retained</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">representation collapse — the trivial solution JEPA training must actively prevent</span>
+  </div>
+
+  <p>How JEPA blocks that collapse — without ever decoding back to pixels — is the thread
+  running through the next few lessons (energy-based models, then collapse itself). For now,
+  just hold the danger in view: <em>a predictor rewarded only for agreement will happily
+  agree on nothing.</em></p>
+
+  <h2>5 · Where this sits in LeCun's argument</h2>
+  <p>An LLM predicts the next token in full detail and it works, because text is discrete and
+  comparatively low-entropy. JEPA is LeCun's bet for the physical world, where the future is
+  too rich to spell out: <strong>predict in the space of abstractions, not the space of
+  observations.</strong> I-JEPA (images) and V-JEPA (video) are the first real machines built
+  on exactly the three-box picture from §2.</p>
+
+  <hr>
+
+  <div class="quiz" id="quiz">
+    <p class="q">Q. In JEPA, how does predicting <code>s_y</code> (the target's summary) instead of <code>y</code> (the raw target) avoid the blurry-average problem?</p>
+    <button data-ok="0">It uses a sharper loss function than squared error on the pixels</button>
+    <button data-ok="1">The summary can drop unpredictable detail, so there's nothing left to average over</button>
+    <button data-ok="0">It predicts many futures at once and picks the sharpest one</button>
+    <button data-ok="0">It trains for longer, so the blur eventually resolves into detail</button>
+    <p class="feedback" id="fb"></p>
+  </div>
+
+  <div class="source">
+    <span class="label">Primary source — read/watch this next</span>
+    Meta AI, <a href="https://ai.meta.com/blog/yann-lecun-ai-model-i-jepa/"><strong>I-JEPA:
+    The first AI model based on Yann LeCun's vision</strong></a> — read it end to end; it
+    walks the same three-box picture with real images. Then, in LeCun's
+    <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf">Path Towards Autonomous Machine
+    Intelligence</a>, skim §4 where JEPA is defined — you'll recognise the encoder / encoder /
+    predictor shape immediately.
+  </div>
+
+  <div class="lesson-foot">
+    <strong>Your win this lesson:</strong> you can now draw JEPA's three boxes
+    (encode <code>x</code> → encode <code>y</code> → predict one summary from the other), and
+    explain in plain language <em>why</em> predicting in representation space escapes the blur.<br><br>
+    → New vocabulary logged in the <a href="../reference/glossary.html">Glossary</a>:
+    encoder, JEPA, representation collapse.<br>
+    → <strong>Next — Lesson 3:</strong> the failure modes of prediction, and the energy-based
+    lens that unifies all of this — where "energy" turns out to be an old statistics friend in
+    disguise.
+  </div>
+
+  <div class="ask">
+    📣 <strong>I'm your teacher — use me.</strong> Want to see the three boxes as an actual
+    diagram? Curious how "collapse" is prevented without giving the game away? Want the
+    statistician's framing of what an encoder is really estimating? Ask.
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('#quiz button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var fb = document.getElementById('fb');
+      document.querySelectorAll('#quiz button').forEach(function (x) { x.disabled = true; });
+      if (b.dataset.ok === '1') {
+        b.classList.add('correct');
+        fb.textContent = '✓ Exactly. The target encoder is free to discard the unpredictable detail (which way the pen fell). If the target vector never records it, the predictor is never graded on it — so there is no multi-modal thing to average, and no blur.';
+      } else {
+        b.classList.add('wrong');
+        document.querySelector('#quiz button[data-ok="1"]').classList.add('correct');
+        fb.textContent = 'Not the core reason. JEPA does not sharpen the pixel loss or train longer — it changes WHAT is graded. Predicting the summary lets the encoder throw away unpredictable detail, so nothing multi-modal survives to be averaged (correct answer highlighted).';
+      }
+    });
+  });
+</script>
+</body>
+</html>

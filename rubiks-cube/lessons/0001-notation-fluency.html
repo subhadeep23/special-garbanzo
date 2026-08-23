@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 01 · Notation Fluency</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<p class="eyebrow">Lesson 01 · ~7 minutes · cube in hand</p>
+<h1>Read any algorithm without thinking</h1>
+<p class="lede">Your goal is to solve unaided. The thing standing in the way isn't the steps —
+it's that the algorithms haven't stuck. And you can't memorise a sentence in a language you
+read letter-by-letter. So today's single win: turn notation into <em>reflex</em>.</p>
+
+<div class="why">
+  <span class="label">Why this first</span>
+  Every move sequence you'll ever learn is written in six letters and three symbols. When
+  <span class="moves">R U R' U'</span> reads as one <em>chunk</em> instead of four lookups, it moves into
+  long-term memory as a single unit. Fluency now is what makes <em>unaided</em> possible later.
+</div>
+
+<h2>Step 1 — Anchor the six letters (90 seconds)</h2>
+<p>Hold your cube still. One face points at your nose. Without rotating the cube, name them out loud
+by <strong>position, not colour</strong>:</p>
+<ul>
+  <li><strong>F</strong>ront at your nose · <strong>B</strong>ack behind · <strong>U</strong>p · <strong>D</strong>own ·
+  <strong>L</strong>eft · <strong>R</strong>ight.</li>
+</ul>
+<p>Full table in the <a href="../reference/notation.html">Notation reference</a> — keep it open in another tab.</p>
+
+<h2>Step 2 — The three turn-symbols (90 seconds)</h2>
+<table>
+  <thead><tr><th>Write</th><th>Say</th><th>Do</th></tr></thead>
+  <tbody>
+    <tr><td><span class="moves">R</span></td><td>"R"</td><td>turn that face 90° <strong>clockwise</strong> (as if it faced you)</td></tr>
+    <tr><td><span class="moves">R'</span></td><td>"R prime"</td><td>90° <strong>counter-clockwise</strong></td></tr>
+    <tr><td><span class="moves">R2</span></td><td>"R two"</td><td>180° (either way)</td></tr>
+  </tbody>
+</table>
+
+<h2>Step 3 — The self-checking drill (the win)</h2>
+<p>Start from a <strong>solved</strong> cube. Do the "sexy move" — the single most common pattern in cubing:</p>
+<p style="text-align:center; font-size:1.4rem; margin:1rem 0;"><span class="moves">R U R' U'</span></p>
+<p>Repeat that exact four-move sequence <strong>six times</strong>. If you read every move correctly,
+the cube returns <em>perfectly to solved</em>. If it doesn't, you misread a move — reset and go slower.</p>
+
+<div class="win">
+  <span class="label">Your win today</span>
+  A cube that returns to solved after 6× <span class="moves">R U R' U'</span> proves you can read notation
+  reliably. That's the whole foundation — every algorithm from here is just longer sentences in the same language.
+</div>
+
+<div class="note">
+  <span class="label">The clockwise gotcha</span>
+  Clockwise is judged from <em>that face's</em> point of view. The sneaky ones are <span class="moves">D</span>
+  (imagine looking up from underneath) and <span class="moves">B</span> (from behind the cube). Get these wrong
+  and a whole solve falls apart — so drill them deliberately.
+</div>
+
+<h2>Step 4 — Recall check</h2>
+<p>Answer from memory, cube down. No peeking at the table above.</p>
+
+<div class="quiz" id="q"></div>
+
+<div class="lesson-footer">
+  <strong>Primary source to watch:</strong>
+  <a href="https://www.jperm.net/3x3">J Perm — How to Solve the 3x3</a>
+  (the clearest beginner walkthrough anywhere; the notation section maps exactly to this lesson).
+  <br>Reference: <a href="../reference/notation.html">Notation cheat sheet</a>.
+
+  <div class="ask">
+    <strong>I'm your teacher — ask me.</strong> Stuck on which way is "prime"? Confused by D or B turns?
+    Want me to invent more drills, or check your understanding of any move? Just ask in the chat.
+    Next lesson builds on this: the first layer, from memory.
+  </div>
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script>
+Quiz("#q", [
+  { q: "Which face is always 'F', no matter its colour?",
+    options: ["The one facing you ", "The white side here", "The top side now", "The left side now"],
+    answer: 0,
+    feedback: "F = whatever points at your nose. Notation is about position, not colour." },
+  { q: "What does the apostrophe in R' tell you to do?",
+    options: ["Turn it counter-clock", "Turn it twice around", "Turn it clockwise now", "Turn the back face"],
+    answer: 0,
+    feedback: "Prime ( ' ) = counter-clockwise, a quarter turn the other way." },
+  { q: "Doing R U R' U' six times from solved leaves the cube...",
+    options: ["Back to fully solved", "Scrambled up badly", "With a flipped edge", "Missing two corners"],
+    answer: 0,
+    feedback: "Six repetitions return it to solved — the built-in proof you read every move right." },
+  { q: "Why is 'D' the easiest turn to get backwards?",
+    options: ["Clockwise is from below", "It moves two layers", "It is a half turn", "It rotates the cube"],
+    answer: 0,
+    feedback: "D's clockwise is judged from underneath, so it looks counter-clockwise from above." }
+]);
+</script>
+
+</body>
+</html>
