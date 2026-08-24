@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 4 — Collapse, and how JEPA blocks it</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">JEPA Course · Lesson 4 · Conceptual fluency</p>
+  <h1>Collapse — and how JEPA blocks it</h1>
+  <p class="dek">Lesson 3 said the hard half of training is "push the energy up everywhere
+  else." This lesson is about doing that without ever naming a single bad example — the
+  trick that makes the whole approach work.</p>
+
+  <h2>0 · Spaced recall — answer before reading on</h2>
+  <p>Three questions from the last two lessons. Do them from memory; the effort is the point.</p>
+  <ul>
+    <li>Draw JEPA's three boxes. What goes into each, and what is compared to what?</li>
+    <li>What does a <em>low</em> energy <code>E(x, y)</code> mean, in plain words?</li>
+    <li>Why can't we just work with <code>p(y | x)</code> instead?</li>
+  </ul>
+  <p>If the third one came slowly: the normalising constant <code>Z(x)</code> is an integral
+  over every possible future, and it cannot be computed in a high-dimensional continuous space.</p>
+
+  <h2>1 · Two ways a model can learn nothing</h2>
+  <p>You already met the obvious failure. If training only ever rewards <code>s_x</code>'s
+  prediction for matching <code>s_y</code>, the encoders can conspire: <strong>output the same
+  constant vector for every input.</strong> The prediction is then perfect, the loss is zero,
+  and the model has learned exactly nothing. That is <strong>complete collapse</strong>, and
+  in energy language it is a landscape that is <em>flat</em> — every future is equally
+  compatible with every past.</p>
+
+  <p>There is a second, sneakier version, and it is the one that bites in practice. The
+  embeddings are not all identical, but they all lie squashed inside a <strong>thin slice</strong>
+  of the available space — say the vectors have 1024 dimensions but only genuinely vary along
+  20 of them. The other 1004 dimensions are dead weight, or are near-duplicates of each other.
+  Nothing looks broken. The loss goes down. But most of the representation's capacity is gone.</p>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> the summaries are not identical, but they
+    all crowd into a thin sliver of the space, so most of the room goes unused.</span>
+    <span class="chip stat">STAT</span><span class="term">the embedding covariance matrix is near-singular — most variance sits in a few directions; the effective rank is far below the nominal dimension</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">dimensional collapse (VICReg calls the correlated version <em>informational collapse</em>)</span>
+  </div>
+
+  <p>Both failures come from the same source: a loss that only rewards <em>agreement</em>.
+  Agreement is cheapest when there is nothing to agree about.</p>
+
+  <h2>2 · The obvious fix, and why LeCun avoids it</h2>
+  <p>The direct answer is to name bad pairs on purpose. Take this image's summary and that
+  unrelated image's summary, and push their energy <em>up</em>. Now the model cannot flatten
+  the landscape, because you are actively holding parts of it high. Those manufactured bad
+  pairs are called <strong>negative samples</strong>, and this is the
+  <strong>contrastive</strong> family from Lesson 3.</p>
+
+  <p>It works. It is also, in LeCun's view, the wrong bet for the physical world, for two
+  reasons worth holding on to:</p>
+
+  <ul>
+    <li><strong>The count scales badly.</strong> To pin down a surface you need points that
+      surround it. In one dimension a handful will do. In a space of hundreds of dimensions,
+      the number of negatives needed to hem the low-energy region in from every side grows
+      out of reach. You end up sampling a vanishing fraction of the space you are trying to
+      hold up.</li>
+    <li><strong>Your negatives are often lies.</strong> Two "unrelated" video clips of a
+      street may genuinely be near-identical in meaning. Pushing them apart teaches the model
+      something false. This is the <em>false negative</em> problem, and it gets worse the
+      better your data is.</li>
+  </ul>
+
+  <div class="callout">
+    <span class="label">The move that defines modern JEPA</span>
+    Stop trying to push energy up at <em>specific points</em>. Instead, constrain the model so
+    that <strong>only a limited volume of the space is allowed to have low energy at all.</strong>
+    Then pushing one region down automatically lifts everywhere else — for free, with no
+    negatives. This is the <strong>regularised</strong> family.
+  </div>
+
+  <h2>3 · Cure A — break the symmetry</h2>
+  <p>Look again at why collapse is possible. Both encoders are being pulled toward each other
+  by the same gradient, so they can walk to the same constant <em>together</em>, hand in hand.
+  Deny them that and the shortcut closes. Two devices do it:</p>
+
+  <ul>
+    <li><strong>Stop-gradient.</strong> The target branch produces <code>s_y</code>, but no
+      gradient is allowed to flow back through it. The target is treated as a fixed fact for
+      that step. The predictor must move toward the target; the target cannot slide down to
+      meet the predictor.</li>
+    <li><strong>An EMA target encoder.</strong> The target encoder's weights are not trained
+      directly at all. They are a slow <em>exponential moving average</em> of the context
+      encoder's weights — a lagging copy. So the target the model chases is always a slightly
+      stale version of itself, which keeps the two branches from racing to the same trivial
+      answer.</li>
+  </ul>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> freeze one side so it can't move toward
+    the other, and make that side a slow-motion copy of the side that is learning.</span>
+    <span class="chip stat">STAT</span><span class="term">an exponentially weighted moving average of the parameter sequence — a heavily smoothed, lagged estimate</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">stop-gradient plus an EMA (momentum) target encoder — the asymmetry introduced by BYOL, and the mechanism I-JEPA uses</span>
+  </div>
+
+  <p>This is empirically effective and slightly mysterious: it prevents collapse without any
+  explicit term in the loss saying "don't collapse". It is a structural cure, not a stated one.</p>
+
+  <h2>4 · Cure B — say it out loud in the loss</h2>
+  <p>The other route adds terms that make collapse <em>expensive</em>. VICReg is the clearest
+  example, and its name is literally its three terms:</p>
+
+  <table style="width:100%;border-collapse:collapse;margin:1rem 0">
+    <tr><th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">Term</th>
+        <th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">What it asks for</th>
+        <th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">Which failure it kills</th></tr>
+    <tr><td style="padding:.4rem"><strong>V</strong>ariance</td>
+        <td style="padding:.4rem">each dimension's spread across the batch must stay above a threshold</td>
+        <td style="padding:.4rem">complete collapse — a constant has zero spread, so it is forbidden outright</td></tr>
+    <tr><td style="padding:.4rem"><strong>I</strong>nvariance</td>
+        <td style="padding:.4rem">the prediction must match the target</td>
+        <td style="padding:.4rem">none — this is the actual learning signal</td></tr>
+    <tr><td style="padding:.4rem"><strong>C</strong>ovariance</td>
+        <td style="padding:.4rem">different dimensions must be uncorrelated with each other</td>
+        <td style="padding:.4rem">dimensional collapse — duplicated dimensions carry no extra information</td></tr>
+  </table>
+
+  <p>Read that as a statistician and it is very familiar furniture. The variance term is a
+  floor on each coordinate's standard deviation. The covariance term drives the
+  <strong>off-diagonal</strong> entries of the embedding covariance matrix toward zero — it is
+  a decorrelation penalty, close in spirit to asking for a whitened representation.</p>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> force every dimension to actually vary, and
+    force them to vary about <em>different</em> things.</span>
+    <span class="chip stat">STAT</span><span class="term">a lower bound on each marginal standard deviation, plus a penalty on the off-diagonal covariances — a decorrelation / near-whitening constraint</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">VICReg — Variance-Invariance-Covariance Regularization. Barlow Twins is a close relative: push the cross-correlation matrix toward the identity</span>
+  </div>
+
+  <h2>5 · Back to the energy picture</h2>
+  <p>Now cash in Lesson 3's framing, because this is where the whole course knits together.
+  Every cure above is one answer to the same question: <em>how do you raise the energy
+  everywhere else without naming a single bad pair?</em></p>
+
+  <ul>
+    <li>The <strong>variance</strong> floor forbids the flat landscape directly — the constant
+      solution is simply made illegal.</li>
+    <li>The <strong>covariance</strong> penalty forbids the thin sliver — the low-energy region
+      is not allowed to be a degenerate subspace.</li>
+    <li>The <strong>stop-gradient and EMA</strong> asymmetry denies the shortcut path that
+      leads to the flat solution in the first place.</li>
+  </ul>
+
+  <div class="callout">
+    <span class="label">The one-sentence version to memorise</span>
+    Contrastive methods hold the energy up at <strong>points you choose</strong>. Regularised
+    methods cap the <strong>volume</strong> of space allowed to be low-energy, so the energy
+    rises everywhere else on its own.
+  </div>
+
+  <p>That is why the two families are the right way to carve up the field, and why the word
+  "collapse" keeps appearing in every JEPA paper. It is not a bug that occasionally happens.
+  It is the trivial solution the objective genuinely prefers, and every design choice in a
+  JEPA is, in some measure, a wall built against it.</p>
+
+  <hr>
+
+  <div class="quiz" data-quiz>
+    <p class="q">Q. What is the essential difference between contrastive and regularised methods for preventing collapse?</p>
+    <button data-ok="0" data-fb="Not the difference. Both families are trained by gradient descent on a loss. What separates them is HOW the energy is kept high away from the data: contrastive names specific negative pairs, regularised constrains the volume of low-energy space (correct answer highlighted).">Contrastive methods use gradients, regularised methods do not</button>
+    <button data-ok="1" data-fb="✓ Exactly. Contrastive methods pick specific negative pairs and push their energy up, which needs enormously many negatives in high dimensions and risks false negatives. Regularised methods instead constrain how much of the space may be low-energy — pushing one region down then lifts the rest for free.">Contrastive picks specific bad pairs; regularised caps the low-energy volume</button>
+    <button data-ok="0" data-fb="Backwards on the second half. Regularised methods are precisely the ones that need NO negative samples — that is their whole appeal. Contrastive methods are the ones that depend on them (correct answer highlighted).">Regularised methods need far more negative samples than contrastive ones</button>
+    <button data-ok="0" data-fb="No. Both are used for the same joint-embedding objective, and neither is tied to a data type. The real split is whether you name specific negatives or constrain the volume of low-energy space (correct answer highlighted).">Contrastive works only on images; regularised works only on video</button>
+    <p class="feedback"></p>
+  </div>
+
+  <div class="quiz" data-quiz>
+    <p class="q">Q. In VICReg, which term is aimed specifically at <em>dimensional</em> collapse — embeddings crowding into a thin subspace?</p>
+    <button data-ok="0" data-fb="The variance term stops COMPLETE collapse: it puts a floor under each dimension's spread, so a constant output is illegal. But dimensions can each vary and still be near-copies of one another — that is the covariance term's job (correct answer highlighted).">The variance term, by keeping each dimension's spread above a floor</button>
+    <button data-ok="1" data-fb="✓ Right. The covariance term penalises the off-diagonal entries of the embedding covariance matrix, forcing dimensions to decorrelate. Without it, many dimensions can carry the same information and the effective capacity quietly shrinks.">The covariance term, by forcing dimensions to be uncorrelated</button>
+    <button data-ok="0" data-fb="The invariance term IS the learning signal — it rewards the prediction for matching the target. Left alone it actively encourages collapse. The covariance term is what blocks the thin-subspace failure (correct answer highlighted).">The invariance term, by matching prediction and target closely</button>
+    <button data-ok="0" data-fb="There is no such term. VICReg has exactly three: variance, invariance, covariance. Dimensional collapse is handled by the covariance term (correct answer highlighted).">A fourth normalisation term applied after the other three</button>
+    <p class="feedback"></p>
+  </div>
+
+  <div class="source">
+    <span class="label">Primary source — read this next</span>
+    Bardes, Ponce &amp; LeCun, <a href="https://arxiv.org/abs/2105.04906"><strong>VICReg:
+    Variance-Invariance-Covariance Regularization for Self-Supervised Learning</strong></a> —
+    read §1 and the method section. The three terms are stated plainly and the statistics will
+    feel like home. Then Assran et al.,
+    <a href="https://arxiv.org/abs/2301.08243">I-JEPA</a>, for the EMA target encoder in a real
+    system. If the stop-gradient trick intrigues you, its origin is
+    <a href="https://arxiv.org/abs/2006.07733">BYOL</a>.
+  </div>
+
+  <div class="lesson-foot">
+    <strong>Your win this lesson:</strong> you can now name both kinds of collapse, explain why
+    contrastive negatives scale badly with dimension, and describe two independent cures — the
+    structural one (stop-gradient + EMA) and the explicit one (VICReg's variance and covariance
+    terms) — in the shared language of an energy landscape.<br><br>
+    → New vocabulary logged in the <a href="../reference/glossary.html">Glossary</a>:
+    dimensional collapse, negative samples, stop-gradient, EMA target encoder, VICReg.<br>
+    → Back-links: <a href="0002-jepa-predict-the-representation.html">Lesson 2 — the three boxes</a> ·
+    <a href="0003-energy-the-unifying-lens.html">Lesson 3 — energy</a><br>
+    → <strong>Next — Lesson 5:</strong> the full cognitive architecture — perception, world
+    model, cost, actor, configurator — and planning recast as searching the energy landscape
+    for the lowest-energy sequence of actions.
+  </div>
+
+  <div class="ask">
+    📣 <strong>I'm your teacher — use me.</strong> Want the covariance term written out so you
+    can see it is just the off-diagonal sum of squares? Curious why stop-gradient works at all,
+    given nothing in the loss mentions collapse? Want the dimension-counting argument for why
+    negatives scale badly, done properly? Ask.
+  </div>
+
+</div>
+</body>
+</html>
