@@ -10,75 +10,136 @@
 <body>
 <div class="wrap">
 
-  <p class="eyebrow">JEPA Course · Lesson 3 · Conceptual fluency</p>
+  <p class="eyebrow">JEPA Course · Lesson 3 · Conceptual fluency · rewritten 2026-08-25</p>
   <h1>Energy — the lens that unifies all of it</h1>
-  <p class="dek">Lesson 2 left one word undefined: <em>graded</em>. This lesson defines it
-  properly, and the definition turns out to be an old friend from your statistics degree
-  wearing a physicist's coat.</p>
+  <p class="dek">Lesson 2 left one word undefined: <em>graded</em>. This lesson defines it.
+  There are two formulas in here. Each one gets an everyday picture first, then the symbols
+  named one at a time. If a formula still feels opaque, that is a fault in the lesson — tell
+  me and I will redraw it.</p>
 
-  <h2>1 · One number: how well do these two things go together?</h2>
-  <p>Forget architectures for a moment. LeCun asks you to picture a machine that does exactly
-  one thing. You hand it a pair — a past <code>x</code> and a candidate future <code>y</code> —
-  and it returns <strong>a single number</strong>.</p>
+  <h2>1 · One number: the complaint meter</h2>
 
-  <p>The number means <em>incompatibility</em>. A <strong>low</strong> number says "yes, that
-  future goes with that past." A <strong>high</strong> number says "no, those do not belong
-  together." That number is called the <strong>energy</strong>, and the machine that computes
-  it is an <strong>energy function</strong>, written <code>E(x, y)</code>.</p>
+  <div class="analogy">
+    <span class="label">Picture it</span>
+    You have a friend who watches short video clips with you. You pause a clip, describe what
+    you think happens next, and the friend gives you <strong>a complaint score</strong>.
+    Silence, a zero, means "yes, that is how it goes." A loud score means "no, that does not
+    follow." The friend never tells you the right answer. The friend only complains.
+  </div>
 
-  <p>That is the whole primitive. Not a probability, not a prediction — a compatibility score.
-  Watch what it buys us.</p>
+  <p>That friend is the whole idea. You hand the machine a pair — a past <code>x</code> and a
+  candidate future <code>y</code> — and it returns <strong>one number</strong>. The number is
+  the complaint. <strong>Low means the two fit together. High means they do not.</strong></p>
+
+  <p>The number is called the <strong>energy</strong>. The machine is an <strong>energy
+  function</strong>, written <code>E(x, y)</code>. That is the entire primitive. It is not a
+  probability. It is not a prediction. It is a fit score.</p>
 
   <div class="bridge">
-    <span class="plain">🗣️ <strong>Plain:</strong> one number saying how badly these two
+    <span class="plain">🗣️ <strong>Plain:</strong> one number that says how badly these two
     things fit together. Small means they fit.</span>
     <span class="chip stat">STAT</span><span class="term">a scalar-valued function of a data pair; a fitted measure of (in)compatibility, unnormalised</span><br>
     <span class="chip cs">CS/ML</span><span class="term">an energy function <code>E(x, y)</code> — the model outputs a scalar energy for each input pair</span>
   </div>
 
-  <h2>2 · The stats translation — and the term that vanishes</h2>
-  <p>You have met this object before under a different name. If you write a conditional
-  density in the standard exponential form, energy is just the exponent:</p>
+  <h2>2 · Scores versus shares — and the census you cannot take</h2>
 
-  <p style="text-align:center"><code>p(y | x) = exp( &minus;E(x, y) ) / Z(x)</code></p>
+  <p>You have met this object before, under another name. Watch the translation, but read the
+  picture first.</p>
 
-  <p>Rearranged: <code>E(x, y) = &minus;log p(y | x) &minus; log Z(x)</code>. So
-  <strong>energy is negative log-likelihood</strong>, up to that <code>Z(x)</code> term.
-  Maximum likelihood and minimum energy are the same instinct.</p>
+  <div class="analogy">
+    <span class="label">Picture it</span>
+    A talent show. The judge can do two different jobs.<br><br>
+    <strong>Job A — give scores.</strong> "This act: 4 complaints. That act: 22 complaints."
+    To do this, the judge only needs to watch the acts in front of them.<br><br>
+    <strong>Job B — give each act a share of the vote.</strong> "This act gets 8% of the total."
+    A share is a slice of a whole. So before the judge can name any slice, they must total the
+    scores of <em>every act that could ever walk on stage</em>. That is a census.<br><br>
+    A probability is Job B. An energy is Job A. Job A is easy. Job B needs the census.
+  </div>
 
-  <p>Now look hard at <code>Z(x)</code>. It is the normalising constant — the sum or integral
-  of <code>exp(&minus;E(x, y))</code> over <strong>every possible <code>y</code></strong>. For
-  text that is a sum over a vocabulary of maybe 50,000 tokens; a softmax does it, no problem.
-  For the next second of video, <code>y</code> lives in a space of millions of continuous
-  dimensions, and that integral cannot be computed. Ever.</p>
+  <p>Here is the same statement in symbols. This is the standard exponential form of a
+  conditional density:</p>
+
+  <p class="mathline">p(y | x) &nbsp;=&nbsp; exp( &minus;E(x, y) ) &nbsp;/&nbsp; Z(x)</p>
+
+  <ul class="symbols">
+    <li><span>p(y | x)</span><span>the share of the vote: how probable this future <code>y</code> is, given this past <code>x</code>. All the shares must add up to 1.</span></li>
+    <li><span>E(x, y)</span><span>the complaint score from section 1. Low means they fit.</span></li>
+    <li><span>&minus;E</span><span>the minus sign flips the direction. A <em>low</em> complaint becomes a <em>high</em> number, because probabilities want big-is-good.</span></li>
+    <li><span>exp( · )</span><span>a converter. It turns a score anywhere on the number line into a positive weight, and it stretches the gaps: a slightly lower complaint becomes a much larger weight.</span></li>
+    <li><span>Z(x)</span><span><strong>the census.</strong> The total of <code>exp(&minus;E)</code> over every possible <code>y</code>. Division by it turns raw weights into shares that add up to 1.</span></li>
+  </ul>
+
+  <p>Take logs, move the terms around, and the same line reads:</p>
+
+  <p class="mathline">E(x, y) &nbsp;=&nbsp; &minus;log p(y | x) &nbsp;&minus;&nbsp; log Z(x)</p>
+
+  <p>So <strong>energy is negative log-likelihood</strong>, apart from that census term.
+  Maximum likelihood and minimum energy are one instinct in two coats. You minimised energy for
+  years and called it fitting a model.</p>
+
+  <h3>Why the census is the whole argument</h3>
+
+  <p>Look hard at <code>Z(x)</code>. It totals <code>exp(&minus;E(x, y))</code> over
+  <strong>every <code>y</code> that can possibly occur</strong>.</p>
+
+  <ul>
+    <li>For the next <strong>word</strong>: <code>y</code> is one of about 50,000 tokens. The
+      census is a sum over 50,000 things. A softmax does it in a moment. This is why LLMs can
+      work in probabilities at all.</li>
+    <li>For the next <strong>second of video</strong>: <code>y</code> is a point in a space of
+      millions of continuous dimensions. The census is an integral over that whole space. Nobody
+      can compute it. Not slowly, and not approximately enough.</li>
+  </ul>
 
   <div class="callout">
     <span class="label">Why LeCun works in energy and not probability</span>
-    A probability must be normalised, so it must integrate over every possible future.
-    An energy has no such duty. It only has to be <em>lower here than there</em>. Drop the
-    demand to normalise, and high-dimensional continuous prediction becomes tractable.
+    A probability is a share, so it owes a census over every possible future. An energy is a
+    score, so it owes nothing. It only has to be <em>lower here than there</em>. Refuse the duty
+    to normalise, and prediction in a huge continuous space becomes possible.
   </div>
 
   <div class="bridge">
-    <span class="plain">🗣️ <strong>Plain:</strong> the bookkeeping factor that forces
-    probabilities to add up to one — and the thing that is impossible to compute in a huge
-    continuous space.</span>
-    <span class="chip stat">STAT</span><span class="term">the normalising constant / partition function <code>Z(x)</code>; intractable for high-dimensional continuous <code>y</code></span><br>
-    <span class="chip cs">CS/ML</span><span class="term">the partition function — energy-based models are deliberately <em>unnormalised</em> models, which is what makes them usable here</span>
+    <span class="plain">🗣️ <strong>Plain:</strong> the census — the total you must know before
+    you can turn any score into a percentage. It is impossible to take in a huge continuous
+    space.</span>
+    <span class="chip stat">STAT</span><span class="term">the normalising constant <code>Z(x)</code>; intractable for high-dimensional continuous <code>y</code></span><br>
+    <span class="chip cs">CS/ML</span><span class="term">the partition function — energy-based models are deliberately <em>unnormalised</em>, which is exactly what makes them usable here</span>
   </div>
 
   <h2>3 · The blur, finally explained at the root</h2>
-  <p>Here is the payoff for Lesson 1 and Lesson 2. Ask the pen question again: the pen is
-  toppling, and it may land left or right.</p>
 
-  <p>A pixel-predicting model must emit <em>one</em> <code>y</code>. Graded on squared error,
-  the single best <code>y</code> is the average of both — the ghost pen, the blur. It has no
-  vocabulary for "either of these two."</p>
+  <p>Here is the payoff for Lesson 1 and Lesson 2. The pen topples. It can land left, or it can
+  land right.</p>
 
-  <p>An energy function has no such problem. It can assign <strong>low energy to pen-left
-  and low energy to pen-right at the same time</strong>, and high energy to the blurred pen
-  in between. Multiple good answers are natural to it, because it never had to pick one, and
-  never had to split a fixed probability mass between them.</p>
+  <p>A pixel-predicting model must emit <em>one</em> <code>y</code>. Under squared error, the
+  best single <code>y</code> is the average of the two — the ghost pen, the blur. The model has
+  no way to say "either of these."</p>
+
+  <p>The complaint meter has no such problem. It can stay silent for pen-left <em>and</em> stay
+  silent for pen-right, and complain loudly about the smeared pen between them.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 460 190" role="img" aria-label="An energy landscape with two low valleys and a high ridge between them">
+      <line x1="34" y1="20" x2="34" y2="150" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="34" y1="150" x2="440" y2="150" stroke="currentColor" stroke-width="1.2"/>
+      <text x="12" y="26" font-family="Gill Sans, system-ui, sans-serif" font-size="12" fill="currentColor">E</text>
+      <text x="330" y="168" font-family="Gill Sans, system-ui, sans-serif" font-size="11" fill="currentColor">every possible future y</text>
+      <path d="M40 46 C 95 46, 105 128, 150 128 C 195 128, 200 44, 240 44 C 280 44, 288 128, 330 128 C 372 128, 385 46, 436 46"
+            fill="none" stroke="#7a1f1f" stroke-width="2.4"/>
+      <circle cx="150" cy="128" r="4" fill="#7a1f1f"/>
+      <circle cx="330" cy="128" r="4" fill="#7a1f1f"/>
+      <circle cx="240" cy="44" r="4.5" fill="none" stroke="#7a1f1f" stroke-width="2"/>
+      <text x="113" y="146" font-family="Gill Sans, system-ui, sans-serif" font-size="11" fill="currentColor">pen left</text>
+      <text x="297" y="146" font-family="Gill Sans, system-ui, sans-serif" font-size="11" fill="currentColor">pen right</text>
+      <text x="205" y="36" font-family="Gill Sans, system-ui, sans-serif" font-size="11" fill="currentColor">the blur</text>
+    </svg>
+    <figcaption>The landscape that the complaint meter draws. Two valleys, both silent, both
+    real outcomes. The average of the two sits on the ridge — high energy, loudly rejected. A
+    squared-error pixel predictor is forced to output that ridge point. This picture is the
+    whole reason JEPA exists.</figcaption>
+  </figure>
 
   <div class="callout">
     <span class="label">The one-sentence version to memorise</span>
@@ -88,58 +149,70 @@
   </div>
 
   <h2>4 · So what is training?</h2>
-  <p>If the model is just a landscape of energies, then training is landscape sculpting, and
-  it has exactly two moves:</p>
+
+  <p>If the model is a landscape of complaints, then training is landscape sculpture. It has
+  exactly two moves:</p>
 
   <ul>
-    <li><strong>Push the energy down</strong> on pairs you actually observed in the data.
-      Those futures really did follow those pasts, so they must score as compatible.</li>
+    <li><strong>Push the energy down</strong> on pairs you saw in the data. Those futures really
+      did follow those pasts, so they must score as compatible.</li>
     <li><strong>Push the energy up</strong> everywhere else — or the landscape goes flat.</li>
   </ul>
 
-  <p>That second move is the entire difficulty, and it is the same problem as Lesson 2's
-  cheat. If you only ever push down, the model discovers it can set the energy to
-  <em>zero everywhere</em>. Every future is then perfectly compatible with every past, the
-  loss is minimal, and nothing has been learned. In Lesson 2 you met this as
-  <em>representation collapse</em>. In energy language it is <strong>a flat energy
-  landscape</strong> — the same failure, seen from a different angle.</p>
+  <p>The second move is the entire difficulty, and it is Lesson 2's cheat in new clothes. If you
+  only push down, the model finds that it can set the complaint to <em>zero everywhere</em>.
+  Every future then fits every past, the loss sits at its floor, and the model learned nothing.
+  Lesson 2 called this <strong>representation collapse</strong>. Here it is <strong>a flat energy
+  landscape</strong>. It is the same failure from a different angle.</p>
 
-  <p>There are two families of cures, and the names are worth having now:</p>
+  <p>There are two families of cure. Take the picture first.</p>
 
-  <ul>
-    <li><strong>Contrastive methods</strong> — manufacture wrong pairs on purpose and push
-      their energy up explicitly. Simple, but you need a great many wrong pairs, and the
-      number you need grows badly as dimensions grow.</li>
-    <li><strong>Regularised methods</strong> — never name a wrong pair. Instead limit the
-      <em>volume</em> of the space that is allowed to have low energy, so pushing one region
-      down automatically lifts the rest. LeCun prefers this family, and it is the route
-      JEPA takes.</li>
-  </ul>
+  <div class="analogy">
+    <span class="label">Picture it</span>
+    <strong>Contrastive methods are whack-a-mole.</strong> You point at specific wrong pairs —
+    this past with that unrelated future — and you hammer their energy up by hand. It works. But
+    the space of wrong answers is astronomically large, so you need an astronomical number of
+    hammer blows, and the number you need grows badly as the dimensions grow.<br><br>
+    <strong>Regularised methods are a waterbed.</strong> You never point at a wrong pair. You cap
+    the total volume of the space that is allowed to sit low. Press one region down, and the rest
+    must rise on its own, because there is only so much "low" to go around. LeCun prefers this
+    family. It is the route that JEPA takes.
+  </div>
 
   <div class="bridge">
-    <span class="plain">🗣️ <strong>Plain:</strong> two ways to stop the model calling
-    everything compatible — either point at bad examples, or cap how much of the space is
-    allowed to look good.</span>
+    <span class="plain">🗣️ <strong>Plain:</strong> two ways to stop the model calling everything
+    compatible — hammer down named bad examples, or cap how much of the space is allowed to look
+    good.</span>
     <span class="chip stat">STAT</span><span class="term">contrastive estimation vs. a capacity/volume penalty on the fitted score surface</span><br>
     <span class="chip cs">CS/ML</span><span class="term">contrastive methods (negative samples) vs. regularised methods (information/volume constraints, e.g. VICReg-style terms)</span>
   </div>
 
   <h2>5 · Where this sits in LeCun's argument</h2>
-  <p>Energy is the frame that makes the whole course one argument rather than three. The
-  world model of Lesson 1, the JEPA boxes of Lesson 2, the collapse problem, and the planning
-  machinery still ahead are all descriptions of <em>one energy landscape and how it is
-  sculpted</em>. When a JEPA is trained, the prediction error in representation space
-  <strong>is</strong> the energy. When an agent later plans, it searches for the action
-  sequence with the lowest energy. Same number, two jobs.</p>
+
+  <p>Energy is what makes this course one argument instead of three facts. The world model of
+  Lesson 1, the JEPA boxes of Lesson 2, the collapse problem, and the planning machinery still
+  ahead are all descriptions of <em>one energy landscape and how it is sculpted</em>. When a JEPA
+  trains, the prediction error in representation space <strong>is</strong> the energy. When an
+  agent later plans, it searches for the action sequence with the lowest energy. Same number, two
+  jobs.</p>
 
   <hr>
 
   <div class="quiz" data-quiz>
-    <p class="q">Q. Why does LeCun build on energy functions instead of probability distributions for predicting the physical world?</p>
-    <button data-ok="0" data-fb="Not the reason. An energy is not inherently faster to compute than any other network output — the saving is structural, not arithmetic. An energy escapes the normalising constant Z(x), which is the integral over every possible future and is intractable in a high-dimensional continuous space (correct answer highlighted).">Energy functions are much faster to compute than probabilities</button>
-    <button data-ok="1" data-fb="✓ Exactly. A probability must be normalised, which means integrating exp(−E) over every possible future — impossible for continuous, million-dimensional y. An energy only has to be lower here than there, so it never pays that cost, and it can also score several different futures as good at once.">An energy needs no normalising constant, so it skips an impossible integral</button>
-    <button data-ok="0" data-fb="Backwards. Energy is the more general object and probability is the special case: p(y|x) = exp(−E(x,y))/Z(x). Dropping the normalisation requirement is what makes the high-dimensional case tractable (correct answer highlighted).">Energy is a stricter object than probability, so it generalises better</button>
-    <button data-ok="0" data-fb="No. Energy-based training still needs gradients and still uses a loss. What changes is the shape of the objective: push energy down on observed pairs, up elsewhere — with no normalising integral to evaluate (correct answer highlighted).">Energy models can be trained without gradients or a loss function</button>
+    <p class="q">Q1. In plain words, what is the census term <code>Z(x)</code>, and why does it stop us using probabilities for video?</p>
+    <button data-ok="0" data-fb="No. Z(x) is not the amount of data. It is the total over every possible future y, needed to turn a raw score into a share of one. In a continuous space of millions of dimensions, that total is an integral nobody can evaluate (correct answer highlighted).">It counts the training clips, and video needs far more clips than text</button>
+    <button data-ok="1" data-fb="✓ Exactly. Z(x) totals exp(−E) over every y that can possibly occur, because a probability is a share and a share needs the whole. For 50,000 word tokens a softmax does it. For a continuous future of millions of dimensions it cannot be computed, so LeCun keeps the score and drops the share.">It totals every possible future, and for video that total cannot be computed</button>
+    <button data-ok="0" data-fb="Backwards. The energy itself is cheap — it is one forward pass of a network. The expensive object is Z(x), the total over all possible futures, which the energy view simply refuses to compute (correct answer highlighted).">It prices one energy evaluation, and video energies are far too costly</button>
+    <button data-ok="0" data-fb="Not quite. Z(x) is not noise or error at all. It is the normalising total that turns exp(−E) into probabilities that add up to one, and it is intractable for continuous high-dimensional y (correct answer highlighted).">It holds the leftover error, and video frames carry far too much noise</button>
+    <p class="feedback"></p>
+  </div>
+
+  <div class="quiz" data-quiz>
+    <p class="q">Q2. Why can an energy function handle "the pen may fall left or right" when a squared-error pixel predictor cannot?</p>
+    <button data-ok="0" data-fb="No. Energy models are not shown more futures per example — often fewer. The difference is structural: scoring lets several futures be good at once, whereas naming one future forces an average (correct answer highlighted).">Energy models see far more possible futures during training than predictors do</button>
+    <button data-ok="1" data-fb="✓ Exactly. The energy only ranks, so it can sit low at pen-left and low at pen-right at the same time, with a ridge between them. A predictor must emit one image, and under squared error the best single image is the average of the two — the ghost pen.">Energy only ranks the futures, so several futures can score as good together</button>
+    <button data-ok="0" data-fb="Not the reason. Nothing stops a pixel predictor using a bigger or sharper network. It still averages, because the conditional mean is what minimises squared error when the target is multi-modal (correct answer highlighted).">Energy models use much sharper networks, so their outputs never come out blurry</button>
+    <button data-ok="0" data-fb="No. An energy function outputs no image at all — it outputs one number for a pair. That is precisely why it is never forced to pick a single future (correct answer highlighted).">Energy models output two images at once, one for each possible pen outcome</button>
     <p class="feedback"></p>
   </div>
 
@@ -147,33 +220,33 @@
     <span class="label">Primary source — read this next</span>
     LeCun, <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf"><strong>A Path Towards
     Autonomous Machine Intelligence</strong></a> — read the energy-based model sections
-    (§4 onward), where the two families of training methods, contrastive and regularised,
-    are laid out. For the long-form version, LeCun's
+    (§4 onward), where the two families of training methods, contrastive and regularised, are
+    laid out. For the long-form version, LeCun's
     <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf">A Tutorial on Energy-Based
     Learning</a> (2006) is the canonical treatment — §1 and §2 alone are worth it, and the
     notation is gentler than the year suggests.
   </div>
 
   <div class="lesson-foot">
-    <strong>Your win this lesson:</strong> you can now say what "grading a guess" means
-    mechanically (one scalar, low = compatible), translate it to negative log-likelihood,
-    and explain why dropping the normalising constant is what makes uncertain,
-    high-dimensional prediction possible at all.<br><br>
+    <strong>Your win this lesson:</strong> you can say what "grading a guess" means mechanically
+    (one scalar, low = fits), read <code>p = exp(&minus;E)/Z</code> out loud symbol by symbol,
+    and explain why the refusal to take the census is what makes uncertain, high-dimensional
+    prediction possible at all.<br><br>
     → New vocabulary logged in the <a href="../reference/glossary.html">Glossary</a>:
     energy function, energy-based model, partition function, contrastive vs. regularised
     methods.<br>
     → Back-links: <a href="0001-what-is-a-world-model.html">Lesson 1 — world models</a> ·
     <a href="0002-jepa-predict-the-representation.html">Lesson 2 — predict the representation</a><br>
-    → <strong>Next — Lesson 4:</strong> collapse, head on. Why "push the energy up everywhere
-    else" is so hard, and the specific tricks (stop-gradient, EMA target encoders, variance
-    and covariance terms) that keep a JEPA from learning nothing.
+    → <strong>Next — Lesson 4:</strong> <a href="0004-collapse-and-how-jepa-blocks-it.html">collapse,
+    head on</a>. Why "push the energy up everywhere else" is so hard, and the specific tricks that
+    keep a JEPA from learning nothing.
   </div>
 
   <div class="ask">
-    📣 <strong>I'm your teacher — use me.</strong> Want the energy landscape drawn as an actual
-    picture, with the two low-energy pen positions marked? Want to see how a squared-error loss
-    is literally a Gaussian energy in disguise? Want to know why contrastive methods scale badly
-    with dimension? Ask.
+    📣 <strong>I'm your teacher — use me.</strong> If any line above still reads as symbols and
+    not as a picture, name the line and I will rewrite it. Do you want to see how a squared-error
+    loss is a Gaussian energy in disguise? Do you want the whack-a-mole scaling argument done
+    properly, with numbers? Ask.
   </div>
 
 </div>
