@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 5 — The whole agent: six modules, two modes</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">JEPA Course · Lesson 5 · Conceptual fluency</p>
+  <h1>The whole agent — six modules, two modes</h1>
+  <p class="dek">Four lessons built one part: the world model. This lesson puts it inside the
+  machine LeCun actually proposes, and shows that "thinking before acting" is just Lesson 3's
+  energy, minimised over actions instead of over futures.</p>
+
+  <h2>0 · Spaced recall — answer before reading on</h2>
+  <ul>
+    <li>Name the two kinds of collapse, and one cure for each.</li>
+    <li>What is the <em>census</em>, and why does JEPA refuse to take it?</li>
+    <li>Lesson 3 ended with "same number, two jobs." What were the two jobs?</li>
+  </ul>
+  <p>If the third one is fuzzy, good — this whole lesson is the answer to it.</p>
+
+  <h2>1 · Six boxes, one job each</h2>
+  <p>LeCun's paper doesn't stop at "predict the representation." It sketches a whole agent,
+  and every box has exactly one job. Plain words first:</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 330" role="img" aria-label="LeCun's six-module architecture">
+      <style>
+        .bx{fill:var(--paper-edge);stroke:var(--ink-soft);stroke-width:1.4}
+        .hot{fill:var(--paper-edge);stroke:var(--accent);stroke-width:2.2}
+        .t{font:600 15px Georgia,serif;fill:var(--ink)}
+        .s{font:12px system-ui,sans-serif;fill:var(--ink-soft)}
+        .ln{stroke:var(--ink-soft);stroke-width:1.3;fill:none;marker-end:url(#ar)}
+        .dash{stroke:var(--accent-2);stroke-width:1.2;stroke-dasharray:4 4;fill:none}
+      </style>
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-soft)"/></marker></defs>
+      <!-- configurator -->
+      <rect class="bx" x="220" y="10" width="200" height="50" rx="6"/>
+      <text class="t" x="320" y="32" text-anchor="middle">Configurator</text>
+      <text class="s" x="320" y="50" text-anchor="middle">the manager: sets the sub-goal</text>
+      <path class="dash" d="M320 60 V85 M100 85 H540 M100 85 V120 M320 85 V120 M540 85 V120"/>
+      <!-- perception / world model / cost -->
+      <rect class="bx" x="20" y="120" width="160" height="60" rx="6"/>
+      <text class="t" x="100" y="145" text-anchor="middle">Perception</text>
+      <text class="s" x="100" y="165" text-anchor="middle">"where am I now?"</text>
+      <rect class="hot" x="240" y="120" width="160" height="60" rx="6"/>
+      <text class="t" x="320" y="145" text-anchor="middle">World model</text>
+      <text class="s" x="320" y="165" text-anchor="middle">"what happens if…?" (JEPA)</text>
+      <rect class="bx" x="460" y="120" width="160" height="60" rx="6"/>
+      <text class="t" x="540" y="145" text-anchor="middle">Cost</text>
+      <text class="s" x="540" y="165" text-anchor="middle">"how bad is that?"</text>
+      <path class="ln" d="M180 150 H238"/>
+      <path class="ln" d="M400 150 H458"/>
+      <!-- actor & memory -->
+      <rect class="bx" x="240" y="250" width="160" height="60" rx="6"/>
+      <text class="t" x="320" y="275" text-anchor="middle">Actor</text>
+      <text class="s" x="320" y="295" text-anchor="middle">"so what do I do?"</text>
+      <rect class="bx" x="460" y="250" width="160" height="60" rx="6"/>
+      <text class="t" x="540" y="275" text-anchor="middle">Short-term memory</text>
+      <text class="s" x="540" y="295" text-anchor="middle">states + their costs</text>
+      <path class="ln" d="M300 250 V182"/>
+      <path class="ln" d="M540 182 V248"/>
+      <text class="s" x="308" y="222" text-anchor="end">proposed actions ↑</text>
+    </svg>
+    <figcaption>Figure 1. Solid arrows carry information; dashed lines are the configurator
+    re-tuning the others for the task at hand. The red box is everything Lessons 1–4 built.
+    Adapted from the architecture figure in LeCun (2022).</figcaption>
+  </figure>
+
+  <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem">
+    <tr><th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">Module</th>
+        <th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">Its one job</th></tr>
+    <tr><td style="padding:.4rem"><strong>Perception</strong></td><td style="padding:.4rem">turn raw senses into a summary of the current state — this is Lesson 2's encoder</td></tr>
+    <tr><td style="padding:.4rem"><strong>World model</strong></td><td style="padding:.4rem">predict the next state's summary, given a state and an action — this is the JEPA predictor</td></tr>
+    <tr><td style="padding:.4rem"><strong>Cost</strong></td><td style="padding:.4rem">output one number: the agent's "discomfort" in a state</td></tr>
+    <tr><td style="padding:.4rem"><strong>Actor</strong></td><td style="padding:.4rem">propose actions, and improve them</td></tr>
+    <tr><td style="padding:.4rem"><strong>Short-term memory</strong></td><td style="padding:.4rem">remember recent states and what they cost</td></tr>
+    <tr><td style="padding:.4rem"><strong>Configurator</strong></td><td style="padding:.4rem">the manager: picks the current sub-goal and tunes the cost module for it</td></tr>
+  </table>
+
+  <h2>2 · The cost module has two halves — and one is locked</h2>
+  <div class="analogy">
+    <span class="label">Picture it</span>
+    Your body has pain and hunger. You didn't learn them and you can't argue your way out of
+    them. On top of that, you have <em>experience</em>: "if I touch that stove, it will hurt
+    soon." The first is fixed at birth. The second is learned, and its job is to forecast the
+    first.
+  </div>
+  <ul>
+    <li><strong>Intrinsic cost</strong> — hard-wired, not trainable. It defines the agent's
+      basic nature: its "pain" and "hunger". Because it cannot be trained, the agent cannot
+      learn its way into wanting something bad.</li>
+    <li><strong>Critic</strong> — trainable. Its job is to <em>predict future values</em> of
+      the intrinsic cost, so the agent can feel a consequence before it arrives.</li>
+  </ul>
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> a fixed sense of "this hurts" plus a learned
+    forecast of "this will hurt later".</span>
+    <span class="chip stat">STAT</span><span class="term">a fixed loss function, plus a fitted regression model of that loss's expected future value</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">intrinsic cost (immutable) + trainable critic — the critic plays the role a value function plays in reinforcement learning</span>
+  </div>
+
+  <h2>3 · Two ways to act</h2>
+  <p>Now the payoff. The same machine can run in two modes.</p>
+  <ul>
+    <li><strong>Mode-1 — reflex.</strong> Perception gives the state; a <em>policy</em> inside
+      the actor maps it straight to an action. One pass, no imagining. Fast and cheap. This is
+      catching a ball.</li>
+    <li><strong>Mode-2 — deliberation.</strong> The actor proposes a whole <em>sequence</em> of
+      actions. The world model imagines the states each one leads to. The cost module scores
+      every imagined state. The actor tweaks the plan to lower the total, and repeats. Only when
+      it has settled does it perform the <strong>first</strong> action — then it looks again and
+      replans. This is planning a route across town.</li>
+  </ul>
+  <p>If this sounds like Kahneman's <em>System 1</em> and <em>System 2</em> — fast intuition
+  versus slow reasoning — that is the intended parallel.</p>
+
+  <h2>4 · Planning is energy minimisation — over actions</h2>
+  <div class="analogy">
+    <span class="label">Picture it</span>
+    A satnav doesn't try a route by driving it. It imagines the route, adds up the delay on
+    every stretch, then nudges the route and adds up again, keeping whichever total is
+    smallest. It only tells you the first turn. At the next junction, it does it all again.
+  </div>
+  <div class="mathline">total cost = C(s[1]) + C(s[2]) + … + C(s[T])</div>
+  <ul class="symbols">
+    <li><span>s[t]</span><span>the world model's imagined summary of the state at step <em>t</em>. Step 0 is "now", from perception.</span></li>
+    <li><span>C( … )</span><span>the cost module: takes one state, returns one discomfort number (intrinsic cost + critic).</span></li>
+    <li><span>+ … +</span><span>add the discomfort of every imagined step together.</span></li>
+    <li><span>T</span><span>how many steps ahead the agent imagines — the planning horizon.</span></li>
+    <li><span>=</span><span>the whole plan gets one score. Each <code>s[t]</code> depends on the actions chosen, so changing actions changes this number.</span></li>
+  </ul>
+  <p>The actor's task: choose actions <code>a[0] … a[T]</code> that make this total as small
+  as possible. Because every module is differentiable, the actor can follow the gradient of the
+  total with respect to the actions — the same tool that trains the network, pointed at the plan
+  instead of the weights.</p>
+
+  <div class="callout">
+    <span class="label">Cashing in Lesson 3</span>
+    "Same number, two jobs." In <strong>training</strong>, you lower the energy by changing
+    the <em>weights</em>. In <strong>planning</strong>, you lower the energy by changing the
+    <em>actions</em>, with the weights held fixed. LeCun calls the second one reasoning:
+    <em>reasoning is energy minimisation with respect to action sequences.</em>
+  </div>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> imagine a plan, score it, improve it, take
+    only the first step, then plan again.</span>
+    <span class="chip stat">STAT</span><span class="term">optimisation of a sum of stage-wise losses over a decision sequence — closely related to sequential decision theory</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">model-predictive control (MPC) with a learned world model; "Mode-2" planning; inference by optimisation</span>
+  </div>
+
+  <h2>5 · Why two modes, and how they talk</h2>
+  <p>Mode-2 is expensive: the agent can deliberate over only one hard thing at a time. So
+  LeCun proposes that the good plans Mode-2 discovers are used to <strong>train the Mode-1
+  policy</strong>. Over time the deliberate plan becomes a reflex. That is his account of
+  how a skill is learned: slow and effortful at first, automatic later — like driving.</p>
+  <p>And here is the sharpest contrast with today's LLMs, which is the mission's opening
+  question: an LLM produces each token in a single forward pass — structurally, a Mode-1
+  machine. LeCun's agent has a place where it can <em>search</em> before it commits.</p>
+
+  <hr>
+
+  <div class="quiz" data-quiz>
+    <p class="q">Q. In Mode-2, once the actor has settled on a low-cost action sequence, what does it do?</p>
+    <button data-ok="0" data-fb="No — the world keeps surprising the agent, so a long plan goes stale fast. The agent performs only the first action, then looks again and replans (correct answer highlighted).">Performs every action in the sequence, in order, without stopping</button>
+    <button data-ok="1" data-fb="✓ Right. It performs only the first action, observes the new state, and plans again. That is exactly how model-predictive control works — and why the satnav only tells you the next turn.">Performs only the first action, then observes and plans all over again</button>
+    <button data-ok="0" data-fb="The critic does get trained from stored states and costs, but that is not what happens at the moment of acting. The actor performs the first action and replans (correct answer highlighted).">Hands the whole sequence to the critic so the critic can be retrained</button>
+    <p class="feedback"></p>
+  </div>
+
+  <div class="quiz" data-quiz>
+    <p class="q">Q. Why is the intrinsic cost hard-wired rather than trainable?</p>
+    <button data-ok="0" data-fb="Speed isn't the reason. The point is safety and identity: a cost the agent can't change is a drive it can't learn its way out of (correct answer highlighted).">Because a fixed function is faster to compute than a learned one</button>
+    <button data-ok="0" data-fb="The opposite, in fact — the critic is the learned forecaster. The intrinsic cost is what the critic learns to predict (correct answer highlighted).">Because it forecasts future costs, which the critic cannot learn to do</button>
+    <button data-ok="1" data-fb="✓ Yes. It defines the agent's basic drives. If it were trainable, the agent could drift toward rewarding itself for bad behaviour. Fixed drives, learned forecasts.">Because it defines the agent's basic drives, and must not drift during learning</button>
+    <p class="feedback"></p>
+  </div>
+
+  <div class="source">
+    <span class="label">Primary source — read this next</span>
+    LeCun, <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf"><strong>A Path Towards
+    Autonomous Machine Intelligence</strong></a> (2022) — read the section on the model
+    architecture, through the Mode-1 / Mode-2 discussion and the cost module. You now have the vocabulary for
+    every box in the architecture figure. For a gentler walkthrough first, Rohit Bandaru's
+    <a href="https://rohitbandaru.github.io/blog/JEPA-Deep-Dive/">JEPA Deep Dive</a> covers
+    the same architecture with the Kahneman parallel.
+  </div>
+
+  <div class="lesson-foot">
+    <strong>Your win this lesson:</strong> you can draw LeCun's six-module agent, say each
+    module's one job, tell Mode-1 from Mode-2, and explain planning as minimising a summed cost
+    over imagined states — Lesson 3's energy, minimised over actions instead of weights.<br><br>
+    → New vocabulary logged in the <a href="../reference/glossary.html">Glossary</a>:
+    configurator, intrinsic cost, critic, Mode-1 / Mode-2, model-predictive control.<br>
+    → Back-links: <a href="0001-what-is-a-world-model.html">Lesson 1 — world models</a> ·
+    <a href="0003-energy-the-unifying-lens.html">Lesson 3 — energy</a> ·
+    <a href="0004-collapse-and-how-jepa-blocks-it.html">Lesson 4 — collapse</a><br>
+    → <strong>Next — Lesson 6:</strong> H-JEPA — stacking world models so the agent can plan at
+    several time scales at once. After that, the conceptual-fluency phase is complete and we
+    move to building.
+  </div>
+
+  <div class="ask">
+    📣 <strong>I'm your teacher — use me.</strong> Unsure how a gradient can flow "through" a
+    plan? Want to see why an LLM is called a Mode-1 machine, and where that framing is
+    contested? If any line didn't land, name the line — that's what fixed Lesson 3. Ask.
+  </div>
+
+</div>
+</body>
+</html>

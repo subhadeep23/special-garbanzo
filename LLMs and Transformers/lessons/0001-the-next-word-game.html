@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1 — The next-word game</title>
+<link rel="stylesheet" href="../assets/course.css">
+<script src="../assets/quiz.js" defer></script>
+<script src="../assets/ngram.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">LLMs &amp; Transformers · Part I: Counting · Lesson 1</p>
+  <h1>The next-word game</h1>
+  <p class="dek">Every model you have ever typed a prompt into is playing one game: guess the
+  next word. The game is more than a hundred years old. Today you build the first version of
+  it, by counting.</p>
+
+  <div class="callout">
+    <span class="label">Where we are in time</span>
+    <strong>1913</strong> — Andrei Markov counts letters in a Russian poem.
+    <strong>1948</strong> — Claude Shannon uses the same idea to generate fake English.
+    Nothing here needs a computer. Keep that in mind: the only thing that changes between this
+    lesson and ChatGPT is <em>how the guessing table gets built</em>.
+    → <a href="../reference/timeline.html">Course timeline</a>
+  </div>
+
+  <h2>1 · The game</h2>
+  <p>Finish this: <em>"I'd like a cup of ___."</em> You said <em>tea</em> or <em>coffee</em>
+  without thinking. You didn't pick one word — you had a sense of which words were
+  <em>likely</em> and which were absurd. <em>"A cup of bicycle"</em> is not wrong grammar.
+  It's just very unlikely.</p>
+  <p>A <strong>language model</strong> is anything that turns "the words so far" into "how
+  likely each possible next word is." That is the whole definition. Everything in this course
+  is a better way of doing it.</p>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> a machine that, given the words so far,
+    says how likely each next word is.</span>
+    <span class="chip stat">STAT</span><span class="term">a conditional probability distribution over the next word, given the preceding words</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">language model (LM); an autoregressive LM generates by repeatedly sampling from it</span>
+  </div>
+
+  <h2>2 · 1913: Markov counts vowels</h2>
+  <p>Markov took the first <strong>20,000 letters</strong> of Pushkin's <em>Eugene Onegin</em>,
+  stripped the spaces and punctuation, and sorted every letter into just two kinds: vowel or
+  consonant. By hand. He found <strong>8,638 vowels</strong> — about 43%.</p>
+  <p>If each letter ignored the one before it, two vowels in a row would come up about
+  0.43 × 0.43 ≈ 19% of the time: roughly <strong>3,731</strong> double vowels. He counted
+  <strong>1,104</strong>. More than three times fewer.</p>
+  <p>So letters are <em>not</em> independent. What comes next depends on what came just
+  before — after a vowel, another vowel is rare (roughly 1,104 ÷ 8,638 ≈ 0.13). That
+  "depends on the previous one" chain now carries his name.</p>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> the next thing depends on the thing just
+    before it — and on nothing earlier.</span>
+    <span class="chip stat">STAT</span><span class="term">a first-order Markov chain; the test he ran is a check of independence between successive trials</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">the Markov assumption</span>
+  </div>
+
+  <h2>3 · 1948: Shannon generates fake English</h2>
+  <p>Thirty-five years later, Claude Shannon asked the reverse question. If I <em>know</em> how
+  often each letter or word follows another, can I <em>produce</em> text? He built a ladder,
+  each rung looking a little further back. Real samples from his paper:</p>
+
+  <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:.92rem">
+    <tr><th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">Rung</th>
+        <th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">What it knows</th>
+        <th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">Shannon's sample</th></tr>
+    <tr><td style="padding:.4rem">letters, zero order</td><td style="padding:.4rem">nothing — every letter equally likely</td>
+        <td style="padding:.4rem"><code>XFOML RXKHRJFFJUJ ZLPWCFWKCYJ</code></td></tr>
+    <tr><td style="padding:.4rem">letters, looking back 1</td><td style="padding:.4rem">which letter tends to follow which</td>
+        <td style="padding:.4rem"><code>ON IE ANTSOUTINYS ARE T INCTORE ST BE S DEAMY</code></td></tr>
+    <tr><td style="padding:.4rem">words, looking back 1</td><td style="padding:.4rem">which word tends to follow which</td>
+        <td style="padding:.4rem"><code>THE HEAD AND IN FRONTAL ATTACK ON AN ENGLISH WRITER THAT THE CHARACTER OF THIS POINT IS THEREFORE ANOTHER METHOD FOR THE LETTERS…</code></td></tr>
+  </table>
+
+  <p>Each rung reads more like English. Shannon's own observation: the text holds together for
+  about <em>twice</em> the distance the model looks back. And his method needed no tables — for
+  the word samples he opened a book at random, found the current word, and wrote down
+  <em>whatever came after it</em>. Then did it again on another page.</p>
+
+  <blockquote>"It appears then that a sufficiently complex stochastic process will give a
+  satisfactory representation of a discrete source." — Shannon, 1948</blockquote>
+  <p>Read that sentence with 2026 eyes. It is the bet the whole field made.</p>
+
+  <h2>4 · The maths, in two steps</h2>
+
+  <h3>Step 1 — forget most of the past</h3>
+  <div class="analogy">
+    <span class="label">Picture it</span>
+    You're guessing the next word, but you have terrible short-term memory: you can only see the
+    single word right before the blank. <em>"…so beautifully ___"</em>. You still do better than
+    random — <em>beautifully</em> narrows things down a lot.
+  </div>
+  <div class="mathline">P( next word | all words so far ) ≈ P( next word | previous word )</div>
+  <ul class="symbols">
+    <li><span>P( … )</span><span>"the probability of …"</span></li>
+    <li><span>|</span><span>"given that we know …" — the bar from conditional probability</span></li>
+    <li><span>≈</span><span>"is approximately" — we're choosing to throw information away</span></li>
+    <li><span>left side</span><span>what we'd <em>like</em>: use the whole history</span></li>
+    <li><span>right side</span><span>what we <em>settle for</em>: use only the last word</span></li>
+  </ul>
+  <p>That's the Markov assumption, applied to words. A model that looks back one word is a
+  <strong>bigram</strong> model ("bi" = two words: the previous one and the next one). Looking
+  back two words is a <strong>trigram</strong>. In general, an <strong>n-gram</strong> looks
+  back <em>n − 1</em> words.</p>
+
+  <h3>Step 2 — get the numbers by counting</h3>
+  <div class="analogy">
+    <span class="label">Picture it</span>
+    Keep a notebook with one page for every word. Read a big pile of text. Every time you see a
+    word, turn to its page and tally whatever word came right after it. To guess what follows
+    <em>like</em>, open the <em>like</em> page: each word's share of the tallies is its chance.
+  </div>
+  <div class="mathline">P( next | previous ) = count( previous, next ) ÷ count( previous )</div>
+  <ul class="symbols">
+    <li><span>count( previous, next )</span><span>how many times the pair appeared side by side, in that order</span></li>
+    <li><span>count( previous )</span><span>how many times the previous word appeared with <em>something</em> after it — the total tallies on its page</span></li>
+    <li><span>÷</span><span>turns a tally into a share, so the shares on one page add up to 1</span></li>
+    <li><span>=</span><span>this is not an approximation any more: it's the <em>estimate</em> we'll use</span></li>
+  </ul>
+
+  <div class="bridge">
+    <span class="plain">🗣️ <strong>Plain:</strong> the chance of a pair is its share of all the
+    times the first word showed up.</span>
+    <span class="chip stat">STAT</span><span class="term">the relative-frequency estimate of a conditional probability — which is the maximum likelihood estimate (MLE) for this model. Your old friend.</span><br>
+    <span class="chip cs">CS/ML</span><span class="term">n-gram language model, trained by counting (Jurafsky &amp; Martin, eq. 3.10)</span>
+  </div>
+
+  <h3>Try it by hand first</h3>
+  <p>The whole "text" is: <code>i like tea . i like cake . you like tea .</code><br>
+  What is P( tea | like )? And P( like | i )?</p>
+  <details>
+    <summary>Show the answer</summary>
+    <p><em>like</em> appears 3 times, followed by <em>tea</em> twice and <em>cake</em> once. So
+    P(tea | like) = 2 ÷ 3 ≈ 0.67. <em>i</em> appears twice, both times followed by <em>like</em>:
+    P(like | i) = 2 ÷ 2 = 1. The model is certain — because it has seen almost nothing.</p>
+  </details>
+
+  <h2>5 · Now build one</h2>
+  <p>Below is a real bigram model, running in your browser. The text is short on purpose so you
+  can check its counts. Do these three things, in order:</p>
+  <ol>
+    <li>Type <code>the</code> in the context box. Pick one row and check its division yourself.</li>
+    <li>Switch between <em>unigram</em>, <em>bigram</em>, and <em>trigram</em>, pressing
+      <em>Generate</em> a few times each. You are climbing Shannon's ladder.</li>
+    <li>Paste in any paragraph you like — an email, a news article — and repeat. Try a context
+      word that isn't in the text.</li>
+  </ol>
+
+  <div class="ngram" data-ngram data-order="2">
+<textarea aria-label="Training text for the n-gram model">the cat sat on the mat . the dog sat on the rug . the cat saw the dog . the dog saw the cat and the cat ran . the dog ran after the cat . the cat ran up the tree . the dog sat under the tree and the dog waited . the cat sat in the tree and the cat waited too . then the rain came . the dog ran home . the cat stayed in the tree until the rain stopped . then the cat came down and sat on the mat .</textarea>
+  </div>
+
+  <p>What you should notice: the unigram output is word salad. The bigram output has
+  locally sensible pairs (<em>the cat</em>, <em>sat on</em>) but wanders. The trigram output
+  on this tiny text mostly <em>copies whole sentences</em> — it has seen too little to do
+  anything else.</p>
+
+  <h2>6 · What's wrong with it — and what each flaw started</h2>
+  <p>Every later chapter of this course is a response to one of these. Hold on to the list.</p>
+  <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:.93rem">
+    <tr><th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">Flaw</th>
+        <th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">What you saw</th>
+        <th style="text-align:left;padding:.4rem;border-bottom:1px solid var(--rule)">The response</th></tr>
+    <tr><td style="padding:.4rem"><strong>Zeros</strong></td>
+        <td style="padding:.4rem">an unseen pair gets probability 0 — "impossible", not "rare"</td>
+        <td style="padding:.4rem">smoothing (Lesson 2)</td></tr>
+    <tr><td style="padding:.4rem"><strong>Short memory</strong></td>
+        <td style="padding:.4rem">"The keys I left on the kitchen table <em>are</em>…" — the verb depends on a word six back</td>
+        <td style="padding:.4rem">recurrent networks, then attention (Parts III–IV)</td></tr>
+    <tr><td style="padding:.4rem"><strong>Explosion</strong></td>
+        <td style="padding:.4rem">with 50,000 words, a trigram model has 50,000 × 50,000 = 2.5 billion possible contexts — almost all never seen</td>
+        <td style="padding:.4rem">neural models that compute probabilities instead of storing them (Lesson 3)</td></tr>
+    <tr><td style="padding:.4rem"><strong>No meaning</strong></td>
+        <td style="padding:.4rem">learning about <em>cat</em> teaches the model nothing about <em>dog</em> — they're unrelated symbols</td>
+        <td style="padding:.4rem">words as vectors (Lessons 3–4)</td></tr>
+  </table>
+
+  <div class="callout">
+    <span class="label">The thread to today</span>
+    A modern LLM still outputs P( next token | previous tokens ). Two things changed: "previous"
+    grew from one word to hundreds of thousands of tokens, and the notebook of counts was
+    replaced by a neural network that <em>computes</em> the table on demand. Karpathy's
+    build-GPT video starts from a bigram model too — a character-level one, with the counting replaced by a tiny neural network.
+  </div>
+
+  <hr>
+
+  <div class="quiz" data-quiz>
+    <p class="q">Q. In a bigram model, what does the probability of the next word depend on?</p>
+    <button data-ok="0" data-fb="That's the ideal, not the bigram model. The bigram model deliberately throws away everything except the single previous word (correct answer highlighted).">Every word that came before it in the text</button>
+    <button data-ok="1" data-fb="✓ Right. That's the Markov assumption: only the immediately preceding word counts. A trigram looks back two words; an n-gram looks back n − 1.">Only the single word that came right before it</button>
+    <button data-ok="0" data-fb="No — that's the unigram model, which ignores context entirely. It produces Shannon's word-salad rung (correct answer highlighted).">Only how common the word is across the text</button>
+    <p class="feedback"></p>
+  </div>
+
+  <div class="quiz" data-quiz>
+    <p class="q">Q. In some text, <em>strong</em> appears 40 times with a word after it, and <em>strong tea</em> appears 10 times. What is P( tea | strong )?</p>
+    <button data-ok="0" data-fb="That's 40 ÷ 10 — upside down. A probability can't exceed 1. Divide the pair's count by the previous word's count (correct answer highlighted).">Four, which is forty divided by ten</button>
+    <button data-ok="0" data-fb="That would need the count of 'tea' on its own, which the formula never uses. The denominator is how often 'strong' appeared (correct answer highlighted).">It depends on how often tea appears</button>
+    <button data-ok="1" data-fb="✓ Yes: count(strong, tea) ÷ count(strong) = 10 ÷ 40. A quarter of the time, 'strong' is followed by 'tea'.">One quarter, which is ten over forty</button>
+    <p class="feedback"></p>
+  </div>
+
+  <div class="source">
+    <span class="label">Primary source — read this next</span>
+    Shannon, <a href="https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf"><strong>A
+    Mathematical Theory of Communication</strong></a> (1948) — read only §3, "The Series of
+    Approximations to English". Two pages; you now understand every word of it. For the
+    textbook version with careful notation, Jurafsky &amp; Martin,
+    <a href="https://web.stanford.edu/~jurafsky/slp3/3.pdf"><em>Speech and Language
+    Processing</em>, ch. 3</a>, §3.1. For the Markov story with his tables, Brian Hayes,
+    <a href="https://www.americanscientist.org/article/first-links-in-the-markov-chain">"First
+    Links in the Markov Chain"</a>.
+  </div>
+
+  <div class="lesson-foot">
+    <strong>Your win this lesson:</strong> you built a working language model by counting,
+    can compute a bigram probability by hand, and can name the four flaws that the next
+    seventy years of research set out to fix.<br><br>
+    → New vocabulary in the <a href="../reference/glossary.html">Glossary</a>: language model,
+    Markov assumption, n-gram / bigram / trigram, maximum likelihood estimate, sampling.<br>
+    → <a href="../reference/timeline.html">Timeline</a> updated: 1913, 1948.<br>
+    → <strong>Next — Lesson 2:</strong> the zero problem. How to give unseen pairs a small
+    chance, and <em>perplexity</em> — the one number that says how surprised a model is by
+    real text, and that every LLM paper still reports.
+  </div>
+
+  <div class="ask">
+    📣 <strong>I'm your teacher — use me.</strong> Curious why counting is the maximum
+    likelihood estimate here? Want to know where these models were actually used between 1948
+    and 2003 (speech recognition, spelling correction, machine translation)? If a line didn't
+    land, name the line. Ask.
+  </div>
+
+</div>
+</body>
+</html>

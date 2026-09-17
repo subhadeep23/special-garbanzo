@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L4 · From Events to Numbers — Random Variables — UGC-NET 107</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<header class="lh">
+  <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 4</div>
+  <h1>From Events to Numbers — Random Variables</h1>
+  <p class="sub">Stop listing outcomes. Start counting them. ~15 min.</p>
+</header>
+
+<p><span class="tag">TODAY'S WIN</span> &nbsp;By the end you'll be able to take any small experiment, turn it into a random variable, draw its distribution function as a staircase, and read probabilities like <code>P(X &lt; 2)</code> straight off that staircase — including the one trap the exam loves: <code>&lt;</code> versus <code>&le;</code>.</p>
+
+<h2>0 · Spaced recall — no peeking</h2>
+<div class="card">
+  <p style="margin:.3rem 0">• What are the three columns of the <strong>branch table</strong>, and which cell answers total probability?</p>
+  <p style="margin:.3rem 0">• Two events can't happen together. Are they independent? (Careful.)</p>
+</div>
+<p class="src">Answers: prior, likelihood, branch weight — the column sum of the weights is the total probability. And no: mutually exclusive events with positive probability are <em>never</em> independent, because knowing one happened tells you the other didn't.</p>
+
+<h2>1 · The idea: attach a number to every outcome</h2>
+<p>Toss a fair coin three times. The sample space has eight outcomes: HHH, HHT, HTH, THH, HTT, THT, TTH, TTT. Listing them is tedious, and usually you don't care <em>which</em> outcome happened — you care about something like <strong>how many heads</strong>.</p>
+<p>So give each outcome a number: its count of heads. HHH gets 3. HTT gets 1. TTT gets 0. That's it — you've made a random variable.</p>
+
+<div class="insight">
+<h3>Say it in one line</h3>
+<p>A <strong>random variable</strong> is a rule that gives every outcome of an experiment a real number. The randomness lives in the outcome; the variable just reads a number off it.</p>
+</div>
+
+<p>Two things to notice, because both show up as exam statements:</p>
+<div class="axiom"><span class="n">1</span><span>It is a <strong>function</strong>, not a variable in the algebra sense. Written <code>X(&omega;)</code>: outcome &omega; goes in, a number comes out.</span></div>
+<div class="axiom"><span class="n">2</span><span>Probability is <strong>not</strong> in the definition. You can define "number of heads" before anyone tells you whether the coin is fair. The probabilities come from the sample space, and the variable carries them along.</span></div>
+
+<p class="src"><em>Deeper layer — skip on a busy week.</em> The formal definition adds one condition: for every number <code>x</code>, the set of outcomes with <code>X(&omega;) &le; x</code> must be an <em>event</em> (a member of the &sigma;-field), so that it has a probability. That's what "Borel-measurable function" means. For every finite experiment you'll meet, it is automatically true.</p>
+
+<h2>2 · From the variable to its probabilities</h2>
+<p>Group the outcomes by the number they got. The coin is fair, so each outcome has probability 1/8:</p>
+
+<table>
+<tr><th>Value x</th><th>Outcomes giving it</th><th>P(X = x)</th></tr>
+<tr><td>0</td><td>TTT</td><td>1/8</td></tr>
+<tr><td>1</td><td>HTT, THT, TTH</td><td>3/8</td></tr>
+<tr><td>2</td><td>HHT, HTH, THH</td><td>3/8</td></tr>
+<tr><td>3</td><td>HHH</td><td>1/8</td></tr>
+<tr><td><strong>total</strong></td><td>all eight</td><td><strong>1</strong></td></tr>
+</table>
+<p>Eight outcomes collapsed into four numbers. That's the whole point of a random variable: it compresses.</p>
+
+<h2>3 · The distribution function: a running total</h2>
+<p>Now ask a different question at every point on the number line: <em>what's the chance X is at most this?</em> Walk left to right and keep a running total.</p>
+
+<div class="card">
+  <p style="text-align:center;font-size:1.15rem;margin:.4rem 0"><code>F(x) = P(X &le; x)</code></p>
+  <p class="src" style="text-align:center">the <strong>distribution function</strong> (d.f.), also called the <strong>cumulative distribution function</strong> (c.d.f.)</p>
+</div>
+
+<p>Read the symbols: <code>F</code> is the running-total function; <code>x</code> is any real number you choose — not only 0, 1, 2, 3; <code>&le;</code> means "at most", <em>including</em> x itself.</p>
+
+<figure style="margin:1.4rem 0">
+<svg viewBox="0 0 520 240" role="img" aria-label="Staircase CDF for number of heads in three tosses" style="width:100%;height:auto">
+  <style>
+    .ax{stroke:var(--muted);stroke-width:1}
+    .st{stroke:var(--accent2);stroke-width:2.6}
+    .lb{font:12px system-ui,sans-serif;fill:var(--muted)}
+    .dot{fill:var(--accent2)}
+    .hole{fill:var(--bg);stroke:var(--accent2);stroke-width:1.8}
+  </style>
+  <!-- axes: x from -1..4 → 40..480 (88px/unit); y 0..1 → 200..30 -->
+  <line class="ax" x1="30" y1="200" x2="500" y2="200"/>
+  <line class="ax" x1="128" y1="20" x2="128" y2="205"/>
+  <text class="lb" x="124" y="218">0</text><text class="lb" x="212" y="218">1</text>
+  <text class="lb" x="300" y="218">2</text><text class="lb" x="388" y="218">3</text>
+  <text class="lb" x="490" y="218">x</text>
+  <text class="lb" x="92" y="204">0</text><text class="lb" x="84" y="183">1/8</text>
+  <text class="lb" x="84" y="119">4/8</text><text class="lb" x="84" y="55">7/8</text>
+  <text class="lb" x="100" y="34">1</text>
+  <line class="ax" x1="124" y1="30" x2="132" y2="30"/>
+  <!-- steps -->
+  <line class="st" x1="30" y1="200" x2="128" y2="200"/>
+  <line class="st" x1="128" y1="179" x2="216" y2="179"/>
+  <line class="st" x1="216" y1="115" x2="304" y2="115"/>
+  <line class="st" x1="304" y1="51" x2="392" y2="51"/>
+  <line class="st" x1="392" y1="30" x2="500" y2="30"/>
+  <!-- filled = value taken; hollow = value not taken -->
+  <circle class="hole" cx="128" cy="200" r="4"/><circle class="dot" cx="128" cy="179" r="4"/>
+  <circle class="hole" cx="216" cy="179" r="4"/><circle class="dot" cx="216" cy="115" r="4"/>
+  <circle class="hole" cx="304" cy="115" r="4"/><circle class="dot" cx="304" cy="51" r="4"/>
+  <circle class="hole" cx="392" cy="51" r="4"/><circle class="dot" cx="392" cy="30" r="4"/>
+</svg>
+<figcaption class="src">The staircase for "number of heads in three tosses". Each jump sits at a value X can take, and the <strong>height of the jump is P(X = that value)</strong>: 1/8, 3/8, 3/8, 1/8. The filled dot shows which step F takes <em>at</em> the jump — the upper one.</figcaption>
+</figure>
+
+<table>
+<tr><th>Where x is</th><th>F(x)</th></tr>
+<tr><td>x &lt; 0</td><td>0</td></tr>
+<tr><td>0 &le; x &lt; 1</td><td>1/8</td></tr>
+<tr><td>1 &le; x &lt; 2</td><td>4/8</td></tr>
+<tr><td>2 &le; x &lt; 3</td><td>7/8</td></tr>
+<tr><td>x &ge; 3</td><td>1</td></tr>
+</table>
+<p>Check one by hand: <code>F(2.75) = P(X &le; 2.75)</code> = every outcome except HHH = 7/8. Any x works, not just whole numbers.</p>
+
+<h2>4 · Four properties — every distribution function has them</h2>
+<p>Look at the staircase and each property is obvious. The exam asks "which of these is a valid d.f.?", and these four are the checklist.</p>
+<div class="axiom"><span class="n">1</span><span><strong>Never goes down</strong> — a running total of probabilities can't shrink. (<em>non-decreasing</em>)</span></div>
+<div class="axiom"><span class="n">2</span><span><strong>Starts at 0</strong> far to the left: <code>F(x) &rarr; 0</code> as <code>x &rarr; &minus;&infin;</code>.</span></div>
+<div class="axiom"><span class="n">3</span><span><strong>Ends at 1</strong> far to the right: <code>F(x) &rarr; 1</code> as <code>x &rarr; +&infin;</code>.</span></div>
+<div class="axiom"><span class="n">4</span><span><strong>At a jump, F takes the upper value</strong> — the filled dot. Approaching from the right, you land on F(x) itself. (<em>right-continuous</em>)</span></div>
+<p class="src">Property 4 comes straight from the <code>&le;</code> in the definition: at x = 1, "at most 1" already includes X = 1, so the jump has happened.</p>
+
+<h2>5 · Reading probabilities off the staircase</h2>
+<p>Write <code>F(a&minus;)</code> for the height <em>just before</em> the jump at a — the hollow dot. Then:</p>
+<table>
+<tr><th>You want</th><th>Read it as</th><th>Why</th></tr>
+<tr><td>P(X &le; a)</td><td>F(a)</td><td>the definition</td></tr>
+<tr><td>P(X &lt; a)</td><td>F(a&minus;)</td><td>stop just before a — don't take the jump</td></tr>
+<tr><td>P(X = a)</td><td>F(a) &minus; F(a&minus;)</td><td>the height of the jump at a</td></tr>
+<tr><td>P(X &gt; a)</td><td>1 &minus; F(a)</td><td>complement of "at most a"</td></tr>
+<tr><td>P(a &lt; X &le; b)</td><td>F(b) &minus; F(a)</td><td>up to b, minus up to a</td></tr>
+</table>
+
+<div class="insight">
+<h3>The trap</h3>
+<p>For a staircase, <code>&lt;</code> and <code>&le;</code> give <strong>different answers</strong> at a jump. <code>P(X &le; 1) = 4/8</code> but <code>P(X &lt; 1) = 1/8</code>. Where F is smooth (no jump), they agree, and <code>P(X = a) = 0</code>. Before computing anything, ask: is there a jump at this point?</p>
+</div>
+
+<h2>6 · Exam-shaped problem, worked</h2>
+<div class="card">
+<p>A random variable has distribution function</p>
+<p style="text-align:center"><code>F(x) = 0 for x &lt; 0; &nbsp; x/4 for 0 &le; x &lt; 1; &nbsp; 1/2 for 1 &le; x &lt; 2; &nbsp; x/12 + 1/2 for 2 &le; x &lt; 3; &nbsp; 1 for x &ge; 3.</code></p>
+<p>Find (a) P(X &lt; 2), (b) P(X = 2), (c) P(2 &lt; X &le; 7).</p>
+</div>
+<p>This one is a <em>mix</em>: some pieces slope smoothly, some jump. Find the jumps first by checking each boundary.</p>
+<p><strong>(a)</strong> Just before 2, F sits on the flat piece: <code>F(2&minus;) = 1/2</code>. So <code>P(X &lt; 2) = 1/2</code>.</p>
+<p><strong>(b)</strong> At 2, F switches to <code>2/12 + 1/2 = 2/3</code>. Jump = <code>2/3 &minus; 1/2 = 1/6</code>. So <code>P(X = 2) = 1/6</code>.</p>
+<p><strong>(c)</strong> <code>F(7) &minus; F(2) = 1 &minus; 2/3 = 1/3</code>.</p>
+
+<div class="card">
+<p><span class="tag">WATCH OUT</span> &nbsp;The corpus prints (c) as <code>1 &minus; (3/12 + 1/2)</code>, which would give 1/4. The printed answer, 1/3, is right — the working plugged in 3 where it should use 2. That's the <strong>third</strong> confirmed OCR slip in this corpus. Keep re-deriving.</p>
+</div>
+
+<div class="insight">
+<h3>Why this matters for you</h3>
+<p><span class="tag">EXAM</span> &nbsp;"Is this a valid d.f.?" and "compute P(a &lt; X &le; b) from this F" are staple Unit I questions, and the <code>&lt;</code>/<code>&le;</code> jump trap is where marks leak. Everything after this lesson — mass functions, densities, expectation, every named distribution — is a way of describing F.</p>
+</div>
+
+<div class="quiz" data-quiz>
+<h3>Quick check — from memory, not by peeking</h3>
+
+<div class="q" data-answer="2">
+<p class="stem">A random variable is best described as…</p>
+<button>a number that changes each time you look</button>
+<button>the probability attached to every outcome</button>
+<button>a function from outcomes to real numbers</button>
+<button>a set of outcomes that share one property</button>
+<p class="fb" data-good="Right — X(ω) takes an outcome and returns a number. Probability isn't part of the definition." data-bad="It's a function: outcome in, real number out. The probabilities belong to the sample space; the variable just carries them."></p>
+</div>
+
+<div class="q" data-answer="0">
+<p class="stem">Three fair coin tosses, X = number of heads. P(X &lt; 2) equals…</p>
+<button>four over eight, the height before the jump</button>
+<button>seven over eight, the height after the jump</button>
+<button>three over eight, the size of the jump at 2</button>
+<button>one over eight, the height at zero heads</button>
+<p class="fb" data-good="Yes — X < 2 means 0 or 1 heads: 1/8 + 3/8 = 4/8. That's F(2−), the level just before the jump at 2." data-bad="X < 2 means 0 or 1 heads, so 1/8 + 3/8 = 4/8 — the level just before the jump. F(2) = 7/8 would be P(X ≤ 2)."></p>
+</div>
+
+<div class="q" data-answer="3">
+<p class="stem">Which of these could NOT be a distribution function?</p>
+<button>one that is flat, then jumps, then stays flat</button>
+<button>one that rises smoothly from zero up to one</button>
+<button>one that jumps at every whole number up to 1</button>
+<button>one that rises to 0.9 and then dips to 0.8</button>
+<p class="fb" data-good="Correct — a running total of probability can never go down. Any dip breaks the non-decreasing property." data-bad="A d.f. may jump or rise smoothly, but it can never decrease. The one that dips from 0.9 to 0.8 is invalid."></p>
+</div>
+
+<div class="q" data-answer="1">
+<p class="stem">Events A and B each have positive probability and cannot occur together. Then A and B are…</p>
+<button>independent, since they share no outcomes</button>
+<button>dependent, since one rules out the other</button>
+<button>independent, if both probabilities match</button>
+<button>dependent, only if they are also exhaustive</button>
+<p class="fb" data-good="Right — P(A∩B) = 0 but P(A)P(B) > 0, so the product rule fails. Knowing A happened tells you B didn't." data-bad="They're dependent: P(A∩B) = 0 while P(A)P(B) > 0. Mutually exclusive is the opposite of independent here, not the same thing."></p>
+</div>
+</div>
+
+<h2>7 · If you'd like to read a little</h2>
+<p><span class="tag">GENTLE SOURCE</span> <a href="https://online.stat.psu.edu/stat414/Lesson07" target="_blank" rel="noopener">Penn State STAT 414 — Lesson 7: Discrete Random Variables</a>: the same definitions with worked examples, from a university course.</p>
+<p><span class="tag">REFERENCE</span> <a href="../reference/unit-i-probability-formulas.html">Unit&nbsp;I &mdash; Probability formula sheet</a> (now includes this lesson).</p>
+<p class="src"><strong>Grounded in the corpus:</strong> <code>02_Probability/14_probability_theory_2.md</code> — random-variable definitions at line 2684, coin examples from line 2719, distribution function and its four properties at line 2835, the three-tosses c.d.f. at line 2979, the "events in terms of F" table and the mixed-F worked example around line 3120. All numbers re-derived.</p>
+
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> Want a sketch of the mixed F from §6? Want to see why a smooth F means every single point has probability zero? Want three more "is this a valid d.f.?" drills? Ask.</div>
+
+<div class="nav">
+  <span>← <a href="0003-turning-the-bar-around-bayes.html">L3 · Bayes' Theorem</a></span>
+  <span>Next: <strong>L5 · Mass and Density — discrete vs continuous</strong>, once this clicks</span>
+</div>
+
+<footer class="lf">
+UGC-NET Statistics (107) · Unit I · Lesson 4 · random variables, distribution function, reading probabilities off F<br>
+Do the four checks above, then tell me it clicked — and we'll build Lesson 5 on top of it.
+</footer>
+<script src="../assets/quiz.js"></script>
+</body>
+</html>
