@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L1 · What Probability Really Means — UGC-NET 107</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/viz/viz.css">
+</head>
+<body>
+<header class="lh">
+  <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 1</div>
+  <h1>What Probability Really Means</h1>
+  <p class="sub">Starting from zero, in plain language. No formulas until we actually need them. ~15 min.</p>
+</header>
+
+<p><span class="tag">TODAY'S WIN</span> &nbsp;By the end you'll be able to say, in your own words, what probability <em>is</em>, state the three simple rules every probability must follow, and use them to answer an "at least one" question in two lines, with three new words you'll meet gently along the way.</p>
+
+<h2>1 · The plain idea</h2>
+<p>Probability is just a way of putting a <strong>number on how likely something is</strong>.</p>
+<p>We agree on a scale from <strong>0 to 1</strong>:</p>
+<div class="card">
+  <p style="margin:.3rem 0">• <strong>0</strong> means "this never happens."</p>
+  <p style="margin:.3rem 0">• <strong>1</strong> means "this always happens, for sure."</p>
+  <p style="margin:.3rem 0">• <strong>0.5</strong> means "it's a coin toss — half the time."</p>
+</div>
+<p>That's the whole heart of it. A weather app saying "70% chance of rain" is just saying the probability of rain is <strong>0.7</strong> — closer to the "sure" end than the "never" end. Everything else in this subject is built on top of this one simple idea.</p>
+
+<h2>2 · Three words, introduced gently</h2>
+<p>To talk about likelihood precisely, we need three small words. You already understand all three from daily life — we're just giving them their proper names.</p>
+
+<h3>Word 1 — outcome</h3>
+<p>An <strong>outcome</strong> is <em>one single thing that could happen</em>. Roll a die: getting a <strong>4</strong> is one outcome. Getting a <strong>6</strong> is another.</p>
+
+<h3>Word 2 — sample space</h3>
+<p>Now imagine a bag holding <em>every</em> outcome that's possible. That whole collection is the <dfn>sample space</dfn>. For a die, the sample space is the six faces: <strong>{1, 2, 3, 4, 5, 6}</strong>. Nothing outside the bag can happen; everything inside might.</p>
+<blockquote>Think of it as the complete "list of everything that could occur." Later you'll see it written with the symbol \(\Omega\) (the Greek letter <em>omega</em>) — but the symbol is just shorthand for "the bag of all outcomes." Don't let the symbol worry you.</blockquote>
+
+<h3>Word 3 — event</h3>
+<p>An <dfn>event</dfn> is a <em>question you can answer yes-or-no</em> about the result — usually a group of outcomes you care about. "Did the die show an even number?" is an event. It's happy with three outcomes: <strong>2, 4, or 6</strong>. So an event is simply <em>a chosen bunch of outcomes from the bag</em>.</p>
+
+<table>
+<tr><th>Everyday word</th><th>Proper name</th><th>Die example</th></tr>
+<tr><td>one thing that happens</td><td>outcome</td><td>rolling a 4</td></tr>
+<tr><td>bag of all possibilities</td><td>sample space</td><td>{1,2,3,4,5,6}</td></tr>
+<tr><td>a yes/no question</td><td>event</td><td>"even number?" = {2,4,6}</td></tr>
+</table>
+
+<h2>3 · The three rules probability must obey</h2>
+<p>Whatever numbers we hand out as probabilities, they have to make common sense. It turns out <em>three</em> simple rules are enough to keep everything honest. Here they are in plain words first:</p>
+
+<div class="card">
+  <div class="axiom"><span class="n">1</span><span><strong>No negatives.</strong> A likelihood can't be less than zero. The smallest allowed is 0 ("never").</span></div>
+  <div class="axiom"><span class="n">2</span><span><strong>Something must happen.</strong> The probability that <em>some</em> outcome in the bag occurs is exactly 1. (The die shows <em>a</em> face — guaranteed.)</span></div>
+  <div class="axiom"><span class="n">3</span><span><strong>Separate things add up.</strong> If two events can't happen together, the chance of "one <em>or</em> the other" is just their chances added. Chance of rolling a 2 <em>or</em> a 5 = chance of 2 + chance of 5.</span></div>
+</div>
+
+<p>That's it. These three are called the <strong>axioms of probability</strong> — "axiom" is just the academic word for <em>a starting rule we agree to, and build everything else on</em>. They were written down in this clean form by a Russian mathematician, <strong>Kolmogorov</strong>, in 1933. You don't need his machinery today; you just need the three common-sense rules above.</p>
+
+<div class="predict">
+<p>Before you touch the picture: a fair die, and the event "the roll is <strong>at least 3</strong>". Make a guess. Is its probability nearer 1/3, 1/2 or 2/3? And what is the chance it does <em>not</em> happen?</p>
+<details><summary>Check your guess</summary><p>Four faces (3, 4, 5, 6) out of six, so 4/6 = 2/3. The other two faces hold the rest, 2/6 = 1/3. Now build it below and watch the two parts fill the bar.</p></details>
+</div>
+
+<p>Try the three rules with your own hands. Pick some faces to make an event, and watch where its probability lands between 0 and 1.</p>
+<figure data-viz="event-builder">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Six die faces sit above a bar cut into six equal slices, one sixth each. Choosing faces builds an event. The slices of the chosen faces turn red and add up, and a pointer on a 0-to-1 scale shows the total. Choose 2, 4 and 6: three slices, 3/6. The unchosen faces hold the rest, 3/6, which is the chance the event does NOT happen. No faces gives 0 (never); all six gives 1 (certain).</p>
+  </details>
+</figure>
+
+<div class="insight">
+<h3>Say it in one line</h3>
+<p>A <dfn>probability</dfn> is a number given to every event, never negative, with the whole sample space getting exactly 1, and with non-overlapping events adding.</p>
+</div>
+
+<div class="hook" data-kind="analogy">
+<p><strong>One cake, shared out.</strong> Think of probability as a single cake of total size 1, cut among the outcomes. No slice is negative (Rule 1). All the slices together are the whole cake (Rule 2). Two events that share no outcomes are separate plates of slices, so together they hold the sum (Rule 3). An event's probability is how much cake is on its plate.</p>
+<p class="breaks"><strong>Where it breaks:</strong> a real cake has finitely many slices. A dart thrown at a line has infinitely many possible landing points, and each single point gets a slice of size 0, yet the cake is still whole (Lesson 5). So you can't always find a probability by adding up one slice per outcome.</p>
+</div>
+
+<div class="trap">
+<p><strong>"It either happens or it doesn't, so it's 50–50."</strong> That's the most common wrong idea about probability. Two possible answers to a yes/no question do not make them equally likely. Take "the die shows a 6". It either happens or it doesn't, yet its probability is 1/6, not 1/2: one face says yes and five say no. Equal chances need equally likely <em>outcomes</em> underneath, and you count those, not the two answers.</p>
+</div>
+
+<h2>4 · One tiny result, to see the rules working</h2>
+<p>Here's the pattern you'll use constantly. Suppose the chance of rain tomorrow is <strong>0.7</strong>. What's the chance of <strong>no rain</strong>?</p>
+<p>"Rain" and "no rain" can't both happen, and together they cover everything (Rule 2 says everything totals 1). So:</p>
+<p style="text-align:center;font-size:1.15rem">chance of <em>no</em> rain &nbsp;=&nbsp; 1 − 0.7 &nbsp;=&nbsp; <strong>0.3</strong></p>
+<p>This "1 minus the chance" move has a name — the <strong>complement rule</strong> — and we didn't have to memorize it. It fell straight out of Rules 2 and 3. That's the whole spirit of this course. The event "not A" is called the <dfn>complement</dfn> of A, written <code>A&#7580;</code>, and the rule is:</p>
+<p class="eq"><code>P(A&#7580;) = 1 &minus; P(A)</code></p>
+
+<h2>5 · Worked example: "at least one" by the back door</h2>
+<div class="card">
+<p>Two fair dice are rolled. What is the chance that <strong>at least one</strong> of them shows a 4?</p>
+</div>
+<p><strong>Step 1 — the bag.</strong> Each die has 6 faces, so there are <code>6 &times; 6 = 36</code> equally likely pairs, like (1, 4) or (4, 4).</p>
+<p><strong>Step 2 — turn the question around.</strong> "At least one 4" covers many cases: a 4 on the first, on the second, or on both. Its complement is a single clean case: <em>no 4 anywhere</em>. Each die then has 5 allowed faces, so there are <code>5 &times; 5 = 25</code> such pairs.</p>
+<p><strong>Step 3 — the complement rule.</strong></p>
+<p class="eq"><code>P(at least one 4) = 1 &minus; 25/36 = 11/36</code></p>
+<p>Check by counting directly: 6 pairs have a 4 first, 6 have a 4 second, and (4, 4) is in both lists, so it was counted twice. That's <code>6 + 6 &minus; 1 = 11</code> pairs. Same answer.</p>
+
+<div class="card">
+<p><span class="tag">WATCH OUT</span> &nbsp;The corpus works this same example and writes</p>
+<p class="eq"><code>P(A&#8321; &cup; A&#8322;) = P(A&#8321;) + P(A&#8322;) + P(A&#8321; &cap; A&#8322;)</code></p>
+<p>The last sign must be a <strong>minus</strong>: the overlap (4, 4) was counted twice, so you take it off once. Its next lines do subtract, and the printed answer, 11/36, is right. Re-derive every sign; an OCR copy can flip one.</p>
+</div>
+
+<div class="explain">
+<p>In one or two sentences of your own: why does the complement rule follow from Rules 2 and 3? Name the two events and say which rule each step uses.</p>
+<details><summary>Compare with a model answer</summary><p>A and "not A" can't both happen, so by Rule 3, P(A or not A) = P(A) + P(not A). But "A or not A" is the whole bag, so by Rule 2 it equals 1. Hence P(not A) = 1 − P(A).</p></details>
+</div>
+
+<div class="faded">
+<p><strong>Your turn, half done.</strong> Toss a fair coin three times. What is the chance of <strong>at least one head</strong>?</p>
+<p>Step 1: the bag has <code>2 &times; 2 &times; 2 = 8</code> equally likely outcomes. Step 2: the complement of "at least one head" is ____, which is just ____ outcome. Step 3: so the answer is 1 − ____ = ____ .</p>
+<details><summary>Check your steps</summary><p>The complement is "no heads at all", which is only TTT: 1 outcome, so 1/8. Then P(at least one head) = 1 − 1/8 = 7/8.</p></details>
+</div>
+
+<div class="beyond">
+<p>The three rules say how probabilities must <em>behave</em>, not what they <em>mean</em>. Statistics argues about the meaning. A <strong>frequentist</strong> reads 0.7 as "it rains on about 70% of days like this, in the long run". A <strong>Bayesian</strong> reads it as a degree of belief that new data will update (that's Lesson 3). Both obey the same three rules, which is why Kolmogorov's axioms became the shared ground of the whole subject. At ISI depth, rule 3 is stated for an infinite sequence of events, and the events form a <em>σ-field</em>. That's measure theory, and you'll meet it gently in Lesson 4.</p>
+</div>
+
+<div class="insight">
+<h3>Why this matters for you</h3>
+<p><span class="tag">EXAM</span> &nbsp;UGC-NET 107 asks directly which statements follow from the axioms (for example, <code>P(&empty;) = 0</code> or <code>P(A) &le; 1</code>), and many counting questions are "at least one" questions in disguise, best done by the complement. Almost every result you'll meet later — adding probabilities, "at least one", complements — is <em>squeezed out of these three rules</em>. So if a formula ever slips your mind in the exam, you can often rebuild it from these three sentences: fewer things to memorize, more things you can <em>reconstruct</em>.</p>
+</div>
+
+<div class="quiz" data-quiz>
+<h3>Quick check — from memory, not by peeking</h3>
+
+<div class="q" data-answer="1">
+<p class="stem">A probability value is always a number that sits…</p>
+<button>between minus one and one</button>
+<button>between zero and one, inclusive</button>
+<button>between one and one hundred</button>
+<button>between zero and infinity, inclusive</button>
+<p class="fb" data-good="0 means never, 1 means certain, and everything possible lives in between." data-bad="It runs from 0 (never) to 1 (certain). Percentages like 70% are just 0.7 in disguise."></p>
+</div>
+
+<div class="q" data-answer="2">
+<p class="stem">The "bag of every possible outcome" is properly called the…</p>
+<button>event of the random experiment</button>
+<button>outcome of the random experiment</button>
+<button>sample space of the experiment</button>
+<button>the complement of the experiment</button>
+<p class="fb" data-good="The sample space is the full collection of everything that could happen — the whole bag." data-bad="That's the sample space. An outcome is one item in the bag; an event is a chosen group of them."></p>
+</div>
+
+<div class="q" data-answer="0">
+<p class="stem">"The die shows an even number" is best described as an…</p>
+<button>event — a yes/no question on outcomes</button>
+<button>outcome — one single face, like four</button>
+<button>sample space — all six faces together</button>
+<button>axiom — a basic rule we agree</button>
+<p class="fb" data-good="It's an event: a chosen bunch of outcomes ({2,4,6}) that answers a yes/no question." data-bad="It's an event — a group of outcomes ({2,4,6}). A single outcome would be just one face, like 'a 4'."></p>
+</div>
+
+<div class="q" data-answer="3">
+<p class="stem">If the chance a train is late is 0.2, the chance it is on time is…</p>
+<button>zero point two, the same value</button>
+<button>one point two, by adding one</button>
+<button>zero point five, a coin toss</button>
+<button>zero point eight, one minus it</button>
+<p class="fb" data-good="Late and on-time can't both happen and cover everything, so on-time = 1 − 0.2 = 0.8 (the complement rule)." data-bad="On-time = 1 − 0.2 = 0.8. 'Late' and 'on time' are opposites that together must total 1."></p>
+</div>
+</div>
+
+<details class="tiers">
+<summary>Go deeper — one proof, one ISI problem (optional, ~15 min)</summary>
+<div data-tier="derive">
+<h3>Prove it</h3>
+<p>Using only the three rules, prove that for any two events A and B (which may overlap):</p>
+<p class="eq"><code>P(A &cup; B) = P(A) + P(B) &minus; P(A &cap; B)</code></p>
+<p>Here <code>&cup;</code> means "or" (at least one happens) and <code>&cap;</code> means "and" (both happen).</p>
+<details><summary>Worked proof</summary>
+<p>Cut <code>A &cup; B</code> into two pieces that don't overlap: all of A, and the part of B outside A, written <code>B &minus; A</code>. By Rule 3,</p>
+<p class="eq"><code>P(A &cup; B) = P(A) + P(B &minus; A)</code></p>
+<p>Now cut B itself into two non-overlapping pieces: the part inside A, <code>A &cap; B</code>, and the part outside, <code>B &minus; A</code>. Rule 3 again gives</p>
+<p class="eq"><code>P(B &minus; A) = P(B) &minus; P(A &cap; B)</code></p>
+<p>Substitute it into the first line and you're done. &#8718;</p>
+<p class="src">Notice the minus sign comes out of the proof by itself, which is exactly the sign the corpus slip lost. The same trick (cut into non-overlapping pieces, then add) proves <code>P(&empty;) = 0</code> and <code>P(A) &le; 1</code> too.</p>
+</details>
+</div>
+<div data-tier="isi">
+<h3>An ISI entrance problem</h3>
+<p>From the <a href="https://admission.isical.ac.in/PreviousQuestion/JRF-Stat-STA-2020.pdf" target="_blank" rel="noopener">ISI JRF Statistics 2020 paper (STA), Q4(a)</a>: "Suppose that there are five pairs of shoes in a closet and four shoes are taken out at random. What is the probability that, among the four which are taken out, there is at least one complete pair?"</p>
+<details><summary>Worked solution</summary>
+<p>"At least one pair" is messy (one pair, or two pairs). Its complement is clean: <strong>no complete pair</strong>, so the four shoes come from four <em>different</em> pairs.</p>
+<p><strong>Counting the bag.</strong> Pick the shoes one at a time: 10 choices, then 9, then 8, then 7, so <code>10 &times; 9 &times; 8 &times; 7 = 5040</code> ordered picks. But the same four shoes can be picked in <code>4 &times; 3 &times; 2 &times; 1 = 24</code> different orders, and we only care which four we hold. So there are <code>5040 &divide; 24 = 210</code> different handfuls, all equally likely. (This "choose 4 from 10" count is written <code>C(10, 4)</code>; you'll use it constantly later, and this is all it means.)</p>
+<p><strong>Counting no pair.</strong> Leave out one of the 5 pairs entirely: 5 ways. From each of the other 4 pairs take the left or the right shoe: <code>2 &times; 2 &times; 2 &times; 2 = 16</code> ways. That's <code>5 &times; 16 = 80</code>.</p>
+<p class="eq"><code>P(at least one pair) = 1 &minus; 80/210 = 13/21</code></p>
+<p class="src">Checked by listing all 210 four-shoe draws by computer: 80 have no pair, so the answer 13/21 &asymp; 0.619 is exact.</p>
+</details>
+</div>
+</details>
+
+<h2>6 · If you'd like to read a little</h2>
+<p><span class="tag">PRIMARY SOURCE</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class02-prep.pdf" target="_blank" rel="noopener">MIT 18.05, Class 2 reading: Probability — Terminology and Examples</a> (Orloff &amp; Bloom). Sample space, events, the rules and the complement, with short worked examples.</p>
+<p><span class="tag">SEE IT MOVE</span> <a href="https://seeing-theory.brown.edu/basic-probability/index.html" target="_blank" rel="noopener">Seeing Theory — Basic Probability</a> (Brown University): flip coins and roll dice, and watch the long-run fraction settle.</p>
+<p><span class="tag">GENTLE SOURCE</span> <a href="https://www.mathsisfun.com/data/probability.html" target="_blank" rel="noopener">Maths Is Fun — Probability</a>: the same ideas, friendly pictures, five-minute read.</p>
+<p class="src"><strong>Grounded in the corpus:</strong> <code>02_Probability/13_introduction_to_probability_1.md</code> — the sample space at line 42, the complement rule at line 55, Kolmogorov's three axioms at lines 765–769, the bound 0 ≤ P(A) ≤ 1 at line 1918, and the "at least one 4" example at lines 1331–1352 (sign slip at line 1341, corrected above). All numbers re-derived. The notes are by <a href="https://www.ctanujit.org/teaching.html">Tanujit Chakraborty</a> (Indian Statistical Institute), free for non-commercial use.</p>
+
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> If any word above still feels slippery, ask me in the chat and I'll re-explain it a different way. Want three more "at least one" drills? Want to see the frequentist and Bayesian readings of the same number side by side? No question is too small; that's exactly what I'm here for.</div>
+
+<div class="nav">
+  <span>← (start)</span>
+  <span>Next: <strong>L2 · "Given that…" — Conditional Probability</strong>, once this clicks</span>
+</div>
+
+<footer class="lf">
+UGC-NET Statistics (107) · Unit I · Lesson 1 · outcomes, sample space, events, the three axioms, the complement rule<br>
+Do the four checks above, then tell me it clicked — and we'll build Lesson 2 on top of it.
+</footer>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/viz/gsap.min.js"></script>
+<script src="../assets/viz/core.js"></script>
+<script src="../assets/viz/event-builder.js"></script>
+</body>
+</html>

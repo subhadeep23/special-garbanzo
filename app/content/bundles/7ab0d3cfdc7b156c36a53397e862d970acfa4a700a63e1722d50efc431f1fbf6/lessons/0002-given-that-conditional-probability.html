@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L2 · "Given that…" — Conditional Probability — UGC-NET 107</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/viz/viz.css">
+</head>
+<body>
+<header class="lh">
+  <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 2</div>
+  <h1>"Given that…" — Conditional Probability</h1>
+  <p class="sub">What happens to a probability when you learn something new. Still plain language. ~12 min.</p>
+</header>
+
+<p><span class="tag">TODAY'S WIN</span> &nbsp;By the end you'll be able to work out a probability <em>after</em> a piece of news arrives, write it down properly, and say — with confidence — why "independent" and "cannot both happen" are two completely different things.</p>
+
+<h2>0 · Spaced recall — no peeking</h2>
+<p>Before we add anything, pull Lesson 1 back from memory. Don't peek — just answer in your head:</p>
+<div class="card">
+  <p style="margin:.3rem 0">• What is the <strong>sample space</strong>?</p>
+  <p style="margin:.3rem 0">• What is an <strong>event</strong>?</p>
+  <p style="margin:.3rem 0">• If the chance of a delay is 0.15, what is the chance of no delay?</p>
+</div>
+<p class="src">Answers: the bag of every possible outcome; a yes/no question about the result, i.e. a chosen group of outcomes; and 1 − 0.15 = 0.85, by the complement rule. If any of those felt slow, that's normal and useful: that effort is what makes it stick. Today's lesson sits directly on top of all three.</p>
+
+<h2>1 · The plain idea: news shrinks the bag</h2>
+<p>Roll a fair die. The chance of a <strong>3</strong> is 1 in 6.</p>
+<p>Now someone tells you: <em>"the result was an odd number."</em> Nothing about the die changed — but your knowledge did. Odd faces are {1, 3, 5}. The other three faces are now impossible, so they leave the picture entirely.</p>
+<p>You are no longer choosing from six equally likely faces. You are choosing from <strong>three</strong>. So the chance of a 3 is now <strong>1 in 3</strong>.</p>
+
+<div class="insight">
+<h3>The whole idea in one sentence</h3>
+<p>New information does not change the world — it <strong>shrinks the sample space</strong> down to the outcomes still consistent with what you were told, and you re-do the count inside that smaller bag.</p>
+</div>
+
+<figure data-viz="die-given-odd">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Step 1: six die faces above a bar in six equal slices; the 3 has one slice, 1/6. Step 2: the news “odd” crosses out 2, 4 and 6. Step 3: those faces leave, and 1, 3 and 5 share the whole bar, so each slice is 1/3. Step 4: the same answer as a fraction of bars, the one slice you want (1/6) over the three slices that survived (3/6), which is 1/3.</p>
+  </details>
+</figure>
+
+<p>That is <dfn>conditional probability</dfn>. "Conditional" simply means <em>on the condition that we already know something</em>. We write it with a vertical bar:</p>
+
+<p style="text-align:center;font-size:1.15rem"><code>P(B | A)</code> &nbsp;=&nbsp; "the probability of <strong>B</strong>, <em>given that</em> <strong>A</strong> has happened"</p>
+
+<blockquote>Read the bar out loud as the word <em>"given"</em>. <code>P(3 | odd)</code> is just "chance of a 3, given it was odd". The bar is not division and it is not "or" — it is the word "given".</blockquote>
+
+<div class="hook" data-kind="analogy">
+<p><strong>Zooming in on a map.</strong> Draw the sample space as a map, with each event a region whose area is its probability. Being told A is like zooming in until region A fills the whole screen. Every region inside A keeps its shape and its share of A; everything outside A has left the screen. <code>P(B | A)</code> is how much of the zoomed screen B covers: its overlap with A, as a share of A.</p>
+<p class="breaks"><strong>Where it breaks:</strong> you can't zoom into a region of zero area. If <code>P(A) = 0</code>, there is no screen to fill, and <code>P(B | A)</code> is simply not defined by this formula.</p>
+</div>
+
+<h2>2 · Where the formula comes from</h2>
+<p>Let's redo the die example slowly, and the formula will appear by itself.</p>
+<p>Being told <strong>A</strong> ("odd") means we only care about the part of the world where A is true. Inside that part, we want the outcomes where <strong>B</strong> ("a 3") is <em>also</em> true. So we need two counts:</p>
+
+<table>
+<tr><th>What we need</th><th>In the die example</th><th>As a probability</th></tr>
+<tr><td>outcomes where A and B both hold</td><td>just {3}</td><td>P(A &cap; B) = 1/6</td></tr>
+<tr><td>outcomes where A holds at all</td><td>{1, 3, 5}</td><td>P(A) = 3/6</td></tr>
+</table>
+
+<p>The answer is the first as a share of the second: <code>(1/6) &divide; (3/6) = 1/3</code>. Which is exactly what we said in plain words. So:</p>
+
+<div class="card">
+  <p style="text-align:center;font-size:1.2rem;margin:.4rem 0"><code>P(B | A) = P(A &cap; B) &divide; P(A)</code></p>
+  <p class="src" style="text-align:center">defined whenever P(A) &gt; 0 — you cannot condition on something impossible</p>
+</div>
+
+<p>Two things to notice, because both are marks in an exam:</p>
+<div class="axiom"><span class="n">1</span><span>The symbol <strong>&cap;</strong> means "<strong>and</strong>" — both events happen together. Many books write it as just <code>P(AB)</code>, with no symbol at all. Same thing.</span></div>
+<div class="axiom"><span class="n">2</span><span>Dividing by <code>P(A)</code> is the <strong>re-normalising</strong> step. The old bag totalled 1; the new smaller bag only totalled <code>P(A)</code>. Dividing scales it back up so the new bag totals 1 again.</span></div>
+
+<h2>3 · A worked example — do this one with me</h2>
+<p><strong>Two fair dice are thrown. Given that the total is divisible by 5, what is the chance that both dice show a five?</strong></p>
+<p>Take it in three steps, and never skip the first one.</p>
+
+<div class="card">
+  <p><strong>Step 1 — name the events.</strong> Let <strong>A</strong> = "the total is divisible by 5". Let <strong>B</strong> = "both dice show five".</p>
+  <p><strong>Step 2 — find P(A).</strong> Out of 36 equally likely pairs, which totals are divisible by 5? Totals of 5 and of 10. Total 5 happens 4 ways (1-4, 2-3, 3-2, 4-1); total 10 happens 3 ways (4-6, 5-5, 6-4). That is 7 pairs, so <code>P(A) = 7/36</code>.</p>
+  <p><strong>Step 3 — find P(A &cap; B).</strong> "Both show five" is the single pair 5-5, and its total is 10, which <em>is</em> divisible by 5. So A and B hold together in exactly 1 of 36 cases: <code>P(A &cap; B) = 1/36</code>.</p>
+  <p><strong>Answer.</strong> <code>P(B | A) = (1/36) &divide; (7/36) = <strong>1/7</strong></code>.</p>
+</div>
+
+<p>Now watch the same calculation as a picture. Every pair is a cell; the news throws most of them out.</p>
+<figure data-viz="two-dice-given-total">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Step 1: a 6 by 6 grid holds the 36 equally likely pairs; the 5-5 cell is marked red. Step 2: the news “total divisible by 5” keeps only the seven cells whose total is 5 or 10 (1-4, 2-3, 3-2, 4-1, 4-6, 5-5, 6-4) and greys out the rest. Step 3: the seven survivors move into a row, the new bag; 5-5 is one of them, so the chance is 1/7. Step 4: the formula (1/36) ÷ (7/36) = 1/7 says the same thing.</p>
+  </details>
+</figure>
+<p>Notice the shape of the work. The 36 cancelled. Conditional probability questions are, almost always, <em>counting inside the smaller bag</em> — here, 1 good case out of the 7 cases that survived the news.</p>
+
+<div class="explain">
+<p>In one or two sentences of your own: before any news, the chance of 5-5 was 1/36. Why did it jump to 1/7, when the dice themselves didn't change at all?</p>
+<details><summary>Compare with a model answer</summary><p>The news threw out 29 of the 36 pairs, and 5-5 was not one of them. The same single good pair now competes with only 7 survivors instead of 36, so its share of the bag grew from 1/36 to 1/7. The dice are the same; what we know about them changed.</p></details>
+</div>
+
+<div class="faded">
+<p><strong>Your turn, half done.</strong> Two fair dice are rolled. Given that <strong>at least one shows a 6</strong>, what is the chance that <strong>both</strong> show a 6?</p>
+<p>Step 1: A = "at least one 6". Out of 36 pairs, 6 have a 6 first and 6 have a 6 second, and 6-6 is in both lists, so A has ____ pairs. Step 2: "both 6" and A together is just the pair ____. Step 3: so the answer is 1 / ____ .</p>
+<details><summary>Check your steps</summary><p>6 + 6 − 1 = 11 pairs survive the news. Only 6-6 has both dice showing 6, and it is inside A. So P(both 6 | at least one 6) = 1/11, not 1/6: most people forget that "at least one" lets the six sit on either die.</p></details>
+</div>
+
+<h2>4 · Read the formula backwards: the multiplication rule</h2>
+<p>Move <code>P(A)</code> to the other side and you get a second tool, which is used even more often than the first:</p>
+
+<p style="text-align:center;font-size:1.15rem"><code>P(A &cap; B) = P(A) &times; P(B | A)</code></p>
+
+<p>In words: <em>the chance both happen = the chance the first happens, times the chance the second happens once the first already has.</em> This is how you handle anything drawn <strong>without replacement</strong>, where each draw changes what is left.</p>
+
+<div class="card">
+  <p><strong>Example.</strong> An urn holds 6 red and 4 black balls. Two are drawn without replacement. What is the chance both are red?</p>
+  <p>First ball red: <code>6/10</code>. Now 9 balls remain and only 5 are red, so second ball red given the first was red: <code>5/9</code>.</p>
+  <p class="eq"><code>P(both red) = (6/10) &times; (5/9) = 30/90 = <strong>1/3</strong></code></p>
+</div>
+
+<figure data-viz="urn-without-replacement">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Step 1: an urn with 6 red and 4 black balls. Step 2: a red ball is drawn; 6 of 10 balls were red, so 6/10. Step 3: that ball stays out, leaving 9 balls of which 5 are red, so the second draw is red with chance 5/9. Step 4: both red = (6/10) × (5/9) = 30/90 = 1/3.</p>
+  </details>
+</figure>
+<p>The rule extends as far as you need, one factor per draw, each conditioned on everything before it:</p>
+<p style="text-align:center"><code>P(A<sub>1</sub> &cap; A<sub>2</sub> &cap; A<sub>3</sub>) = P(A<sub>1</sub>) &times; P(A<sub>2</sub> | A<sub>1</sub>) &times; P(A<sub>3</sub> | A<sub>1</sub> &cap; A<sub>2</sub>)</code></p>
+<p class="src">This is called the <strong>chain rule</strong> (or multiplication theorem). It holds as long as every event you condition on has non-zero probability.</p>
+
+<h2>5 · Independence — when the news changes nothing</h2>
+<p>Sometimes you learn A, and your view of B does not move at all. Toss a coin twice: knowing the first toss was heads tells you nothing about the second. In symbols, <code>P(B | A) = P(B)</code>.</p>
+<p>Put that into the multiplication rule and it simplifies beautifully:</p>
+
+<p style="text-align:center;font-size:1.15rem"><code>A and B are <strong>independent</strong> &nbsp;&hArr;&nbsp; P(A &cap; B) = P(A) &times; P(B)</code></p>
+
+<p>That product form is the <em>definition</em> examiners use, because it stays valid even when <code>P(A) = 0</code> and the "given" version would break. Events that satisfy it are called <dfn>independent events</dfn>.</p>
+
+<div class="trap">
+<p><strong>"Mutually exclusive means independent: the two events have nothing to do with each other."</strong> Wrong. <strong>Independent</strong> and <strong>mutually exclusive</strong> are not the same thing. They are close to opposites.</p>
+<ul>
+  <li><strong>Mutually exclusive</strong> means they cannot both happen: <code>P(A &cap; B) = 0</code>. So learning A happened tells you B definitely did <em>not</em> — that is a huge amount of information.</li>
+  <li><strong>Independent</strong> means learning A tells you <em>nothing</em> about B.</li>
+</ul>
+<p>So two events with real probabilities that are mutually exclusive are, for that very reason, <strong>not</strong> independent. Check: if they were independent, <code>P(A)P(B)</code> would have to equal 0, which forces one of them to be impossible.</p>
+<p>A concrete case: one die roll, A = "a 1", B = "a 2". They can't both happen, so <code>P(A &cap; B) = 0</code>. But <code>P(A) &times; P(B) = 1/36</code>, which is not 0. Not independent.</p>
+</div>
+
+<p>See the difference as area. The square below has area 1, and each event is a region inside it.</p>
+<figure data-viz="exclusive-vs-independent">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Step 1: in a square of area 1, event A is the left 0.4 and event B (area 0.3) lies entirely outside A, so they cannot both happen. Step 2: zooming into A after learning A happened, no part of B is inside, so P(B | A) = 0 ÷ 0.4 = 0, down from 0.3: learning A changed B, so they are not independent. Step 3: a different B, still area 0.3, is a band across the top; its overlap with A is 0.4 × 0.3 = 0.12. Step 4: zooming into A, B still fills 0.12 ÷ 0.4 = 0.3 of it, the same as before the news: independent.</p>
+  </details>
+</figure>
+<h2>6 · Optional deeper layer — skip this on a busy week</h2>
+<p>Only if you're curious today. A standard theory question asks you to <em>show that conditional probability is itself a probability</em>. The point is that <code>P(&middot; | A)</code> obeys the same three rules from Lesson 1:</p>
+<ul>
+  <li><strong>Never negative</strong> — it's a non-negative number divided by a positive one.</li>
+  <li><strong>Totals one</strong> — the whole sample space, given A, is just A itself, and <code>P(A) &divide; P(A) = 1</code>.</li>
+  <li><strong>Separate things add</strong> — if events don't overlap, neither do their overlaps with A, so the additions carry through the division unchanged.</li>
+</ul>
+<p>The consequence is the useful part: <em>every</em> rule you already know stays true after conditioning. The complement rule still works, so <code>P(not B | A) = 1 &minus; P(B | A)</code>. You are not learning a new system — you are working in the old one, in a smaller bag.</p>
+
+<div class="beyond">
+<p>Conditioning is how all of statistics learns from data. A <strong>classifier</strong> in machine learning estimates <code>P(class | features)</code>: a spam filter wants the chance of spam given the words. A <strong>Markov chain</strong> (weather, queues, page rank) is defined entirely by conditional probabilities of the next state given the current one. In Unit IV, the <strong>likelihood</strong> is the probability of the data given a parameter. At ISI depth the idea grows up into <em>conditional expectation given a σ-field</em>, which lets you condition even on events of probability 0, the case our formula can't handle. The bag-shrinking picture is the version to keep.</p>
+</div>
+
+<div class="insight">
+<h3>Why this matters for you</h3>
+<p><span class="tag">EXAM</span> &nbsp;Conditional probability is not one topic among many in UGC-NET 107 — it is the hinge the rest of Unit I turns on. Bayes' theorem is one rearrangement of it. Independence controls whether joint distributions factor. And in Units IV and V, the word "likelihood" means <em>the probability of the data given a parameter</em> — a conditional probability wearing a different hat. Every hour spent here pays out three more times later.</p>
+</div>
+
+<div class="quiz" data-quiz>
+<h3>Quick check — from memory, not by peeking</h3>
+
+<div class="q" data-answer="2">
+<p class="stem">In the expression <code>P(B | A)</code>, the vertical bar is read as the word…</p>
+<button>divided, so the bar means a ratio</button>
+<button>and, so both events must happen together</button>
+<button>given, so A is already known true</button>
+<button>or, so either one event may happen</button>
+<p class="fb" data-good="The bar means &quot;given&quot;. P(B|A) is the chance of B once you already know A happened." data-bad="It reads as &quot;given&quot;. A division does appear in the formula, but the bar itself is not the division sign."></p>
+</div>
+
+<div class="q" data-answer="0" data-from="L1">
+<p class="stem">From Lesson 1: two fair dice are rolled. The chance that at least one shows a six is…</p>
+<button>eleven over thirty-six, by the complement</button>
+<button>two over six, one per die</button>
+<button>one over thirty-six, both showing six</button>
+<button>ten over thirty-six, minus both sixes</button>
+<p class="fb" data-good="Right — no six on either die is 5 × 5 = 25 of 36 pairs, so at least one six is 1 − 25/36 = 11/36." data-bad="Use the complement: no six anywhere is 25 of the 36 pairs, so 1 − 25/36 = 11/36. Adding 1/6 + 1/6 counts the pair 6-6 twice."></p>
+</div>
+
+<div class="q" data-answer="3">
+<p class="stem">A bag holds 5 white and 3 green balls. Two are drawn without replacement. P(both white) is…</p>
+<button>five over eight times five over eight</button>
+<button>five over eight plus four over seven</button>
+<button>five over eight times three over eight</button>
+<button>five over eight times four over seven</button>
+<p class="fb" data-good="Right — (5/8) × (4/7) = 20/56 = 5/14. The second factor is conditional: one white is already gone." data-bad="Use P(A ∩ B) = P(A) × P(B|A). First draw 5/8; then 7 balls remain with 4 white, so (5/8) × (4/7) = 5/14."></p>
+</div>
+
+<div class="q" data-answer="1">
+<p class="stem">Two events A and B each have probability above zero and cannot both occur. They are…</p>
+<button>independent, since one rules out other</button>
+<button>not independent, since one rules other</button>
+<button>independent only if P(A) equals P(B)</button>
+<button>independent whenever P(A) exceeds one half</button>
+<p class="fb" data-good="Correct. Mutually exclusive means P(A ∩ B) = 0, but independence needs P(A)P(B), which is above zero. So they cannot be independent." data-bad="They are NOT independent. Learning A occurred tells you B certainly did not — that is maximal information, the opposite of independence."></p>
+</div>
+</div>
+
+<details class="tiers">
+<summary>Go deeper — one proof, one ISI problem (optional, ~15 min)</summary>
+<div data-tier="derive">
+<h3>Prove it</h3>
+<p>Show that if A and B are independent, then so are A and <code>B&#7580;</code> ("not B"). In words: if learning B tells you nothing about A, then learning "not B" tells you nothing either.</p>
+<details><summary>Worked proof</summary>
+<p>A splits into two non-overlapping pieces: the part inside B and the part outside it. By Lesson 1's Rule 3,</p>
+<p class="eq"><code>P(A) = P(A &cap; B) + P(A &cap; B&#7580;)</code></p>
+<p>Independence gives <code>P(A &cap; B) = P(A)P(B)</code>, so</p>
+<p class="eq"><code>P(A &cap; B&#7580;) = P(A) &minus; P(A)P(B) = P(A)(1 &minus; P(B))</code></p>
+<p>and <code>1 &minus; P(B) = P(B&#7580;)</code> by the complement rule. That is the product rule for A and <code>B&#7580;</code>. &#8718;</p>
+<p class="src">Apply it twice and <code>A&#7580;</code> and <code>B&#7580;</code> are independent too. That is why "the chance neither happens" for independent events is just <code>(1 &minus; P(A))(1 &minus; P(B))</code>.</p>
+</details>
+</div>
+<div data-tier="isi">
+<h3>An ISI entrance problem</h3>
+<p>From the <a href="https://admission.isical.ac.in/PreviousQuestion/JRF-Stat-STA-2024.pdf" target="_blank" rel="noopener">ISI JRF Statistics 2024 paper (STA), Q4(a)</a>: twin brothers Bikas and Bimal play tennis. Bikas wins a set with probability 0.6, sets are independent, and a best-of-five match stops as soon as a player wins three sets. "If the match lasts for five sets, what is the probability that Bikas will win the match?"</p>
+<details><summary>Worked solution</summary>
+<p><strong>Name the events.</strong> F = "the match lasts five sets", W = "Bikas wins the match".</p>
+<p><strong>Shrink the bag.</strong> The match reaches a fifth set exactly when the first four sets are split 2–2. So F is an event about sets 1–4 only. Given F, the winner of the match is the winner of set 5.</p>
+<p><strong>Use independence.</strong> Set 5 is independent of sets 1–4, so learning F tells you nothing about it:</p>
+<p class="eq"><code>P(W | F) = P(Bikas wins set 5) = 0.6</code></p>
+<p>Check with the formula. Writing K for a set Bikas wins and M for one Bimal wins, the 2–2 splits of four sets are KKMM, KMKM, KMMK, MKKM, MKMK and MMKK: 6 orders. Each has chance <code>0.6&sup2; &times; 0.4&sup2;</code> (independent sets multiply, as above), so</p>
+<p class="eq"><code>P(F) = 6 &times; 0.6&sup2; &times; 0.4&sup2; = 216/625</code></p>
+<p>and <code>P(W &cap; F) = P(F) &times; 0.6</code>. Dividing gives 3/5 = 0.6.</p>
+<p class="src">Checked by exact enumeration with fractions: P(Bikas wins | five sets) = 3/5. Part (b) of the same question turns the bar around, and it is the ISI problem in Lesson 3.</p>
+</details>
+</div>
+</details>
+
+<h2>7 · If you'd like to read a little</h2>
+<p><span class="tag">PRIMARY SOURCE</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class03-prep.pdf" target="_blank" rel="noopener">MIT 18.05, Class 3 reading: Conditional Probability, Independence and Bayes' Theorem</a> (Orloff &amp; Bloom). Read the first half today, on conditioning, the multiplication rule and independence; the Bayes half is Lesson 3.</p>
+<p><span class="tag">SEE IT MOVE</span> <a href="https://seeing-theory.brown.edu/compound-probability/index.html" target="_blank" rel="noopener">Seeing Theory — Compound Probability</a> (Brown University): drag overlapping events and watch the conditional probability change.</p>
+<p><span class="tag">GENTLE SOURCE</span> <a href="https://www.mathsisfun.com/data/probability-events-conditional.html" target="_blank" rel="noopener">Maths Is Fun — Conditional Probability</a>: the same ideas with tree diagrams, a five-minute read. Tree diagrams are worth meeting — they are the picture behind the multiplication rule.</p>
+<p><span class="tag">REFERENCE</span> Everything from Lessons 1&ndash;2, compressed to one printable page:
+<a href="../reference/unit-i-probability-formulas.html">Unit&nbsp;I &mdash; Probability formula sheet</a>.
+Scan it for two minutes before any practice set; do not use it as a substitute for recall.</p>
+<p class="src"><strong>Grounded in the corpus:</strong> <code>02_Probability/13_introduction_to_probability_1.md</code> — "Conditional probability" section — chain rule at lines 720&ndash;734, the urn example at line 736, the two-dice example at line 744, and the theorem that P(&middot;|A) satisfies Kolmogorov's axioms from line 761. Bayes' theorem appears at line 1381 of the same file and is Lesson 3. The notes are by <a href="https://www.ctanujit.org/teaching.html">Tanujit Chakraborty</a> (Indian Statistical Institute), free for non-commercial use.</p>
+
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> If the exclusive-versus-independent distinction still feels slippery, ask me and I'll draw it out with a concrete pair of events. Same if you want more without-replacement drills before we move on.</div>
+
+<div class="nav">
+  <span>← <a href="0001-what-is-probability.html">L1 · What Probability Really Means</a></span>
+  <span>Next: <strong>L3 · Turning the Bar Around — Bayes' Theorem</strong>, once this clicks</span>
+</div>
+
+<footer class="lf">
+UGC-NET Statistics (107) · Unit I · Lesson 2 · conditional probability, chain rule, independence<br>
+Do the four checks above, then tell me it clicked — and we'll build Lesson 3 on top of it.
+</footer>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/viz/gsap.min.js"></script>
+<script src="../assets/viz/core.js"></script>
+<script src="../assets/viz/die-given-odd.js"></script>
+<script src="../assets/viz/two-dice-given-total.js"></script>
+<script src="../assets/viz/urn-without-replacement.js"></script>
+<script src="../assets/viz/exclusive-vs-independent.js"></script>
+</body>
+</html>

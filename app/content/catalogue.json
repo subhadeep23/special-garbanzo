@@ -1,0 +1,1890 @@
+{
+  "schemaVersion": 1,
+  "courses": [
+    {
+      "id": "ugc-net-statistics-probability",
+      "title": "Probability and Distributions",
+      "exam": {
+        "name": "UGC-NET",
+        "subject": "Statistics",
+        "subjectCode": "107"
+      },
+      "lessons": [
+        {
+          "id": "probability-0001",
+          "title": "L1 · What Probability Really Means — UGC-NET 107",
+          "revision": "6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb",
+          "path": "bundles/6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb/lessons/0001-what-is-probability.html",
+          "files": [
+            {
+              "path": "bundles/6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb/assets/viz/event-builder.js",
+              "sha256": "643b3d72f85e263107fc5c94302b6f33f24d6e03c4b01c9549935b17f233b130",
+              "bytes": 5000
+            },
+            {
+              "path": "bundles/6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb/lessons/0001-what-is-probability.html",
+              "sha256": "9e2a4e48af163bf649d2d3db19b05827d26b438f65ae76b8a1832882af05bb60",
+              "bytes": 19511
+            },
+            {
+              "path": "bundles/6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb/bundle.json",
+              "sha256": "6a51e8a9255e94b38ec31bb1cc7244b9ba95e669f6bc17b18b7fd04430fdc6bb",
+              "bytes": 2892
+            }
+          ],
+          "questions": [
+            {
+              "stem": "A probability value is always a number that sits…",
+              "options": [
+                "between minus one and one",
+                "between zero and one, inclusive",
+                "between one and one hundred",
+                "between zero and infinity, inclusive"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "0 means never, 1 means certain, and everything possible lives in between.",
+              "incorrectFeedback": "It runs from 0 (never) to 1 (certain). Percentages like 70% are just 0.7 in disguise.",
+              "id": "probability-0001-q1"
+            },
+            {
+              "stem": "The \"bag of every possible outcome\" is properly called the…",
+              "options": [
+                "event of the random experiment",
+                "outcome of the random experiment",
+                "sample space of the experiment",
+                "the complement of the experiment"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "The sample space is the full collection of everything that could happen — the whole bag.",
+              "incorrectFeedback": "That's the sample space. An outcome is one item in the bag; an event is a chosen group of them.",
+              "id": "probability-0001-q2"
+            },
+            {
+              "stem": "\"The die shows an even number\" is best described as an…",
+              "options": [
+                "event — a yes/no question on outcomes",
+                "outcome — one single face, like four",
+                "sample space — all six faces together",
+                "axiom — a basic rule we agree"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "It's an event: a chosen bunch of outcomes ({2,4,6}) that answers a yes/no question.",
+              "incorrectFeedback": "It's an event — a group of outcomes ({2,4,6}). A single outcome would be just one face, like 'a 4'.",
+              "id": "probability-0001-q3"
+            },
+            {
+              "stem": "If the chance a train is late is 0.2, the chance it is on time is…",
+              "options": [
+                "zero point two, the same value",
+                "one point two, by adding one",
+                "zero point five, a coin toss",
+                "zero point eight, one minus it"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Late and on-time can't both happen and cover everything, so on-time = 1 − 0.2 = 0.8 (the complement rule).",
+              "incorrectFeedback": "On-time = 1 − 0.2 = 0.8. 'Late' and 'on time' are opposites that together must total 1.",
+              "id": "probability-0001-q4"
+            }
+          ]
+        },
+        {
+          "id": "probability-0002",
+          "title": "L2 · \"Given that…\" — Conditional Probability — UGC-NET 107",
+          "revision": "7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6",
+          "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/lessons/0002-given-that-conditional-probability.html",
+          "files": [
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/assets/viz/die-given-odd.js",
+              "sha256": "da1bbeabbba391466633f1b8e106d5edb356c8a126c2b691ce6dc24de2d4c76b",
+              "bytes": 4262
+            },
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/assets/viz/exclusive-vs-independent.js",
+              "sha256": "43f0fbcf166f2c404713bc7be3c2b70e7fe1e3d2de1af9c3656f7f84988280e0",
+              "bytes": 4696
+            },
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/assets/viz/two-dice-given-total.js",
+              "sha256": "1607a06bed6c36337b86c287fb3d45585a3b9c486fe40ecf72ecea2772d5ad48",
+              "bytes": 3508
+            },
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/assets/viz/urn-without-replacement.js",
+              "sha256": "671d8031bce7bab5de4001ac30176fb85d1b63a66cae2edcda9c8f68225ea5ab",
+              "bytes": 3529
+            },
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/lessons/0002-given-that-conditional-probability.html",
+              "sha256": "900aa258eadbec1d642a59047b8af6d6b7cc5c1ebdc5e0e34c1e81364bf4b4f5",
+              "bytes": 24196
+            },
+            {
+              "path": "bundles/7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6/bundle.json",
+              "sha256": "7ab0d3cfdc7b156c36a53397e862d970acfa4a700a63e1722d50efc431f1fbf6",
+              "bytes": 3662
+            }
+          ],
+          "questions": [
+            {
+              "stem": "In the expression P(B | A), the vertical bar is read as the word…",
+              "options": [
+                "divided, so the bar means a ratio",
+                "and, so both events must happen together",
+                "given, so A is already known true",
+                "or, so either one event may happen"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "The bar means \"given\". P(B|A) is the chance of B once you already know A happened.",
+              "incorrectFeedback": "It reads as \"given\". A division does appear in the formula, but the bar itself is not the division sign.",
+              "id": "probability-0002-q1"
+            },
+            {
+              "stem": "From Lesson 1: two fair dice are rolled. The chance that at least one shows a six is…",
+              "options": [
+                "eleven over thirty-six, by the complement",
+                "two over six, one per die",
+                "one over thirty-six, both showing six",
+                "ten over thirty-six, minus both sixes"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — no six on either die is 5 × 5 = 25 of 36 pairs, so at least one six is 1 − 25/36 = 11/36.",
+              "incorrectFeedback": "Use the complement: no six anywhere is 25 of the 36 pairs, so 1 − 25/36 = 11/36. Adding 1/6 + 1/6 counts the pair 6-6 twice.",
+              "id": "probability-0002-q2"
+            },
+            {
+              "stem": "A bag holds 5 white and 3 green balls. Two are drawn without replacement. P(both white) is…",
+              "options": [
+                "five over eight times five over eight",
+                "five over eight plus four over seven",
+                "five over eight times three over eight",
+                "five over eight times four over seven"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Right — (5/8) × (4/7) = 20/56 = 5/14. The second factor is conditional: one white is already gone.",
+              "incorrectFeedback": "Use P(A ∩ B) = P(A) × P(B|A). First draw 5/8; then 7 balls remain with 4 white, so (5/8) × (4/7) = 5/14.",
+              "id": "probability-0002-q3"
+            },
+            {
+              "stem": "Two events A and B each have probability above zero and cannot both occur. They are…",
+              "options": [
+                "independent, since one rules out other",
+                "not independent, since one rules other",
+                "independent only if P(A) equals P(B)",
+                "independent whenever P(A) exceeds one half"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Correct. Mutually exclusive means P(A ∩ B) = 0, but independence needs P(A)P(B), which is above zero. So they cannot be independent.",
+              "incorrectFeedback": "They are NOT independent. Learning A occurred tells you B certainly did not — that is maximal information, the opposite of independence.",
+              "id": "probability-0002-q4"
+            }
+          ]
+        },
+        {
+          "id": "probability-0003",
+          "title": "L3 · Turning the Bar Around — Bayes' Theorem — UGC-NET 107",
+          "revision": "3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6",
+          "path": "bundles/3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6/lessons/0003-turning-the-bar-around-bayes.html",
+          "files": [
+            {
+              "path": "bundles/3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6/assets/viz/base-rate.js",
+              "sha256": "257850356a02b5b5d27e87417cfc9904cf8a068c5eac9fae0ffd6ebbb6d01145",
+              "bytes": 3952
+            },
+            {
+              "path": "bundles/3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6/assets/viz/bayes-machines.js",
+              "sha256": "94f23fea291e9847f8f73387da5038fbcf5564ccbf7add2b346c7a1eb397319a",
+              "bytes": 4075
+            },
+            {
+              "path": "bundles/3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6/lessons/0003-turning-the-bar-around-bayes.html",
+              "sha256": "1a327639067ef92c82eddc54ab2bdd1bb4c8ed63585d778a61f5d71503c0a812",
+              "bytes": 24815
+            },
+            {
+              "path": "bundles/3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6/bundle.json",
+              "sha256": "3e26482a48881b7cc776573bf7ce30de03994dc0be8e86a3526cb954ade836c6",
+              "bytes": 3413
+            }
+          ],
+          "questions": [
+            {
+              "stem": "For Bayes' theorem to apply, the causes B1…Bk must be…",
+              "options": [
+                "independent of each other and equal",
+                "mutually exclusive and also jointly exhaustive",
+                "equally likely and also mutually independent",
+                "dependent on each other and disjoint"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Right — they must form a partition: no two can co-occur, and together they cover every possibility.",
+              "incorrectFeedback": "They must be mutually exclusive AND exhaustive — a partition. They need not be equally likely, and independence is a different idea entirely.",
+              "id": "probability-0003-q1"
+            },
+            {
+              "stem": "In Bayes' theorem, the denominator is exactly the same thing as…",
+              "options": [
+                "the prior probability of the cause",
+                "the largest of the branch weights",
+                "the likelihood of the observed data",
+                "the total probability of the effect"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Yes — the denominator is P(A), computed by the theorem of total probability as the sum of all branch weights.",
+              "incorrectFeedback": "It is P(A), the total probability of the effect: the sum of every branch weight. That is why the posterior is one branch's share of the total.",
+              "id": "probability-0003-q2"
+            },
+            {
+              "stem": "From Lesson 2: A and B are independent, with P(A) = 0.5 and P(B) = 0.4. Then P(A ∩ B) is…",
+              "options": [
+                "zero point two, their product",
+                "zero point nine, their sum",
+                "zero point one, their difference",
+                "zero point eight, their ratio"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — independence means P(A ∩ B) = P(A) × P(B) = 0.5 × 0.4 = 0.2.",
+              "incorrectFeedback": "For independent events, multiply: P(A ∩ B) = P(A) × P(B) = 0.5 × 0.4 = 0.2. Adding gives P(A or B) only for events that can't overlap.",
+              "id": "probability-0003-q3"
+            },
+            {
+              "stem": "A positive result on an accurate test for a rare disease often still means…",
+              "options": [
+                "the test itself must have been faulty somehow",
+                "the disease is far more common than said",
+                "a low posterior, because the prior was low",
+                "a high posterior, because the test is good"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Exactly — the healthy majority produce so many false alarms that they swamp the true positives. The base rate dominates.",
+              "incorrectFeedback": "The posterior stays low. With a rare disease, the huge healthy group generates far more false positives than the small sick group generates true ones.",
+              "id": "probability-0003-q4"
+            }
+          ]
+        },
+        {
+          "id": "probability-0004",
+          "title": "L4 · From Events to Numbers — Random Variables — UGC-NET 107",
+          "revision": "5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3",
+          "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/lessons/0004-from-events-to-numbers.html",
+          "files": [
+            {
+              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/viz/cdf-cursor.js",
+              "sha256": "f5fb10473aaf93eb407c2b2fbbdb25c88e9d8cdd31f20939e93428e9941cd020",
+              "bytes": 4835
+            },
+            {
+              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/viz/outcomes-to-numbers.js",
+              "sha256": "2d015ab07ec4592923556c5fb0846c27a871b22b4b89172a28401fee1949ef15",
+              "bytes": 3691
+            },
+            {
+              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/lessons/0004-from-events-to-numbers.html",
+              "sha256": "eec87f7faa7388dc237aeab1796eea14df070590b06e2827ab89ee5557d33755",
+              "bytes": 21596
+            },
+            {
+              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/bundle.json",
+              "sha256": "5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3",
+              "bytes": 3355
+            }
+          ],
+          "questions": [
+            {
+              "stem": "A random variable is best described as…",
+              "options": [
+                "a number that changes whenever you look",
+                "the probability attached to every single outcome",
+                "a function from outcomes to real numbers",
+                "a set of outcomes sharing one property"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Right — X(ω) takes an outcome and returns a number. Probability isn't part of the definition.",
+              "incorrectFeedback": "It's a function: outcome in, real number out. The probabilities belong to the sample space; the variable just carries them.",
+              "id": "probability-0004-q1"
+            },
+            {
+              "stem": "Three fair coin tosses, X = number of heads. P(X < 2) equals…",
+              "options": [
+                "four over eight, the height before the jump",
+                "seven over eight, the height after the jump",
+                "three over eight, the jump size at two",
+                "one over eight, the height at zero heads"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — X < 2 means 0 or 1 heads: 1/8 + 3/8 = 4/8. That's F(2−), the level just before the jump at 2.",
+              "incorrectFeedback": "X < 2 means 0 or 1 heads, so 1/8 + 3/8 = 4/8 — the level just before the jump. F(2) = 7/8 would be P(X ≤ 2).",
+              "id": "probability-0004-q2"
+            },
+            {
+              "stem": "Which of these could NOT be a distribution function?",
+              "options": [
+                "one that is flat, then jumps, then stays flat",
+                "one that rises smoothly from zero up to one",
+                "one that jumps at every integer up to 1",
+                "one that rises to 0.9, then dips to 0.8"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Correct — a running total of probability can never go down. Any dip breaks the non-decreasing property.",
+              "incorrectFeedback": "A d.f. may jump or rise smoothly, but it can never decrease. The one that dips from 0.9 to 0.8 is invalid.",
+              "id": "probability-0004-q3"
+            },
+            {
+              "stem": "From Lesson 2: events A and B each have positive probability and cannot occur together. Then A and B are…",
+              "options": [
+                "independent, since they share no outcomes",
+                "dependent, since one excludes the other",
+                "independent, if both their probabilities match",
+                "dependent, only if they are exhaustive"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Right — P(A∩B) = 0 but P(A)P(B) > 0, so the product rule fails. Knowing A happened tells you B didn't.",
+              "incorrectFeedback": "They're dependent: P(A∩B) = 0 while P(A)P(B) > 0. Mutually exclusive is the opposite of independent here, not the same thing.",
+              "id": "probability-0004-q4"
+            }
+          ]
+        },
+        {
+          "id": "probability-0005",
+          "title": "L5 · Mass and Density — Discrete vs Continuous — UGC-NET 107",
+          "revision": "873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db",
+          "path": "bundles/873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db/lessons/0005-mass-and-density.html",
+          "files": [
+            {
+              "path": "bundles/873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db/assets/viz/dart-point.js",
+              "sha256": "2d4d6d591475e8415c8715a62d424cfe457e292c0b4cc3c71850b6371bc1c880",
+              "bytes": 3996
+            },
+            {
+              "path": "bundles/873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db/assets/viz/density-from-bins.js",
+              "sha256": "b53c61fd9dd59ef5ba94d79e10d4150accfae4dbfcc203a49e27bb7515030374",
+              "bytes": 5486
+            },
+            {
+              "path": "bundles/873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db/lessons/0005-mass-and-density.html",
+              "sha256": "d5d8717a3bfcaf9db0410b7a5d29f11e795265d157b82d5ec2191c909e3da1e4",
+              "bytes": 19979
+            },
+            {
+              "path": "bundles/873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db/bundle.json",
+              "sha256": "873a4bc30f7f765f69c1f13b4c3781f0129450572c1e293292df09e2797560db",
+              "bytes": 3532
+            }
+          ],
+          "questions": [
+            {
+              "stem": "X is continuous with density f. Which statement is always true?",
+              "options": [
+                "f(x) is never larger than one",
+                "P(X = a) equals zero always",
+                "f(x) is exactly P(X = x)",
+                "F jumps exactly where f peaks"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Right — a single point holds no probability for a continuous variable; probability lives on stretches.",
+              "incorrectFeedback": "For a continuous X, every single point has probability 0. A density can exceed 1, and its height is never itself a probability.",
+              "id": "probability-0005-q1"
+            },
+            {
+              "stem": "A discrete X has F(2) = 0.7 and F(2−) = 0.4. Then P(X = 2) is…",
+              "options": [
+                "0.7, the height after jumping",
+                "0.4, the height before jumping",
+                "1.1, both heights added together",
+                "0.3, the jump's own size"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Yes — mass at a point is the jump: F(2) − F(2−) = 0.3.",
+              "incorrectFeedback": "Mass at a point is the jump size: F(2) − F(2−) = 0.7 − 0.4 = 0.3.",
+              "id": "probability-0005-q2"
+            },
+            {
+              "stem": "X is uniform on (0, 1/4). What is its density on that stretch?",
+              "options": [
+                "4, making the total area one",
+                "1/4, the length of the stretch",
+                "1, since densities cap at one",
+                "0, since points have no probability"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Correct — height × width = 1 with width 1/4 forces height 4. Densities above 1 are fine.",
+              "incorrectFeedback": "The area must be 1 and the width is 1/4, so the height is 4. A density may exceed 1; only areas are probabilities.",
+              "id": "probability-0005-q3"
+            },
+            {
+              "stem": "From Lesson 4: for a discrete X, which pair can give different answers?",
+              "options": [
+                "P(X > a) and 1 − F(a)",
+                "P(X ≤ a) and plain F(a) itself",
+                "P(X < a) and P(X ≤ a)",
+                "P(X ≥ a) and 1 − F(a−)"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Right — they differ by the jump at a, P(X = a). For a continuous X the jump is 0 and they agree.",
+              "incorrectFeedback": "The other pairs are identities. P(X < a) and P(X ≤ a) differ by the jump at a, which is P(X = a).",
+              "id": "probability-0005-q4"
+            },
+            {
+              "stem": "Which function could be a probability density?",
+              "options": [
+                "3 on (0, 1) and 0 elsewhere",
+                "2x on (0, 1) and 0 elsewhere",
+                "(x−1) on (0, 2) and 0 elsewhere",
+                "1/2 on (0, 1) and 0 elsewhere"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Yes — 2x is never negative on (0, 1) and its area is 1. The others have area 3, dip below 0, or have area 1/2.",
+              "incorrectFeedback": "2x on (0, 1) has area 1 and is never negative. 3 has area 3; x − 1 is negative on (0, 1); 1/2 has area 1/2.",
+              "id": "probability-0005-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0006",
+          "title": "L6 · Expectation — the Balance Point — UGC-NET 107",
+          "revision": "bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515",
+          "path": "bundles/bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515/lessons/0006-expectation-balance-point.html",
+          "files": [
+            {
+              "path": "bundles/bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515/assets/viz/balance-beam.js",
+              "sha256": "8503d3e5a0617f6965dd07de6251daa4713fd114f0dfd535d6ddd38f5ddad6d1",
+              "bytes": 5735
+            },
+            {
+              "path": "bundles/bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515/assets/viz/move-the-values.js",
+              "sha256": "82dae54d4af59e53d120d750502ff6bf0231de0f9c9cb488cc57d2e329e0c701",
+              "bytes": 4010
+            },
+            {
+              "path": "bundles/bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515/lessons/0006-expectation-balance-point.html",
+              "sha256": "2203a0e1dbae92e24bb04b22b59bf8a7c4499ce77870ef0382da5170ab190978",
+              "bytes": 22650
+            },
+            {
+              "path": "bundles/bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515/bundle.json",
+              "sha256": "bdba36eb1855952e50ac3c37b7b3037221bf972129032dffbf8c7f6531a83515",
+              "bytes": 3393
+            }
+          ],
+          "questions": [
+            {
+              "stem": "E[X] = 4. What is E[3X − 2]?",
+              "options": [
+                "14",
+                "12",
+                "10",
+                "4"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Right — linearity: 3 × 4 − 2 = 10.",
+              "incorrectFeedback": "Scale the balance point, then shift it: E[3X − 2] = 3E[X] − 2 = 12 − 2 = 10.",
+              "id": "probability-0006-q1"
+            },
+            {
+              "stem": "For any X that has a mean and E[X²], which is always true?",
+              "options": [
+                "E[X²] ≥ (E[X])², never less",
+                "E[X²] = (E[X])², always equal",
+                "E[X²] ≤ (E[X])², never more",
+                "E[X] is a possible value"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — the gap E[X²] − (E[X])² is an average of squared distances from the mean, so it can't be negative.",
+              "incorrectFeedback": "E[X²] − (E[X])² is the average squared distance from the mean, never negative. So E[X²] ≥ (E[X])². (And the mean of a die, 3.5, is not a possible roll.)",
+              "id": "probability-0006-q2"
+            },
+            {
+              "stem": "X is the score on one roll of a fair die. E[X] is…",
+              "options": [
+                "3, the most central face",
+                "4, the nearest whole face",
+                "6, the largest possible face",
+                "3.5, a value never rolled"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Right — (1 + 2 + … + 6)/6 = 3.5. The mean need not be a value X can take.",
+              "incorrectFeedback": "E[X] = (1 + 2 + 3 + 4 + 5 + 6)/6 = 3.5. It's a balance point, not a face; nothing is rounded.",
+              "id": "probability-0006-q3"
+            },
+            {
+              "stem": "From Lesson 5: X is uniform on (0, 1/5). What is its density there?",
+              "options": [
+                "1/5, matching the stretch length",
+                "5, giving total area one",
+                "1, densities never exceed one",
+                "0, as points hold nothing"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Correct — height × width must be 1, and the width is 1/5, so the height is 5.",
+              "incorrectFeedback": "The area under the density must be 1. Width 1/5 forces height 5. Densities may exceed 1; only areas are probabilities.",
+              "id": "probability-0006-q4"
+            },
+            {
+              "stem": "X has density 2x on (0, 1). Where does it balance?",
+              "options": [
+                "1/2, the midpoint of the stretch",
+                "2/3, pulled toward the heavy end",
+                "1, where the density peaks highest",
+                "1/3, pulled toward the light end"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Yes — ∫ x · 2x dx from 0 to 1 = 2/3. More sand near 1 pulls the balance right of 1/2.",
+              "incorrectFeedback": "E[X] = ∫₀¹ x · 2x dx = [2x³/3]₀¹ = 2/3. The sand piles up toward 1, so the balance sits right of the midpoint, but not at the peak.",
+              "id": "probability-0006-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0007",
+          "title": "L7 · Variance and Chebyshev — How Spread Out? — UGC-NET 107",
+          "revision": "6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae",
+          "path": "bundles/6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae/lessons/0007-variance-and-chebyshev.html",
+          "files": [
+            {
+              "path": "bundles/6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae/assets/viz/chebyshev-band.js",
+              "sha256": "3cc027cff7ed0f3ec4bb4b877ffc03cbe75d02286190252f3a014896eae11b8a",
+              "bytes": 6517
+            },
+            {
+              "path": "bundles/6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae/assets/viz/shift-and-stretch.js",
+              "sha256": "5ec42de87dfbd55954e31394f271dd8186d47b2f6759276bc9d5369a104fbd79",
+              "bytes": 4337
+            },
+            {
+              "path": "bundles/6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae/lessons/0007-variance-and-chebyshev.html",
+              "sha256": "8a0fdb363f195bcbaf19fb97ac4f56faaedd69ae04e96b444a3854ac128ec245",
+              "bytes": 21115
+            },
+            {
+              "path": "bundles/6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae/bundle.json",
+              "sha256": "6439b61c92d6989665cb2d8bb82012b5d104370eb8d54a4cc428d1f11b3799ae",
+              "bytes": 2930
+            }
+          ],
+          "questions": [
+            {
+              "stem": "E[X] = 2 and E[X²] = 13. What is Var(X)?",
+              "options": [
+                "13",
+                "9",
+                "11",
+                "4"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Right — mean of the square minus square of the mean: 13 − 2² = 9.",
+              "incorrectFeedback": "Var(X) = E[X²] − (E[X])² = 13 − 4 = 9.",
+              "id": "probability-0007-q1"
+            },
+            {
+              "stem": "Var(X) = 4. What is Var(−2X + 5)?",
+              "options": [
+                "16",
+                "−3",
+                "8",
+                "21"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — the shift drops out and the factor comes out squared: (−2)² × 4 = 16.",
+              "incorrectFeedback": "Var(aX + b) = a²Var(X). The 5 drops out; (−2)² = 4, so 4 × 4 = 16. A variance is never negative.",
+              "id": "probability-0007-q2"
+            },
+            {
+              "stem": "What does Chebyshev's inequality need to hold?",
+              "options": [
+                "a normal, bell-shaped distribution of X",
+                "a symmetric distribution around its mean",
+                "a large sample of observed values",
+                "only a finite mean and variance"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Right — it works for every shape, which is exactly why it's loose.",
+              "incorrectFeedback": "Chebyshev needs only a finite mean and variance. No normality, no symmetry, no sample size.",
+              "id": "probability-0007-q3"
+            },
+            {
+              "stem": "Mean 20, variance 16, shape unknown. A lower bound for P(12 < X < 28) is…",
+              "options": [
+                "1/4",
+                "1/2",
+                "3/4",
+                "15/16"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Correct — σ = 4, so 8 = 2σ and the bound is 1 − 1/4 = 3/4.",
+              "incorrectFeedback": "σ = 4, so 12 to 28 is 20 ± 8 = 20 ± 2σ. Chebyshev: P ≥ 1 − 1/2² = 3/4.",
+              "id": "probability-0007-q4"
+            },
+            {
+              "stem": "From Lesson 6: for a fair die, how does E[X²] compare with (3.5)²?",
+              "options": [
+                "larger",
+                "equal",
+                "smaller",
+                "depends"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — E[X²] = 91/6 ≈ 15.17 > 12.25. The gap is the die's variance, 35/12.",
+              "incorrectFeedback": "The average of the squares always beats the square of the average unless X never varies: 91/6 ≈ 15.17 > 12.25.",
+              "id": "probability-0007-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0008",
+          "title": "L8 · Bernoulli and Binomial — Counting Successes — UGC-NET 107",
+          "revision": "aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51",
+          "path": "bundles/aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51/lessons/0008-bernoulli-and-binomial.html",
+          "files": [
+            {
+              "path": "bundles/aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51/assets/viz/binomial-explorer.js",
+              "sha256": "d30721332997450fa2259e3225be093e3e76aba671b6e408234fda68293437fd",
+              "bytes": 5339
+            },
+            {
+              "path": "bundles/aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51/assets/viz/guess-four.js",
+              "sha256": "4c75fbe0991dcfd808eb40708f99b0e8d16b6855fc3fcebaea36383580ae8fb7",
+              "bytes": 3722
+            },
+            {
+              "path": "bundles/aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51/lessons/0008-bernoulli-and-binomial.html",
+              "sha256": "0fc52953598105657dab74f2009ecaaf04dead07bdf8f891d1fae105c53888dd",
+              "bytes": 19666
+            },
+            {
+              "path": "bundles/aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51/bundle.json",
+              "sha256": "aab53d87a29cba335e53b57644140f8f2c016a0371fe7801efc776cca1339b51",
+              "bytes": 3186
+            }
+          ],
+          "questions": [
+            {
+              "stem": "A binomial X has mean 4 and variance 3.2. What is n?",
+              "options": [
+                "20",
+                "16",
+                "5",
+                "25"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — q = 3.2/4 = 0.8, so p = 0.2 and n = 4/0.2 = 20.",
+              "incorrectFeedback": "Divide: q = npq/np = 3.2/4 = 0.8. Then p = 0.2 and n = np/p = 4/0.2 = 20.",
+              "id": "probability-0008-q1"
+            },
+            {
+              "stem": "Which count is binomial?",
+              "options": [
+                "tosses needed to get the first head",
+                "aces among 5 cards dealt without replacing",
+                "heads in 10 tosses of one coin",
+                "rainy days in a year of weather"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Yes — fixed n = 10, independent tosses, same p, counting heads: BINS.",
+              "incorrectFeedback": "Only heads in 10 tosses passes BINS. Tosses-until-a-head has no fixed n; cards without replacement aren't independent; rainy days don't share one p and aren't independent.",
+              "id": "probability-0008-q2"
+            },
+            {
+              "stem": "Someone claims a binomial with mean 3 and variance 4. This is…",
+              "options": [
+                "fine, with n = 9 trials",
+                "fine, with p = 3/4 exactly",
+                "fine, whenever n is large enough",
+                "impossible, since variance exceeds the mean"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Right — q = 4/3 would exceed 1. A binomial's variance npq is always below its mean np.",
+              "incorrectFeedback": "q = variance/mean = 4/3 > 1, which no probability can be. A binomial always has variance below its mean.",
+              "id": "probability-0008-q3"
+            },
+            {
+              "stem": "From Lesson 7: Var(X) = 3. What is Var(3 − X)?",
+              "options": [
+                "3",
+                "−3",
+                "0",
+                "6"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — the shift 3 drops out and (−1)² = 1, so the variance stays 3.",
+              "incorrectFeedback": "Var(a + bX) = b²Var(X). Here b = −1, so (−1)² × 3 = 3. A variance is never negative.",
+              "id": "probability-0008-q4"
+            },
+            {
+              "stem": "A fair die is rolled 4 times. P(at least one six) is…",
+              "options": [
+                "4 × 1/6",
+                "1 − (5/6)⁴",
+                "1 − (1/6)⁴",
+                "(5/6)⁴ × 4"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Correct — the complement of 'at least one six' is 'no sixes', with chance (5/6)⁴.",
+              "incorrectFeedback": "Use the complement: P(no six in 4) = (5/6)⁴, so P(at least one) = 1 − (5/6)⁴ ≈ 0.518. Adding 1/6 four times double-counts.",
+              "id": "probability-0008-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0009",
+          "title": "L9 · Poisson — Counting Rare Events — UGC-NET 107",
+          "revision": "1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb",
+          "path": "bundles/1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb/lessons/0009-poisson-rare-events.html",
+          "files": [
+            {
+              "path": "bundles/1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb/assets/viz/binomial-to-poisson.js",
+              "sha256": "4c90cda1c2acdcb80513fe120424aef5e351679cbec1cdcd2af9928b55bddd03",
+              "bytes": 4923
+            },
+            {
+              "path": "bundles/1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb/assets/viz/rate-window.js",
+              "sha256": "c1a4ecaea5f86d2f03cdce8c583a54fc5fb10c2e6e85cf1843188d1b28749a12",
+              "bytes": 3191
+            },
+            {
+              "path": "bundles/1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb/lessons/0009-poisson-rare-events.html",
+              "sha256": "16ffc923f7ee882694bca4488a54c27679145b91c30c0c89cdcc24aa998bd56e",
+              "bytes": 17939
+            },
+            {
+              "path": "bundles/1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb/bundle.json",
+              "sha256": "1a616235ac906c381f904ba6c292bcd8eb6a458a887b7136088d11f71ac077fb",
+              "bytes": 2849
+            }
+          ],
+          "questions": [
+            {
+              "stem": "Calls arrive at 6 per hour. What is λ for a 20-minute window?",
+              "options": [
+                "2",
+                "6",
+                "3",
+                "18"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — rate × length: 6 × 1/3 = 2.",
+              "incorrectFeedback": "λ scales with the window: 6 per hour × (20/60) hour = 2.",
+              "id": "probability-0009-q1"
+            },
+            {
+              "stem": "X is Poisson with variance 3. What is E[X²]?",
+              "options": [
+                "9",
+                "3",
+                "12",
+                "6"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Yes — mean = variance = 3, and E[X²] = Var + mean² = 3 + 9 = 12.",
+              "incorrectFeedback": "For a Poisson the mean equals the variance, 3. Then E[X²] = Var(X) + (E[X])² = 3 + 9 = 12 (L7's shortcut, rearranged).",
+              "id": "probability-0009-q2"
+            },
+            {
+              "stem": "When is Poisson(np) a good stand-in for Bin(n, p)?",
+              "options": [
+                "n small, p small",
+                "n large, p large",
+                "n small, p large",
+                "n large, p small"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Correct — many trials, each rare. The variances npq and np then nearly agree.",
+              "incorrectFeedback": "It needs many trials and a small chance each: n large, p small. Then npq ≈ np, as for a Poisson.",
+              "id": "probability-0009-q3"
+            },
+            {
+              "stem": "From Lesson 8: a binomial has mean 6 and variance 4.2. What is p?",
+              "options": [
+                "0.3",
+                "0.7",
+                "0.6",
+                "0.4"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — q = 4.2/6 = 0.7, so p = 0.3 (and n = 20).",
+              "incorrectFeedback": "Divide variance by mean: q = npq/np = 4.2/6 = 0.7, so p = 1 − 0.7 = 0.3.",
+              "id": "probability-0009-q4"
+            },
+            {
+              "stem": "X is Poisson(λ). P(X ≥ 1) equals…",
+              "options": [
+                "λ × e^(−λ)",
+                "1 − e^(−λ)",
+                "e^(−λ) + λ",
+                "1 − λe^(−λ)"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Yes — the complement of 'at least one' is 'none', with chance e^(−λ).",
+              "incorrectFeedback": "Use the complement: P(X = 0) = e^(−λ), so P(X ≥ 1) = 1 − e^(−λ). λe^(−λ) is P(X = 1) alone.",
+              "id": "probability-0009-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0010",
+          "title": "L10 · Geometric and Negative Binomial — Waiting for Success — UGC-NET 107",
+          "revision": "7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68",
+          "path": "bundles/7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68/lessons/0010-geometric-and-memorylessness.html",
+          "files": [
+            {
+              "path": "bundles/7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68/assets/viz/geometric-tail.js",
+              "sha256": "a64bd92f5dfbd70932a600381ea1b144c2974619cdc4ee306e13407d459c8226",
+              "bytes": 3350
+            },
+            {
+              "path": "bundles/7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68/assets/viz/memoryless-shift.js",
+              "sha256": "c45a416e242324e5a37bd8a5c34389d171c49a5d46b50257a6d81ac36c574004",
+              "bytes": 4947
+            },
+            {
+              "path": "bundles/7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68/lessons/0010-geometric-and-memorylessness.html",
+              "sha256": "321c7a16309b154aaaeae4415d539637a833abab84475c90f014458cebcde1f3",
+              "bytes": 19527
+            },
+            {
+              "path": "bundles/7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68/bundle.json",
+              "sha256": "7febb4637aa2818fdf76e48a51f1312437dbf4e5d779b2cb3850d67459676b68",
+              "bytes": 3009
+            }
+          ],
+          "questions": [
+            {
+              "stem": "Each try succeeds with chance 1/4. X = tries until the first success. E[X] is…",
+              "options": [
+                "4",
+                "3",
+                "1/4",
+                "16"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — 1/p = 4 tries on average.",
+              "incorrectFeedback": "E[X] = 1/p = 4 (counting trials). Counting failures before the success gives q/p = 3, so check the support.",
+              "id": "probability-0010-q1"
+            },
+            {
+              "stem": "No six in the first 10 rolls of a fair die. The chance of a six on roll 11 is…",
+              "options": [
+                "more, since a six's overdue",
+                "less, since sixes are rare",
+                "1/6, the die never remembers",
+                "1/11, one in eleven rolls"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Yes — each roll is independent; the geometric wait is memoryless.",
+              "incorrectFeedback": "The die has no memory: given 10 misses, the next roll is still a six with chance 1/6. 'Due' is the gambler's fallacy.",
+              "id": "probability-0010-q2"
+            },
+            {
+              "stem": "Y = failures before the first success, with p = 1/5. E[Y] is…",
+              "options": [
+                "5",
+                "4",
+                "20",
+                "1/5"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Correct — failures convention: q/p = (4/5)/(1/5) = 4, one less than the 5 trials.",
+              "incorrectFeedback": "Failures before the first success: E[Y] = q/p = 4. The trials count X = Y + 1 has mean 5.",
+              "id": "probability-0010-q3"
+            },
+            {
+              "stem": "A fair coin. The chance the 2nd head comes on the 3rd toss is…",
+              "options": [
+                "1/8",
+                "3/8",
+                "1/2",
+                "1/4"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Right — toss 3 is a head and the first 2 hold exactly one head: C(2, 1)(1/2)³ = 2/8 = 1/4.",
+              "incorrectFeedback": "The last toss must be the 2nd head, and the first two tosses hold exactly one head (2 patterns): 2 × (1/2)³ = 1/4.",
+              "id": "probability-0010-q4"
+            },
+            {
+              "stem": "From Lesson 9: typos occur at 1 per 4 pages. What is λ for a 12-page document?",
+              "options": [
+                "3",
+                "12",
+                "1/4",
+                "48"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — rate × window: (1/4) × 12 = 3.",
+              "incorrectFeedback": "λ is the rate times the window's length: 1/4 per page × 12 pages = 3.",
+              "id": "probability-0010-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0011",
+          "title": "L11 · Moment Generating Functions — a Barcode for a Distribution — UGC-NET 107",
+          "revision": "8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f",
+          "path": "bundles/8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f/lessons/0011-moment-generating-functions.html",
+          "files": [
+            {
+              "path": "bundles/8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f/assets/viz/mgf-multiply.js",
+              "sha256": "a52067d434f60ec30cc9f670df417f4d6e152cf8be22c4a765be3db3920f0edd",
+              "bytes": 3622
+            },
+            {
+              "path": "bundles/8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f/assets/viz/mgf-tangent.js",
+              "sha256": "4fb5b7e62a17147d4977d34dbf041035a4aec38df4af9337949a47c0e3d25d4f",
+              "bytes": 5882
+            },
+            {
+              "path": "bundles/8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f/lessons/0011-moment-generating-functions.html",
+              "sha256": "917cab6dcb3ecbd9f58eaec6f50e4d0c13a1e2fad66bd10b49ff9eec5ec18dd3",
+              "bytes": 20526
+            },
+            {
+              "path": "bundles/8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f/bundle.json",
+              "sha256": "8f30235078ac6c9f38f6f56f6ce6febd79d2d8657ff413472c09179c6ced796f",
+              "bytes": 2900
+            }
+          ],
+          "questions": [
+            {
+              "stem": "M(t) = (0.3 + 0.7e^t)^10 is the MGF of…",
+              "options": [
+                "Bin(10, 0.3)",
+                "Bin(10, 0.7)",
+                "Bin(3, 0.7)",
+                "Bin(7, 0.3)"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Right — the barcode is (q + pe^t)^n, so p goes with e^t: p = 0.7, n = 10.",
+              "incorrectFeedback": "Match (q + pe^t)^n: the number beside e^t is p = 0.7, the other is q = 0.3, and the power is n = 10.",
+              "id": "probability-0011-q1"
+            },
+            {
+              "stem": "M(t) = e^(4(e^t − 1)). What is Var(X)?",
+              "options": [
+                "4",
+                "16",
+                "2",
+                "8"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — that's the Poisson(4) barcode, and a Poisson's variance equals λ.",
+              "incorrectFeedback": "e^(λ(e^t − 1)) is Poisson(λ); here λ = 4, and Var = λ = 4.",
+              "id": "probability-0011-q2"
+            },
+            {
+              "stem": "X ~ Bin(5, p) and Y ~ Bin(7, p) are independent. X + Y is…",
+              "options": [
+                "Bin(35, p)",
+                "Bin(12, 2p)",
+                "Bin(12, p)",
+                "Bin(6, p)"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Correct — (q + pe^t)^5 × (q + pe^t)^7 = (q + pe^t)^12.",
+              "incorrectFeedback": "Multiply the MGFs: (q + pe^t)^5(q + pe^t)^7 = (q + pe^t)^12, the Bin(12, p) barcode.",
+              "id": "probability-0011-q3"
+            },
+            {
+              "stem": "Which rule needs X and Y to be independent?",
+              "options": [
+                "the mean sum rule only",
+                "both of these rules equally",
+                "neither of these two rules",
+                "the MGF product rule only"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Right — E[X + Y] = E[X] + E[Y] always holds; M_{X+Y} = M_X M_Y needs independence.",
+              "incorrectFeedback": "Linearity of means never needs independence (L6). The product rule for MGFs does: with Y = X it fails.",
+              "id": "probability-0011-q4"
+            },
+            {
+              "stem": "From Lesson 10: each try succeeds with chance 1/3. P(no success in the first 2 tries) is…",
+              "options": [
+                "1/9",
+                "4/9",
+                "2/9",
+                "1/3"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Yes — P(X > 2) = q² = (2/3)² = 4/9.",
+              "incorrectFeedback": "Both tries must fail: q² = (2/3)² = 4/9. 1/9 is both succeeding.",
+              "id": "probability-0011-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0012",
+          "title": "L12 · Uniform and Exponential — Flat Chances and Forgetful Waits — UGC-NET 107",
+          "revision": "113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec",
+          "path": "bundles/113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec/lessons/0012-uniform-and-exponential.html",
+          "files": [
+            {
+              "path": "bundles/113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec/assets/viz/bulb-survival.js",
+              "sha256": "d86b78184bc6551af96542b00f5962a6f4e09d3195844133e633bf60731c1232",
+              "bytes": 5572
+            },
+            {
+              "path": "bundles/113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec/assets/viz/poisson-gaps.js",
+              "sha256": "c375069df537a86f659b77bea72ad02b26a8d5c77baadd674284e9f294fc3484",
+              "bytes": 4491
+            },
+            {
+              "path": "bundles/113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec/lessons/0012-uniform-and-exponential.html",
+              "sha256": "aa4ea4b501280dc4be811882d612db3a73a4dfb817fb26f832882de7b12e6e64",
+              "bytes": 19647
+            },
+            {
+              "path": "bundles/113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec/bundle.json",
+              "sha256": "113f0d28a109417812f0a73b820495134030d98de3f795178ea008d08c8794ec",
+              "bytes": 2940
+            }
+          ],
+          "questions": [
+            {
+              "stem": "T is exponential with mean 4 minutes. Its rate λ is…",
+              "options": [
+                "1/4 per minute",
+                "4 per minute",
+                "1/16 per minute",
+                "2 per minute"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — rate = 1/mean = 1/4 per minute.",
+              "incorrectFeedback": "For the exponential, the rate is 1 over the mean: 1/4 per minute. A rate of 4 per minute would mean a 15-second average wait.",
+              "id": "probability-0012-q1"
+            },
+            {
+              "stem": "T is exponential and P(T > 5) = 0.6. What is P(T > 8 | T > 3)?",
+              "options": [
+                "0.36",
+                "0.4",
+                "0.6",
+                "0.2"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Yes — memoryless: given 3 survived, needing 5 more has chance P(T > 5) = 0.6.",
+              "incorrectFeedback": "Memorylessness: P(T > 3 + 5 | T > 3) = P(T > 5) = 0.6. The 3 units already survived don't count.",
+              "id": "probability-0012-q2"
+            },
+            {
+              "stem": "Buses arrive Poisson-style at 4 per hour. P(waiting more than 15 minutes) is…",
+              "options": [
+                "e^(−4)",
+                "e^(−1)",
+                "1/4",
+                "e^(−1/4)"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Correct — 15 minutes expects 4 × 1/4 = 1 bus, and an empty window has chance e^(−1).",
+              "incorrectFeedback": "Waiting more than 15 minutes means no bus in a quarter hour, where λ = 4 × 1/4 = 1. So the chance is e^(−1) ≈ 0.37.",
+              "id": "probability-0012-q3"
+            },
+            {
+              "stem": "X ~ U(2, 8). What is Var(X)?",
+              "options": [
+                "6",
+                "9",
+                "36",
+                "3"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Right — (b − a)²/12 = 36/12 = 3.",
+              "incorrectFeedback": "Var(U(a, b)) = (b − a)²/12 = (8 − 2)²/12 = 36/12 = 3.",
+              "id": "probability-0012-q4"
+            },
+            {
+              "stem": "From Lesson 10: which discrete distribution is memoryless?",
+              "options": [
+                "the binomial",
+                "the Poisson",
+                "the geometric",
+                "the uniform"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Yes — the geometric; today's exponential is its continuous twin.",
+              "incorrectFeedback": "The geometric wait is the discrete memoryless one: P(X > m + k | X > m) = P(X > k). The exponential is its continuous twin.",
+              "id": "probability-0012-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0013",
+          "title": "L13 · The Normal Distribution — One Bell, Shifted and Stretched — UGC-NET 107",
+          "revision": "5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558",
+          "path": "bundles/5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558/lessons/0013-the-normal-distribution.html",
+          "files": [
+            {
+              "path": "bundles/5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558/assets/viz/normal-bands.js",
+              "sha256": "02d4547f3d27a57f8fe5cb6fc7a1dcb325c3d9690e398fb0b9beaf34b5fbb4fd",
+              "bytes": 4141
+            },
+            {
+              "path": "bundles/5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558/assets/viz/standardise.js",
+              "sha256": "9a7a098d12ce501a9528a53f39486afb6353ad7b0d308caeadf6b00ecaf26047",
+              "bytes": 3971
+            },
+            {
+              "path": "bundles/5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558/lessons/0013-the-normal-distribution.html",
+              "sha256": "5aced24bef1ad8e4d9facfdfb959e3039b3e8e2ccebb3a5c53721f0477665347",
+              "bytes": 18658
+            },
+            {
+              "path": "bundles/5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558/bundle.json",
+              "sha256": "5cd4e621a20679b3d675a9f441d2f320c7c01f9d698b8467445c8f1a07ee8558",
+              "bytes": 2967
+            }
+          ],
+          "questions": [
+            {
+              "stem": "X ~ N(50, 16). The z-score of 58 is…",
+              "options": [
+                "2",
+                "0.5",
+                "8",
+                "4"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — σ = √16 = 4, so z = (58 − 50)/4 = 2.",
+              "incorrectFeedback": "Divide by the SD, not the variance: σ = √16 = 4, so z = 8/4 = 2.",
+              "id": "probability-0013-q1"
+            },
+            {
+              "stem": "X and Y are independent, Var(X) = 9 and Var(Y) = 16. The SD of X − Y is…",
+              "options": [
+                "√7",
+                "25",
+                "5",
+                "1"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Yes — the variances add: 9 + 16 = 25, so the SD is 5.",
+              "incorrectFeedback": "For independent variables the variances add even for a difference: Var(X − Y) = 25, SD = 5.",
+              "id": "probability-0013-q2"
+            },
+            {
+              "stem": "For any normal, P(μ − 2σ < X < μ + 2σ) is about…",
+              "options": [
+                "68%",
+                "95%",
+                "99.7%",
+                "75%"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Correct — 0.9545, the '95' of 68–95–99.7.",
+              "incorrectFeedback": "Within 2 SDs a normal holds about 95% (0.9545). 75% is only Chebyshev's guarantee for any shape.",
+              "id": "probability-0013-q3"
+            },
+            {
+              "stem": "From Lesson 7: for any distribution at all, the share within 2σ of the mean is…",
+              "options": [
+                "about 95% always",
+                "at most 25%",
+                "exactly 68% always",
+                "at least 75%"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Right — Chebyshev: at least 1 − 1/2² = 3/4. The normal's 95% is far above that floor.",
+              "incorrectFeedback": "Chebyshev guarantees at least 1 − 1/k² = 3/4 within 2σ, for every shape. 95% is the normal's own figure.",
+              "id": "probability-0013-q4"
+            },
+            {
+              "stem": "X₁, X₂ are independent copies of X ~ N(μ, σ²). Which has the larger variance?",
+              "options": [
+                "2X, variance 4σ²",
+                "sum, variance 4σ²",
+                "equal, both 2σ²",
+                "equal, both 4σ²"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — Var(2X) = 4σ², but Var(X₁ + X₂) = σ² + σ² = 2σ².",
+              "incorrectFeedback": "Var(2X) = 2²σ² = 4σ², while independent copies add their variances: Var(X₁ + X₂) = 2σ². Same mean, different spread.",
+              "id": "probability-0013-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0014",
+          "title": "L14 · Gamma, Beta and Chi-square — One Family — UGC-NET 107",
+          "revision": "39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b",
+          "path": "bundles/39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b/lessons/0014-gamma-beta-chi-square.html",
+          "files": [
+            {
+              "path": "bundles/39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b/assets/viz/family-map.js",
+              "sha256": "0149ef1311ed30b67586616a60bfc6d0f4051433b2096e1969b2e5cd1d5ccc13",
+              "bytes": 4603
+            },
+            {
+              "path": "bundles/39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b/assets/viz/gamma-from-waits.js",
+              "sha256": "8d9f03296c986cf933fdb5c97af45910a1368d1246b7e55126fcc7e3a07a569c",
+              "bytes": 5033
+            },
+            {
+              "path": "bundles/39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b/lessons/0014-gamma-beta-chi-square.html",
+              "sha256": "8934f182798a5adf8aba55f08e59c7c2725edb6051cffa6c52f8bc14ec80fdde",
+              "bytes": 19594
+            },
+            {
+              "path": "bundles/39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b/bundle.json",
+              "sha256": "39b76f12f418cd667a4b29d883e692dd923cb88fb1e6993ce42d206a6556001b",
+              "bytes": 2768
+            }
+          ],
+          "questions": [
+            {
+              "stem": "χ²₁₀ has mean and variance…",
+              "options": [
+                "10 and 20",
+                "10 and 10",
+                "5 and 10",
+                "20 and 10"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — χ²ₙ has mean n and variance 2n.",
+              "incorrectFeedback": "χ²ₙ = Gamma(n/2, rate ½): mean n = 10, variance 2n = 20.",
+              "id": "probability-0014-q1"
+            },
+            {
+              "stem": "Events arrive Poisson at rate 2. T = time to the 3rd event. P(T > 1) equals…",
+              "options": [
+                "P(Poisson(2) ≥ 3)",
+                "P(Poisson(3) ≤ 2)",
+                "P(Poisson(2) ≤ 2)",
+                "P(Poisson(2) = 3)"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Yes — the 3rd event is still to come after 1 exactly when at most 2 events fell in [0, 1], a Poisson(2) count.",
+              "incorrectFeedback": "T > 1 means fewer than 3 events by time 1. That count is Poisson(λt) = Poisson(2), so P(T > 1) = P(Poisson(2) ≤ 2).",
+              "id": "probability-0014-q2"
+            },
+            {
+              "stem": "T has density proportional to t³e^(−2t). What is E[T]?",
+              "options": [
+                "8",
+                "1/2",
+                "4",
+                "2"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Correct — shape 4 (t to the power 4 − 1) and rate 2: mean 4/2 = 2.",
+              "incorrectFeedback": "t³ means shape 4; e^(−2t) means rate 2. Mean = shape/rate = 4/2 = 2.",
+              "id": "probability-0014-q3"
+            },
+            {
+              "stem": "From Lesson 12: T is exponential with mean 5. P(T > 10) is…",
+              "options": [
+                "e^(−10)",
+                "e^(−2)",
+                "e^(−1/2)",
+                "1/2"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Right — rate 1/5, so P(T > 10) = e^(−10/5) = e^(−2).",
+              "incorrectFeedback": "Mean 5 means rate 1/5: P(T > 10) = e^(−10/5) = e^(−2) ≈ 0.135.",
+              "id": "probability-0014-q4"
+            },
+            {
+              "stem": "X ~ Beta(2, 3). E[X] is…",
+              "options": [
+                "0.4",
+                "0.6",
+                "2/3",
+                "1.5"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — a/(a + b) = 2/5 = 0.4.",
+              "incorrectFeedback": "The beta's mean is a/(a + b) = 2/(2 + 3) = 0.4.",
+              "id": "probability-0014-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0015",
+          "title": "L15 · Joint, Marginal and Conditional — Two Variables at Once — UGC-NET 107",
+          "revision": "0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d",
+          "path": "bundles/0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d/lessons/0015-joint-marginal-conditional.html",
+          "files": [
+            {
+              "path": "bundles/0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d/assets/viz/density-slice.js",
+              "sha256": "ead0818819b6b1c8f105a107b082dd92e5e4aaf618c23989650b2ac543d95047",
+              "bytes": 5016
+            },
+            {
+              "path": "bundles/0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d/assets/viz/joint-table.js",
+              "sha256": "2dd0bb13e392534d66fee0e3339ba3c43ff8efbd389fc9dbc84f151859f334bf",
+              "bytes": 6137
+            },
+            {
+              "path": "bundles/0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d/lessons/0015-joint-marginal-conditional.html",
+              "sha256": "9b52b8ac7ce2478a6d42f07583c959d106e5783bbbcd649f6c9cfe0e72be886d",
+              "bytes": 17793
+            },
+            {
+              "path": "bundles/0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d/bundle.json",
+              "sha256": "0a7d10e52ab8c04cea2641c142da9a8e26edead54eeaa5eb2ee413b1993b939d",
+              "bytes": 3171
+            }
+          ],
+          "questions": [
+            {
+              "stem": "P(X=1, Y=0) = 0.1, P(X=1, Y=1) = 0.3, P(X=0, Y=0) = 0.4, P(X=0, Y=1) = 0.2. What is P(Y = 1)?",
+              "options": [
+                "0.5",
+                "0.3",
+                "0.2",
+                "0.6"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — add the Y = 1 cells over X: 0.3 + 0.2 = 0.5.",
+              "incorrectFeedback": "A marginal adds the other variable out: P(Y = 1) = 0.3 + 0.2 = 0.5.",
+              "id": "probability-0015-q1"
+            },
+            {
+              "stem": "Same table. What is P(Y = 1 | X = 1)?",
+              "options": [
+                "0.3",
+                "0.4",
+                "0.75",
+                "0.6"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Yes — the X = 1 row is 0.1, 0.3, total 0.4; rescaled, 0.3/0.4 = 0.75.",
+              "incorrectFeedback": "Slice the X = 1 row (0.1 and 0.3, total 0.4) and rescale: 0.3/0.4 = 0.75.",
+              "id": "probability-0015-q2"
+            },
+            {
+              "stem": "f(x, y) = 4xy on the unit square. Are X and Y independent?",
+              "options": [
+                "no, the support is square",
+                "no, both variables appear together",
+                "only if x equals y",
+                "yes, it factorises as 2x·2y"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Correct — rectangular support and f = (2x)(2y), each a density on (0, 1).",
+              "incorrectFeedback": "The support is a rectangle and f(x, y) = (2x)(2y), a product of a function of x and a function of y. So yes, independent.",
+              "id": "probability-0015-q3"
+            },
+            {
+              "stem": "From Lesson 3: P(A) = 0.01, P(+ | A) = 0.9, P(+ | not A) = 0.1. P(A | +) is closest to…",
+              "options": [
+                "0.9",
+                "0.08",
+                "0.5",
+                "0.01"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Right — 0.009/(0.009 + 0.099) ≈ 0.083. False positives from the large not-A group swamp the true ones.",
+              "incorrectFeedback": "Bayes: P(A | +) = 0.009/(0.009 + 0.099) ≈ 0.083, not 0.9. The rare condition's true positives are outnumbered.",
+              "id": "probability-0015-q4"
+            },
+            {
+              "stem": "(X, Y) is uniform on the triangle 0 < x < y < 1. Are X and Y independent?",
+              "options": [
+                "no, the support isn't rectangular",
+                "yes, the density is constant",
+                "yes, uniform means independent always",
+                "no, their means are different"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — learning X = x forces Y > x, so the slices differ.",
+              "incorrectFeedback": "A constant density on a triangle is not a product: once X = x is known, Y must exceed x. Non-rectangular support rules independence out.",
+              "id": "probability-0015-q5"
+            }
+          ]
+        },
+        {
+          "id": "probability-0016",
+          "title": "L16 · Transformations — the Distribution of g(X) — UGC-NET 107",
+          "revision": "3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177",
+          "path": "bundles/3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177/lessons/0016-transformations.html",
+          "files": [
+            {
+              "path": "bundles/3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177/assets/lesson.css",
+              "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
+              "bytes": 9176
+            },
+            {
+              "path": "bundles/3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177/assets/quiz.js",
+              "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
+              "bytes": 3044
+            },
+            {
+              "path": "bundles/3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177/assets/viz/core.js",
+              "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
+              "bytes": 8734
+            },
+            {
+              "path": "bundles/3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177/assets/viz/fold-square.js",
+              "sha256": "230bdd47a5fa2c555f14dd4186f559c777051f660b568fb3cc719ae0c7a7b3c2",
+              "bytes": 4134
+            },
+            {
+              "path": "bundles/3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177/assets/viz/gsap.min.js",
+              "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+              "bytes": 72927
+            },
+            {
+              "path": "bundles/3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177/assets/viz/rubber-ruler.js",
+              "sha256": "2bbe882d0405e1191ad040b84bf0affea3996d273abdd2746b024571295a2d68",
+              "bytes": 5478
+            },
+            {
+              "path": "bundles/3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177/assets/viz/viz.css",
+              "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
+              "bytes": 5186
+            },
+            {
+              "path": "bundles/3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177/lessons/0016-transformations.html",
+              "sha256": "34b9c6fa01122dc1af78ceeaf17f3e9433fe42d307ac07ccac2a30ddc3b3dd55",
+              "bytes": 18637
+            },
+            {
+              "path": "bundles/3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177/bundle.json",
+              "sha256": "3a5b89832051b5432c3708f6a1c1a1a3d2c3786a1bd6f59d4ebd6eff59bc5177",
+              "bytes": 3082
+            }
+          ],
+          "questions": [
+            {
+              "stem": "X ~ U(0, 1). Y = −ln X has…",
+              "options": [
+                "Exp(1) distribution",
+                "U(0,1) distribution",
+                "Exp(2) distribution",
+                "N(0,1) distribution"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Right — P(−ln X ≤ y) = P(X ≥ e^(−y)) = 1 − e^(−y), the exponential with rate 1.",
+              "incorrectFeedback": "CDF method: −ln X ≤ y exactly when X ≥ e^(−y), so F_Y(y) = 1 − e^(−y): Exp(1).",
+              "id": "probability-0016-q1"
+            },
+            {
+              "stem": "X has density f and Y = 3X. Then f_Y(y) equals…",
+              "options": [
+                "3f(y/3)",
+                "f(3y)",
+                "f(y/3)",
+                "f(y/3)/3"
+              ],
+              "answerIndex": 3,
+              "correctFeedback": "Yes — x = y/3 and |dx/dy| = 1/3: stretching by 3 thins the density by 3.",
+              "incorrectFeedback": "x = y/3, |dx/dy| = 1/3, so f_Y(y) = f(y/3)/3. Stretching the axis by 3 spreads the same probability three times thinner.",
+              "id": "probability-0016-q2"
+            },
+            {
+              "stem": "X ~ U(−1, 1) and Y = X². P(Y ≤ 1/4) is…",
+              "options": [
+                "1/4",
+                "1/2",
+                "1/8",
+                "1/16"
+              ],
+              "answerIndex": 1,
+              "correctFeedback": "Correct — Y ≤ 1/4 exactly when |X| ≤ 1/2, which has chance 1/2.",
+              "incorrectFeedback": "Turn it into an event about X: X² ≤ 1/4 means −1/2 ≤ X ≤ 1/2, chance 1/2. Taking only x = √y would give 1/4.",
+              "id": "probability-0016-q3"
+            },
+            {
+              "stem": "From Lesson 14: χ²₂ is the same distribution as…",
+              "options": [
+                "Exp with mean 1/2",
+                "Gamma with shape 2",
+                "Exp with mean 2",
+                "Normal with variance 2"
+              ],
+              "answerIndex": 2,
+              "correctFeedback": "Right — χ²₂ = Gamma(1, rate 1/2), the exponential with mean 2.",
+              "incorrectFeedback": "χ²ₙ = Gamma(n/2, rate 1/2); with n = 2 the shape is 1, which is the exponential with rate 1/2, mean 2.",
+              "id": "probability-0016-q4"
+            },
+            {
+              "stem": "A solution writes f_Y(y) = f_X(g⁻¹(y)) for an increasing g. What is missing?",
+              "options": [
+                "the factor |dx/dy|",
+                "a minus sign",
+                "the constant 1/2",
+                "nothing at all"
+              ],
+              "answerIndex": 0,
+              "correctFeedback": "Yes — the squeeze factor |dx/dy| = |d g⁻¹(y)/dy|.",
+              "incorrectFeedback": "It forgets the squeeze factor: f_Y(y) = f_X(g⁻¹(y)) · |dx/dy|. Without it the 'density' need not even have area 1.",
+              "id": "probability-0016-q5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "releaseId": "bcae5090924e1f1bd9cf5cafd0d67d42eba3b1fd58ca8f0a639761860cdecbaa"
+}

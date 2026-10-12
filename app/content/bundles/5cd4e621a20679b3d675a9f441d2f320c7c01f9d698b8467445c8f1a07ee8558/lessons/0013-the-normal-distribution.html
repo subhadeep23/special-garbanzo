@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L13 · The Normal Distribution — One Bell, Shifted and Stretched — UGC-NET 107</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/viz/viz.css">
+</head>
+<body>
+<header class="lh">
+  <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 13</div>
+  <h1>The Normal Distribution — One Bell, Shifted and Stretched</h1>
+  <p class="sub">Every normal question becomes one table lookup. ~22 min.</p>
+</header>
+
+<p><span class="tag">TODAY'S WIN</span> &nbsp;You'll be able to standardise any normal with <code>Z = (X &minus; &mu;)/&sigma;</code> and read probabilities from the Φ table, use the 68–95–99.7 rule, and handle sums and differences of independent normals, where the variances always add.</p>
+
+<h2>0 · Spaced recall — no peeking</h2>
+<div class="card">
+  <p style="margin:.3rem 0">• Chebyshev: at least what share of any distribution lies within 2 SDs of its mean?</p>
+  <p style="margin:.3rem 0">• Independent X ~ Poisson(2) and Y ~ Poisson(3): what is X + Y, and how did you know?</p>
+</div>
+<p class="src">Answers: at least 1 − 1/4 = 3/4 (L7). And Poisson(5): the MGFs multiply to the Poisson(5) barcode (L11). Today you'll see how much better than 3/4 a normal does, and the same MGF trick for normals.</p>
+
+<h2>1 · The bell</h2>
+<p>Measure the heights of a thousand adults, or the marks of a thousand candidates, and draw the histogram. Most values crowd near the middle, they thin out symmetrically on both sides, and very extreme values are rare. Smooth that histogram and you get a bell. The <dfn>normal distribution</dfn> <code>N(&mu;, &sigma;&sup2;)</code> is the density</p>
+<p class="eq"><code>f(x) = (1/(&sigma;&radic;(2&pi;))) e<sup>&minus;(x&minus;&mu;)&sup2;/(2&sigma;&sup2;)</sup></code>, &nbsp;all real x.</p>
+<p>Don't memorise the constant; read the shape. The exponent is minus a squared distance from μ, in units of σ, so the curve peaks at μ and falls off fast and symmetrically. The constant <code>1/(&sigma;&radic;(2&pi;))</code> is just whatever makes the area 1. Its mean is μ, its variance σ² (the parameters are named for what they are), and mean = median = mode = μ. The curve bends from "falling faster" to "falling slower" exactly at <code>&mu; &plusmn; &sigma;</code>, the points of inflexion your corpus derives.</p>
+
+<h2>2 · One bell, many labels</h2>
+<p>Here is the fact that makes normals easy. If <code>X ~ N(&mu;, &sigma;&sup2;)</code>, then <code>aX + b</code> is normal too (L7 gives its mean and variance; Go deeper shows it stays normal). In particular, subtract the mean and divide by the SD:</p>
+<p class="eq"><code>Z = (X &minus; &mu;)/&sigma; ~ N(0, 1)</code></p>
+<p>This is the <dfn>standard normal distribution</dfn>, and its distribution function has its own name, <code>&Phi;(z) = P(Z &le; z)</code>, tabulated in every statistics book. So every normal probability is one table lookup away. Watch what standardising really does, and predict first.</p>
+
+<figure data-viz="standardise">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Marks X ~ N(60, 10²), with the area to the right of 75 shaded red. Step 2 relabels the axis as X − 60, so the cut point reads 15. Step 3 divides the labels by 10, so the axis reads z and the cut point reads 1.5. The curve and the shading never move; the red area stays 0.0668 = 1 − Φ(1.5) throughout.</p>
+  </details>
+</figure>
+
+<div class="insight">
+<h3>Say it in one line</h3>
+<p><strong>Every normal is the standard bell, shifted to μ and stretched by σ.</strong> To find any normal probability, convert the cut points to z-scores, <code>z = (x &minus; &mu;)/&sigma;</code>, and read Φ. Symmetry fills the gaps: <code>&Phi;(&minus;z) = 1 &minus; &Phi;(z)</code>.</p>
+</div>
+
+<h2>3 · How much lies near the middle?</h2>
+<p>Since every normal is the same bell, "how much lies within k SDs of the mean" has one answer for all of them. Compare it with L7's guarantee for <em>any</em> shape.</p>
+
+<figure data-viz="normal-bands">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>The standard bell with the band μ ± kσ shaded. Within 0.5 SD: 0.3829. Within 1 SD: 0.6827, leaving 0.3173 outside (Chebyshev allows up to 1). Within 1.5 SD: 0.8664. Within 2 SD: 0.9545, leaving 0.0455 outside, against Chebyshev's ceiling of 0.25. Within 2.5 SD: 0.9876. Within 3 SD: 0.9973, leaving 0.0027 outside, against Chebyshev's 0.1111.</p>
+  </details>
+</figure>
+
+<div class="hook" data-kind="mnemonic">
+<p><strong>"68–95–99.7."</strong> Within 1, 2 and 3 SDs of the mean, a normal holds about 68%, 95% and 99.7% of its probability. The three numbers are arbitrary facts of this one curve, so they're worth memorising as a string. Two exact companions the exam likes: 95% within <code>&plusmn;1.96&sigma;</code>, and 50% within <code>&plusmn;0.6745&sigma;</code> (the quartiles).</p>
+</div>
+
+<h2>4 · Adding normals</h2>
+<p>If X and Y are independent normals, then any <code>aX + bY</code> is normal too (the <em>reproductive property</em>; Go deeper proves it with MGFs from L11). Its mean and variance follow L6 and L7, with one fact from L11's product rule: for independent X and Y the variances add, <code>Var(aX + bY) = a&sup2;Var(X) + b&sup2;Var(Y)</code>. With a = 1 and b = −1:</p>
+<p class="eq"><code>X &minus; Y ~ N(&mu;<sub>X</sub> &minus; &mu;<sub>Y</sub>, &sigma;<sub>X</sub>&sup2; + &sigma;<sub>Y</sub>&sup2;)</code></p>
+
+<div class="trap">
+<p><strong>"Var(X − Y) = Var(X) − Var(Y)."</strong> No: for independent X and Y the variances <em>add</em> even when you subtract, because <code>(&minus;1)&sup2; = 1</code>. Take X and Y independent N(0, 1). The wrong rule says <code>Var(X &minus; Y) = 1 &minus; 1 = 0</code>, which would make X − Y a constant: two independent random numbers always differing by exactly the same amount. Absurd. The truth is <code>Var(X &minus; Y) = 2</code>. Subtracting two uncertain things gives a <em>more</em> uncertain result, never a less uncertain one. A related slip: <code>2X</code> and <code>X<sub>1</sub> + X<sub>2</sub></code> (two independent copies) have the same mean, but variances <code>4&sigma;&sup2;</code> and <code>2&sigma;&sup2;</code>: doubling one draw doesn't average anything out.</p>
+</div>
+
+<div class="card">
+<p><span class="tag">WATCH OUT</span> &nbsp;In your corpus's proof of the reproductive property, the line before the conclusion writes the variance of <code>l<sub>1</sub>X<sub>1</sub> + l<sub>2</sub>X<sub>2</sub></code> as <code>l<sub>1</sub>&sigma;<sub>1</sub>&sup2; + l<sub>2</sub>&sigma;<sub>2</sub>&sup2;</code>, without squaring the l's; the next line has the correct <code>l<sub>1</sub>&sup2;&sigma;<sub>1</sub>&sup2; + l<sub>2</sub>&sup2;&sigma;<sub>2</sub>&sup2;</code>. Two lines later "X<sub>2</sub> − X<sub>2</sub>" should read X<sub>1</sub> − X<sub>2</sub>. Both are in the scanned notes themselves, not OCR errors. Small slips, but <code>Var(aX + bY)</code> is a favourite exam question.</p>
+</div>
+
+<h2>5 · Worked examples: marks</h2>
+<div class="card">
+<p>Marks in Paper 1 are <code>X ~ N(60, 10&sup2;)</code>. (a) Find <code>P(X &gt; 75)</code> and <code>P(50 &lt; X &lt; 70)</code>. (b) Paper 2 marks are <code>Y ~ N(50, 15&sup2;)</code>, independent of X. Find the chance a candidate scores more in Paper 1 than in Paper 2.</p>
+</div>
+<p><strong>(a)</strong> Standardise: 75 is <code>(75 &minus; 60)/10 = 1.5</code> SDs above the mean, so</p>
+<p class="eq"><code>P(X &gt; 75) = 1 &minus; &Phi;(1.5) = 1 &minus; 0.9332 = 0.0668</code></p>
+<p>And 50 to 70 is −1 to 1 in z-units: <code>&Phi;(1) &minus; &Phi;(&minus;1) = 2&Phi;(1) &minus; 1 = 0.6827</code>, the "68" of the rule.</p>
+<p><strong>(b)</strong> "More in Paper 1" is <code>X &minus; Y &gt; 0</code>. The difference is normal with mean <code>60 &minus; 50 = 10</code> and variance <code>100 + 225 = 325</code> (added!), so its SD is <code>&radic;325 = 18.03</code>. Standardise the cut at 0:</p>
+<p class="eq"><code>P(X &minus; Y &gt; 0) = P(Z &gt; &minus;10/18.03) = &Phi;(0.5547) = 0.7105</code></p>
+<p>Paper 1's higher average wins about 71% of the time, not always, because both papers are noisy.</p>
+
+<div class="explain">
+<p>In one or two sentences of your own: why can a single table, Φ, answer questions about every normal distribution?</p>
+<details><summary>Compare with a model answer</summary><p>Because every normal is the standard normal shifted by μ and stretched by σ. Converting a cut point to z = (x − μ)/σ just relabels the axis; the area to one side doesn't change, so it can be read from the standard normal's table.</p></details>
+</div>
+
+<div class="faded">
+<p><strong>Your turn, half done.</strong> With marks <code>X ~ N(60, 10&sup2;)</code>, find the mark that only the top 2.5% of candidates exceed.</p>
+<p>Step 1: the top 2.5% of a standard normal starts at <code>z = </code> ____ (the "95% within ±…" number). Step 2: convert back: <code>x = &mu; + z&sigma; = 60 + </code> ____ <code>&times; 10 = </code> ____ .</p>
+<details><summary>Check your steps</summary><p>z = 1.96, since 95% lies within ±1.96 and the remaining 5% splits into 2.5% per tail. So x = 60 + 1.96 × 10 = 79.6.</p></details>
+</div>
+
+<div class="beyond">
+<p>The normal is everywhere because of the <strong>central limit theorem</strong>: an average of many independent small effects is approximately normal, whatever the effects' own shape. That's why measurement errors, heights and marks look normal, why de Moivre found the bell inside the binomial (L8), and why the sample mean is treated as normal in every z-test and confidence interval of Units III–IV. Gauss used it to model astronomical errors, and least squares is exactly maximum likelihood under normal errors. Squares of standard normals build the chi-square distribution (L14), and ratios of those build the t and F distributions behind the t-test and ANOVA. Among all distributions with a given variance, the normal has the largest entropy, which makes it the "least assuming" choice when only a mean and variance are known.</p>
+</div>
+
+<div class="insight">
+<h3>Why this matters for you</h3>
+<p><span class="tag">EXAM</span> &nbsp;Expect: probabilities by standardising; the reverse ("find the cut-off for the top 10%"); 68–95–99.7 and ±1.96; sums and differences of independent normals; mean = median = mode, points of inflexion at μ ± σ; quartile deviation ≈ <code>0.6745&sigma;</code> and mean deviation <code>&sigma;&radic;(2/&pi;) &asymp; 0.8&sigma;</code>; and the MGF <code>e<sup>&mu;t + &sigma;&sup2;t&sup2;/2</sup></code>, often in "identify the distribution" form.</p>
+</div>
+
+<div class="quiz" data-quiz>
+<h3>Quick check — from memory, not by peeking</h3>
+
+<div class="q" data-answer="0">
+<p class="stem">X ~ N(50, 16). The z-score of 58 is…</p>
+<button>2</button>
+<button>0.5</button>
+<button>8</button>
+<button>4</button>
+<p class="fb" data-good="Right — σ = √16 = 4, so z = (58 − 50)/4 = 2." data-bad="Divide by the SD, not the variance: σ = √16 = 4, so z = 8/4 = 2."></p>
+</div>
+
+<div class="q" data-answer="2">
+<p class="stem">X and Y are independent, Var(X) = 9 and Var(Y) = 16. The SD of X − Y is…</p>
+<button>√7</button>
+<button>25</button>
+<button>5</button>
+<button>1</button>
+<p class="fb" data-good="Yes — the variances add: 9 + 16 = 25, so the SD is 5." data-bad="For independent variables the variances add even for a difference: Var(X − Y) = 25, SD = 5."></p>
+</div>
+
+<div class="q" data-answer="1">
+<p class="stem">For any normal, P(μ − 2σ &lt; X &lt; μ + 2σ) is about…</p>
+<button>68%</button>
+<button>95%</button>
+<button>99.7%</button>
+<button>75%</button>
+<p class="fb" data-good="Correct — 0.9545, the '95' of 68–95–99.7." data-bad="Within 2 SDs a normal holds about 95% (0.9545). 75% is only Chebyshev's guarantee for any shape."></p>
+</div>
+
+<div class="q" data-answer="3" data-from="L7">
+<p class="stem">From Lesson 7: for any distribution at all, the share within 2σ of the mean is…</p>
+<button>about 95% always</button>
+<button>at most 25%</button>
+<button>exactly 68% always</button>
+<button>at least 75%</button>
+<p class="fb" data-good="Right — Chebyshev: at least 1 − 1/2² = 3/4. The normal's 95% is far above that floor." data-bad="Chebyshev guarantees at least 1 − 1/k² = 3/4 within 2σ, for every shape. 95% is the normal's own figure."></p>
+</div>
+
+<div class="q" data-answer="0">
+<p class="stem">X₁, X₂ are independent copies of X ~ N(μ, σ²). Which has the larger variance?</p>
+<button>2X, variance 4σ²</button>
+<button>sum, variance 4σ²</button>
+<button>equal, both 2σ²</button>
+<button>equal, both 4σ²</button>
+<p class="fb" data-good="Yes — Var(2X) = 4σ², but Var(X₁ + X₂) = σ² + σ² = 2σ²." data-bad="Var(2X) = 2²σ² = 4σ², while independent copies add their variances: Var(X₁ + X₂) = 2σ². Same mean, different spread."></p>
+</div>
+</div>
+
+<details class="tiers">
+<summary>Go deeper — one proof, one ISI problem (optional, ~15 min)</summary>
+<div data-tier="derive">
+<h3>Prove it</h3>
+<p>Show that the standard normal has MGF <code>M<sub>Z</sub>(t) = e<sup>t&sup2;/2</sup></code>, deduce <code>M<sub>X</sub>(t) = e<sup>&mu;t + &sigma;&sup2;t&sup2;/2</sup></code> for <code>X ~ N(&mu;, &sigma;&sup2;)</code>, and use it to prove the reproductive property.</p>
+<details><summary>Worked proof</summary>
+<p>Complete the square in the exponent: <code>tz &minus; z&sup2;/2 = t&sup2;/2 &minus; (z &minus; t)&sup2;/2</code>. So</p>
+<p class="eq"><code>M<sub>Z</sub>(t) = e<sup>t&sup2;/2</sup> &int; (1/&radic;(2&pi;)) e<sup>&minus;(z&minus;t)&sup2;/2</sup> dz = e<sup>t&sup2;/2</sup></code></p>
+<p>because the integral is the total area under a standard bell shifted to t, which is 1. With <code>X = &mu; + &sigma;Z</code> and L11's rule <code>M<sub>a+bZ</sub>(t) = e<sup>at</sup>M<sub>Z</sub>(bt)</code>:</p>
+<p class="eq"><code>M<sub>X</sub>(t) = e<sup>&mu;t</sup>e<sup>&sigma;&sup2;t&sup2;/2</sup></code></p>
+<p>For independent normals, <code>M<sub>aX+bY</sub>(t) = M<sub>X</sub>(at)M<sub>Y</sub>(bt)</code>, and multiplying</p>
+<p class="eq"><code>e<sup>a&mu;<sub>X</sub>t + a&sup2;&sigma;<sub>X</sub>&sup2;t&sup2;/2</sup> &times; e<sup>b&mu;<sub>Y</sub>t + b&sup2;&sigma;<sub>Y</sub>&sup2;t&sup2;/2</sup></code></p>
+<p>gives the normal barcode with mean <code>a&mu;<sub>X</sub> + b&mu;<sub>Y</sub></code> and variance <code>a&sup2;&sigma;<sub>X</sub>&sup2; + b&sup2;&sigma;<sub>Y</sub>&sup2;</code>. By uniqueness (L11), <code>aX + bY</code> is that normal. &#8718;</p>
+</details>
+</div>
+<div data-tier="isi">
+<h3>An ISI entrance problem</h3>
+<p>From the <a href="https://admission.isical.ac.in/PreviousQuestion/MStat-PSA-2020.pdf" target="_blank" rel="noopener">ISI M.Stat 2020 objective paper (PSA), Q20</a>: the MGF of a continuous random variable X is <code>M(t) = e<sup>t(t+1)</sup></code> for all t. With Φ the standard normal distribution function, <code>P(X &ge; 0)</code> is (A) Φ(0), (B) Φ(−1/√2), (C) Φ(1/√2), (D) Φ(1/2).</p>
+<details><summary>Worked solution</summary>
+<p>Match the barcode. <code>t(t + 1) = 1 &middot; t + t&sup2;</code>, and the normal's exponent is <code>&mu;t + &sigma;&sup2;t&sup2;/2</code>. So μ = 1 and <code>&sigma;&sup2;/2 = 1</code>, giving <code>&sigma;&sup2; = 2</code>: X ~ N(1, 2), by uniqueness.</p>
+<p>Standardise the cut at 0 with <code>&sigma; = &radic;2</code>:</p>
+<p class="eq"><code>P(X &ge; 0) = P(Z &ge; &minus;1/&radic;2) = &Phi;(1/&radic;2) &asymp; 0.7602</code></p>
+<p>using symmetry, <code>P(Z &ge; &minus;a) = &Phi;(a)</code>. Option (C).</p>
+<p>The traps: reading σ² = 1 from the <code>t&sup2;</code> (forgetting the 1/2) leads to (D)-like answers; dividing by σ² instead of σ gives Φ(1/2), which is (D).</p>
+<p class="src">Checked by script (the practice bank's ISI checks, file psa-2020-q20): numerical integration of e^(tx) against the N(1, 2) density matches e^(t² + t) at t = −1, 0.5, 1, 2 to within 10⁻⁶, and the numerical P(X ≥ 0) equals Φ(1/√2) to within 10⁻⁴.</p>
+</details>
+</div>
+</details>
+
+<h2>6 · If you'd like to read a little</h2>
+<p><span class="tag">PRIMARY SOURCE</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class05-prep-c.pdf" target="_blank" rel="noopener">MIT 18.05, Class 5 reading: Gallery of Continuous Random Variables</a> (Orloff &amp; Bloom). Its normal section covers standardising and the 68–95–99.7 rule with pictures.</p>
+<p><span class="tag">SEE IT MOVE</span> <a href="https://seeing-theory.brown.edu/probability-distributions/index.html" target="_blank" rel="noopener">Seeing Theory — Probability Distributions</a>: pick the normal, drag μ and σ, and watch the same bell shift and stretch.</p>
+<p><span class="tag">REFERENCE</span> <a href="../reference/unit-i-probability-formulas.html">Unit&nbsp;I formula sheet</a> · <a href="../reference/glossary.html">Glossary</a></p>
+<p class="src"><strong>Grounded in the corpus:</strong> <code>02_Probability/16_probability_theory_4.md</code> — the normal distribution and the derivation of its density at lines 1610–1660, the mode and points of inflexion at lines 1840–1866, the mean deviation σ√(2/π) at line 1868, the reproductive property at lines 1877–1931 (with the slips noted above), the standard normal variate at line 1934, and quartiles at line 2174. All numbers re-derived. The notes are by <a href="https://www.ctanujit.org/teaching.html">Tanujit Chakraborty</a> (Indian Statistical Institute), free for non-commercial use.</p>
+
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> Want five "standardise and look up" drills, with a printable Φ table? Want to see the binomial turn into a bell as n grows? Want the derivation of 0.6745σ for the quartiles? Ask.</div>
+
+<div class="nav">
+  <span>← <a href="0012-uniform-and-exponential.html">L12 · Uniform and Exponential</a></span>
+  <span>Next: <strong>L14 · Gamma, Beta and Chi-square</strong></span>
+</div>
+
+<footer class="lf">
+UGC-NET Statistics (107) · Unit I · Lesson 13 · N(μ, σ²), standardising, Φ, 68–95–99.7, sums of independent normals
+</footer>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/viz/gsap.min.js"></script>
+<script src="../assets/viz/core.js"></script>
+<script src="../assets/viz/standardise.js"></script>
+<script src="../assets/viz/normal-bands.js"></script>
+</body>
+</html>

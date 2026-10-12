@@ -1,0 +1,128 @@
+/* Shared stylesheet for all UGC-NET 107 lessons. Print-friendly, theme-aware.
+   Tokens are mirrored in app/src/style.css so the app and its lessons read as one product
+   (app eval D07). Change both together.
+   Colour meanings, used the same way in prose, diagrams and quizzes:
+     --accent  red   the event the question asks about; warnings
+     --accent2 blue  still possible; anything you can press
+     --ok      green the answer, once it is earned
+     --brand   gold  the key idea of a lesson (callouts only) */
+:root{
+  --bg:#faf8f2; --ink:#1c1b17; --muted:#5d5a50; --rule:#e2ddcf; --card:#f2eee3;
+  --accent:#9e2a2b; --accent2:#1f4e85; --ok:#1b6a3a; --no:#a12c2c; --brand:#8a6417;
+  --serif:"Iowan Old Style","Noto Serif","Source Serif 4",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;
+  --mono:ui-monospace,"SF Mono","Roboto Mono",Consolas,monospace;
+  --measure:38rem;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#14130f;--ink:#ece7da;--muted:#a8a293;--rule:#35322b;--card:#1e1c17;
+        --accent:#f0a0a0;--accent2:#96bbea;--ok:#86d5a2;--no:#f0a0a0;--brand:#e1b56a;}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.62;
+  max-width:calc(var(--measure) + 2.5rem);margin:0 auto;padding:1.25rem 1.25rem 4rem;
+  font-kerning:normal;font-variant-numeric:lining-nums proportional-nums;hyphens:manual}
+@media (min-width:48rem){body{font-size:1.125rem;padding-top:2.5rem}}
+
+/* Lesson header: one title, quiet context */
+header.lh{margin:0 0 2rem;padding:0 0 1.4rem;border-bottom:1px solid var(--rule)}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;line-height:1.5}
+h1{font-size:clamp(1.9rem,1.35rem + 2.6vw,2.7rem);line-height:1.1;margin:.6rem 0 .7rem;font-weight:600;
+  letter-spacing:-.018em;text-wrap:balance}
+.sub{color:var(--muted);font-style:italic;font-size:1rem;margin:0}
+
+h2{font-size:clamp(1.35rem,1.2rem + .7vw,1.6rem);line-height:1.25;margin:3rem 0 .8rem;font-weight:600;
+  letter-spacing:-.01em;text-wrap:balance;scroll-margin-top:4.5rem}
+h3{font-family:var(--sans);font-size:.78rem;margin:1.6rem 0 .4rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.08em;font-weight:650}
+p{margin:.85rem 0}
+strong{font-weight:650}
+a{color:var(--accent2);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;
+  text-decoration-color:color-mix(in srgb,var(--accent2) 40%,transparent)}
+a:hover{text-decoration-color:var(--accent2)}
+:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+
+/* Maths. Formulas are written as <code>; set them as maths, not as program code.
+   Inline formulas never break across lines. Display formulas: a centred paragraph, or <p class="eq">. */
+code,.mono,.math{font-family:var(--serif);font-size:1em;font-style:normal;white-space:nowrap;
+  font-variant-numeric:lining-nums tabular-nums;letter-spacing:.005em}
+p[style*="center"] > code,p.eq > code{display:block;white-space:normal;text-align:center;
+  font-size:1.12em;line-height:1.5;padding:.5rem 0;text-wrap:balance}
+p.eq > code:not(:first-child){text-align:left;font-size:1.05em;padding:.2rem 0 .1rem 1rem}
+.src > strong:first-child + code{display:block;font-family:var(--mono);font-size:.82em;
+  overflow-x:auto;padding:.1rem 0 .3rem;text-align:left}
+sub{font-size:.7em;line-height:0}
+
+/* Blocks */
+.card{background:var(--card);border-radius:12px;padding:1rem 1.15rem;margin:1.4rem 0}
+.card > :first-child{margin-top:0}.card > :last-child{margin-bottom:0}
+.axiom{display:flex;gap:.8rem;align-items:baseline;margin:.6rem 0}
+.axiom .n{font-family:var(--sans);font-weight:700;color:var(--accent2);min-width:1.4rem;font-size:.9rem}
+.insight{background:color-mix(in srgb,var(--brand) 8%,var(--bg));border-left:3px solid var(--brand);
+  border-radius:0 12px 12px 0;padding:1rem 1.15rem;margin:1.8rem 0}
+.insight h3{color:var(--brand);margin-top:0}
+.insight > :last-child{margin-bottom:0}
+blockquote{border-left:2px solid var(--rule);margin:1.2rem 0;padding:.1rem 0 .1rem 1rem;color:var(--muted)}
+.tag{font-family:var(--sans);font-size:.68rem;font-weight:700;padding:.2em .6em;border-radius:99px;
+  background:color-mix(in srgb,var(--accent) 12%,var(--bg));color:var(--accent);letter-spacing:.06em;
+  white-space:nowrap;vertical-align:.12em}
+.src{font-family:var(--sans);font-size:.875rem;line-height:1.55;color:var(--muted)}
+.ask{background:var(--card);border-radius:12px;padding:.9rem 1.1rem;font-family:var(--sans);
+  font-size:.9rem;line-height:1.55;margin-top:2rem}
+
+/* Tables: no forced capitals, no squeezed headers */
+table{border-collapse:collapse;width:100%;margin:1.2rem 0;font-size:.94em;font-variant-numeric:lining-nums tabular-nums}
+th,td{text-align:left;padding:.5rem .55rem;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--sans);font-size:.78rem;font-weight:650;color:var(--muted);line-height:1.35}
+td code{white-space:normal}
+
+/* Teaching components (2026-10-11). Each maps to a learning-science move; app eval Q-series requires them.
+   .predict  commit to a guess before the reveal (pretesting)        .explain  say why, in your own words (self-explanation)
+   .trap     name the wrong idea, then why it fails (refutation)     .hook     analogy | mnemonic | rhyme | story, with its limits
+   .beyond   where the idea lives in statistics beyond the exam  .faded    a half-worked example the learner finishes */
+.predict,.explain,.faded{border:1.5px dashed color-mix(in srgb,var(--accent2) 55%,var(--rule));border-radius:12px;
+  padding:.9rem 1.1rem;margin:1.5rem 0}
+.predict::before,.explain::before,.faded::before,.trap::before,.hook::before,.beyond::before{display:block;font-family:var(--sans);
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .35rem}
+.predict::before{content:"Predict first";color:var(--accent2)}
+.explain::before{content:"Explain it back";color:var(--accent2)}
+.faded::before{content:"Finish it";color:var(--accent2)}
+.predict > :last-child,.explain > :last-child,.faded > :last-child,.trap > :last-child,.hook > :last-child,.beyond > :last-child{margin-bottom:0}
+.predict > p:first-of-type,.explain > p:first-of-type,.faded > p:first-of-type,.trap > p:first-of-type,.hook > p:first-of-type,.beyond > p:first-of-type{margin-top:0}
+.predict details,.explain details,.faded details{font-family:var(--sans);font-size:.92rem;margin-top:.6rem}
+.predict summary,.explain summary,.faded summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--accent2);font-weight:600}
+.trap{background:color-mix(in srgb,var(--accent) 7%,var(--bg));border-left:3px solid var(--accent);
+  border-radius:0 12px 12px 0;padding:1rem 1.15rem;margin:1.8rem 0}
+.trap::before{content:"Common mistake";color:var(--accent)}
+.hook{background:var(--card);border-radius:12px;padding:1rem 1.15rem;margin:1.6rem 0;position:relative}
+.hook::before{color:var(--brand)}
+.hook[data-kind=analogy]::before{content:"Picture it"}
+.hook[data-kind=mnemonic]::before{content:"Memory hook"}
+.hook[data-kind=rhyme]::before{content:"Say it to remember it"}
+.hook[data-kind=story]::before{content:"The story behind it"}
+.hook .breaks{font-family:var(--sans);font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.5rem;margin-top:.7rem}
+.beyond{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1rem 0;margin:2rem 0}
+.beyond::before{content:"Beyond the exam";color:var(--muted)}
+dfn{font-style:normal;font-weight:650;color:var(--ink);background:linear-gradient(transparent 62%,color-mix(in srgb,var(--brand) 22%,transparent) 0)}
+@media (max-width:30rem){.trap,.hook{margin-left:-.35rem;margin-right:-.35rem}}
+
+details.tiers{margin:2.4rem 0 1rem;border:1px solid var(--rule);border-radius:14px;padding:0 1.1rem}
+details.tiers > summary{cursor:pointer;min-height:52px;display:flex;align-items:center;font-family:var(--sans);font-weight:650;
+  font-size:.95rem;color:var(--accent2)}
+details.tiers[open]{padding-bottom:1rem}
+details.tiers [data-tier]{border-top:1px solid var(--rule);padding-top:.4rem}
+details.tiers [data-tier] details{background:var(--card);border-radius:10px;padding:.1rem .9rem;margin:.8rem 0}
+details.tiers [data-tier] details summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-family:var(--sans);
+  font-size:.9rem;font-weight:600;color:var(--accent2)}
+
+footer.lf{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);
+  font-family:var(--sans);font-size:.875rem;color:var(--muted)}
+.nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 1rem;font-family:var(--sans);font-size:.875rem;
+  color:var(--muted);margin-top:2.4rem}
+.nav a{display:inline-flex;align-items:center;min-height:44px}
+@media (max-width:30rem){h2{margin-top:2.6rem}.card,.insight{margin-left:-.35rem;margin-right:-.35rem}}
+@media print{body{max-width:none;font-size:11pt;padding:0}
+  .quiz,.ask,.nav{display:none}a{color:inherit;text-decoration:none}}

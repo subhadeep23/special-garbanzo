@@ -1,0 +1,71 @@
+/* Animated diagrams, shared by every lesson. Colour meanings hold across the whole course:
+   blue (--accent2)  = still possible: the outcomes in the bag
+   red   (--accent)  = the event the question asks about
+   grey  (--muted)   = ruled out by what we were told
+   green (--ok)      = the answer, once it is earned */
+.viz{margin:2.2rem -.35rem;padding:1rem 1rem .9rem;border-radius:14px;
+  background:var(--card);font-family:var(--sans)}
+.viz-head{display:flex;flex-wrap:wrap;gap:.2rem .7rem;align-items:baseline;margin:0 0 .6rem}
+.viz-kicker{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);font-weight:700}
+.viz-title{font-size:.95rem;font-weight:650;color:var(--ink)}
+.viz-stage{background:var(--bg);border-radius:10px;padding:.4rem;overflow:hidden}
+.viz-stage svg{display:block;width:100%;height:auto;max-height:62vh}
+.viz-ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:.45rem;margin:.75rem 0 0}
+.viz-row{background:var(--bg);border-radius:8px;padding:.4rem .65rem;min-width:0}
+.viz-row.wide{grid-column:1/-1}
+.viz-row dt{font-size:.72rem;letter-spacing:.04em;color:var(--muted);font-weight:600}
+.viz-row dd{margin:.1rem 0 0;font-family:var(--serif);font-size:1.12rem;font-weight:600;color:var(--ink);
+  font-variant-numeric:tabular-nums;min-height:1.4em}
+.viz-row.verdict dd{font-size:1rem;font-weight:500}
+.viz-row.verdict:has(dd:empty){display:none}
+.viz-say{font-family:var(--serif);font-size:1.02rem;line-height:1.55;margin:.75rem .1rem .2rem;min-height:3.1em}
+.viz-predict{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin:0 0 .65rem;font-size:.95rem}
+.viz-predict-q{flex-basis:100%;font-weight:600;color:var(--ink)}
+.viz-controls{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-top:.5rem}
+.viz-controls.live{margin-top:.75rem}
+.viz-controls:empty{display:none}
+.viz button{font:inherit;font-size:.92rem;min-height:44px;min-width:44px;padding:.45rem .95rem;border-radius:8px;
+  border:1px solid var(--rule);background:var(--bg);color:var(--ink);cursor:pointer;touch-action:manipulation}
+.viz button:hover{border-color:var(--accent2)}
+.viz button:focus-visible,.viz input:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+.viz button.primary{background:var(--accent2);border-color:var(--accent2);color:var(--bg);font-weight:600}
+.viz button:disabled{opacity:.4;cursor:default}
+.viz button[aria-pressed=true]{border-color:var(--accent2);background:color-mix(in srgb,var(--accent2) 16%,var(--bg));font-weight:600}
+.viz-count{margin-left:auto;font-size:.82rem;color:var(--muted)}
+.viz input[type=range]{flex:1 1 12rem;min-height:44px;accent-color:var(--accent2)}
+.viz-text{margin:.7rem .1rem 0;font-size:.85rem;color:var(--muted)}
+.viz-text summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
+.viz-text p{font-family:var(--serif);font-size:.95rem;margin:.4rem 0}
+
+/* SVG vocabulary */
+.v-ink{fill:var(--ink)}.v-muted{fill:var(--muted)}
+.v-label{font:600 26px var(--sans);fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+.v-small{font:600 22px var(--sans);fill:var(--muted);text-anchor:middle;dominant-baseline:central}
+.v-big{font:600 30px var(--serif);fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+.v-face{fill:var(--bg);stroke:var(--ink);stroke-width:2.5}
+.v-face.target{stroke:var(--accent);stroke-width:4.5}
+.v-pip{fill:var(--ink)}
+.v-strike{stroke:var(--muted);stroke-width:4;stroke-linecap:round}
+.v-kept{fill:color-mix(in srgb,var(--accent2) 22%,var(--bg));stroke:var(--accent2);stroke-width:2}
+.v-target{fill:color-mix(in srgb,var(--accent) 30%,var(--bg));stroke:var(--accent);stroke-width:2.5}
+.v-out{fill:color-mix(in srgb,var(--muted) 14%,var(--bg));stroke:var(--muted);stroke-width:1.5}
+.v-answer{fill:color-mix(in srgb,var(--ok) 22%,var(--bg));stroke:var(--ok);stroke-width:2.5}
+.v-axis{stroke:var(--muted);stroke-width:1.5}
+.v-line{stroke:var(--accent2);stroke-width:3.5;fill:none}
+.v-red{fill:var(--accent)}.v-blue{fill:var(--accent2)}
+@media (max-width:30rem){.viz{margin:1.8rem -.75rem;padding:.8rem .65rem .7rem;border-radius:12px}.viz-stage{padding:.15rem}}
+@media print{.viz-controls,.viz-predict{display:none}.viz{break-inside:avoid}}
+.viz-faces,.viz-presets{display:flex;flex-wrap:wrap;gap:.4rem;flex-basis:100%}
+.viz-faces button{min-width:46px;font-weight:650}
+.v-note{font:600 22px var(--sans);fill:var(--muted);text-anchor:end;dominant-baseline:central}
+.v-cell{font:600 21px var(--sans);fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+.v-zone{fill:color-mix(in srgb,var(--accent) 18%,transparent);stroke:var(--accent);stroke-width:2.5}
+.v-halo{fill:none;stroke:var(--accent);stroke-width:3}
+.v-slot{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 5}
+.v-urn{fill:none;stroke:var(--muted);stroke-width:3}
+.v-cursor{stroke:var(--accent);stroke-width:2;stroke-dasharray:6 5}
+.v-dot{fill:var(--accent);stroke:var(--bg);stroke-width:2}
+.v-hole{fill:var(--bg);stroke:var(--accent);stroke-width:3}
+.v-jump{stroke:var(--accent);stroke-width:6;stroke-linecap:round;opacity:.55}
+.v-badge{fill:#fff}
+.viz-label{flex-basis:100%;font-weight:600;font-size:.92rem}

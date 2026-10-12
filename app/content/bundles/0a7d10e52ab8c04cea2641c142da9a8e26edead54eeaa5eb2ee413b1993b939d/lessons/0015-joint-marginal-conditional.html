@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L15 · Joint, Marginal and Conditional — Two Variables at Once — UGC-NET 107</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/viz/viz.css">
+</head>
+<body>
+<header class="lh">
+  <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 15</div>
+  <h1>Joint, Marginal and Conditional — Two Variables at Once</h1>
+  <p class="sub">Totals, slices, and the test for "no link". ~22 min.</p>
+</header>
+
+<p><span class="tag">TODAY'S WIN</span> &nbsp;From a joint table or a joint density you'll be able to get each variable's own distribution (add or integrate out the other), get a conditional distribution (slice and rescale), and decide whether the two are independent, including the quick test that settles most exam questions in one glance.</p>
+
+<h2>0 · Spaced recall — no peeking</h2>
+<div class="card">
+  <p style="margin:.3rem 0">• P(A) = 0.01, P(+ | A) = 0.9, P(+ | not A) = 0.1. Roughly what is P(A | +)?</p>
+  <p style="margin:.3rem 0">• When are random variables X and Y independent (L11)?</p>
+</div>
+<p class="src">Answers: 0.009/(0.009 + 0.099) ≈ 0.08 (L3: the rare-condition trap). And when every event about X is independent of every event about Y; for discrete variables, <code>P(X = x, Y = y) = P(X = x)P(Y = y)</code> for all x, y.</p>
+
+<h2>1 · The whole table</h2>
+<p>Twenty students are sorted two ways at once: by how much they studied (X = 1, 2, 3, low to high) and by their grade band (Y = 1, 2, 3). Each cell counts the students with that pair of values. Divide by 20 and the table is the <dfn>joint distribution</dfn> of X and Y: the chance of every pair, <code>p(x, y) = P(X = x, Y = y)</code>. All cells are non-negative and add to 1, the same two checks as L5, now on a grid.</p>
+<p>Everything about the pair is in that table. Two kinds of question come up again and again:</p>
+<div class="axiom"><span class="n">1</span><span><strong>About one variable alone.</strong> "What share of students got grade band 3?" Add down the column, whatever X was. Each variable's own distribution, read off the table's totals, is its <dfn>marginal distribution</dfn>: <code>P(X = x) = &Sigma;<sub>y</sub> p(x, y)</code>, the row totals, sitting in the table's margin, hence the name.</span></div>
+<div class="axiom"><span class="n">2</span><span><strong>About one variable, given news about the other.</strong> "Among students who studied most, how are grades spread?" Keep only that row and rescale it to add to 1. That's the <dfn>conditional distribution</dfn>, <code>P(Y = y | X = x)</code> = <code>p(x, y)/P(X = x)</code>: L2's "news shrinks the bag", with a whole row as the bag.</span></div>
+<p>Pick rows in two tables and predict first.</p>
+
+<figure data-viz="joint-table">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Table A, counts out of 20: row X = 1 holds 3, 1, 0 (total 4); X = 2 holds 2, 5, 3 (total 10); X = 3 holds 0, 2, 4 (total 6); column totals 5, 8, 7. Given X = 1, Y is 1, 2, 3 with chances 3/4, 1/4, 0 and E[Y | X = 1] = 5/4. Given X = 2: 1/5, 1/2, 3/10, mean 21/10. Given X = 3: 0, 1/3, 2/3, mean 8/3. Table B: rows 1, 2, 2 / 2, 4, 4 / 1, 2, 2; every row rescales to 1/5, 2/5, 2/5 with mean 11/5, so knowing X tells you nothing about Y.</p>
+  </details>
+</figure>
+
+<div class="insight">
+<h3>Say it in one line</h3>
+<p><strong>Marginal = add the other variable out; conditional = slice and rescale.</strong> X and Y are independent exactly when every slice rescales to the same shape, which is the same as the joint table being the product of its margins: <code>p(x, y) = p<sub>X</sub>(x) p<sub>Y</sub>(y)</code> for every cell.</p>
+</div>
+
+<div class="hook" data-kind="analogy">
+<p><strong>A spreadsheet with totals.</strong> The joint table is the full sheet; the marginals are its totals row and totals column; a conditional is one row filtered out and re-expressed as percentages of its own total. Independence means every filtered row shows the same percentages as the totals row.</p>
+<p class="breaks"><strong>Where it breaks:</strong> for continuous variables there are no rows to filter: any exact slice <code>X = x<sub>0</sub></code> has probability 0 (L5). The conditional is then defined as a ratio of <em>densities</em>, <code>f(y | x) = f(x, y)/f<sub>X</sub>(x)</code>, not by "filtering a row with some people in it". It works the same way in practice, but it is a density per unit of y, not a percentage.</p>
+</div>
+
+<h2>2 · Densities: integrate out, slice, rescale</h2>
+<p>For continuous X and Y, a <em>joint density</em> f(x, y) spreads probability over the plane, and volumes under it are probabilities. Sums become integrals:</p>
+<p class="eq"><code>f<sub>X</sub>(x) = &int; f(x, y) dy, &nbsp;&nbsp; f(y | x) = f(x, y)/f<sub>X</sub>(x)</code></p>
+<p>Take <code>f(x, y) = x + y</code> on the unit square. Slide the slice and predict first.</p>
+
+<figure data-viz="density-slice">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>The density x + y on the unit square, darker toward the corner (1, 1). A vertical slice at x₀ has marginal height f_X(x₀) = x₀ + 1/2, and the conditional density f(y | x₀) = (x₀ + y)/(x₀ + 1/2) is a straight line in y. At x₀ = 0.2 it runs from 0.2857 at y = 0 to 1.7143 at y = 1, with E[Y | X = 0.2] = 0.6190. At x₀ = 0.5: from 0.5 to 1.5, mean 0.5833. At x₀ = 0.9: from 0.6429 to 1.3571, mean 0.5595. The slices differ, so X and Y are dependent.</p>
+  </details>
+</figure>
+
+<div class="trap">
+<p><strong>"The support is a rectangle, so X and Y are independent."</strong> Not enough. <code>f(x, y) = x + y</code> lives on the unit square, a perfect rectangle, yet the slices in the picture change with x₀, so X and Y are dependent. Independence needs the density itself to factorise: <code>f(x, y) = g(x)h(y)</code>. Here the marginals multiply to <code>(x + 1/2)(y + 1/2)</code>, which is not <code>x + y</code>. The reverse test <em>is</em> decisive: if the support is not a rectangle (a triangle like <code>0 &lt; x &lt; y &lt; 1</code>, a disc, a parallelogram), X and Y cannot be independent, because learning X narrows the range Y can take. The ISI problem below is exactly this.</p>
+</div>
+
+<h2>3 · Worked example: the density x + y</h2>
+<div class="card">
+<p>Let <code>f(x, y) = x + y</code> for 0 &lt; x, y &lt; 1. (a) Check it's a joint density. (b) Find <code>f<sub>X</sub></code> and <code>f(y | x)</code>. (c) Find <code>P(X + Y &le; 1)</code>. (d) Are X and Y independent?</p>
+</div>
+<p><strong>(a)</strong> It's non-negative, and the total volume is</p>
+<p class="eq"><code>&int;&int;(x + y) = &int;&int; x + &int;&int; y = 1/2 + 1/2 = 1</code></p>
+<p><strong>(b)</strong> Integrate y out: <code>f<sub>X</sub>(x) = &int;<sub>0</sub><sup>1</sup>(x + y) dy = x + 1/2</code>. Slice and rescale:</p>
+<p class="eq"><code>f(y | x) = (x + y)/(x + 1/2), &nbsp;0 &lt; y &lt; 1</code></p>
+<p><strong>(c)</strong> The region below the line x + y = 1 is a triangle. Integrate y first, from 0 to 1 − x:</p>
+<p class="eq"><code>&int;<sub>0</sub><sup>1</sup>[x(1 &minus; x) + (1 &minus; x)&sup2;/2] dx = &int;<sub>0</sub><sup>1</sup>(1 &minus; x&sup2;)/2 dx = 1/3</code></p>
+<p>Sanity check: the density is lowest near (0, 0), so the lower-left half holds less than half the probability.</p>
+<p><strong>(d)</strong> By symmetry <code>f<sub>Y</sub>(y) = y + 1/2</code>, and <code>(x + 1/2)(y + 1/2) &ne; x + y</code> (try x = y = 0: 1/4 against 0). Not independent.</p>
+
+<div class="explain">
+<p>In one or two sentences of your own: why does a non-rectangular support rule out independence immediately?</p>
+<details><summary>Compare with a model answer</summary><p>If the support isn't a rectangle, some x-value and some y-value are each possible on their own but impossible together. Then P(X near x, Y near y) = 0 while P(X near x)P(Y near y) &gt; 0, so the joint can't be the product of the marginals.</p></details>
+</div>
+
+<div class="faded">
+<p><strong>Your turn, half done.</strong> With the same density <code>x + y</code>, find <code>P(X &lt; 1/2)</code>.</p>
+<p>Step 1: only X matters, so use the marginal <code>f<sub>X</sub>(x) = x + 1/2</code>. Step 2: integrate it from 0 to 1/2:</p>
+<p class="eq"><code>[x&sup2;/2 + x/2]<sub>0</sub><sup>1/2</sup> = </code> ____ + ____ = ____ .</p>
+<details><summary>Check your steps</summary><p>1/8 + 1/4 = 3/8. Less than 1/2, because the density leans toward larger x.</p></details>
+</div>
+
+<div class="beyond">
+<p>Joint distributions are where statistics proper begins, because real questions are about relationships. <strong>Regression</strong> is the study of the conditional mean <code>E[Y | X = x]</code> as x varies (the slice means in today's pictures); a straight-line regression is the special case where those means fall on a line, which is exactly what happens for the bivariate normal (Unit I, later). <strong>Covariance and correlation</strong> summarise the joint table in one number each. <strong>Contingency-table χ² tests</strong> (Unit V) ask whether an observed two-way table could come from independent margins: today's Table A versus Table B, with real data. And Bayes' theorem (L3) is just the joint table read in both directions: <code>p(x, y) = p(x)p(y | x)</code>, and also <code>p(y)p(x | y)</code>.</p>
+</div>
+
+<div class="insight">
+<h3>Why this matters for you</h3>
+<p><span class="tag">EXAM</span> &nbsp;Expect: "find k so that f(x, y) is a joint density"; marginals and conditionals from a table or a density; probabilities over regions like <code>X + Y &le; 1</code> or <code>X &lt; Y</code>; independence by factorisation or by the support; conditional means <code>E[Y | X = x]</code>; and statements to judge, such as "uniform on a triangle has independent coordinates" (false).</p>
+</div>
+
+<div class="quiz" data-quiz>
+<h3>Quick check — from memory, not by peeking</h3>
+
+<div class="q" data-answer="0">
+<p class="stem">P(X=1, Y=0) = 0.1, P(X=1, Y=1) = 0.3, P(X=0, Y=0) = 0.4, P(X=0, Y=1) = 0.2. What is P(Y = 1)?</p>
+<button>0.5</button>
+<button>0.3</button>
+<button>0.2</button>
+<button>0.6</button>
+<p class="fb" data-good="Right — add the Y = 1 cells over X: 0.3 + 0.2 = 0.5." data-bad="A marginal adds the other variable out: P(Y = 1) = 0.3 + 0.2 = 0.5."></p>
+</div>
+
+<div class="q" data-answer="2">
+<p class="stem">Same table. What is P(Y = 1 | X = 1)?</p>
+<button>0.3</button>
+<button>0.4</button>
+<button>0.75</button>
+<button>0.6</button>
+<p class="fb" data-good="Yes — the X = 1 row is 0.1, 0.3, total 0.4; rescaled, 0.3/0.4 = 0.75." data-bad="Slice the X = 1 row (0.1 and 0.3, total 0.4) and rescale: 0.3/0.4 = 0.75."></p>
+</div>
+
+<div class="q" data-answer="3">
+<p class="stem">f(x, y) = 4xy on the unit square. Are X and Y independent?</p>
+<button>no, the support is square</button>
+<button>no, both variables appear together</button>
+<button>only if x equals y</button>
+<button>yes, it factorises as 2x·2y</button>
+<p class="fb" data-good="Correct — rectangular support and f = (2x)(2y), each a density on (0, 1)." data-bad="The support is a rectangle and f(x, y) = (2x)(2y), a product of a function of x and a function of y. So yes, independent."></p>
+</div>
+
+<div class="q" data-answer="1" data-from="L3">
+<p class="stem">From Lesson 3: P(A) = 0.01, P(+ | A) = 0.9, P(+ | not A) = 0.1. P(A | +) is closest to…</p>
+<button>0.9</button>
+<button>0.08</button>
+<button>0.5</button>
+<button>0.01</button>
+<p class="fb" data-good="Right — 0.009/(0.009 + 0.099) ≈ 0.083. False positives from the large not-A group swamp the true ones." data-bad="Bayes: P(A | +) = 0.009/(0.009 + 0.099) ≈ 0.083, not 0.9. The rare condition's true positives are outnumbered."></p>
+</div>
+
+<div class="q" data-answer="0">
+<p class="stem">(X, Y) is uniform on the triangle 0 &lt; x &lt; y &lt; 1. Are X and Y independent?</p>
+<button>no, the support isn't rectangular</button>
+<button>yes, the density is constant</button>
+<button>yes, uniform means independent always</button>
+<button>no, their means are different</button>
+<p class="fb" data-good="Yes — learning X = x forces Y > x, so the slices differ." data-bad="A constant density on a triangle is not a product: once X = x is known, Y must exceed x. Non-rectangular support rules independence out."></p>
+</div>
+</div>
+
+<details class="tiers">
+<summary>Go deeper — one proof, one ISI problem (optional, ~15 min)</summary>
+<div data-tier="derive">
+<h3>Prove it</h3>
+<p>Prove the factorisation test: if <code>f(x, y) = g(x)h(y)</code> on a rectangle <code>a &lt; x &lt; b</code>, <code>c &lt; y &lt; d</code> (and 0 elsewhere), for some non-negative functions g and h, then X and Y are independent, and their marginals are g and h rescaled.</p>
+<details><summary>Worked proof</summary>
+<p>Let <code>G = &int;<sub>a</sub><sup>b</sup> g</code> and <code>H = &int;<sub>c</sub><sup>d</sup> h</code>. The total volume is 1, so <code>GH = 1</code>. Integrate out y:</p>
+<p class="eq"><code>f<sub>X</sub>(x) = g(x) &int;<sub>c</sub><sup>d</sup> h(y) dy = H g(x)</code></p>
+<p>and likewise <code>f<sub>Y</sub>(y) = G h(y)</code>. Then</p>
+<p class="eq"><code>f<sub>X</sub>(x)f<sub>Y</sub>(y) = GH g(x)h(y) = f(x, y)</code></p>
+<p>everywhere, so the joint density is the product of the marginals: X and Y are independent. &#8718; The rectangle matters: on a triangle, "f = g(x)h(y) inside and 0 outside" is not a product, because the outside zero depends on x and y together.</p>
+</details>
+</div>
+<div data-tier="isi">
+<h3>An ISI entrance problem</h3>
+<p>From the <a href="https://admission.isical.ac.in/PreviousQuestion/MStat-PSA-2024.pdf" target="_blank" rel="noopener">ISI M.Stat 2024 objective paper (PSA), Q21</a>: (X, Y) is a point chosen uniformly from the parallelogram with vertices (0, 1), (2, 1), (0, −1) and (−2, −1). Which are true? (i) X's marginal is uniform on (−2, 2). (ii) E(XY) = 0. (iii) X and Y are independent. Options: (A) only (ii) and (iii); (B) only (ii); (C) only (i); (D) none.</p>
+<details><summary>Worked solution</summary>
+<p><strong>Describe the region.</strong> At height y (between −1 and 1) the parallelogram runs from <code>x = y &minus; 1</code> to <code>x = y + 1</code>, a width of 2. The area is 4, so the density is 1/4 on the region.</p>
+<p><strong>(iii) is false at a glance:</strong> the support is not a rectangle. For example X = 1.5 forces Y &gt; 0.5.</p>
+<p><strong>(i) is false.</strong> Integrate y out: for a given x, y runs over the part of (−1, 1) within 1 of x, which has length <code>2 &minus; |x|</code>. So <code>f<sub>X</sub>(x) = (2 &minus; |x|)/4</code> on (−2, 2): a triangle, not flat.</p>
+<p><strong>(ii) is false.</strong> Each horizontal slice has the same width 2, so Y ~ U(−1, 1), and given Y the offset <code>U = X &minus; Y</code> is uniform on (−1, 1) whatever Y is: U is independent of Y. Then, by linearity and L11's product rule,</p>
+<p class="eq"><code>E(XY) = E(Y&sup2;) + E(U)E(Y) = 1/3 + 0 = 1/3</code></p>
+<p>None is true: option <strong>(D)</strong>.</p>
+<p class="src">Checked by script (the practice bank's ISI checks, file psa-2024-q21, written for this lesson): the marginal of X matches (2 − |x|)/4 on a grid of 39 points; two million simulated points give E(XY) = 0.3327 (standard error 0.0003) against 1/3; and P(X &gt; 1, Y &lt; 0) = 0 while P(X &gt; 1)P(Y &lt; 0) ≈ 0.06.</p>
+</details>
+</div>
+</details>
+
+<h2>4 · If you'd like to read a little</h2>
+<p><span class="tag">PRIMARY SOURCE</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class07-prep-a.pdf" target="_blank" rel="noopener">MIT 18.05, Class 7 reading: Joint Distributions, Independence</a> (Orloff &amp; Bloom). Joint tables, marginals, joint densities and the independence test, with worked examples.</p>
+<p><span class="tag">SEE IT MOVE</span> <a href="https://seeing-theory.brown.edu/basic-probability/index.html" target="_blank" rel="noopener">Seeing Theory — Basic Probability</a>: its conditional-probability panel is today's slicing, drawn with events.</p>
+<p><span class="tag">REFERENCE</span> <a href="../reference/unit-i-probability-formulas.html">Unit&nbsp;I formula sheet</a> · <a href="../reference/glossary.html">Glossary</a></p>
+<p class="src"><strong>Grounded in the corpus:</strong> <code>02_Probability/17_probability_theory_5.md</code> — joint distributions of two random variables at line 1778, independence defined through the distribution function at line 2103, marginal p.d.f.s at line 2347, conditional distributions at line 2369, and moments of a conditional distribution at line 2661. All numbers re-derived. The notes are by <a href="https://www.ctanujit.org/teaching.html">Tanujit Chakraborty</a> (Indian Statistical Institute), free for non-commercial use.</p>
+
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> Want three "find k, then the marginal" drills? Want to see covariance computed from today's Table A? Want the region-integral tricks for P(X &lt; Y)? Ask.</div>
+
+<div class="nav">
+  <span>← <a href="0014-gamma-beta-chi-square.html">L14 · Gamma, Beta and Chi-square</a></span>
+  <span>Next: <strong>L16 · Transformations</strong></span>
+</div>
+
+<footer class="lf">
+UGC-NET Statistics (107) · Unit I · Lesson 15 · joint, marginal, conditional distributions, independence tests
+</footer>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/viz/gsap.min.js"></script>
+<script src="../assets/viz/core.js"></script>
+<script src="../assets/viz/joint-table.js"></script>
+<script src="../assets/viz/density-slice.js"></script>
+</body>
+</html>
