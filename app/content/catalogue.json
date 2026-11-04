@@ -354,63 +354,83 @@
         {
           "id": "probability-0004",
           "title": "L4 · From Events to Numbers — Random Variables — UGC-NET 107",
-          "revision": "28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756",
-          "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/lessons/0004-from-events-to-numbers.html",
+          "revision": "ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f",
+          "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/lessons/0004-from-events-to-numbers.html",
           "files": [
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/lesson.css",
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/clip.css",
+              "sha256": "9334bdb2e389012feb34cda142fd052021c6cf284fec8d5f24ad4a81bb0dce07",
+              "bytes": 665
+            },
+            {
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/clips/power-hops-dark.webm",
+              "sha256": "e7f1e756b0a7d351b5b31bd4ae7678b142d3c869cd095457d85954062a72d39c",
+              "bytes": 502281
+            },
+            {
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/clips/power-hops-light.webm",
+              "sha256": "66f4d1fc97d4f76b642c2701e71b1b952e1dd809d8c111d132ef22f8c275ca97",
+              "bytes": 517689
+            },
+            {
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/more.css",
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/quiz.js",
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/cdf-cursor.js",
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/viz/cdf-cursor.js",
               "sha256": "f5fb10473aaf93eb407c2b2fbbdb25c88e9d8cdd31f20939e93428e9941cd020",
               "bytes": 4835
             },
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/core.js",
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/viz/clip.js",
+              "sha256": "bc1ddfbfac4c4a944d1391cd6c4249cd303cae7455ca8ea22864aa8446dfba71",
+              "bytes": 4070
+            },
+            {
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/gsap.min.js",
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/outcomes-to-numbers.js",
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/viz/outcomes-to-numbers.js",
               "sha256": "2d015ab07ec4592923556c5fb0846c27a871b22b4b89172a28401fee1949ef15",
               "bytes": 3691
             },
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/power-hops.js",
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/viz/power-hops.js",
               "sha256": "b5bdc0f22f1a6184d8d02c828bfdf347c42746fd58616d15aa6da516d303d518",
               "bytes": 8525
             },
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/viz.css",
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/lessons/0004-from-events-to-numbers.html",
-              "sha256": "c837fc4119b990fa055c9d97b645b4a1408ff65acc168fd2466da73d963fc735",
-              "bytes": 25634
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/lessons/0004-from-events-to-numbers.html",
+              "sha256": "85a797f1d0274d83213872340bbe6ee3a7174dc9b6ac71219ee2bac5859aa727",
+              "bytes": 27841
             },
             {
-              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/bundle.json",
-              "sha256": "28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756",
-              "bytes": 3595
+              "path": "bundles/ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f/bundle.json",
+              "sha256": "ff697a887a59683faef5d2c84538d78e75dab1ba2cf23f279481cbb158e31c6f",
+              "bytes": 4102
             }
           ],
           "questions": [
@@ -1971,5 +1991,5 @@
       ]
     }
   ],
-  "releaseId": "3384cd89493771e38414448d7fe6ef714b48fb13f68a514af2bfb2763e3d3811"
+  "releaseId": "a88347ea9cb4b9026eb9cafb6b7c76ef23f15a5d82eb0e90e264d412b52a1ccf"
 }

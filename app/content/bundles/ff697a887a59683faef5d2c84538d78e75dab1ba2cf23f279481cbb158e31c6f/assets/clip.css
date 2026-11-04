@@ -1,0 +1,8 @@
+/* Manim clips (assets/viz/clip.js). A separate file, not viz.css or lesson.css: every lesson's revision hashes the
+   stylesheets it loads, so only the lessons that link this file get a new revision. First used: L4. */
+.clip .clip-stage{background:var(--bg);border-radius:10px;overflow:hidden}
+.clip video{display:block;width:100%;height:auto}
+.clip video.clip-dark{display:none}
+@media (prefers-color-scheme:dark){.clip video.clip-light{display:none}.clip video.clip-dark{display:block}}
+.clip-say{list-style:none;margin:.75rem .1rem .2rem;padding:0;font-family:var(--serif);font-size:1.02rem;line-height:1.55;min-height:3.1em}
+.clip-say li[hidden]{display:none}

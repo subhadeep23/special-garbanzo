@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../assets/lesson.css">
 <link rel="stylesheet" href="../assets/viz/viz.css">
 <link rel="stylesheet" href="../assets/more.css">
+<link rel="stylesheet" href="../assets/clip.css">
 </head>
 <body>
 <header class="lh">
@@ -242,7 +243,26 @@
 <h3>An ISI entrance problem</h3>
 <p>Here is a real ISI question, in plain words first. Find every distribution function F that gives the same height at a number and at that number raised to the power 2023.</p>
 <p class="src">Source: <a href="https://admission.isical.ac.in/PreviousQuestion/MStat-PSB-2023.pdf" target="_blank" rel="noopener">ISI M.Stat 2023, descriptive paper (PSB), Q3</a>. Official wording: "Identify, with justification, all cumulative distribution functions F that satisfy <code>F(x) = F(x&#178;&#8304;&#178;&#179;)</code> for every x &isin; &#8477;."</p>
-<p>2023 is just a big odd number. Swap it for 3 so you can watch, and play with the rule <code>F(x) = F(x&#179;)</code> first.</p>
+<p>2023 is just a big odd number. Swap it for 3 so you can watch, and play with the rule <code>F(x) = F(x&#179;)</code> first. Watch the chain step by step, then try it yourself in the picture after it.</p>
+<figure class="viz clip" data-clip="power-hops" data-ends="2.8,4.5,7.3,13.933,19.133,27.133">
+  <div class="viz-head"><span class="viz-kicker">Watch</span><span class="viz-title">The chain, step by step</span></div>
+  <div class="clip-stage">
+    <video class="clip-light" src="../assets/clips/power-hops-light.webm" muted playsinline preload="auto" aria-label="A number line with the rule written above it. A dot hops each time it is cubed, and settled stretches turn green."></video>
+    <video class="clip-dark" src="../assets/clips/power-hops-dark.webm" muted playsinline preload="auto" aria-label="A number line with the rule written above it. A dot hops each time it is cubed, and settled stretches turn green."></video>
+  </div>
+  <ol class="clip-say" aria-live="polite">
+    <li>Start at 2. The rule says F(2) = F(2³): the height at 2 equals the height at 8.</li>
+    <li>One step: F(2) = F(8). Now use the same rule on 8.</li>
+    <li>The chain runs off to the right, where F climbs to 1. Every height in the chain is equal, so F(2) = 1.</li>
+    <li>Start at 1/2. The chain creeps down to 0 from the right, so the heights settle on the filled dot: F(1/2) = F(0).</li>
+    <li>Start at −2. The chain runs off to the left, where F sinks to 0, so F(−2) = 0.</li>
+    <li>Start at −1/2. The chain creeps up to 0 from the left, so F(−1/2) = F(0−). Now F is flat everywhere except at −1, 0 and 1.</li>
+  </ol>
+  <details class="viz-text"><summary>Read this clip as text</summary>
+    <p>A number line from −3 to 3, with the rule's equation written above it. Start at 2: cubing gives 8, then 512, running off to the right, so F(2) = F(8) = F(512) = 1. Start at 1/2: 1/8, then 1/512, creeping down to 0 from the right, so F(1/2) = F(0). Start at −2: off to the left, so F(−2) = 0. Start at −1/2: creeping up to 0 from the left, so F(−1/2) = F(0−). Then all four stretches are green, and F can jump only at −1, 0 and 1.</p>
+  </details>
+</figure>
+<p>Now try it yourself: pick a start and press Cube it.</p>
 <figure data-viz="power-hops">
   <details class="viz-text"><summary>Read this picture as text</summary>
     <p>A number line from −3 to 3. Pick a start and press Cube it; each press cubes the number and adds one more equal height to the chain. Start at 2: 8, then 512, running off to the right, so F(2) = F(8) = F(512) = … must equal 1. Start at −2: −8, −512, off to the left, so F(−2) = 0. Start at 1/2: 1/8, 1/512, creeping down to 0 from the right, so F(1/2) = F(0), the filled dot. Start at −1/2: −1/8, −1/512, creeping up to 0 from the left, so F(−1/2) = F(0−), the hollow dot. Start at 1: it stays at 1, so nothing is forced there. Once all four stretches are settled, F is flat everywhere except at −1, 0 and 1.</p>
@@ -294,5 +314,6 @@ Do the four checks above, then tell me it clicked — and we'll build Lesson 5 o
 <script src="../assets/viz/outcomes-to-numbers.js"></script>
 <script src="../assets/viz/cdf-cursor.js"></script>
 <script src="../assets/viz/power-hops.js"></script>
+<script src="../assets/viz/clip.js"></script>
 </body>
 </html>
