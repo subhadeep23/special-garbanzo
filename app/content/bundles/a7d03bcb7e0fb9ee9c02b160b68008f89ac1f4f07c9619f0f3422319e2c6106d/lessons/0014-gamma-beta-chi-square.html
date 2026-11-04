@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L14 · Gamma, Beta and Chi-square — One Family — UGC-NET 107</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/viz/viz.css">
+<link rel="stylesheet" href="../assets/more.css">
+</head>
+<body>
+<header class="lh">
+  <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 14</div>
+  <h1>Gamma, Beta and Chi-square — One Family</h1>
+  <p class="sub">Waits for the r-th event, squared errors, and shares of a whole. ~24 min.</p>
+</header>
+
+<p><span class="tag">TODAY'S WIN</span> &nbsp;You'll be able to see the gamma as "the wait for the r-th Poisson event" and swap its tail for a Poisson sum, recognise χ²ₙ as a gamma with mean n and variance 2n, use the beta for proportions, and never again confuse a gamma's rate with its scale.</p>
+
+<h2>0 · Spaced recall — no peeking</h2>
+<div class="card">
+  <p style="margin:.3rem 0">• Calls arrive at 2 per hour. What is the chance the first call takes more than an hour?</p>
+  <p style="margin:.3rem 0">• What does multiplying the MGFs of independent variables give you?</p>
+</div>
+<p class="src">Answers: e^(−2) ≈ 0.1353, the chance of an empty hour (L12). And the MGF of their sum, which names its distribution by uniqueness (L11). Today runs on both.</p>
+
+<h2>1 · Waiting for the r-th call</h2>
+<p>Calls arrive Poisson-style at λ per hour. L12 timed the wait for the <em>first</em> call: exponential with rate λ. Now wait for the <em>third</em>. By memorylessness the wait splits into three fresh exponential waits laid end to end (first call, then the second, then the third), all independent. So the total is a sum, and L11 says its MGF is the product:</p>
+<p class="eq"><code>M(t) = (&lambda;/(&lambda; &minus; t))<sup>r</sup></code>, &nbsp;t &lt; λ.</p>
+<p>That's the barcode of the <dfn>gamma distribution</dfn> with shape r and rate λ, whose density is</p>
+<p class="eq"><code>f(t) = &lambda;<sup>r</sup> t<sup>r&minus;1</sup> e<sup>&minus;&lambda;t</sup>/&Gamma;(r), &nbsp;t &gt; 0</code></p>
+<p>where <code>&Gamma;(r) = (r &minus; 1)!</code> for whole r (the gamma <em>function</em>, <code>&Gamma;(p) = &int;<sub>0</sub><sup>&infin;</sup> e<sup>&minus;u</sup>u<sup>p&minus;1</sup> du</code>, extends it to any p &gt; 0, with <code>&Gamma;(1/2) = &radic;&pi;</code>). Means and variances of the r waits add: <code>E[T] = r/&lambda;</code>, <code>Var(T) = r/&lambda;&sup2;</code>. With r = 1 it's the exponential again.</p>
+<p>And here's the most useful fact about it, no integral required: the r-th call comes after time t exactly when <strong>fewer than r calls</strong> have arrived by t. Pick r and t, and predict first.</p>
+
+<figure data-viz="gamma-from-waits">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Calls at 2 per hour; T is the wait for call number r, Gamma(shape r, rate 2), with the area beyond t shaded. For r = 1: mean 0.5 h, and at t = 1 h, P(T > 1) = P(Poisson(2) ≤ 0) = 0.1353. For r = 3: mean 1.5 h, variance 0.75, and P(T > 1) = P(Poisson(2) ≤ 2) = 0.6767. For r = 5: mean 2.5 h, and P(T > 2) = P(Poisson(4) ≤ 4) = 0.6288. As r grows, the hump moves right and spreads out.</p>
+  </details>
+</figure>
+
+<div class="insight">
+<h3>Say it in one line</h3>
+<p><strong>The gamma is the wait for the r-th Poisson event</strong>: a sum of r exponentials, mean <code>r/&lambda;</code>, and its tail is a Poisson sum, <code>P(T<sub>r</sub> &gt; t) = P(Poisson(&lambda;t) &le; r &minus; 1)</code>.</p>
+</div>
+
+<div class="hook" data-kind="analogy">
+<p><strong>A relay race.</strong> Each runner's leg is an exponential wait; the team's total time is the gamma. Add runners (raise r) and the total gets longer and more spread out, but relatively less erratic: its SD grows like <code>&radic;r</code> while its mean grows like r. Adding gammas with the same rate is just merging teams, which is why, for independent gammas,</p>
+<p class="eq"><code>Gamma(r<sub>1</sub>, &lambda;) + Gamma(r<sub>2</sub>, &lambda;) = Gamma(r<sub>1</sub> + r<sub>2</sub>, &lambda;)</code></p>
+<p class="breaks"><strong>Where it breaks:</strong> the shape need not be a whole number. Gamma(2.5, λ) is a perfectly good distribution with no "two and a half runners" story; it's defined by its density and the gamma function. And teams only merge cleanly when the runners share one rate.</p>
+</div>
+
+<div class="trap">
+<p><strong>"Gamma(2, 3) has mean 6."</strong> Maybe, maybe not: it depends on whether 3 is a <em>scale</em> or a <em>rate</em>. With shape 2 and scale 3 (density <code>&prop; t e<sup>&minus;t/3</sup></code>) the mean is 6; with shape 2 and rate 3 (<code>&prop; t e<sup>&minus;3t</sup></code>) it's 2/3. Your corpus writes <code>G(&alpha;, p)</code> with density <code>&prop; e<sup>&minus;&alpha;x</sup>x<sup>p&minus;1</sup></code>, so α is a rate and p the shape; elsewhere it uses θ as a scale. Before using any gamma formula, look at the exponent: <code>e<sup>&minus;(rate)&times;x</sup></code> or <code>e<sup>&minus;x/(scale)</sup></code>. Mean = shape/rate = shape × scale.</p>
+</div>
+
+<div class="card">
+<p><span class="tag">WATCH OUT</span> &nbsp;Two confirmed slips in your corpus's gamma pages (both in the scanned notes, not OCR). (1) "γ(α, 1) is an exponential distribution with mean α": with density <code>&alpha;e<sup>&minus;&alpha;x</sup></code>, α is the rate, so the mean is <code>1/&alpha;</code>. (2) "Problem 2: harmonic mean of the <em>geometric</em> distribution" is about the gamma, and its answer <code>&alpha;/(p &minus; 1)</code> is <code>E[1/X]</code>, not the harmonic mean. The HM is <code>1/E[1/X] = (p &minus; 1)/&alpha;</code>, for p &gt; 1. That makes <strong>seven and eight</strong> confirmed slips in this corpus.</p>
+</div>
+
+<h2>2 · Chi-square: squared errors are gammas</h2>
+<p>Square a standard normal (L13). Its MGF takes one line, by the same completing-the-square as L13's Go deeper:</p>
+<p class="eq"><code>E[e<sup>tZ&sup2;</sup>] = &int; e<sup>&minus;(1&minus;2t)z&sup2;/2</sup>/&radic;(2&pi;) dz = (1 &minus; 2t)<sup>&minus;1/2</sup></code>, &nbsp;t &lt; 1/2.</p>
+<p>Compare <code>(&lambda;/(&lambda; &minus; t))<sup>r</sup></code> with rate <code>&lambda; = 1/2</code> and shape <code>r = 1/2</code>: the same barcode. Add n independent squares and the MGFs multiply to <code>(1 &minus; 2t)<sup>&minus;n/2</sup></code>. The sum <code>Z<sub>1</sub>&sup2; + &hellip; + Z<sub>n</sub>&sup2;</code> has the <dfn>chi-square distribution</dfn> with n degrees of freedom, written χ²ₙ, which is <strong>Gamma(n/2, rate 1/2)</strong>. Its mean is <code>(n/2)/(1/2) = n</code> (each square averages <code>E[Z&sup2;] = 1</code>) and its variance <code>(n/2)/(1/4) = 2n</code>. Independent χ²s add their degrees of freedom, like merging relay teams.</p>
+
+<h2>3 · Beta: shares of a whole</h2>
+<p>Some quantities live between 0 and 1: a proportion, a probability, "what fraction of the way". The <dfn>beta distribution</dfn> <code>Beta(a, b)</code> on (0, 1) has density proportional to <code>x<sup>a&minus;1</sup>(1 &minus; x)<sup>b&minus;1</sup></code>, mean <code>a/(a + b)</code>, and variance <code>ab/((a + b)&sup2;(a + b + 1))</code>. With a = b = 1 it's the uniform (L12). It turns up in two natural ways:</p>
+<div class="axiom"><span class="n">1</span><span><strong>Order statistics.</strong> The larger of two independent U(0, 1) numbers is at most x when both are: <code>P(max &le; x) = x&sup2;</code>, so its density is <code>2x</code>, which is Beta(2, 1). In general the k-th smallest of n uniforms is <code>Beta(k, n &minus; k + 1)</code>.</span></div>
+<div class="axiom"><span class="n">2</span><span><strong>Shares of gamma totals.</strong> If X ~ Gamma(a, λ) and Y ~ Gamma(b, λ) are independent, then <code>X/(X + Y) ~ Beta(a, b)</code>: the first team's share of the total race time. (The proof is a change of variables, L16.)</span></div>
+<p>Watch the whole family connect.</p>
+
+<figure data-viz="family-map">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Six boxes joined by four arrows, lit one at a time. Exponential(λ), adding r independent copies, gives Gamma(r, λ), because the MGFs multiply to (λ/(λ − t))^r; mean r/λ, variance r/λ². A standard normal Z, squared, gives χ²₁, whose MGF (1 − 2t)^(−1/2) is that of Gamma(½, rate ½); mean 1, variance 2. Adding n independent squares gives χ²ₙ = Gamma(n/2, rate ½); mean n, variance 2n. Two independent gammas with one rate give a beta through X/(X + Y); mean a/(a + b).</p>
+  </details>
+</figure>
+
+<h2>4 · Worked examples</h2>
+<div class="card">
+<p><strong>(a)</strong> Calls arrive at 2 per hour. T is the time until the 3rd call. Find E[T] and P(T &gt; 1 hour). <strong>(b)</strong> Find the mean and variance of χ²₁₀. <strong>(c)</strong> X ~ Beta(2, 3). Find E[X] and Var(X).</p>
+</div>
+<p><strong>(a)</strong> T ~ Gamma(3, rate 2), so <code>E[T] = 3/2</code> hour. The 3rd call comes after an hour exactly when the first hour holds at most 2 calls, and that count is Poisson(2):</p>
+<p class="eq"><code>P(T &gt; 1) = e<sup>&minus;2</sup>(1 + 2 + 2&sup2;/2) = 5e<sup>&minus;2</sup> = 0.6767</code></p>
+<p>No integral of the gamma density needed.</p>
+<p><strong>(b)</strong> χ²₁₀ is Gamma(5, rate 1/2): mean n = 10, variance 2n = 20.</p>
+<p><strong>(c)</strong> <code>E[X] = 2/(2 + 3) = 0.4</code>, and</p>
+<p class="eq"><code>Var(X) = (2 &times; 3)/(5&sup2; &times; 6) = 6/150 = 0.04</code></p>
+
+<div class="explain">
+<p>In one or two sentences of your own: why is "the r-th call comes after t" the same event as "fewer than r calls by t"?</p>
+<details><summary>Compare with a model answer</summary><p>If at least r calls had arrived by t, the r-th would already have come, by t at the latest. So the r-th call is still to come after t exactly when the count by t is at most r − 1: the two statements describe the same outcomes.</p></details>
+</div>
+
+<div class="faded">
+<p><strong>Your turn, half done.</strong> Buses arrive Poisson at 1 per hour. Find the chance you're still waiting for the 2nd bus after an hour.</p>
+<p>Step 1: still waiting means at most ____ bus in the first hour. Step 2: that count is Poisson(____), so the chance is <code>e<sup>&minus;1</sup>(1 + 1) = </code> ____ .</p>
+<details><summary>Check your steps</summary><p>At most 1 bus; the count is Poisson(1); so the chance is 2e^(−1) ≈ 0.7358. As a gamma: T ~ Gamma(2, rate 1), mean 2 hours.</p></details>
+</div>
+
+<div class="beyond">
+<p>This family carries most of classical inference. Here is the beta at work: learning a coin's unknown chance of heads, p.</p>
+<table>
+<tr><th>Stage</th><th>Belief about p</th><th>Its mean, a/(a + b)</th></tr>
+<tr><td>before any tosses: p spread evenly from 0 to 1</td><td>Beta(1, 1)</td><td>1/2</td></tr>
+<tr><td>after 7 heads and 3 tails</td><td>Beta(1 + 7, 1 + 3) = Beta(8, 4)</td><td>8/12 = 2/3</td></tr>
+</table>
+<p>The data just add to the two numbers: heads to the first, tails to the second. That is the L3 Bayes machine, running on whole distributions.</p>
+<p>The χ² does a different job. A normal sample's spread, <code>(n &minus; 1)S&sup2;/&sigma;&sup2;</code>, is χ² with n − 1 degrees of freedom (Unit III).</p>
+<details class="more"><summary>The names, and where the family goes next</summary>
+<p>That χ² fact is where every variance confidence interval comes from. Ratios of χ²s give the t and F distributions behind t-tests, regression and ANOVA. Pearson's χ² goodness-of-fit test is named for it.</p>
+<p>In Bayesian statistics, the beta is the natural prior for a binomial p, and the gamma for a Poisson λ. These are "conjugate priors": after the data, the posterior stays in the same family, with updated parameters.</p>
+<p>Queueing theory calls the whole-number gamma the <em>Erlang</em> distribution. Order statistics of uniforms are betas, and they underlie the nonparametric tests of Unit V.</p>
+</details>
+</div>
+
+<div class="insight">
+<h3>Why this matters for you</h3>
+<p><span class="tag">EXAM</span> &nbsp;Expect: mean and variance of gamma, χ² and beta; additivity (gammas with one rate, χ²s); the gamma–Poisson tail identity; <code>&Gamma;(1/2) = &radic;&pi;</code> and <code>&Gamma;(n) = (n &minus; 1)!</code>; "Z² is χ²₁"; beta of the first and second kind; and harmonic means or <code>E[1/X]</code> of a gamma. Read the parametrisation before you compute anything.</p>
+</div>
+
+<div class="quiz" data-quiz>
+<h3>Quick check — from memory, not by peeking</h3>
+
+<div class="q" data-answer="0">
+<p class="stem">χ²₁₀ has mean and variance…</p>
+<button>10 and 20</button>
+<button>10 and 10</button>
+<button>5 and 10</button>
+<button>20 and 10</button>
+<p class="fb" data-good="Right — χ²ₙ has mean n and variance 2n." data-bad="χ²ₙ = Gamma(n/2, rate ½): mean n = 10, variance 2n = 20."></p>
+</div>
+
+<div class="q" data-answer="2">
+<p class="stem">Events arrive Poisson at rate 2. T = time to the 3rd event. P(T &gt; 1) equals…</p>
+<button>P(Poisson(2) ≥ 3)</button>
+<button>P(Poisson(3) ≤ 2)</button>
+<button>P(Poisson(2) ≤ 2)</button>
+<button>P(Poisson(2) = 3)</button>
+<p class="fb" data-good="Yes — the 3rd event is still to come after 1 exactly when at most 2 events fell in [0, 1], a Poisson(2) count." data-bad="T > 1 means fewer than 3 events by time 1. That count is Poisson(λt) = Poisson(2), so P(T > 1) = P(Poisson(2) ≤ 2)."></p>
+</div>
+
+<div class="q" data-answer="3">
+<p class="stem">T has density proportional to t³e^(−2t). What is E[T]?</p>
+<button>8</button>
+<button>1/2</button>
+<button>4</button>
+<button>2</button>
+<p class="fb" data-good="Correct — shape 4 (t to the power 4 − 1) and rate 2: mean 4/2 = 2." data-bad="t³ means shape 4; e^(−2t) means rate 2. Mean = shape/rate = 4/2 = 2."></p>
+</div>
+
+<div class="q" data-answer="1" data-from="L12">
+<p class="stem">From Lesson 12: T is exponential with mean 5. P(T &gt; 10) is…</p>
+<button>e^(−10)</button>
+<button>e^(−2)</button>
+<button>e^(−1/2)</button>
+<button>1/2</button>
+<p class="fb" data-good="Right — rate 1/5, so P(T > 10) = e^(−10/5) = e^(−2)." data-bad="Mean 5 means rate 1/5: P(T > 10) = e^(−10/5) = e^(−2) ≈ 0.135."></p>
+</div>
+
+<div class="q" data-answer="0">
+<p class="stem">X ~ Beta(2, 3). E[X] is…</p>
+<button>0.4</button>
+<button>0.6</button>
+<button>2/3</button>
+<button>1.5</button>
+<p class="fb" data-good="Yes — a/(a + b) = 2/5 = 0.4." data-bad="The beta's mean is a/(a + b) = 2/(2 + 3) = 0.4."></p>
+</div>
+</div>
+
+<details class="tiers">
+<summary>Go deeper — one proof, one ISI problem (optional, ~15 min)</summary>
+<div data-tier="derive">
+<h3>Prove it</h3>
+<p>Show that <code>P(T &gt; t) = P(Poisson(&lambda;t) &le; r &minus; 1)</code> for T ~ Gamma(r, λ) with whole r, directly from the density, by differentiating the right-hand side.</p>
+<details><summary>Worked proof</summary>
+<p>Let <code>G(t) = e<sup>&minus;&lambda;t</sup> &Sigma;<sub>k=0</sub><sup>r&minus;1</sup> (&lambda;t)<sup>k</sup>/k!</code>. Differentiate term by term. Each term <code>e<sup>&minus;&lambda;t</sup>(&lambda;t)<sup>k</sup>/k!</code> has derivative</p>
+<p class="eq"><code>&lambda;e<sup>&minus;&lambda;t</sup>[(&lambda;t)<sup>k&minus;1</sup>/(k &minus; 1)! &minus; (&lambda;t)<sup>k</sup>/k!]</code></p>
+<p>(the first part is absent when k = 0). Summed over k = 0 … r − 1, the bracket telescopes, leaving only <code>&minus;(&lambda;t)<sup>r&minus;1</sup>/(r &minus; 1)!</code>. So</p>
+<p class="eq"><code>G&prime;(t) = &minus;&lambda;<sup>r</sup>t<sup>r&minus;1</sup>e<sup>&minus;&lambda;t</sup>/(r &minus; 1)! = &minus;f(t)</code></p>
+<p>And <code>P(T &gt; t)</code> also has derivative <code>&minus;f(t)</code>. The two functions have the same slope everywhere and both equal 1 at t = 0, so they're equal. &#8718; Your corpus reaches the same identity by integrating by parts r − 1 times.</p>
+</details>
+</div>
+<div data-tier="isi">
+<h3>An ISI entrance problem</h3>
+<p>Here is a real ISI question, in plain words first. Add up n independent copies of the same random number X. You're told the total is exponential with mean n. Must each copy then be exponential with mean 1? Say true or false, with reasons. (L11 solved part (b), the binomial version.)</p>
+<p class="src">Source: <a href="https://admission.isical.ac.in/PreviousQuestion/MStat-PSB-2020.pdf" target="_blank" rel="noopener">ISI M.Stat 2020 descriptive paper (PSB), Q4(a)</a>. In the paper's notation, <code>X<sub>1</sub>, &hellip;, X<sub>n</sub></code> are independent and identically distributed, and <code>S<sub>n</sub> = X<sub>1</sub> + &hellip; + X<sub>n</sub></code>.</p>
+<details><summary>Worked solution</summary>
+<p><strong>False.</strong> Let M be the common MGF. Independence gives <code>M(t)<sup>n</sup> = M<sub>S<sub>n</sub></sub>(t) = (1 &minus; nt)<sup>&minus;1</sup></code>, the MGF of an exponential with mean n (rate 1/n). M is positive, so take the positive n-th root:</p>
+<p class="eq"><code>M(t) = (1 &minus; nt)<sup>&minus;1/n</sup> = ((1/n)/((1/n) &minus; t))<sup>1/n</sup></code></p>
+<p>That's the Gamma(shape 1/n, rate 1/n) barcode. So by uniqueness, each X<sub>i</sub> is Gamma(1/n, 1/n).</p>
+<table>
+<tr><th>The claim needs</th><th>X<sub>i</sub> really is</th></tr>
+<tr><td>exponential, mean 1</td><td>Gamma(1/n, 1/n)</td></tr>
+<tr><td>mean 1</td><td>mean (1/n)/(1/n) = 1</td></tr>
+<tr><td>MGF (1 &minus; t)<sup>&minus;1</sup></td><td>MGF (1 &minus; nt)<sup>&minus;1/n</sup></td></tr>
+</table>
+<p>The means agree, but the distributions don't, unless n = 1. Teams of n "fractional runners", each with shape 1/n, merge into one full exponential leg.</p>
+<p>The lesson: matching the mean isn't matching the distribution. Contrast part (b), where a binomial's n-th root <em>is</em> a binomial.</p>
+<p class="src">Checked by script (practice bank, ISI checks, file psb-2020-q4). Summing 4 independent Gamma(¼, scale 4) variables reproduced the Exp(mean 4) quantiles to within 2%. A single one has P(X &lt; 0.01) ≈ 0.25, against 0.01 for an exponential with mean 1.</p>
+</details>
+</div>
+</details>
+
+<h2>5 · If you'd like to read a little</h2>
+<p><span class="tag">PRIMARY SOURCE</span> <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda366b.htm" target="_blank" rel="noopener">NIST/SEMATECH Engineering Statistics Handbook: Gamma Distribution</a>: the density in both shape–scale and shape–rate forms, with plots for several shapes, and its mean and variance.</p>
+<p><span class="tag">ALSO GOOD</span> <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3666.htm" target="_blank" rel="noopener">NIST handbook: Chi-Square Distribution</a> and its link to sums of squared normals.</p>
+<p><span class="tag">REFERENCE</span> <a href="../reference/unit-i-probability-formulas.html">Unit&nbsp;I formula sheet</a> · <a href="../reference/glossary.html">Glossary</a></p>
+<p class="src"><strong>Grounded in the corpus:</strong> <code>02_Probability/16_probability_theory_4.md</code> — the gamma distribution G(α, p) at line 225, the "mean α" slip at line 256, the additive property at line 282, the distribution function as a Poisson sum at lines 365–387, the harmonic-mean problem at lines 410–416, and the beta distributions at lines 441 and 486; <code>03_Statistical_Inference/<wbr>25_sampling_<wbr>distributions_1.md</code> — the χ² distribution at line 199, as a gamma at line 366, and its properties at line 536. All numbers re-derived. The notes are by <a href="https://www.ctanujit.org/teaching.html">Tanujit Chakraborty</a> (Indian Statistical Institute), free for non-commercial use.</p>
+
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> Want to see why Γ(1/2) = √π? Want the beta as a Bayesian prior for a coin's bias, updated live? Want three "read the parametrisation" drills? Ask.</div>
+
+<div class="nav">
+  <span>← <a href="0013-the-normal-distribution.html">L13 · The Normal Distribution</a></span>
+  <span>Next: <strong>L15 · Joint, Marginal and Conditional</strong></span>
+</div>
+
+<footer class="lf">
+UGC-NET Statistics (107) · Unit I · Lesson 14 · gamma, gamma–Poisson identity, χ²ₙ, beta, rate vs scale
+</footer>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/viz/gsap.min.js"></script>
+<script src="../assets/viz/core.js"></script>
+<script src="../assets/viz/gamma-from-waits.js"></script>
+<script src="../assets/viz/family-map.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+/* .more: progressive disclosure. The first glance stays short; the rest is one tap away. Works inside any block
+   and nests. A separate file (not lesson.css) so adding it changes only the lessons that link it: every lesson's
+   revision hashes the stylesheets it loads, and a new revision restarts that lesson's quick checks. First used: L4. */
+details.more > summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-family:var(--sans);
+  font-size:.92rem;font-weight:600;color:var(--accent2)}
+details.more details.more{border-top:1px solid var(--rule);margin-top:.8rem}
+details.card.more > summary{margin:-.3rem 0}
+details.card.more[open] > summary{margin-bottom:.4rem}

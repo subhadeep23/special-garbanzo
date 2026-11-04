@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L6 · Expectation — the Balance Point — UGC-NET 107</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/viz/viz.css">
+<link rel="stylesheet" href="../assets/more.css">
+</head>
+<body>
+<header class="lh">
+  <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 6</div>
+  <h1>Expectation — the Balance Point</h1>
+  <p class="sub">One number that says where a distribution sits. ~20 min.</p>
+</header>
+
+<p><span class="tag">TODAY'S WIN</span> &nbsp;You'll be able to compute <code>E[X]</code> from a mass function or a density, read it as the point where the distribution balances, use <code>E[aX + b] = aE[X] + b</code> without thinking, and explain why <code>E[X&sup2;]</code> is not <code>(E[X])&sup2;</code>.</p>
+
+<h2>0 · Spaced recall — no peeking</h2>
+<div class="card">
+  <p style="margin:.3rem 0">• X is uniform on (0, 1/3). What is its density, and is a density that size a problem?</p>
+  <p style="margin:.3rem 0">• Three fair coins, X = number of heads. Write down its mass function.</p>
+</div>
+<p class="src">Answers: the density is 3 on that stretch, and that's fine: only areas are probabilities (L5). And <code>p(0), p(1), p(2), p(3) = 1/8, 3/8, 3/8, 1/8</code>, the jump sizes of L4's staircase. Keep that list; you'll use it in a minute.</p>
+
+<h2>1 · The long-run average</h2>
+<p>A street game: roll a fair die, and you win as many rupees as the face shows. What is one roll worth?</p>
+<p>Play it 600 times. Each face turns up about 100 times, so you collect about</p>
+<p class="eq"><code>100 &times; (1 + 2 + 3 + 4 + 5 + 6) = 2100</code> rupees,</p>
+<p>or 3.5 rupees per roll. Notice where the 3.5 came from: every possible value, times <em>the share of rolls</em> it gets, added up. The share is just the probability, 1/6.</p>
+<p>That weighted average has a name. The <dfn>expectation</dfn> of a discrete X (also called its <em>expected value</em> or <em>mean</em>, and written <code>E[X]</code> or <code>&mu;</code>) is</p>
+<p class="eq"><code>E[X] = &Sigma; x &middot; p(x)</code> &nbsp;over every value x that X can take.</p>
+<p>Each value counts in proportion to how likely it is. For the die, and for your three coins:</p>
+<p class="eq"><code>E[X] = (1 + 2 + 3 + 4 + 5 + 6)/6 = 3.5</code></p>
+<p class="eq"><code>0(1/8) + 1(3/8) + 2(3/8) + 3(1/8) = 12/8 = 1.5</code> heads</p>
+<p>The long run of real rolls settles on 3.5, and of real triple tosses on 1.5 heads.</p>
+<p>Two things already stand out. You can't roll a 3.5, and you can't toss 1.5 heads. The expectation is a <em>summary</em> of the distribution, not a prediction of the next outcome. Nobody "expects" 3.5 on a die.</p>
+
+<h2>2 · Where the distribution balances</h2>
+<p>Now a picture that makes the formula feel inevitable. Treat each probability as a weight sitting on a beam at its value. Where must the fulcrum go so the beam stays level? Guess for the <code>x/10</code> weights before you tap them, then slide the fulcrum yourself.</p>
+
+<figure data-viz="balance-beam">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>A beam carries weights at 1, 2, 3 and 4 and rests on a fulcrum at t, which you can slide from 1 to 4. The net turning is the sum of (x − t) times p(x): positive tips the beam right, negative tips it left, zero leaves it level. With equal weights of 1/4 the beam is level at t = 2.5. With weights 0.1, 0.2, 0.3, 0.4 it is level at t = 3. With 0.7 on 1 and 0.1 on each of 2, 3, 4 it is level at t = 1.6. With half the weight on 1 and half on 4, level at 2.5 again. In every case the level point equals the sum of x times p(x).</p>
+  </details>
+</figure>
+
+<p>Why does the level point always equal <code>&Sigma; x p(x)</code>? Each weight pulls with its size times its distance from the fulcrum: <code>(x &minus; t) p(x)</code>, positive on the right, negative on the left. Add the pulls:</p>
+<p class="eq"><code>&Sigma; (x &minus; t) p(x) = &Sigma; x p(x) &minus; t &Sigma; p(x) = E[X] &minus; t</code></p>
+<p>because the weights add to 1. That is zero exactly when <code>t = E[X]</code>. The physics and the arithmetic say the same thing.</p>
+
+<div class="insight">
+<h3>Say it in one line</h3>
+<p>The <strong>expectation is the balance point</strong> of the distribution: <code>E[X] = &Sigma; x p(x)</code>, the one place where the deviations cancel, <code>&Sigma; (x &minus; &mu;) p(x) = 0</code>.</p>
+</div>
+
+<div class="hook" data-kind="analogy">
+<p><strong>A see-saw with children on it.</strong> Heavier children (more likely values) pull harder, and so do children sitting further out (values far from the fulcrum). The beam is level when the pulls cancel, and that spot is the mean. Try the "Both ends" weights: half at 1, half at 4. The balance is at 2.5, where <em>no weight sits at all</em>, exactly as a see-saw with two equal children balances in the empty middle.</p>
+<p class="breaks"><strong>Where it breaks:</strong> a real see-saw always has a balance point. A distribution whose weights reach out forever can pull so hard from far away that there is none: the density <code>1/(&pi;(1 + x&sup2;))</code> has no mean, because <code>&Sigma; |x| p(x)</code> (or <code>&int; |x| f(x) dx</code>) is infinite. That's why the definition quietly requires that sum to be finite. Also, probability weights are never negative and always total exactly 1; real children are not so obliging.</p>
+</div>
+
+<h2>3 · Sand on the beam: densities</h2>
+<p>For a continuous X the weight isn't in lumps; it's spread like sand, with density f(x) per unit length. Replace the sum by an integral:</p>
+<p class="eq"><code>E[X] = &int; x f(x) dx</code> &nbsp;over the whole line, provided <code>&int; |x| f(x) dx</code> is finite.</p>
+<p>A uniform on (0, &theta;) has flat sand, so it balances in the middle: <code>&int;<sub>0</sub><sup>&theta;</sup> x (1/&theta;) dx = &theta;/2</code>. The triangle from L5, peaked at 3, balances at 3 by symmetry. When the sand is lopsided, the balance shifts toward the heavy side, and the integral tells you how far.</p>
+
+<h2>4 · Functions of X: keep the weights, move the values</h2>
+<p>Often you need the average of some function of X: the square of a measurement, a cost, a reward. If X lands on x with chance p(x), then <code>g(X)</code> lands on <code>g(x)</code> with the same chance. So nothing new is needed:</p>
+<p class="eq"><code>E[g(X)] = &Sigma; g(x) p(x)</code> &nbsp;or &nbsp;<code>&int; g(x) f(x) dx</code></p>
+<p>The weights stay where they were in probability; only their positions on the line move. Watch what that does to the balance point, and predict before the last step.</p>
+
+<figure data-viz="move-the-values">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Weights 0.1, 0.2, 0.3, 0.4 sit on 1, 2, 3, 4 and balance at 3. Step 2 sends each x to 2x + 1: the weights land on 3, 5, 7, 9 and balance at 7, which is 2 × 3 + 1, so the balance point moved along with the values. Step 3 sends each x to x²: the weights land on 1, 4, 9, 16 and balance at 10. Squaring the old balance point gives 9. The new balance point is 1 to the right of it, because squaring stretches the right side far more than the left.</p>
+  </details>
+</figure>
+
+<p>Straight-line functions are the easy case, and the most used rule in this chapter. For any numbers a and b,</p>
+<p class="eq"><code>E[aX + b] = a E[X] + b</code></p>
+<p>Scaling every value by a scales the balance point by a; shifting every value by b shifts it by b. Together with its big brother, <code>E[X + Y] = E[X] + E[Y]</code> for <em>any</em> two variables (independent or not), this is called <dfn>linearity of expectation</dfn>.</p>
+
+<div class="trap">
+<p><strong>"The average of the squares is the square of the average."</strong> Wrong, and it's the single most common slip with expectations. Take the weights above: <code>E[X] = 3</code>, so <code>(E[X])&sup2; = 9</code>, but <code>E[X&sup2;] = 10</code>. In general <code>E[g(X)] &ne; g(E[X])</code> unless g is a straight line. You can even predict the direction for squares: <code>E[X&sup2;] &minus; (E[X])&sup2;</code> turns out to be the average squared distance from the balance point, which can't be negative. So <code>E[X&sup2;] &ge; (E[X])&sup2;</code> always, with equality only when X never varies. Lesson 7 gives that gap its name, the variance. The same mistake in another costume: <code>E[1/X] &ne; 1/E[X]</code>.</p>
+</div>
+
+<h2>5 · Worked example: weights x/10</h2>
+<div class="card">
+<p>X takes the values 1, 2, 3, 4 with <code>P(X = x) = x/10</code>. (a) Check this is a mass function. (b) Find <code>E[X]</code>. (c) Find <code>E[X&sup2;]</code> and compare it with <code>(E[X])&sup2;</code>. (d) Find <code>E[3X + 2]</code>.</p>
+</div>
+<p><strong>(a)</strong> Every value is positive, and <code>(1 + 2 + 3 + 4)/10 = 10/10 = 1</code>. Both checks from L5 pass.</p>
+<p><strong>(b)</strong> Multiply each value by its weight and add. Each term is <code>x &middot; x/10</code>:</p>
+<p class="eq"><code>E[X] = (1 + 4 + 9 + 16)/10 = 30/10 = 3</code></p>
+<p>Sanity check: 3 sits right of the middle, 2.5, because the heavier weights are on the right. (That's the beam you balanced.)</p>
+<p><strong>(c)</strong> Keep the weights, move each value to x&sup2;. Each term is <code>x&sup2; &middot; x/10</code>:</p>
+<p class="eq"><code>E[X&sup2;] = (1 + 8 + 27 + 64)/10 = 100/10 = 10</code></p>
+<p>And <code>(E[X])&sup2; = 3&sup2; = 9</code>. They differ, by 1, in the direction the trap promised.</p>
+<p><strong>(d)</strong> Linearity: <code>E[3X + 2] = 3 &times; 3 + 2 = 11</code>. If you distrust it, do it the long way, with values 5, 8, 11, 14:</p>
+<p class="eq"><code>(5 + 16 + 33 + 56)/10 = 110/10 = 11</code></p>
+<p><strong>A continuous companion.</strong> Let <code>f(x) = x/2</code> on (0, 2). It's a density: never negative, and its graph is a triangle of base 2 and height 1, area 1. Then</p>
+<p class="eq"><code>E[X] = &int;<sub>0</sub><sup>2</sup> x &middot; x/2 dx = [x&sup3;/6]<sub>0</sub><sup>2</sup> = 8/6 = 4/3</code></p>
+<p>Right of the middle, 1, because the sand piles up toward 2.</p>
+
+<div class="explain">
+<p>In one or two sentences of your own: why does a straight-line g carry the balance point along with it, while squaring pushes the balance point past <code>g(E[X])</code>?</p>
+<details><summary>Compare with a model answer</summary><p>A straight line stretches every distance by the same factor and shifts everything by the same amount, so the pulls on each side still cancel at the moved point. Squaring stretches the large values much more than the small ones, so the right side gains extra pull and the balance moves right.</p></details>
+</div>
+
+<div class="faded">
+<p><strong>Your turn, half done.</strong> For the same density <code>f(x) = x/2</code> on (0, 2), find <code>E[X&sup2;]</code> and compare it with <code>(E[X])&sup2; = 16/9</code>.</p>
+<p>Step 1: keep the weights, move the values: <code>E[X&sup2;] = &int;<sub>0</sub><sup>2</sup> x&sup2; &middot; x/2 dx</code>. Step 2: the integrand is <code>x&sup3;/2</code>, whose antiderivative is ____ . Step 3: evaluate from 0 to 2 to get ____, and check it is bigger than 16/9.</p>
+<details><summary>Check your steps</summary><p>The antiderivative is x⁴/8. From 0 to 2: 16/8 = 2. And 2 &gt; 16/9 ≈ 1.78, as it must be: the average of the squares beats the square of the average.</p></details>
+</div>
+
+<div class="beyond">
+<p>Expectation is the hinge between probability and data. Average many rounds of the street game and you land near 3.5 a roll, its expectation.</p>
+<p>Even a chance is an expectation. Score 1 when an event happens and 0 when it doesn't. Take the event "roll a six":</p>
+<table>
+<tr><th>Roll</th><th>Score</th><th>Chance</th></tr>
+<tr><td>1, 2, 3, 4 or 5</td><td>0</td><td>5/6</td></tr>
+<tr><td>6</td><td>1</td><td>1/6</td></tr>
+</table>
+<p>The expected score is <code>0 &times; 5/6 + 1 &times; 1/6 = 1/6</code>. That is exactly P(six).</p>
+<details class="more"><summary>Four places expectation runs the show</summary>
+<p>The 0-or-1 score is called the <em>indicator</em> of the event, and <code>E[indicator] = P(A)</code> for every event A.</p>
+<p><strong>Averages of data.</strong> The <strong>law of large numbers</strong> (Unit I, later) says the average of many independent draws settles on <code>E[X]</code>. Your corpus opens the topic with exactly that remark.</p>
+<p><strong>Estimation.</strong> An estimator is "unbiased" when <code>E[estimator] = true value</code>. In machine learning, a model is trained to make an <em>expected</em> loss small.</p>
+<p><strong>Curved functions.</strong> "The average of a function isn't the function of the average" grows into <strong>Jensen's inequality</strong>: for any convex g, <code>E[g(X)] &ge; g(E[X])</code>.</p>
+<p><strong>Measure theory.</strong> It writes all of this as one integral, <code>&int; X dP</code>. That is how your corpus states its theorems on expectation.</p>
+</details>
+</div>
+
+<div class="insight">
+<h3>Why this matters for you</h3>
+<p><span class="tag">EXAM</span> &nbsp;Expect: "find c, then find the mean" for a p.m.f. or p.d.f.; <code>E[aX + b]</code> from <code>E[X]</code>; <code>E[X&sup2;]</code> as a step toward the variance (next lesson); and true-or-false statements such as "E[X] always exists" (false: the Cauchy density has none), "E[1/X] = 1/E[X]" (false), "E[X + Y] = E[X] + E[Y] needs independence" (false). Nearly every named distribution you meet next is introduced with its mean.</p>
+</div>
+
+<div class="quiz" data-quiz>
+<h3>Quick check — from memory, not by peeking</h3>
+
+<div class="q" data-answer="2">
+<p class="stem">E[X] = 4. What is E[3X − 2]?</p>
+<button>14</button>
+<button>12</button>
+<button>10</button>
+<button>4</button>
+<p class="fb" data-good="Right — linearity: 3 × 4 − 2 = 10." data-bad="Scale the balance point, then shift it: E[3X − 2] = 3E[X] − 2 = 12 − 2 = 10."></p>
+</div>
+
+<div class="q" data-answer="0">
+<p class="stem">For any X that has a mean and E[X²], which is always true?</p>
+<button>E[X²] ≥ (E[X])², never less</button>
+<button>E[X²] = (E[X])², always equal</button>
+<button>E[X²] ≤ (E[X])², never more</button>
+<button>E[X] is a possible value</button>
+<p class="fb" data-good="Yes — the gap E[X²] − (E[X])² is an average of squared distances from the mean, so it can't be negative." data-bad="E[X²] − (E[X])² is the average squared distance from the mean, never negative. So E[X²] ≥ (E[X])². (And the mean of a die, 3.5, is not a possible roll.)"></p>
+</div>
+
+<div class="q" data-answer="3">
+<p class="stem">X is the score on one roll of a fair die. E[X] is…</p>
+<button>3, the most central face</button>
+<button>4, the nearest whole face</button>
+<button>6, the largest possible face</button>
+<button>3.5, a value never rolled</button>
+<p class="fb" data-good="Right — (1 + 2 + … + 6)/6 = 3.5. The mean need not be a value X can take." data-bad="E[X] = (1 + 2 + 3 + 4 + 5 + 6)/6 = 3.5. It's a balance point, not a face; nothing is rounded."></p>
+</div>
+
+<div class="q" data-answer="1" data-from="L5">
+<p class="stem">From Lesson 5: X is uniform on (0, 1/5). What is its density there?</p>
+<button>1/5, matching the stretch length</button>
+<button>5, giving total area one</button>
+<button>1, densities never exceed one</button>
+<button>0, as points hold nothing</button>
+<p class="fb" data-good="Correct — height × width must be 1, and the width is 1/5, so the height is 5." data-bad="The area under the density must be 1. Width 1/5 forces height 5. Densities may exceed 1; only areas are probabilities."></p>
+</div>
+
+<div class="q" data-answer="1">
+<p class="stem">X has density 2x on (0, 1). Where does it balance?</p>
+<button>1/2, the midpoint of the stretch</button>
+<button>2/3, pulled toward the heavy end</button>
+<button>1, where the density peaks highest</button>
+<button>1/3, pulled toward the light end</button>
+<p class="fb" data-good="Yes — ∫ x · 2x dx from 0 to 1 = 2/3. More sand near 1 pulls the balance right of 1/2." data-bad="E[X] = ∫₀¹ x · 2x dx = [2x³/3]₀¹ = 2/3. The sand piles up toward 1, so the balance sits right of the midpoint, but not at the peak."></p>
+</div>
+</div>
+
+<details class="tiers">
+<summary>Go deeper — one proof, one ISI problem (optional, ~15 min)</summary>
+<div data-tier="derive">
+<h3>Prove it</h3>
+<p>Let X take only the values 0, 1, 2, 3, … Show that</p>
+<p class="eq"><code>E[X] = P(X &ge; 1) + P(X &ge; 2) + P(X &ge; 3) + &hellip;</code></p>
+<p>It's called the <em>tail-sum formula</em>, and it often turns a hard sum into an easy one.</p>
+<details><summary>Worked proof</summary>
+<p>Write <code>p(k) = P(X = k)</code>. The term <code>k &middot; p(k)</code> is <code>p(k)</code> added k times. Stack those copies in a table: row 1 holds one copy of every <code>p(k)</code> with <code>k &ge; 1</code>, row 2 one copy of every <code>p(k)</code> with <code>k &ge; 2</code>, and so on. Then <code>p(k)</code> appears in rows 1, 2, …, k: exactly k times, as needed.</p>
+<p>Adding row by row instead of column by column, row j is <code>p(j) + p(j + 1) + &hellip; = P(X &ge; j)</code>. Every entry is non-negative, so the order of adding doesn't change the total. Hence</p>
+<p class="eq"><code>E[X] = &Sigma;<sub>k</sub> k p(k) = &Sigma;<sub>j &ge; 1</sub> P(X &ge; j)</code> &#8718;</p>
+<p>Check on a die: <code>P(X &ge; 1), &hellip;, P(X &ge; 6)</code> are 6/6, 5/6, …, 1/6, which add to 21/6 = 3.5. ✓</p>
+<p class="src">Your corpus states it as <code>&Sigma;<sub>k &ge; 0</sub> P(X &gt; k)</code>, the same sum with the index shifted by one.</p>
+</details>
+</div>
+<div data-tier="isi">
+<h3>An ISI entrance problem</h3>
+<p>Here is a real ISI question, in plain words first. You've forgotten the code of a 4-digit lock. The true code is equally likely to be any of the 10,000 codes. On average, how many tries do you need with each of these three ways of guessing?</p>
+<table>
+<tr><th>Way</th><th>How you guess</th></tr>
+<tr><td>(i)</td><td>try 0000, 0001, … up to 9999, in order</td></tr>
+<tr><td>(ii)</td><td>pick each try at random from all codes; repeats can happen</td></tr>
+<tr><td>(iii)</td><td>pick each try at random, but never repeat a code</td></tr>
+</table>
+<p class="src">Source: <a href="https://admission.isical.ac.in/PreviousQuestion/MStat-PSB-2017.pdf" target="_blank" rel="noopener">ISI M.Stat 2017 descriptive paper (PSB), Q6</a>. In the paper's words, (ii) picks <em>with</em> replacement and (iii) picks <em>without</em> replacement.</p>
+<details><summary>Worked solution</summary>
+<p>Write <code>N = 10,000</code>, and let T be the number of attempts.</p>
+<p><strong>(i)</strong> The true code's place in the list 0000, 0001, … is equally likely to be 1, 2, …, N. So <code>E[T] = (1 + 2 + &hellip; + N)/N</code>.</p>
+<p>To add 1 up to N, pair the first and last terms, then the second and second-last, and so on. Each pair sums to <code>N + 1</code>, and there are <code>N/2</code> pairs. So the sum is <code>N(N + 1)/2</code>, and</p>
+<p class="eq"><code>E[T] = (N + 1)/2 = 5000.5</code></p>
+<p><strong>(ii)</strong> Each attempt hits with chance <code>1/N</code>, independently of the others. "At least k attempts are needed" means the first <code>k &minus; 1</code> all missed. So <code>P(T &ge; k) = (1 &minus; 1/N)<sup>k&minus;1</sup></code>, by the multiplication rule for independent events (L2). Now use the tail-sum formula you just proved, with <code>r = 1 &minus; 1/N</code>:</p>
+<p class="eq"><code>E[T] = 1 + r + r&sup2; + &hellip; = 1/(1 &minus; r) = N = 10,000</code></p>
+<p>Why is <code>1 + r + r&sup2; + &hellip;</code> equal to <code>1/(1 &minus; r)</code> when <code>0 &le; r &lt; 1</code>? Call the sum S. Then <code>S &minus; rS = 1</code>.</p>
+<p><strong>(iii)</strong> Never repeating, until every code is used, just puts all N codes in a random order. Every order is equally likely. So the true code is equally likely to sit in any of the N places.</p>
+<p>Why? Swap place i with place j. That turns the orders with the code at i, one for one, into the orders with it at j. So each place gets the same share. T is again equally likely to be 1, …, N, and <code>E[T] = 5000.5</code>, exactly as in (i).</p>
+<table>
+<tr><th>Way</th><th>Average number of tries</th></tr>
+<tr><td>(i) in order</td><td>5000.5</td></tr>
+<tr><td>(ii) at random, repeats allowed</td><td>10,000</td></tr>
+<tr><td>(iii) at random, no repeats</td><td>5000.5</td></tr>
+</table>
+<p>The lesson in it: forgetting what you've tried costs you nearly double.</p>
+<p class="src">Checked by script (practice bank, ISI checks folder, file psb-2017-q6). 200,000 simulated locks gave means 4993.8, 10000.9 and 4995.9. Each is within 4 standard errors of 5000.5, 10,000 and 5000.5. An exact enumeration for N = 5 gave 3 = (N + 1)/2.</p>
+</details>
+</div>
+</details>
+
+<h2>6 · If you'd like to read a little</h2>
+<p><span class="tag">PRIMARY SOURCE</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class04-prep-b.pdf" target="_blank" rel="noopener">MIT 18.05, Class 4 reading: Discrete Random Variables — Expected Value</a> (Orloff &amp; Bloom). The mean as a weighted average and as a centre of mass, with linearity and E[h(X)].</p>
+<p><span class="tag">NEXT STEP</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class06-prep-a.pdf" target="_blank" rel="noopener">MIT 18.05, Class 6 reading: Expectation and Variance for Continuous Random Variables</a>: the integral version, and a preview of next lesson.</p>
+<p><span class="tag">SEE IT MOVE</span> <a href="https://seeing-theory.brown.edu/basic-probability/index.html" target="_blank" rel="noopener">Seeing Theory — Basic Probability</a> (Brown University): its expectation panel rolls a die again and again and shows the running average settling on 3.5.</p>
+<p><span class="tag">REFERENCE</span> <a href="../reference/unit-i-probability-formulas.html">Unit&nbsp;I formula sheet</a> · <a href="../reference/glossary.html">Glossary</a></p>
+<p class="src"><strong>Grounded in the corpus:</strong> <code>02_Probability/14_probability_theory_2.md</code> — the definition at lines 4551–4560, the sample mean settling on E(X) at line 4562, the die (3.5) at line 4587, the indicator at line 4617, the continuous case at line 4633, the uniform (θ/2) at line 4640, the Cauchy density with no mean at line 4678, theorems on expectation at line 4712, E(a + bX) at line 4746, the tail-sum formula at line 4831, E[g(X)] at line 4859, Jensen's inequality at line 5647. All numbers re-derived. The notes are by <a href="https://www.ctanujit.org/teaching.html">Tanujit Chakraborty</a> (Indian Statistical Institute), free for non-commercial use.</p>
+
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> Want to see the street-game average settle on 3.5 in a simulation? Want three "find c, then the mean" drills? Curious why the Cauchy density has no balance point even though it's symmetric about 0? Ask.</div>
+
+<div class="nav">
+  <span>← <a href="0005-mass-and-density.html">L5 · Mass and Density</a></span>
+  <span>Next: <strong>L7 · Variance and Chebyshev</strong></span>
+</div>
+
+<footer class="lf">
+UGC-NET Statistics (107) · Unit I · Lesson 6 · E[X], balance point, E[g(X)], linearity, E[X²] ≠ (E[X])²
+</footer>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/viz/gsap.min.js"></script>
+<script src="../assets/viz/core.js"></script>
+<script src="../assets/viz/balance-beam.js"></script>
+<script src="../assets/viz/move-the-values.js"></script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L3 · Turning the Bar Around — Bayes' Theorem — UGC-NET 107</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/viz/viz.css">
+<link rel="stylesheet" href="../assets/more.css">
+</head>
+<body>
+<header class="lh">
+  <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 3</div>
+  <h1>Turning the Bar Around — Bayes' Theorem</h1>
+  <p class="sub">You know the chance of the symptom given the disease. You want the disease given the symptom. ~15 min.</p>
+</header>
+
+<p><span class="tag">TODAY'S WIN</span> &nbsp;By the end you'll be able to run a full Bayes calculation on the standard exam shape — several causes, one observed effect — and explain why a positive test for a rare disease usually means far less than people think.</p>
+
+<h2>0 · Spaced recall — no peeking</h2>
+<p>Two questions from Lesson 2. Answer them in your head before reading on. If you get them slowly, that is fine; slow retrieval still strengthens the memory.</p>
+<div class="card">
+  <p style="margin:.3rem 0">• Write the <strong>multiplication rule</strong> for <code>P(A &cap; B)</code>.</p>
+  <p style="margin:.3rem 0">• A bag has 4 red and 6 blue balls. Two drawn without replacement. Chance both red?</p>
+</div>
+<p class="src">Answers: <code>P(A &cap; B) = P(A) &times; P(B|A)</code>; and (4/10) &times; (3/9) = 12/90 = 2/15.</p>
+
+<h2>1 · The problem Bayes solves</h2>
+<p>Almost every real question has an awkward shape. You are handed the probabilities running <em>one</em> way, and asked for the probability running the <em>other</em> way.</p>
+
+<table>
+<tr><th>What you are given</th><th>What you are asked</th></tr>
+<tr><td>P(defective | made by machine 3)</td><td>P(made by machine 3 | defective)</td></tr>
+<tr><td>P(test positive | you have the disease)</td><td>P(you have the disease | test positive)</td></tr>
+<tr><td>P(this evidence | the suspect did it)</td><td>P(the suspect did it | this evidence)</td></tr>
+</table>
+
+<p>Look at the left column. In every row it is a <strong>cause</strong> on the right of the bar and an <strong>effect</strong> on the left. That direction is the easy one — a factory can measure its own defect rate; a lab can measure how often the test fires on known patients.</p>
+<p>The right column is what you actually want, and it runs backwards: effect known, cause unknown. <strong><dfn>Bayes' theorem</dfn> is the tool that turns the bar around.</strong></p>
+
+<div class="insight">
+<h3>Say it in one line</h3>
+<p>Bayes' theorem converts <code>P(effect | cause)</code>, which is measurable, into
+<code>P(cause | effect)</code>, which is what you actually want to know.</p>
+</div>
+
+<div class="trap">
+<p><strong>"P(A | B) and P(B | A) are the same thing, just written differently."</strong> Wrong, and courts have convicted people on this mistake (it's called the <em>prosecutor's fallacy</em>). The two can be wildly different. In the factory below, <code>P(defective | machine 3) = 0.03</code>, but <code>P(machine 3 | defective)</code> = 24/43 &asymp; 0.558: nearly nineteen times larger. Swapping the two sides of the bar changes which bag you shrink to, so it changes the answer.</p>
+</div>
+
+<h2>2 · First, the denominator: total probability</h2>
+<p>Before Bayes, you need one smaller idea, and it is worth meeting on its own — the exam asks for it by name.</p>
+<p>Suppose an effect <strong>A</strong> can only arrive through one of several routes <strong>B<sub>1</sub>, B<sub>2</sub>, …, B<sub>k</sub></strong>. Those routes must be:</p>
+<div class="axiom"><span class="n">1</span><span><strong>Mutually exclusive</strong> — no two can happen together. A pen came from machine 1 <em>or</em> 2 <em>or</em> 3, never two at once.</span></div>
+<div class="axiom"><span class="n">2</span><span><strong>Exhaustive</strong> — together they cover everything. Every pen came from <em>some</em> machine; there is no fourth option.</span></div>
+<p class="src">A family of events with both properties is called a <strong>partition</strong> of the sample space. Keep the word — it is the condition every Bayes question quietly assumes.</p>
+
+<p>Then the total chance of A is just: chance of each route, times the chance A happens along that route, all added up.</p>
+
+<div class="card">
+  <p style="text-align:center;font-size:1.15rem;margin:.4rem 0"><code>P(A) = &Sigma;<sub>i</sub> P(B<sub>i</sub>) &middot; P(A | B<sub>i</sub>)</code></p>
+  <p class="src" style="text-align:center">the theorem of <dfn>total probability</dfn> — each term is one branch of the multiplication rule</p>
+</div>
+
+<p>Notice there is nothing new here. Each term <code>P(B<sub>i</sub>)P(A|B<sub>i</sub>)</code> is exactly <code>P(B<sub>i</sub> &cap; A)</code> from Lesson 2's multiplication rule. Because the routes don't overlap, we are allowed to add them (Lesson 1, axiom 3). Two old rules, stacked.</p>
+
+<h2>3 · Now Bayes</h2>
+<p>You want <code>P(B<sub>i</sub> | A)</code>. Start from the definition in Lesson 2 and substitute twice:</p>
+
+<div class="card">
+  <p class="eq">Definition: <code>P(B<sub>i</sub> | A) = P(B<sub>i</sub> &cap; A) &divide; P(A)</code></p>
+  <p class="eq">Top, by the multiplication rule: <code>P(B<sub>i</sub> &cap; A) = P(B<sub>i</sub>) &middot; P(A | B<sub>i</sub>)</code></p>
+  <p class="eq">Bottom, by total probability: <code>P(A) = &Sigma;<sub>j</sub> P(B<sub>j</sub>) &middot; P(A | B<sub>j</sub>)</code></p>
+</div>
+
+<p style="text-align:center;font-size:1.2rem"><code>P(B<sub>i</sub> | A) = <span style="border-bottom:1px solid">P(B<sub>i</sub>) &middot; P(A | B<sub>i</sub>)</span> &divide; &Sigma;<sub>j</sub> P(B<sub>j</sub>) &middot; P(A | B<sub>j</sub>)</code></p>
+
+<p>That is the whole theorem, and you just derived it in three lines from things you already had. There is no new machinery in Bayes at all — it is the definition of conditional probability with the top and bottom rewritten.</p>
+
+<div class="insight">
+<h3>Read the formula as a sentence</h3>
+<p><strong>Numerator:</strong> the weight of the route you're asking about.<br>
+<strong>Denominator:</strong> the total weight of <em>all</em> routes that could have produced what you saw.<br>
+So the posterior is simply <em>your route's share of the total</em>. If that clicks, you never have to memorise the formula — every Bayes question is "compute all the branch weights, then take one branch's share."</p>
+</div>
+
+<div class="hook" data-kind="analogy">
+<p><strong>Suspects and a clue.</strong> A clue was found, and exactly one of several suspects left it. Each suspect's <em>prior</em> is how often they are around; each one's <em>likelihood</em> is how often they leave this kind of clue when they are. Multiply the two for each suspect and you get how often <em>that</em> suspect produces this clue. The posterior is each suspect's share of all the clue-making. A rarely seen suspect who almost always leaves the clue can still lose to a common one who sometimes does.</p>
+<p class="breaks"><strong>Where it breaks:</strong> the suspects must be a partition: exactly one of them did it. Real investigations can miss the true culprit. Bayes can't: if a cause isn't on your list, or has prior 0, it gets posterior 0 whatever the evidence says.</p>
+</div>
+
+<h2>4 · The vocabulary: prior and posterior</h2>
+<p>Two terms the exam uses freely, both of which the corpus states in Latin:</p>
+<table>
+<tr><th>Term</th><th>Also written</th><th>Means</th></tr>
+<tr><td><dfn>Prior</dfn> probability</td><td><em>a priori</em>, P(B<sub>i</sub>)</td><td>your belief in each cause <em>before</em> seeing the evidence</td></tr>
+<tr><td><dfn>Likelihood</dfn></td><td>P(A | B<sub>i</sub>)</td><td>how well each cause explains what you saw</td></tr>
+<tr><td><dfn>Posterior</dfn> probability</td><td><em>a posteriori</em>, P(B<sub>i</sub> | A)</td><td>your updated belief <em>after</em> the evidence arrived</td></tr>
+</table>
+<p>So Bayes is <em>prior &times; likelihood, then normalise</em>. Hold on to the word <strong>likelihood</strong> — in Unit IV it becomes the whole basis of estimation, and it will be exactly this same object.</p>
+
+<h2>5 · The standard exam problem, worked in full</h2>
+<div class="card">
+<p><strong>A factory has three machines making pens.</strong> Machine 1 makes 35% of all pens, machine 2 makes 25%, machine 3 makes 40%. Their defect rates are 2%, 1% and 3% respectively.</p>
+<p><strong>(a)</strong> A pen is picked at random. What is the chance it is defective?<br>
+<strong>(b)</strong> Given that it <em>is</em> defective, what is the chance machine 3 made it?</p>
+</div>
+
+<p><strong>Step 1 — name the events and check the partition.</strong> Let <code>A<sub>i</sub></code> = "made by machine i", and <code>B</code> = "defective". The three machines are mutually exclusive and exhaustive (0.35 + 0.25 + 0.40 = 1 ✓). Good — Bayes applies.</p>
+
+<p><strong>Step 2 — build the branch table.</strong> This table is the entire method. Build it every time.</p>
+
+<table>
+<tr><th>Machine i</th><th>Prior P(A<sub>i</sub>)</th><th>Likelihood P(B|A<sub>i</sub>)</th><th>Branch weight P(A<sub>i</sub>)P(B|A<sub>i</sub>)</th></tr>
+<tr><td>1</td><td>0.35</td><td>0.02</td><td>0.0070</td></tr>
+<tr><td>2</td><td>0.25</td><td>0.01</td><td>0.0025</td></tr>
+<tr><td>3</td><td>0.40</td><td>0.03</td><td>0.0120</td></tr>
+<tr><td><strong>total</strong></td><td>1.00</td><td>&mdash;</td><td><strong>0.0215</strong></td></tr>
+</table>
+
+<p>Here is the same table as a picture. Widths are priors, red heights are likelihoods, and red areas are branch weights.</p>
+<figure data-viz="bayes-machines">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>Step 1: a bar split by each machine’s share of pens: machine 1 0.35, machine 2 0.25, machine 3 0.40 (the priors). Step 2: each machine’s defective pens are shaded red with heights 2%, 1% and 3% (the likelihoods, drawn ten times taller). Step 3: once the pen is known to be defective only the red areas remain; their areas are 0.0070, 0.0025 and 0.0120, total 0.0215. Step 4: the red areas are stretched side by side to fill the bar; their shares are the posteriors 0.326, 0.116 and 0.558.</p>
+  </details>
+</figure>
+<p><strong>Answer (a).</strong> The last cell already is it: <code>P(B) = 0.0215</code>. That is the theorem of total probability, done as a column sum.</p>
+
+<p><strong>Answer (b).</strong> Machine 3's share of the total:</p>
+<p style="text-align:center;font-size:1.15rem"><code>P(A<sub>3</sub> | B) = 0.0120 &divide; 0.0215 = 120/215 = <strong>24/43</strong> &asymp; 0.558</code></p>
+
+<div class="insight">
+<h3>Look at what moved</h3>
+<p>Machine 3's prior was <strong>0.40</strong>. After learning the pen is defective, its posterior is <strong>0.558</strong>. The evidence pushed suspicion towards machine 3 — correctly, since it is the sloppiest machine. That shift, prior → posterior, <em>is</em> what Bayes computes. Always sanity-check the direction of the shift; if it moved the wrong way, you have swapped a row.</p>
+</div>
+
+<div class="explain">
+<p>In one or two sentences of your own: machine 3's share rose from 0.40 to 0.558, but machine 2's share <em>fell</em>, from 0.25 to about 0.116. Why did the same piece of news push them in opposite directions?</p>
+<details><summary>Compare with a model answer</summary><p>The news "defective" favours causes that produce defects more often than average. The overall defect rate is 0.0215, about 2.15%. Machine 3's 3% is above it, so its share grows; machine 2's 1% is below it, so its share shrinks.</p></details>
+</div>
+
+<div class="faded">
+<p><strong>Your turn, half done.</strong> Same factory. Given that a pen is defective, what is the chance it came from <strong>machine 1</strong>?</p>
+<p>Step 1: machine 1's branch weight is <code>0.35 &times; 0.02 = </code> ____. Step 2: the total of all branch weights is ____ (from the table). Step 3: so the posterior is ____ &divide; ____, which simplifies to ____ .</p>
+<details><summary>Check your steps</summary><p>0.35 × 0.02 = 0.0070. The total is 0.0215. So 0.0070 ÷ 0.0215 = 70/215 = 14/43 ≈ 0.326. Check: 14/43 + 5/43 + 24/43 = 1, as the three posteriors must add to 1.</p></details>
+</div>
+
+<div class="card">
+<p><span class="tag">WATCH OUT</span> &nbsp;The corpus version of this problem has two OCR typos in its working: it prints <code>0.035</code> for 0.35 and <code>0.08</code> for 0.03. The final answers, 0.0215 and 120/215, are correct. This is a live example of why you should re-derive every printed number rather than trusting it — a habit that also catches your own slips in the exam hall.</p>
+</div>
+
+<h2>6 · The trap worth more than the formula: base rates</h2>
+<p>Here is where Bayes stops being arithmetic and starts being judgement.</p>
+
+<div class="card">
+<p>A disease affects <strong>1 in 1000</strong> people. A test is very good: it catches <strong>99%</strong> of people who have it, and gives a false alarm on only <strong>5%</strong> of healthy people.</p>
+<p>You test positive. What is the chance you have the disease?</p>
+</div>
+
+<p>Commit to a guess before you read on, then press the buttons to change how common the illness is.</p>
+<figure data-viz="base-rate">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>The top bar is 100,000 people, with the ill shaded red. The bottom bar is only the people who test positive: ill people who test positive in red, healthy people with a false alarm in blue. At 1 in 1,000 ill, 99 ill people and 4,995 healthy people test positive, so the red part is about 2% of the positives (0.019). At 1 in 100 it is 990 against 4,950 (0.167); at 1 in 10, 9,900 against 4,500 (0.688); at 1 in 2, 49,500 against 2,500 (0.952). The test never changes; only the base rate does.</p>
+  </details>
+</figure>
+
+<p>Most people say "about 95%". Now build the table by hand. Imagine 100,000 people.</p>
+
+<table>
+<tr><th>Group</th><th>How many</th><th>Test positive rate</th><th>Positives</th></tr>
+<tr><td>Has the disease</td><td>100</td><td>0.99</td><td>99</td></tr>
+<tr><td>Healthy</td><td>99,900</td><td>0.05</td><td>4,995</td></tr>
+<tr><td><strong>total positives</strong></td><td>&mdash;</td><td>&mdash;</td><td><strong>5,094</strong></td></tr>
+</table>
+
+<p style="text-align:center;font-size:1.15rem"><code>P(disease | positive) = 99 &divide; 5094 &asymp; <strong>0.019</strong></code></p>
+
+<p>Under 2%. The test is genuinely good, and the answer is still tiny — because healthy people are so much more numerous that their 5% false alarms swamp the 99 true positives. The <strong>prior</strong> (also called the <em>base rate</em>) does most of the work, and ignoring it is the single most common mistake made with Bayes.</p>
+
+<p class="src">Note also what the evidence <em>did</em> do: your chance went from 1 in 1000 (0.001) to about 1 in 51 (0.019) — a nineteen-fold increase. The test was informative. It just started from a very low base. Change the base rate in the picture above to 1 in 2: the same test now gives 0.952.</p>
+
+<div class="beyond">
+<p>Bayes' theorem is one line, but a whole school of statistics stands on it. That school uses today's table on an unknown number instead of a machine.</p>
+<table>
+<tr><th>Today's table</th><th>The same move in statistics</th></tr>
+<tr><td>Which machine made the bolt?</td><td>What is the unknown number, say a coin's chance of heads?</td></tr>
+<tr><td>Machine shares before the defect</td><td>Your belief before the data</td></tr>
+<tr><td>Defect rate of each machine</td><td>Chance of the data for each possible value</td></tr>
+<tr><td>Machine shares after the defect</td><td>Your belief after the data</td></tr>
+</table>
+<p>Screening tests work the same way. Their chance of a true alarm is the base-rate sum you just did.</p>
+<details class="more"><summary>The names, and the hard part</summary>
+<p>This is <strong>Bayesian inference</strong>. The belief before is the <em>prior</em>, the chance of the data is the <em>likelihood</em>, and the belief after is the <em>posterior</em>. In short: posterior ∝ prior × likelihood.</p>
+<p>The hard part is the bottom of the fraction, the total chance of the data. With endless possible values it becomes an integral nobody can do by hand. <em>Markov chain Monte Carlo</em> was invented to get around it.</p>
+<p>Screening tests call their three numbers sensitivity, specificity and positive predictive value. <strong>Naive Bayes</strong> spam filters use the same theorem on words. And this is the frequentist-versus-Bayesian argument from Lesson 1.</p>
+</details>
+</div>
+
+<div class="insight">
+<h3>Why this matters for you</h3>
+<p><span class="tag">EXAM</span> &nbsp;Bayes and total probability are near-guaranteed marks in UGC-NET 107 Unit I, and they usually appear in exactly the three-machines shape: several sources, one observed defect, find the posterior. Beyond Unit I, the prior–likelihood–posterior triple is the backbone of Bayesian estimation in Unit IV, and "likelihood" in maximum likelihood estimation is the same P(data | parameter) you met in the middle column today. Learn the branch table once; reuse it for the rest of the syllabus.</p>
+</div>
+
+<div class="quiz" data-quiz>
+<h3>Quick check — from memory, not by peeking</h3>
+
+<div class="q" data-answer="1">
+<p class="stem">For Bayes' theorem to apply, the causes B<sub>1</sub>…B<sub>k</sub> must be…</p>
+<button>independent of each other and equal</button>
+<button>mutually exclusive and also jointly exhaustive</button>
+<button>equally likely and also mutually independent</button>
+<button>dependent on each other and disjoint</button>
+<p class="fb" data-good="Right — they must form a partition: no two can co-occur, and together they cover every possibility." data-bad="They must be mutually exclusive AND exhaustive — a partition. They need not be equally likely, and independence is a different idea entirely."></p>
+</div>
+
+<div class="q" data-answer="3">
+<p class="stem">In Bayes' theorem, the denominator is exactly the same thing as…</p>
+<button>the prior probability of the cause</button>
+<button>the largest of the branch weights</button>
+<button>the likelihood of the observed data</button>
+<button>the total probability of the effect</button>
+<p class="fb" data-good="Yes — the denominator is P(A), computed by the theorem of total probability as the sum of all branch weights." data-bad="It is P(A), the total probability of the effect: the sum of every branch weight. That is why the posterior is one branch's share of the total."></p>
+</div>
+
+<div class="q" data-answer="0" data-from="L2">
+<p class="stem">From Lesson 2: A and B are independent, with P(A) = 0.5 and P(B) = 0.4. Then P(A ∩ B) is…</p>
+<button>zero point two, their product</button>
+<button>zero point nine, their sum</button>
+<button>zero point one, their difference</button>
+<button>zero point eight, their ratio</button>
+<p class="fb" data-good="Right — independence means P(A ∩ B) = P(A) × P(B) = 0.5 × 0.4 = 0.2." data-bad="For independent events, multiply: P(A ∩ B) = P(A) × P(B) = 0.5 × 0.4 = 0.2. Adding gives P(A or B) only for events that can't overlap."></p>
+</div>
+
+<div class="q" data-answer="2">
+<p class="stem">A positive result on an accurate test for a rare disease often still means…</p>
+<button>the test itself must have been faulty somehow</button>
+<button>the disease is far more common than said</button>
+<button>a low posterior, because the prior was low</button>
+<button>a high posterior, because the test is good</button>
+<p class="fb" data-good="Exactly — the healthy majority produce so many false alarms that they swamp the true positives. The base rate dominates." data-bad="The posterior stays low. With a rare disease, the huge healthy group generates far more false positives than the small sick group generates true ones."></p>
+</div>
+</div>
+
+<details class="tiers">
+<summary>Go deeper — one proof, one ISI problem (optional, ~15 min)</summary>
+<div data-tier="derive">
+<h3>Prove it</h3>
+<p>Evidence works both ways. Show that, when <code>P(A)</code> and <code>P(B)</code> are both above 0,</p>
+<p class="eq"><code>P(B | A) &gt; P(B) &nbsp;exactly when&nbsp; P(A | B) &gt; P(A)</code></p>
+<p>In words: if seeing A makes B more likely, then seeing B makes A more likely too.</p>
+<details><summary>Worked proof</summary>
+<p>Multiply the left inequality by <code>P(A) &gt; 0</code>; the direction is unchanged:</p>
+<p class="eq"><code>P(B | A) &gt; P(B) &hArr; P(A &cap; B) &gt; P(A)P(B)</code></p>
+<p>Now divide by <code>P(B) &gt; 0</code> instead:</p>
+<p class="eq"><code>P(A &cap; B) &gt; P(A)P(B) &hArr; P(A | B) &gt; P(A)</code></p>
+<p>Both conditions are the same middle inequality. &#8718;</p>
+<p class="src">The middle line is symmetric in A and B, which is the whole proof. With "=" in place of "&gt;", it is Lesson 2's definition of independence.</p>
+</details>
+</div>
+<div data-tier="isi">
+<h3>An ISI entrance problem</h3>
+<p>Here is a real ISI question, in plain words first. It is Lesson 2's tennis match again: Bikas wins each set with chance 0.6, and the first to three sets wins. Now you hear that Bimal won. What is the chance the match went all five sets?</p>
+<p class="src">Source: <a href="https://admission.isical.ac.in/PreviousQuestion/JRF-Stat-STA-2024.pdf" target="_blank" rel="noopener">ISI JRF Statistics 2024 paper (STA), Q4(b)</a>; part (a) was the ISI problem in Lesson 2. Official wording: "If Bimal wins the match, what is the probability that the match lasts for five sets?"</p>
+<details><summary>Worked solution</summary>
+<p><strong>The causes.</strong> Bimal's win can come by 3–0, 3–1 or 3–2. Those are a partition of "Bimal wins". Write q = 0.4 for Bimal's chance of a set.</p>
+<p><strong>Branch weights.</strong> Bimal always wins the last set played. So count where Bikas's set wins can sit before it. Write K for a Bikas set and M for a Bimal set.</p>
+<table>
+<tr><th>Score</th><th>Orders</th><th>How many</th><th>Chance</th></tr>
+<tr><td>3–0</td><td>MMM</td><td>1</td><td>0.4&sup3; = 0.064</td></tr>
+<tr><td>3–1</td><td>KMMM, MKMM, MMKM</td><td>3</td><td>3 &times; 0.4&sup3; &times; 0.6 = 0.1152</td></tr>
+<tr><td>3–2</td><td>Lesson 2's six 2–2 splits, then M</td><td>6</td><td>6 &times; 0.4&sup3; &times; 0.6&sup2; = 0.13824</td></tr>
+</table>
+<p>Each order's chance is a product, because sets are independent.</p>
+<p><strong>Total probability.</strong> Add the three rows:</p>
+<p class="eq"><code>P(Bimal wins) = 0.31744 = 992/3125</code></p>
+<p><strong>Bayes.</strong> The five-set row's share of the total:</p>
+<p class="eq"><code>P(five sets | Bimal wins) = 0.13824 &divide; 0.31744 = 27/62 &asymp; 0.435</code></p>
+<p class="src">Checked by exact enumeration with fractions over all set sequences: P(Bimal wins) = 992/3125 and the posterior is 27/62. Notice that the underdog's wins are more often long ones.</p>
+</details>
+</div>
+</details>
+
+<h2>7 · If you'd like to read a little</h2>
+<p><span class="tag">PRIMARY SOURCE</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class03-prep.pdf" target="_blank" rel="noopener">MIT 18.05, Class 3 reading: Conditional Probability, Independence and Bayes' Theorem</a> (Orloff &amp; Bloom). The second half is today's lesson, including the base-rate fallacy with a worked medical-test example.</p>
+<p><span class="tag">SEE IT MOVE</span> <a href="https://seeing-theory.brown.edu/bayesian-inference/index.html" target="_blank" rel="noopener">Seeing Theory — Bayesian Inference</a> (Brown University): set a prior, add data, and watch the posterior move.</p>
+<p><span class="tag">GENTLE SOURCE</span> <a href="https://www.mathsisfun.com/data/bayes-theorem.html" target="_blank" rel="noopener">Maths Is Fun — Bayes' Theorem</a>: the same ideas with tree diagrams and the "pizza" worked example, a five-minute read.</p>
+<p><span class="tag">REFERENCE</span> Lessons 1&ndash;3 compressed to one printable page:
+<a href="../reference/unit-i-probability-formulas.html">Unit&nbsp;I &mdash; Probability formula sheet</a>.</p>
+<p class="src"><strong>Grounded in the corpus:</strong> <code>02_Probability/13_introduction_to_probability_1.md</code> — theorem of total probability at line 800 (statement and proof); Bayes' theorem, prior/posterior vocabulary, statement and proof from line 1381; the three-machines problem at line 1510. The base-rate example is standard and is not from the corpus. The notes are by <a href="https://www.ctanujit.org/teaching.html">Tanujit Chakraborty</a> (Indian Statistical Institute), free for non-commercial use.</p>
+
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> Want to see the three-machines problem drawn as a tree instead of a table? Want more past-paper-shaped Bayes drills before we leave Unit I's counting phase? Ask.</div>
+
+<div class="nav">
+  <span>← <a href="0002-given-that-conditional-probability.html">L2 · Conditional Probability</a></span>
+  <span>Next: <strong>L4 · From Events to Numbers — Random Variables</strong>, once this clicks</span>
+</div>
+
+<footer class="lf">
+UGC-NET Statistics (107) · Unit I · Lesson 3 · total probability, Bayes, prior and posterior<br>
+Do the four checks above, then tell me it clicked — and we'll build Lesson 4 on top of it.
+</footer>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/viz/gsap.min.js"></script>
+<script src="../assets/viz/core.js"></script>
+<script src="../assets/viz/bayes-machines.js"></script>
+<script src="../assets/viz/base-rate.js"></script>
+</body>
+</html>
