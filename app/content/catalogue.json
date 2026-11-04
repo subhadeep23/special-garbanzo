@@ -339,53 +339,63 @@
         {
           "id": "probability-0004",
           "title": "L4 · From Events to Numbers — Random Variables — UGC-NET 107",
-          "revision": "5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3",
-          "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/lessons/0004-from-events-to-numbers.html",
+          "revision": "28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756",
+          "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/lessons/0004-from-events-to-numbers.html",
           "files": [
             {
-              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/lesson.css",
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/quiz.js",
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/more.css",
+              "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
+              "bytes": 692
+            },
+            {
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/viz/cdf-cursor.js",
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/cdf-cursor.js",
               "sha256": "f5fb10473aaf93eb407c2b2fbbdb25c88e9d8cdd31f20939e93428e9941cd020",
               "bytes": 4835
             },
             {
-              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/viz/core.js",
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/viz/gsap.min.js",
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/viz/outcomes-to-numbers.js",
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/outcomes-to-numbers.js",
               "sha256": "2d015ab07ec4592923556c5fb0846c27a871b22b4b89172a28401fee1949ef15",
               "bytes": 3691
             },
             {
-              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/assets/viz/viz.css",
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/power-hops.js",
+              "sha256": "b5bdc0f22f1a6184d8d02c828bfdf347c42746fd58616d15aa6da516d303d518",
+              "bytes": 8525
+            },
+            {
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/lessons/0004-from-events-to-numbers.html",
-              "sha256": "eec87f7faa7388dc237aeab1796eea14df070590b06e2827ab89ee5557d33755",
-              "bytes": 21596
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/lessons/0004-from-events-to-numbers.html",
+              "sha256": "c837fc4119b990fa055c9d97b645b4a1408ff65acc168fd2466da73d963fc735",
+              "bytes": 25634
             },
             {
-              "path": "bundles/5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3/bundle.json",
-              "sha256": "5e2a6441f9bfe7c95412398193cc6ba9b5872f5a114ce696f946b74d2b5eefe3",
-              "bytes": 3355
+              "path": "bundles/28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756/bundle.json",
+              "sha256": "28ec5aa068630a82ba6d26dfa11e089df552a4dff18cba1f8cc1c82931baa756",
+              "bytes": 3595
             }
           ],
           "questions": [
@@ -1886,5 +1896,5 @@
       ]
     }
   ],
-  "releaseId": "bcae5090924e1f1bd9cf5cafd0d67d42eba3b1fd58ca8f0a639761860cdecbaa"
+  "releaseId": "87afd7ce71ebc147be252f52c4ac398c1f10b94969d34575fb59e74005e96834"
 }

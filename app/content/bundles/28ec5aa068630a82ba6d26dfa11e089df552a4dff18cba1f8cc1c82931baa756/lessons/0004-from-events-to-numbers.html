@@ -6,6 +6,7 @@
 <title>L4 · From Events to Numbers — Random Variables — UGC-NET 107</title>
 <link rel="stylesheet" href="../assets/lesson.css">
 <link rel="stylesheet" href="../assets/viz/viz.css">
+<link rel="stylesheet" href="../assets/more.css">
 </head>
 <body>
 <header class="lh">
@@ -36,7 +37,25 @@
 <div class="axiom"><span class="n">1</span><span>It is a <strong>function</strong>, not a variable in the algebra sense. Written <code>X(&omega;)</code>: outcome &omega; goes in, a number comes out.</span></div>
 <div class="axiom"><span class="n">2</span><span>Probability is <strong>not</strong> in the definition. You can define "number of heads" before anyone tells you whether the coin is fair. The probabilities come from the sample space, and the variable carries them along.</span></div>
 
-<p class="src"><em>Deeper layer — skip on a busy week.</em> The formal definition adds one condition: for every number <code>x</code>, the set of outcomes with <code>X(&omega;) &le; x</code> must be an <em>event</em> (a member of the &sigma;-field), so that it has a probability. That's what "Borel-measurable function" means. For every finite experiment you'll meet, it is automatically true.</p>
+<details class="card more">
+<summary>Deeper layer (optional): the one extra rule a random variable must obey</summary>
+<p>Safe to skip on a busy week.</p>
+<p>F(x) will need a chance for "X is at most x". Some setups can't give every group of outcomes a chance.</p>
+<p><strong>Example.</strong> Three coins are tossed behind a screen. A friend tells you only whether the first toss was heads. So you see only two boxes:</p>
+<table>
+<tr><th>Box</th><th>Outcomes inside</th></tr>
+<tr><td>first toss H</td><td>HHH, HHT, HTH, HTT</td></tr>
+<tr><td>first toss T</td><td>THH, THT, TTH, TTT</td></tr>
+</table>
+<p>Is the number of heads at most 0? That is TTT alone, a sliver of the T box. Your friend can't settle it. So "number of heads" is not a random variable here.</p>
+<p>But "1 if the first toss is H, else 0" is fine. "At most 0" is exactly the T box.</p>
+<p><strong>The rule:</strong> every question "is X at most x?" must be a group that gets a chance.</p>
+<details class="more"><summary>The textbook words for this</summary>
+<p>The groups that get a chance form a <dfn>σ-field</dfn> (say "sigma-field"). Here it has four members: nothing, the H box, the T box, everything.</p>
+<p>A rule that passes is called a <strong>measurable</strong> function. "Borel-measurable" in the notes means the same thing.</p>
+<p>In ordinary coin, dice and card problems, every group of outcomes gets a chance. So every rule you write down passes.</p>
+</details>
+</details>
 
 <h2>2 · From the variable to its probabilities</h2>
 <p>Group the outcomes by the number they got. The coin is fair, so each outcome has probability 1/8:</p>
@@ -144,7 +163,21 @@
 </div>
 
 <div class="beyond">
-<p>The distribution function is how statistics meets data. Sort a sample and plot the fraction of values at most x: that's the <strong>empirical distribution function</strong>, a staircase with a jump of 1/n at each data point. The Glivenko–Cantelli theorem says it closes in on the true F as n grows, and the <strong>Kolmogorov–Smirnov test</strong> (Unit V) measures the largest vertical gap between two staircases. Run F backwards and you get the <em>quantile function</em>: feed it uniform random numbers and out come draws from any distribution, which is how computers simulate. At ISI depth, "random variable" means a <em>measurable function</em>, and F alone determines the whole distribution: that's a theorem, not a definition.</p>
+<p>You drew F from a model. You can also draw it straight from data.</p>
+<p>Toss three coins 8 times for real, and count heads each time. Say you get 1, 2, 2, 0, 1, 2, 3, 2. At each x, ask: what fraction of my 8 results is at most x?</p>
+<table>
+<tr><th>x</th><th>Results at most x</th><th>From data</th><th>True F(x)</th></tr>
+<tr><td>0</td><td>1 of 8</td><td>1/8</td><td>1/8</td></tr>
+<tr><td>1</td><td>3 of 8</td><td>3/8</td><td>4/8</td></tr>
+<tr><td>2</td><td>7 of 8</td><td>7/8</td><td>7/8</td></tr>
+<tr><td>3</td><td>8 of 8</td><td>1</td><td>1</td></tr>
+</table>
+<p>The data column is a staircase too: it rises 1/8 for each result. It is called the <dfn>empirical distribution function</dfn>. Here it misses the truth by at most 1/8, at x&nbsp;=&nbsp;1. Toss many more times and the gap shrinks toward 0.</p>
+<details class="more"><summary>Two places you will meet it again</summary>
+<p><strong>Testing a model (Unit V).</strong> Is the coin really fair? Lay the data staircase over the fair-coin staircase and find the biggest vertical gap. A big gap is evidence against fairness. That gap is the <strong>Kolmogorov–Smirnov</strong> statistic.</p>
+<p><strong>Simulation.</strong> Read the true staircase sideways. Pick a random height between 0 and 1, then walk right until you hit a step. Heights up to 1/8 land on 0 heads, from 1/8 to 4/8 on 1 head, and so on. So each value comes up with exactly its probability. Computers use this trick to draw from any distribution.</p>
+<p>The promise that the gap shrinks to 0 as data grows is the <strong>Glivenko–Cantelli theorem</strong>.</p>
+</details>
 </div>
 
 <div class="insight">
@@ -207,15 +240,32 @@
 </div>
 <div data-tier="isi">
 <h3>An ISI entrance problem</h3>
-<p>From the <a href="https://admission.isical.ac.in/PreviousQuestion/MStat-PSB-2023.pdf" target="_blank" rel="noopener">ISI M.Stat 2023 descriptive paper (PSB), Q3</a>: "Identify, with justification, all cumulative distribution functions F that satisfy <code>F(x) = F(x&#178;&#8304;&#178;&#179;)</code> for every x &isin; &#8477;."</p>
-<details><summary>Worked solution</summary>
-<p><strong>Idea:</strong> apply the rule again and again. Write <code>x&#8345;</code> for x raised to the power 2023, n times over; then <code>F(x) = F(x&#8345;)</code> for every n. Watch where <code>x&#8345;</code> goes.</p>
-<p><strong>x &gt; 1:</strong> the powers blow up to +&infin;, and F tends to 1 there (property 3). So <code>F(x) = 1</code>.</p>
-<p><strong>x &lt; &minus;1:</strong> 2023 is odd, so the powers stay negative and run off to &minus;&infin;, where F tends to 0 (property 2). So <code>F(x) = 0</code>.</p>
-<p><strong>0 &lt; x &lt; 1:</strong> the powers shrink to 0 <em>from the right</em>. F is right-continuous (property 4), so <code>F(x) = F(0)</code>.</p>
-<p><strong>&minus;1 &lt; x &lt; 0:</strong> the powers rise to 0 <em>from the left</em>, so <code>F(x) = F(0&minus;)</code>, a constant.</p>
-<p>So F is flat everywhere except possible jumps at &minus;1, 0 and 1: X lives on <strong>{&minus;1, 0, 1}</strong>. Conversely, any distribution on those three points works, because x and <code>x&#178;&#8304;&#178;&#179;</code> always fall in the same one of the pieces <code>(&minus;&infin;, &minus;1)</code>, <code>[&minus;1, 0)</code>, <code>[0, 1)</code>, <code>[1, &infin;)</code>, on each of which F is constant. Answer: exactly the distribution functions of random variables taking only the values &minus;1, 0 and 1.</p>
-<p class="src">Checked by computer with exact fractions: 1,000 random laws on {&minus;1, 0, 1} satisfy the identity at 19 test points from &minus;3 to 50, and laws that put mass at &minus;0.5, 0.5, 0.7 or 2 break it.</p>
+<p>Here is a real ISI question, in plain words first. Find every distribution function F that gives the same height at a number and at that number raised to the power 2023.</p>
+<p class="src">Source: <a href="https://admission.isical.ac.in/PreviousQuestion/MStat-PSB-2023.pdf" target="_blank" rel="noopener">ISI M.Stat 2023, descriptive paper (PSB), Q3</a>. Official wording: "Identify, with justification, all cumulative distribution functions F that satisfy <code>F(x) = F(x&#178;&#8304;&#178;&#179;)</code> for every x &isin; &#8477;."</p>
+<p>2023 is just a big odd number. Swap it for 3 so you can watch, and play with the rule <code>F(x) = F(x&#179;)</code> first.</p>
+<figure data-viz="power-hops">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>A number line from −3 to 3. Pick a start and press Cube it; each press cubes the number and adds one more equal height to the chain. Start at 2: 8, then 512, running off to the right, so F(2) = F(8) = F(512) = … must equal 1. Start at −2: −8, −512, off to the left, so F(−2) = 0. Start at 1/2: 1/8, 1/512, creeping down to 0 from the right, so F(1/2) = F(0), the filled dot. Start at −1/2: −1/8, −1/512, creeping up to 0 from the left, so F(−1/2) = F(0−), the hollow dot. Start at 1: it stays at 1, so nothing is forced there. Once all four stretches are settled, F is flat everywhere except at −1, 0 and 1.</p>
+  </details>
+</figure>
+<details><summary>Worked solution, in five small steps</summary>
+<p><strong>1 · Shrink the scary number.</strong> Think with 3 in place of 2023. Every step below works the same for 2023; the hops are just bigger.</p>
+<p><strong>2 · Use the rule again and again.</strong> Start at 2. The rule says F(2) = F(8). Use it again on 8, and so F(2) = F(8) = F(512). That is one chain of equal heights.</p>
+<p><strong>3 · Follow each chain to its end.</strong> Every height in a chain is the same number. So it must equal the height where the chain ends up.</p>
+<table>
+<tr><th>Start</th><th>Cube again and again</th><th>The chain heads to</th><th>So F(start) is</th></tr>
+<tr><td>2</td><td>8, 512, …</td><td>far right</td><td>1</td></tr>
+<tr><td>&minus;2</td><td>&minus;8, &minus;512, …</td><td>far left</td><td>0</td></tr>
+<tr><td>1/2</td><td>1/8, 1/512, …</td><td>0, from the right</td><td>F(0)</td></tr>
+<tr><td>&minus;1/2</td><td>&minus;1/8, &minus;1/512, …</td><td>0, from the left</td><td>F(0&minus;)</td></tr>
+</table>
+<p>Far right, every F climbs to 1 (property 3). Far left, it sinks to 0 (property 2).</p>
+<p>The last two rows use the dots from Section 5. Creeping to 0 from the right, F's heights settle on the filled dot, F(0) (property 4). From the left, they settle on the hollow dot, F(0&minus;).</p>
+<p>Any start above 1 acts like 2, and any start between 0 and 1 acts like 1/2. The negative side mirrors this.</p>
+<p><strong>4 · Read off the shape.</strong> So F is flat on four stretches: left of &minus;1, between &minus;1 and 0, between 0 and 1, and right of 1. A flat stretch holds no probability. F can only jump at &minus;1, 0 and 1, the numbers that cubing leaves in place. So X takes only the values &minus;1, 0 and 1.</p>
+<p><strong>5 · Check the other direction.</strong> Take any chances on &minus;1, 0 and 1. Its staircase is flat on each of the four stretches. A number between 0 and 1 stays between 0 and 1 when cubed, and one above 1 stays above 1. Negatives mirror this, and &minus;1, 0, 1 stay put. So x and x&#179; always get the same height, and F passes.</p>
+<p><strong>Answer:</strong> exactly the distributions that put all their probability on &minus;1, 0 and 1, in any proportions.</p>
+<p class="src">Checked by computer, with x&#178;&#8304;&#178;&#179; computed exactly. 1,000 random distributions on &minus;1, 0 and 1 all pass at 19 test points from &minus;3 to 50. Putting probability at &minus;0.5, 0.5, 0.7 or 2 breaks it.</p>
 </details>
 </div>
 </details>
@@ -227,7 +277,7 @@
 <p><span class="tag">REFERENCE</span> <a href="../reference/unit-i-probability-formulas.html">Unit&nbsp;I &mdash; Probability formula sheet</a> (now includes this lesson).</p>
 <p class="src"><strong>Grounded in the corpus:</strong> <code>02_Probability/14_probability_theory_2.md</code> — random-variable definitions at line 2684, coin examples from line 2719, distribution function and its four properties at line 2835, the three-tosses c.d.f. at line 2979, the "events in terms of F" table and the mixed-F worked example around line 3120. All numbers re-derived. The notes are by <a href="https://www.ctanujit.org/teaching.html">Tanujit Chakraborty</a> (Indian Statistical Institute), free for non-commercial use.</p>
 
-<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> Want a sketch of the mixed F from §6? Want to see why a smooth F means every single point has probability zero? Want three more "is this a valid d.f.?" drills? Ask.</div>
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> Stuck on the deeper layer, the data staircase or the ISI chain? Tell me the exact sentence where it stopped making sense. Want a sketch of the mixed F from §6, or three more "is this a valid d.f.?" drills? Ask.</div>
 
 <div class="nav">
   <span>← <a href="0003-turning-the-bar-around-bayes.html">L3 · Bayes' Theorem</a></span>
@@ -243,5 +293,6 @@ Do the four checks above, then tell me it clicked — and we'll build Lesson 5 o
 <script src="../assets/viz/core.js"></script>
 <script src="../assets/viz/outcomes-to-numbers.js"></script>
 <script src="../assets/viz/cdf-cursor.js"></script>
+<script src="../assets/viz/power-hops.js"></script>
 </body>
 </html>
