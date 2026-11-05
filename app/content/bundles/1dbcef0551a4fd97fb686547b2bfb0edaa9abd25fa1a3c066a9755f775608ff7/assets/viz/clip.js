@@ -65,7 +65,9 @@
     replay.addEventListener("click", function () { play(step); });
 
     videos.forEach(function (v) {
-      v.addEventListener("loadeddata", function () { if (!figure.hasAttribute("data-busy")) seek(v, endOf(step)); }, { once: true });
+      // A data: URL video can finish loading before this script runs, and then "loadeddata" never comes (M09).
+      if (v.readyState >= 2) seek(v, endOf(step));
+      else v.addEventListener("loadeddata", function () { if (!figure.hasAttribute("data-busy")) seek(v, endOf(step)); }, { once: true });
     });
     darkQuery.addEventListener("change", function () { park(step); });
     words();
