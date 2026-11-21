@@ -901,58 +901,63 @@
         {
           "id": "probability-0008",
           "title": "L8 · Bernoulli and Binomial — Counting Successes — UGC-NET 107",
-          "revision": "69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b",
-          "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/lessons/0008-bernoulli-and-binomial.html",
+          "revision": "08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e",
+          "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/lessons/0008-bernoulli-and-binomial.html",
           "files": [
             {
-              "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/assets/lesson.css",
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/assets/more.css",
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/assets/quiz.js",
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/assets/viz/binomial-explorer.js",
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/assets/viz/binomial-explorer.js",
               "sha256": "d30721332997450fa2259e3225be093e3e76aba671b6e408234fda68293437fd",
               "bytes": 5339
             },
             {
-              "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/assets/viz/core.js",
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/assets/viz/gsap.min.js",
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/assets/viz/guess-four.js",
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/assets/viz/guess-four.js",
               "sha256": "4c75fbe0991dcfd808eb40708f99b0e8d16b6855fc3fcebaea36383580ae8fb7",
               "bytes": 3722
             },
             {
-              "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/assets/viz/viz.css",
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/lessons/0008-bernoulli-and-binomial.html",
-              "sha256": "baf2dcc93d1a87e3d6a4845d814933ff937b3f57baeb05b090dc2c72966e7905",
-              "bytes": 20619
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b/bundle.json",
-              "sha256": "69c9e443f718280d0be03bf207c71e455d4ce96267e3d31b269d116a6f849c8b",
-              "bytes": 3301
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/lessons/0008-bernoulli-and-binomial.html",
+              "sha256": "248690572923632b30b1d67dcfe5ddce0d39fa854593e0e2dc038cb21693bd14",
+              "bytes": 24284
+            },
+            {
+              "path": "bundles/08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e/bundle.json",
+              "sha256": "08a7767c1df0c623c066f7894517bef458c91920375a44cf88f9b60b41990e9e",
+              "bytes": 3418
             }
           ],
           "questions": [
@@ -1026,58 +1031,63 @@
         {
           "id": "probability-0009",
           "title": "L9 · Poisson — Counting Rare Events — UGC-NET 107",
-          "revision": "ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240",
-          "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/lessons/0009-poisson-rare-events.html",
+          "revision": "4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac",
+          "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/lessons/0009-poisson-rare-events.html",
           "files": [
             {
-              "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/assets/lesson.css",
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/assets/more.css",
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/assets/quiz.js",
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/assets/viz/binomial-to-poisson.js",
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/assets/viz/binomial-to-poisson.js",
               "sha256": "4c90cda1c2acdcb80513fe120424aef5e351679cbec1cdcd2af9928b55bddd03",
               "bytes": 4923
             },
             {
-              "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/assets/viz/core.js",
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/assets/viz/gsap.min.js",
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/assets/viz/rate-window.js",
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/assets/viz/rate-window.js",
               "sha256": "c1a4ecaea5f86d2f03cdce8c583a54fc5fb10c2e6e85cf1843188d1b28749a12",
               "bytes": 3191
             },
             {
-              "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/assets/viz/viz.css",
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/lessons/0009-poisson-rare-events.html",
-              "sha256": "0448dc3a99c345f6f4c495339f2a359125e73dd655320325e91601a2167cffd7",
-              "bytes": 19149
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240/bundle.json",
-              "sha256": "ecc5e78955172842f429db7b2711f380917cd862bd50034b73f86f3e81f42240",
-              "bytes": 2964
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/lessons/0009-poisson-rare-events.html",
+              "sha256": "a0ca999664a0267e89c156689cc54517a7366ea1b10b3975241ef7a40a72b9ec",
+              "bytes": 22988
+            },
+            {
+              "path": "bundles/4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac/bundle.json",
+              "sha256": "4d39a014a98bddb4bf27ef0169998cb012c9c850f1296197e3758fddc93ef0ac",
+              "bytes": 3081
             }
           ],
           "questions": [
@@ -1151,58 +1161,63 @@
         {
           "id": "probability-0010",
           "title": "L10 · Geometric and Negative Binomial — Waiting for Success — UGC-NET 107",
-          "revision": "9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339",
-          "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/lessons/0010-geometric-and-memorylessness.html",
+          "revision": "25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177",
+          "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/lessons/0010-geometric-and-memorylessness.html",
           "files": [
             {
-              "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/assets/lesson.css",
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/assets/more.css",
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/assets/quiz.js",
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/assets/viz/core.js",
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/assets/viz/geometric-tail.js",
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/assets/viz/geometric-tail.js",
               "sha256": "a64bd92f5dfbd70932a600381ea1b144c2974619cdc4ee306e13407d459c8226",
               "bytes": 3350
             },
             {
-              "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/assets/viz/gsap.min.js",
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/assets/viz/memoryless-shift.js",
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/assets/viz/memoryless-shift.js",
               "sha256": "c45a416e242324e5a37bd8a5c34389d171c49a5d46b50257a6d81ac36c574004",
               "bytes": 4947
             },
             {
-              "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/assets/viz/viz.css",
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/lessons/0010-geometric-and-memorylessness.html",
-              "sha256": "aa2840863d67f438ca3e38eea118fe88ef4ea3ba4304ed07383b9810ba7ccc0f",
-              "bytes": 20727
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339/bundle.json",
-              "sha256": "9b9dbd24c27063f6cf8a07aa0648f8e41f5e0875cdffa4c158e1a9da86f36339",
-              "bytes": 3124
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/lessons/0010-geometric-and-memorylessness.html",
+              "sha256": "596ae8240bbf99af00bb9c1906b4131e1cc287ddfccf8640cf1120168a879482",
+              "bytes": 23417
+            },
+            {
+              "path": "bundles/25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177/bundle.json",
+              "sha256": "25896b4dbe7ffb949b6c1fdebddf9d62e1b787b1089ea2e0bafe74722ad09177",
+              "bytes": 3241
             }
           ],
           "questions": [
@@ -1276,58 +1291,63 @@
         {
           "id": "probability-0011",
           "title": "L11 · Moment Generating Functions — a Barcode for a Distribution — UGC-NET 107",
-          "revision": "e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535",
-          "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/lessons/0011-moment-generating-functions.html",
+          "revision": "b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4",
+          "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/lessons/0011-moment-generating-functions.html",
           "files": [
             {
-              "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/assets/lesson.css",
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/assets/more.css",
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/assets/quiz.js",
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/assets/viz/core.js",
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/assets/viz/gsap.min.js",
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/assets/viz/mgf-multiply.js",
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/assets/viz/mgf-multiply.js",
               "sha256": "a52067d434f60ec30cc9f670df417f4d6e152cf8be22c4a765be3db3920f0edd",
               "bytes": 3622
             },
             {
-              "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/assets/viz/mgf-tangent.js",
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/assets/viz/mgf-tangent.js",
               "sha256": "4fb5b7e62a17147d4977d34dbf041035a4aec38df4af9337949a47c0e3d25d4f",
               "bytes": 5882
             },
             {
-              "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/assets/viz/viz.css",
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/lessons/0011-moment-generating-functions.html",
-              "sha256": "b613f38b7954c9205231e3d72c481eb73953f034d7219eecf882a91cd328b857",
-              "bytes": 21674
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535/bundle.json",
-              "sha256": "e777674d5e8890e8da4232ece32957828fe49f573ee274d97b750dae26051535",
-              "bytes": 3015
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/lessons/0011-moment-generating-functions.html",
+              "sha256": "a9369721348163ca2eda95dd807bfd9683e4ea9e41672f8dfbab942f187f8ed3",
+              "bytes": 26341
+            },
+            {
+              "path": "bundles/b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4/bundle.json",
+              "sha256": "b76d4f024801fa63034c12689ccc1e2f351cfcc48cc2a01caccb752fed0271b4",
+              "bytes": 3132
             }
           ],
           "questions": [
@@ -1401,58 +1421,63 @@
         {
           "id": "probability-0012",
           "title": "L12 · Uniform and Exponential — Flat Chances and Forgetful Waits — UGC-NET 107",
-          "revision": "7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe",
-          "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/lessons/0012-uniform-and-exponential.html",
+          "revision": "c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611",
+          "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/lessons/0012-uniform-and-exponential.html",
           "files": [
             {
-              "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/assets/lesson.css",
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/assets/more.css",
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/assets/quiz.js",
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/assets/viz/bulb-survival.js",
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/assets/viz/bulb-survival.js",
               "sha256": "d86b78184bc6551af96542b00f5962a6f4e09d3195844133e633bf60731c1232",
               "bytes": 5572
             },
             {
-              "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/assets/viz/core.js",
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/assets/viz/gsap.min.js",
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/assets/viz/poisson-gaps.js",
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/assets/viz/poisson-gaps.js",
               "sha256": "c375069df537a86f659b77bea72ad02b26a8d5c77baadd674284e9f294fc3484",
               "bytes": 4491
             },
             {
-              "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/assets/viz/viz.css",
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/lessons/0012-uniform-and-exponential.html",
-              "sha256": "8355c5e20dcbad8ed3bc4c9181a17ef0f34f9417aa11a80d1905e4f6f9cffef8",
-              "bytes": 20987
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe/bundle.json",
-              "sha256": "7b8b42d075bf9ac3e2ed4542fa1e03c052fb6e50d6f488039cf757ab546a08fe",
-              "bytes": 3055
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/lessons/0012-uniform-and-exponential.html",
+              "sha256": "61e5b377f80a309ee178dd10c356048c255b559cdfb01e128a74c3e8c8fe7254",
+              "bytes": 24354
+            },
+            {
+              "path": "bundles/c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611/bundle.json",
+              "sha256": "c8f94397cee1679b1817166d4657080cd9931a03de2f115f7f29ca5318ea1611",
+              "bytes": 3172
             }
           ],
           "questions": [
@@ -1526,58 +1551,63 @@
         {
           "id": "probability-0013",
           "title": "L13 · The Normal Distribution — One Bell, Shifted and Stretched — UGC-NET 107",
-          "revision": "4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca",
-          "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/lessons/0013-the-normal-distribution.html",
+          "revision": "4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100",
+          "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/lessons/0013-the-normal-distribution.html",
           "files": [
             {
-              "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/assets/lesson.css",
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/assets/more.css",
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/assets/quiz.js",
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/assets/viz/core.js",
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/assets/viz/gsap.min.js",
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/assets/viz/normal-bands.js",
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/assets/viz/normal-bands.js",
               "sha256": "02d4547f3d27a57f8fe5cb6fc7a1dcb325c3d9690e398fb0b9beaf34b5fbb4fd",
               "bytes": 4141
             },
             {
-              "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/assets/viz/standardise.js",
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/assets/viz/standardise.js",
               "sha256": "9a7a098d12ce501a9528a53f39486afb6353ad7b0d308caeadf6b00ecaf26047",
               "bytes": 3971
             },
             {
-              "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/assets/viz/viz.css",
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/lessons/0013-the-normal-distribution.html",
-              "sha256": "94ddb6d56146422e3099c42b44748aacbfb60fd5d2a50c9183597194ccca49d2",
-              "bytes": 19605
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca/bundle.json",
-              "sha256": "4b3742da1a9f65d58a7ee6f7c1c8fb8e06ea91327b6faec4164dad058d97a2ca",
-              "bytes": 3082
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/lessons/0013-the-normal-distribution.html",
+              "sha256": "1afecec304c3deffcd1188a9d0d45098386589e72ec137d6f205d1731dbc3947",
+              "bytes": 23166
+            },
+            {
+              "path": "bundles/4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100/bundle.json",
+              "sha256": "4090fbb16da6ea7c27be4fc8df904cbab2aaf97a502965571f9f921fd8415100",
+              "bytes": 3199
             }
           ],
           "questions": [
@@ -1651,58 +1681,63 @@
         {
           "id": "probability-0014",
           "title": "L14 · Gamma, Beta and Chi-square — One Family — UGC-NET 107",
-          "revision": "a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d",
-          "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/lessons/0014-gamma-beta-chi-square.html",
+          "revision": "a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a",
+          "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/lessons/0014-gamma-beta-chi-square.html",
           "files": [
             {
-              "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/assets/lesson.css",
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/assets/more.css",
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/assets/quiz.js",
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/assets/viz/core.js",
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/assets/viz/family-map.js",
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/assets/viz/family-map.js",
               "sha256": "0149ef1311ed30b67586616a60bfc6d0f4051433b2096e1969b2e5cd1d5ccc13",
               "bytes": 4603
             },
             {
-              "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/assets/viz/gamma-from-waits.js",
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/assets/viz/gamma-from-waits.js",
               "sha256": "8d9f03296c986cf933fdb5c97af45910a1368d1246b7e55126fcc7e3a07a569c",
               "bytes": 5033
             },
             {
-              "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/assets/viz/gsap.min.js",
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/assets/viz/viz.css",
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/lessons/0014-gamma-beta-chi-square.html",
-              "sha256": "8f2c844a126a60d36215b88ba8aa4aef5d5e4a30650ec629e99ffae4dab31aea",
-              "bytes": 20606
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d/bundle.json",
-              "sha256": "a7d03bcb7e0fb9ee9c02b160b68008f89ac1f4f07c9619f0f3422319e2c6106d",
-              "bytes": 2883
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/lessons/0014-gamma-beta-chi-square.html",
+              "sha256": "7bf5c81fbeb2891c889108d198242b232e8047f87d1a0e426db1c8e83a495d65",
+              "bytes": 23966
+            },
+            {
+              "path": "bundles/a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a/bundle.json",
+              "sha256": "a489c5882995c3a8b79e515cb8b562bec3e45b7c7c3e3e9b5b0dc7ab4306f19a",
+              "bytes": 3000
             }
           ],
           "questions": [
@@ -1776,58 +1811,63 @@
         {
           "id": "probability-0015",
           "title": "L15 · Joint, Marginal and Conditional — Two Variables at Once — UGC-NET 107",
-          "revision": "75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f",
-          "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/lessons/0015-joint-marginal-conditional.html",
+          "revision": "f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3",
+          "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/lessons/0015-joint-marginal-conditional.html",
           "files": [
             {
-              "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/assets/lesson.css",
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/assets/more.css",
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/assets/quiz.js",
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/assets/viz/core.js",
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/assets/viz/density-slice.js",
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/assets/viz/density-slice.js",
               "sha256": "ead0818819b6b1c8f105a107b082dd92e5e4aaf618c23989650b2ac543d95047",
               "bytes": 5016
             },
             {
-              "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/assets/viz/gsap.min.js",
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/assets/viz/joint-table.js",
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/assets/viz/joint-table.js",
               "sha256": "2dd0bb13e392534d66fee0e3339ba3c43ff8efbd389fc9dbc84f151859f334bf",
               "bytes": 6137
             },
             {
-              "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/assets/viz/viz.css",
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/lessons/0015-joint-marginal-conditional.html",
-              "sha256": "661dc03d364ea94fe4adadb5a79b0c7e16ea81365d4ef9e301507eaf96f6f137",
-              "bytes": 18617
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f/bundle.json",
-              "sha256": "75d6a43978e2c90b30374cb20ebe40a18a459cdd51fe6c01ab86764515de3a9f",
-              "bytes": 3286
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/lessons/0015-joint-marginal-conditional.html",
+              "sha256": "fb283142ad5d9d610838c054ed962f73a5a6cbaa43499b43b2c309844faf10f9",
+              "bytes": 21757
+            },
+            {
+              "path": "bundles/f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3/bundle.json",
+              "sha256": "f04a36622d567de35e7e9610a66a2bc0fe64cd71c46efd7643a445776b133dd3",
+              "bytes": 3403
             }
           ],
           "questions": [
@@ -1901,58 +1941,63 @@
         {
           "id": "probability-0016",
           "title": "L16 · Transformations — the Distribution of g(X) — UGC-NET 107",
-          "revision": "9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc",
-          "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/lessons/0016-transformations.html",
+          "revision": "728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f",
+          "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/lessons/0016-transformations.html",
           "files": [
             {
-              "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/assets/lesson.css",
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/assets/more.css",
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/assets/quiz.js",
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/assets/viz/core.js",
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/assets/viz/fold-square.js",
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/assets/viz/fold-square.js",
               "sha256": "230bdd47a5fa2c555f14dd4186f559c777051f660b568fb3cc719ae0c7a7b3c2",
               "bytes": 4134
             },
             {
-              "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/assets/viz/gsap.min.js",
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/assets/viz/rubber-ruler.js",
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/assets/viz/rubber-ruler.js",
               "sha256": "2bbe882d0405e1191ad040b84bf0affea3996d273abdd2746b024571295a2d68",
               "bytes": 5478
             },
             {
-              "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/assets/viz/viz.css",
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/lessons/0016-transformations.html",
-              "sha256": "008c2223241acbc3c6dfd987a623a77c3b4f5105e9c4c69f4448e43bbbc3bf78",
-              "bytes": 19548
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc/bundle.json",
-              "sha256": "9786fa1da8be42fb125eb24c707289c8fef0bcd81da1b195f42af0e362eb61cc",
-              "bytes": 3197
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/lessons/0016-transformations.html",
+              "sha256": "f65f7abcb65f4db7c46f581e432af10f09a74b33b9c0b1579a804930045f1400",
+              "bytes": 22865
+            },
+            {
+              "path": "bundles/728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f/bundle.json",
+              "sha256": "728ec3d5bf83cc3cccbe3899057cb122220f170bb250980e1743cc12d50ece3f",
+              "bytes": 3314
             }
           ],
           "questions": [
@@ -2026,5 +2071,5 @@
       ]
     }
   ],
-  "releaseId": "2699b81e198d6fe684eb756c66edf0c0a53469164596aa77795c0454dc2a219e"
+  "releaseId": "2df4be74e1ab3fa91f3268192177129c9e1bcd8f03168767ed8e44bdf8415e36"
 }
