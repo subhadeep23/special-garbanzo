@@ -13,53 +13,58 @@
         {
           "id": "probability-0001",
           "title": "L1 · What Probability Really Means — UGC-NET 107",
-          "revision": "6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192",
-          "path": "bundles/6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192/lessons/0001-what-is-probability.html",
+          "revision": "c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298",
+          "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/lessons/0001-what-is-probability.html",
           "files": [
             {
-              "path": "bundles/6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192/assets/lesson.css",
+              "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192/assets/more.css",
+              "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192/assets/quiz.js",
+              "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192/assets/viz/core.js",
+              "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192/assets/viz/event-builder.js",
+              "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/assets/viz/event-builder.js",
               "sha256": "643b3d72f85e263107fc5c94302b6f33f24d6e03c4b01c9549935b17f233b130",
               "bytes": 5000
             },
             {
-              "path": "bundles/6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192/assets/viz/gsap.min.js",
+              "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192/assets/viz/viz.css",
+              "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192/lessons/0001-what-is-probability.html",
-              "sha256": "157fefd485dca887ba8ca4228d51bcc44e8787df04293a019ff554a8683d42f5",
-              "bytes": 20329
+              "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192/bundle.json",
-              "sha256": "6fdb469fefb140def6693c08a4ecd16806e27087705de835746a9aedd06de192",
-              "bytes": 3007
+              "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/lessons/0001-what-is-probability.html",
+              "sha256": "41f6ea6e3da44db204f08d644261a3a154c60e287ceca8776798881d8794e062",
+              "bytes": 22996
+            },
+            {
+              "path": "bundles/c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298/bundle.json",
+              "sha256": "c07d4ac0ca2448015b69dde11361e6337b46f5e55a8ed9e90c177c5af62ea298",
+              "bytes": 3124
             }
           ],
           "questions": [
@@ -120,68 +125,73 @@
         {
           "id": "probability-0002",
           "title": "L2 · \"Given that…\" — Conditional Probability — UGC-NET 107",
-          "revision": "9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5",
-          "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/lessons/0002-given-that-conditional-probability.html",
+          "revision": "7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8",
+          "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/lessons/0002-given-that-conditional-probability.html",
           "files": [
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/assets/lesson.css",
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/assets/more.css",
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/assets/quiz.js",
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/assets/viz/core.js",
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/assets/viz/die-given-odd.js",
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/viz/die-given-odd.js",
               "sha256": "da1bbeabbba391466633f1b8e106d5edb356c8a126c2b691ce6dc24de2d4c76b",
               "bytes": 4262
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/assets/viz/exclusive-vs-independent.js",
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/viz/exclusive-vs-independent.js",
               "sha256": "43f0fbcf166f2c404713bc7be3c2b70e7fe1e3d2de1af9c3656f7f84988280e0",
               "bytes": 4696
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/assets/viz/gsap.min.js",
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/assets/viz/two-dice-given-total.js",
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/viz/two-dice-given-total.js",
               "sha256": "1607a06bed6c36337b86c287fb3d45585a3b9c486fe40ecf72ecea2772d5ad48",
               "bytes": 3508
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/assets/viz/urn-without-replacement.js",
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/viz/urn-without-replacement.js",
               "sha256": "671d8031bce7bab5de4001ac30176fb85d1b63a66cae2edcda9c8f68225ea5ab",
               "bytes": 3529
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/assets/viz/viz.css",
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/lessons/0002-given-that-conditional-probability.html",
-              "sha256": "79ddd8f1f224c706d87edcb73be26025aa843730e66a331bf05f6fe5e841d60c",
-              "bytes": 25172
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5/bundle.json",
-              "sha256": "9ffb3a6270df7758623db4c3aceeb06eec78a8ca0b79646b47492c6cd97532f5",
-              "bytes": 3777
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/lessons/0002-given-that-conditional-probability.html",
+              "sha256": "f0d333ae41f210f233470ffa261ec75e515149370d1c8194f116f3134e207f41",
+              "bytes": 28209
+            },
+            {
+              "path": "bundles/7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8/bundle.json",
+              "sha256": "7614a5f1097faed05aa60833c24e126ae93edc1252b514e366a668fb4b474bc8",
+              "bytes": 3894
             }
           ],
           "questions": [
@@ -242,58 +252,63 @@
         {
           "id": "probability-0003",
           "title": "L3 · Turning the Bar Around — Bayes' Theorem — UGC-NET 107",
-          "revision": "3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331",
-          "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/lessons/0003-turning-the-bar-around-bayes.html",
+          "revision": "147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be",
+          "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/lessons/0003-turning-the-bar-around-bayes.html",
           "files": [
             {
-              "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/assets/lesson.css",
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/assets/lesson.css",
               "sha256": "cf64471b312c20a122d0d263094234f24e9c083ea81b247a0c27a22a414943bd",
               "bytes": 9176
             },
             {
-              "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/assets/more.css",
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/assets/more.css",
               "sha256": "6cc8e96e2cc582767846d079cef8ebd976891ced40aced301931a7754d86774a",
               "bytes": 692
             },
             {
-              "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/assets/quiz.js",
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/assets/quiz.js",
               "sha256": "e2dabbd0d2b3dfdac47298fe63776a634f41f13ff99f5967a65e4c1ea36b6361",
               "bytes": 3044
             },
             {
-              "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/assets/viz/base-rate.js",
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/assets/viz/base-rate.js",
               "sha256": "257850356a02b5b5d27e87417cfc9904cf8a068c5eac9fae0ffd6ebbb6d01145",
               "bytes": 3952
             },
             {
-              "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/assets/viz/bayes-machines.js",
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/assets/viz/bayes-machines.js",
               "sha256": "94f23fea291e9847f8f73387da5038fbcf5564ccbf7add2b346c7a1eb397319a",
               "bytes": 4075
             },
             {
-              "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/assets/viz/core.js",
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/assets/viz/core.js",
               "sha256": "8540a1727e97b018cbf74521c95cd4a98ea079fe8f6fa2dbf3cf14ff53c9e59f",
               "bytes": 8734
             },
             {
-              "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/assets/viz/gsap.min.js",
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/assets/viz/gsap.min.js",
               "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
               "bytes": 72927
             },
             {
-              "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/assets/viz/viz.css",
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/assets/viz/viz.css",
               "sha256": "728e955984c8058af787c9dcb58bba95d634169352db962ff5014a13607f00b9",
               "bytes": 5186
             },
             {
-              "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/lessons/0003-turning-the-bar-around-bayes.html",
-              "sha256": "fa4a39a7e3d4c4c837e1403eaf328eb2a3b1b1e0166a97d3bc5ee0e9ebffff1b",
-              "bytes": 25750
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/assets/voice.css",
+              "sha256": "804d7344a2386b72845fd9d77562ff648ca5a93035dd6c51bc902fbffbba534b",
+              "bytes": 1590
             },
             {
-              "path": "bundles/3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331/bundle.json",
-              "sha256": "3844826379eb0ebd6ae8cf7cc9fcb65da8a2d3b5546542a07e704eab68c3f331",
-              "bytes": 3528
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/lessons/0003-turning-the-bar-around-bayes.html",
+              "sha256": "c2a30736affe2863885b66fa48b35a5a995cdf61987203d9037f2a479e6d3bde",
+              "bytes": 28951
+            },
+            {
+              "path": "bundles/147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be/bundle.json",
+              "sha256": "147dceeb7b7901a4350638000aade7292fb1d96f2ea459b2fc348638e88b59be",
+              "bytes": 3645
             }
           ],
           "questions": [
@@ -2011,5 +2026,5 @@
       ]
     }
   ],
-  "releaseId": "40993aecc9211b8b35a88cdcbb86fe9882f162ac7a87e345c48c8ff2eef710aa"
+  "releaseId": "2699b81e198d6fe684eb756c66edf0c0a53469164596aa77795c0454dc2a219e"
 }

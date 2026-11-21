@@ -7,17 +7,36 @@
 <link rel="stylesheet" href="../assets/lesson.css">
 <link rel="stylesheet" href="../assets/viz/viz.css">
 <link rel="stylesheet" href="../assets/more.css">
+<link rel="stylesheet" href="../assets/voice.css">
 </head>
 <body>
 <header class="lh">
   <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 1</div>
   <h1>What Probability Really Means</h1>
-  <p class="sub">Starting from zero, in plain language. No formulas until we actually need them. ~15 min.</p>
+  <p class="sub">A stall at the fair, a die, and a deal that sounds too good. ~17 min.</p>
 </header>
 
-<p><span class="tag">TODAY'S WIN</span> &nbsp;By the end you'll be able to say, in your own words, what probability <em>is</em>, state the three simple rules every probability must follow, and use them to answer an "at least one" question in two lines, with three new words you'll meet gently along the way.</p>
+<p><span class="tag">TODAY'S WIN</span> &nbsp;You'll say what probability is in your own words, state its three rules, and answer an "at least one" question in two lines.</p>
 
-<h2>1 · The plain idea</h2>
+<h2>1 · A deal at the fair</h2>
+<p>There's a stall at the fair. The owner has a die and a big smile. Remember him: he'll be back in later lessons with new games.</p>
+<p>"Roll the die. If it shows a six, I pay you ₹10. Anything else, you pay me ₹3. It either happens or it doesn't, so it's 50–50. And ₹10 is more than ₹3. A great deal for you!"</p>
+
+<div class="puzzle">
+<span class="label">Your puzzle · 3 minutes, pen and paper</span>
+<ol>
+<li>How many faces does a die have? How many of them win?</li>
+<li>Imagine six rolls, where each face turns up once. How much do you win? How much do you pay?</li>
+<li>Is the owner's "50–50" right?</li>
+</ol>
+<div class="voices">
+<p><strong>Voice A:</strong> "Two results, win or lose. Nothing else can happen. So each has half the chance."</p>
+<p><strong>Voice B:</strong> "There are six faces, and only one of them wins. The two results aren't equal at all."</p>
+</div>
+<p>Write down which voice you trust, and what the real chance of winning is.</p>
+</div>
+
+<h2>2 · The plain idea</h2>
 <p>Probability is just a way of putting a <strong>number on how likely something is</strong>.</p>
 <p>We agree on a scale from <strong>0 to 1</strong>:</p>
 <div class="card">
@@ -27,7 +46,7 @@
 </div>
 <p>That's the whole heart of it. A weather app saying "70% chance of rain" is just saying the probability of rain is <strong>0.7</strong> — closer to the "sure" end than the "never" end. Everything else in this subject is built on top of this one simple idea.</p>
 
-<h2>2 · Three words, introduced gently</h2>
+<h2>3 · Three words, introduced gently</h2>
 <p>To talk about likelihood precisely, we need three small words. You already understand all three from daily life — we're just giving them their proper names.</p>
 
 <h3>Word 1 — outcome</h3>
@@ -47,7 +66,7 @@
 <tr><td>a yes/no question</td><td>event</td><td>"even number?" = {2,4,6}</td></tr>
 </table>
 
-<h2>3 · The three rules probability must obey</h2>
+<h2>4 · The three rules probability must obey</h2>
 <p>Whatever numbers we hand out as probabilities, they have to make common sense. It turns out <em>three</em> simple rules are enough to keep everything honest. Here they are in plain words first:</p>
 
 <div class="card">
@@ -76,22 +95,32 @@
 </div>
 
 <div class="hook" data-kind="analogy">
-<p><strong>One cake, shared out.</strong> Think of probability as a single cake of total size 1, cut among the outcomes. No slice is negative (Rule 1). All the slices together are the whole cake (Rule 2). Two events that share no outcomes are separate plates of slices, so together they hold the sum (Rule 3). An event's probability is how much cake is on its plate.</p>
+<p><strong>One cake, shared out.</strong> Think of probability as a single cake of total size 1, cut among the outcomes. An event's probability is how much cake is on its plate.</p>
+<table class="map-table">
+<tr><th>The cake</th><th>Probability</th></tr>
+<tr><td>one slice</td><td>one outcome's chance</td></tr>
+<tr><td>a plate of slices</td><td>an event</td></tr>
+<tr><td>no slice is negative</td><td>Rule 1</td></tr>
+<tr><td>all slices = one whole cake</td><td>Rule 2</td></tr>
+<tr><td>two plates, no shared slice: add them</td><td>Rule 3</td></tr>
+</table>
+<p>The die cake has six equal slices. The owner's "win" plate holds one slice. The "lose" plate holds five.</p>
 <p class="breaks"><strong>Where it breaks:</strong> a real cake has finitely many slices. A dart thrown at a line has infinitely many possible landing points, and each single point gets a slice of size 0, yet the cake is still whole (Lesson 5). So you can't always find a probability by adding up one slice per outcome.</p>
 </div>
 
 <div class="trap">
-<p><strong>"It either happens or it doesn't, so it's 50–50."</strong> That's the most common wrong idea about probability. Two possible answers to a yes/no question do not make them equally likely. Take "the die shows a 6". It either happens or it doesn't, yet its probability is 1/6, not 1/2: one face says yes and five say no. Equal chances need equally likely <em>outcomes</em> underneath, and you count those, not the two answers.</p>
+<p><strong>"It either happens or it doesn't, so it's 50–50."</strong> That's Voice A, and the owner was counting on it. It's the most common wrong idea about probability. Two possible answers to a yes/no question do not make them equally likely. Take "the die shows a 6". It either happens or it doesn't, yet its probability is 1/6, not 1/2: one face says yes and five say no. Equal chances need equally likely <em>outcomes</em> underneath, and you count those, not the two answers.</p>
+<p><strong>Voice B wins.</strong> You win 1 roll in 6, not 1 in 2. Over six rolls you'd win ₹10 once and pay ₹3 five times: ₹15 out, ₹10 in. The smile makes sense now.</p>
 </div>
 
-<h2>4 · One tiny result, to see the rules working</h2>
+<h2>5 · One tiny result, to see the rules working</h2>
 <p>Here's the pattern you'll use constantly. Suppose the chance of rain tomorrow is <strong>0.7</strong>. What's the chance of <strong>no rain</strong>?</p>
 <p>"Rain" and "no rain" can't both happen, and together they cover everything (Rule 2 says everything totals 1). So:</p>
 <p style="text-align:center;font-size:1.15rem">chance of <em>no</em> rain &nbsp;=&nbsp; 1 − 0.7 &nbsp;=&nbsp; <strong>0.3</strong></p>
 <p>This "1 minus the chance" move has a name — the <strong>complement rule</strong> — and we didn't have to memorize it. It fell straight out of Rules 2 and 3. That's the whole spirit of this course. The event "not A" is called the <dfn>complement</dfn> of A, written <code>A&#7580;</code>, and the rule is:</p>
 <p class="eq"><code>P(A&#7580;) = 1 &minus; P(A)</code></p>
 
-<h2>5 · Worked example: "at least one" by the back door</h2>
+<h2>6 · Worked example: "at least one" by the back door</h2>
 <div class="card">
 <p>Two fair dice are rolled. What is the chance that <strong>at least one</strong> of them shows a 4?</p>
 </div>
@@ -118,6 +147,15 @@
 <details><summary>Check your steps</summary><p>The complement is "no heads at all", which is only TTT: 1 outcome, so 1/8. Then P(at least one head) = 1 − 1/8 = 7/8.</p></details>
 </div>
 
+<div class="pocket">
+<span class="label">Your pocket question · carry it for a few days</span>
+<p>Your weather app says "70% chance of rain tomorrow". But tomorrow happens only once. It will rain, or it won't. <strong>So what does "70%" actually mean? And how could you ever tell if the app is any good?</strong></p>
+<p>There's no trick answer here; great statisticians have argued about it. Think about it next time you check the weather. Take one hint at a time.</p>
+<details><summary>Hint 1 (after a day)</summary><p>Say it rains tomorrow. Was the app right? Say it stays dry. Was the app wrong? Can one day ever settle it?</p></details>
+<details><summary>Hint 2 (after another day)</summary><p>Collect every day the app ever said "70%". What share of those days should have had rain, if the app is good?</p></details>
+<details><summary>The answer (try for three days first)</summary><p>There are two good readings. One: among all the days given "70%", about 7 in 10 get rain. That's a long-run share, and it's how forecasters are actually checked. Two: 70% is how strongly you should believe it will rain, the price at which a fair bet on rain feels even. Lesson 3 uses this second reading. Both readings obey the same three rules, which is why this course never has to pick one.</p></details>
+</div>
+
 <div class="beyond">
 <p>The three rules say how chances must <em>behave</em>. They do not say what a chance <em>means</em>. Statistics has two readings of the same number.</p>
 <table>
@@ -134,7 +172,8 @@
 
 <div class="insight">
 <h3>Why this matters for you</h3>
-<p><span class="tag">EXAM</span> &nbsp;UGC-NET 107 asks directly which statements follow from the axioms (for example, <code>P(&empty;) = 0</code> or <code>P(A) &le; 1</code>), and many counting questions are "at least one" questions in disguise, best done by the complement. Almost every result you'll meet later — adding probabilities, "at least one", complements — is <em>squeezed out of these three rules</em>. So if a formula ever slips your mind in the exam, you can often rebuild it from these three sentences: fewer things to memorize, more things you can <em>reconstruct</em>.</p>
+<p><span class="tag">EXAM</span> &nbsp;UGC-NET 107 asks which statements follow from the three rules, such as <code>P(&empty;) = 0</code> or <code>P(A) &le; 1</code>. Many counting questions are "at least one" questions in disguise, best done by the complement.</p>
+<p>Almost every result you'll meet later is <em>squeezed out of these three rules</em>. So if a formula slips your mind in the exam, you can often rebuild it from three sentences. Fewer things to memorize, more things you can <em>rebuild</em>.</p>
 </div>
 
 <div class="quiz" data-quiz>
@@ -214,7 +253,7 @@
 </div>
 </details>
 
-<h2>6 · If you'd like to read a little</h2>
+<h2>7 · If you'd like to read a little</h2>
 <p><span class="tag">PRIMARY SOURCE</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class02-prep.pdf" target="_blank" rel="noopener">MIT 18.05, Class 2 reading: Probability — Terminology and Examples</a> (Orloff &amp; Bloom). Sample space, events, the rules and the complement, with short worked examples.</p>
 <p><span class="tag">SEE IT MOVE</span> <a href="https://seeing-theory.brown.edu/basic-probability/index.html" target="_blank" rel="noopener">Seeing Theory — Basic Probability</a> (Brown University): flip coins and roll dice, and watch the long-run fraction settle.</p>
 <p><span class="tag">GENTLE SOURCE</span> <a href="https://www.mathsisfun.com/data/probability.html" target="_blank" rel="noopener">Maths Is Fun — Probability</a>: the same ideas, friendly pictures, five-minute read.</p>

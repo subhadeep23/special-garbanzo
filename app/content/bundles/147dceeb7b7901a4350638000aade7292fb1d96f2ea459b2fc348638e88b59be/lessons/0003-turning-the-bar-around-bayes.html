@@ -7,15 +7,16 @@
 <link rel="stylesheet" href="../assets/lesson.css">
 <link rel="stylesheet" href="../assets/viz/viz.css">
 <link rel="stylesheet" href="../assets/more.css">
+<link rel="stylesheet" href="../assets/voice.css">
 </head>
 <body>
 <header class="lh">
   <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 3</div>
   <h1>Turning the Bar Around — Bayes' Theorem</h1>
-  <p class="sub">You know the chance of the symptom given the disease. You want the disease given the symptom. ~15 min.</p>
+  <p class="sub">One coin is a cheat. It just landed heads. Which coin is it? ~18 min.</p>
 </header>
 
-<p><span class="tag">TODAY'S WIN</span> &nbsp;By the end you'll be able to run a full Bayes calculation on the standard exam shape — several causes, one observed effect — and explain why a positive test for a rare disease usually means far less than people think.</p>
+<p><span class="tag">TODAY'S WIN</span> &nbsp;You'll run a full Bayes calculation on the standard exam shape, and explain why a positive test for a rare disease usually means much less than people think.</p>
 
 <h2>0 · Spaced recall — no peeking</h2>
 <p>Two questions from Lesson 2. Answer them in your head before reading on. If you get them slowly, that is fine; slow retrieval still strengthens the memory.</p>
@@ -25,7 +26,25 @@
 </div>
 <p class="src">Answers: <code>P(A &cap; B) = P(A) &times; P(B|A)</code>; and (4/10) &times; (3/9) = 12/90 = 2/15.</p>
 
-<h2>1 · The problem Bayes solves</h2>
+<h2>1 · The cheat coin</h2>
+<p>The stall owner has two coins in a bag. One is fair. The other has heads on both sides. He pulls one out without looking, tosses it, and it lands heads.</p>
+<p>"Bet ₹10 that this is the two-headed coin," he says. "If you're right, I pay you ₹15."</p>
+
+<div class="puzzle">
+<span class="label">Your puzzle · 3 minutes, pen and paper</span>
+<ol>
+<li>Imagine he plays this 4 times. About how often does he pull each coin?</li>
+<li>In those 4 plays, how many heads does the fair coin give, about? And the two-headed coin?</li>
+<li>Of all the heads you'd see, what share came from the two-headed coin?</li>
+</ol>
+<div class="voices">
+<p><strong>Voice A:</strong> "Heads tells me nothing. Both coins can show heads. He picked at random, so it's still 1/2."</p>
+<p><strong>Voice B:</strong> "The cheat coin <em>always</em> shows heads; the fair one only half the time. Heads points toward the cheat."</p>
+</div>
+<p>If Voice B is right, how strongly? Write a number down, then decide whether to bet.</p>
+</div>
+
+<h2>2 · The problem Bayes solves</h2>
 <p>Almost every real question has an awkward shape. You are handed the probabilities running <em>one</em> way, and asked for the probability running the <em>other</em> way.</p>
 
 <table>
@@ -48,7 +67,7 @@
 <p><strong>"P(A | B) and P(B | A) are the same thing, just written differently."</strong> Wrong, and courts have convicted people on this mistake (it's called the <em>prosecutor's fallacy</em>). The two can be wildly different. In the factory below, <code>P(defective | machine 3) = 0.03</code>, but <code>P(machine 3 | defective)</code> = 24/43 &asymp; 0.558: nearly nineteen times larger. Swapping the two sides of the bar changes which bag you shrink to, so it changes the answer.</p>
 </div>
 
-<h2>2 · First, the denominator: total probability</h2>
+<h2>3 · First, the denominator: total probability</h2>
 <p>Before Bayes, you need one smaller idea, and it is worth meeting on its own — the exam asks for it by name.</p>
 <p>Suppose an effect <strong>A</strong> can only arrive through one of several routes <strong>B<sub>1</sub>, B<sub>2</sub>, …, B<sub>k</sub></strong>. Those routes must be:</p>
 <div class="axiom"><span class="n">1</span><span><strong>Mutually exclusive</strong> — no two can happen together. A pen came from machine 1 <em>or</em> 2 <em>or</em> 3, never two at once.</span></div>
@@ -64,7 +83,7 @@
 
 <p>Notice there is nothing new here. Each term <code>P(B<sub>i</sub>)P(A|B<sub>i</sub>)</code> is exactly <code>P(B<sub>i</sub> &cap; A)</code> from Lesson 2's multiplication rule. Because the routes don't overlap, we are allowed to add them (Lesson 1, axiom 3). Two old rules, stacked.</p>
 
-<h2>3 · Now Bayes</h2>
+<h2>4 · Now Bayes</h2>
 <p>You want <code>P(B<sub>i</sub> | A)</code>. Start from the definition in Lesson 2 and substitute twice:</p>
 
 <div class="card">
@@ -75,6 +94,7 @@
 
 <p style="text-align:center;font-size:1.2rem"><code>P(B<sub>i</sub> | A) = <span style="border-bottom:1px solid">P(B<sub>i</sub>) &middot; P(A | B<sub>i</sub>)</span> &divide; &Sigma;<sub>j</sub> P(B<sub>j</sub>) &middot; P(A | B<sub>j</sub>)</code></p>
 
+<p><strong>Back to the cheat coin: Voice B wins.</strong> Each coin has prior 1/2. The fair coin's branch weight is <code>1/2 &times; 1/2 = 1/4</code>; the cheat's is <code>1/2 &times; 1 = 1/2</code>. The cheat's share is <code>(1/2) &divide; (3/4) = 2/3</code>. Out of 3 bets you'd win ₹15 twice and lose ₹10 once, so take it. Voice A forgot that the two coins make heads at different rates.</p>
 <p>That is the whole theorem, and you just derived it in three lines from things you already had. There is no new machinery in Bayes at all — it is the definition of conditional probability with the top and bottom rewritten.</p>
 
 <div class="insight">
@@ -85,11 +105,20 @@ So the posterior is simply <em>your route's share of the total</em>. If that cli
 </div>
 
 <div class="hook" data-kind="analogy">
-<p><strong>Suspects and a clue.</strong> A clue was found, and exactly one of several suspects left it. Each suspect's <em>prior</em> is how often they are around; each one's <em>likelihood</em> is how often they leave this kind of clue when they are. Multiply the two for each suspect and you get how often <em>that</em> suspect produces this clue. The posterior is each suspect's share of all the clue-making. A rarely seen suspect who almost always leaves the clue can still lose to a common one who sometimes does.</p>
+<p><strong>Suspects and a clue.</strong> A clue was found, and exactly one of several suspects left it. Who did it?</p>
+<table class="map-table">
+<tr><th>The detective story</th><th>Bayes</th></tr>
+<tr><td>the suspects</td><td>the causes, B<sub>1</sub>, B<sub>2</sub>, …</td></tr>
+<tr><td>how often each is around</td><td>prior, P(B<sub>i</sub>)</td></tr>
+<tr><td>how often each leaves this clue</td><td>likelihood, P(A | B<sub>i</sub>)</td></tr>
+<tr><td>around × leaves the clue</td><td>branch weight</td></tr>
+<tr><td>each suspect's share of all clue-making</td><td>posterior, P(B<sub>i</sub> | A)</td></tr>
+</table>
+<p>In the cheat-coin puzzle, the suspects are the two coins and the clue is "heads". A rarely seen suspect who almost always leaves the clue can still lose to a common one who sometimes does.</p>
 <p class="breaks"><strong>Where it breaks:</strong> the suspects must be a partition: exactly one of them did it. Real investigations can miss the true culprit. Bayes can't: if a cause isn't on your list, or has prior 0, it gets posterior 0 whatever the evidence says.</p>
 </div>
 
-<h2>4 · The vocabulary: prior and posterior</h2>
+<h2>5 · The vocabulary: prior and posterior</h2>
 <p>Two terms the exam uses freely, both of which the corpus states in Latin:</p>
 <table>
 <tr><th>Term</th><th>Also written</th><th>Means</th></tr>
@@ -99,7 +128,7 @@ So the posterior is simply <em>your route's share of the total</em>. If that cli
 </table>
 <p>So Bayes is <em>prior &times; likelihood, then normalise</em>. Hold on to the word <strong>likelihood</strong> — in Unit IV it becomes the whole basis of estimation, and it will be exactly this same object.</p>
 
-<h2>5 · The standard exam problem, worked in full</h2>
+<h2>6 · The standard exam problem, worked in full</h2>
 <div class="card">
 <p><strong>A factory has three machines making pens.</strong> Machine 1 makes 35% of all pens, machine 2 makes 25%, machine 3 makes 40%. Their defect rates are 2%, 1% and 3% respectively.</p>
 <p><strong>(a)</strong> A pen is picked at random. What is the chance it is defective?<br>
@@ -149,7 +178,7 @@ So the posterior is simply <em>your route's share of the total</em>. If that cli
 <p><span class="tag">WATCH OUT</span> &nbsp;The corpus version of this problem has two OCR typos in its working: it prints <code>0.035</code> for 0.35 and <code>0.08</code> for 0.03. The final answers, 0.0215 and 120/215, are correct. This is a live example of why you should re-derive every printed number rather than trusting it — a habit that also catches your own slips in the exam hall.</p>
 </div>
 
-<h2>6 · The trap worth more than the formula: base rates</h2>
+<h2>7 · The trap worth more than the formula: base rates</h2>
 <p>Here is where Bayes stops being arithmetic and starts being judgement.</p>
 
 <div class="card">
@@ -179,6 +208,15 @@ So the posterior is simply <em>your route's share of the total</em>. If that cli
 
 <p class="src">Note also what the evidence <em>did</em> do: your chance went from 1 in 1000 (0.001) to about 1 in 51 (0.019) — a nineteen-fold increase. The test was informative. It just started from a very low base. Change the base rate in the picture above to 1 in 2: the same test now gives 0.952.</p>
 
+<div class="pocket">
+<span class="label">Your pocket question · carry it for a few days</span>
+<p>The owner tosses the same coin again: heads. And again: heads. Ten heads in a row. <strong>How sure are you now that it's the cheat coin? Could any number of heads make you 100% sure?</strong></p>
+<p>And one more: what if you had started out <em>completely certain</em> the owner is honest and both coins are fair? Think about it on the bus. Take one hint at a time.</p>
+<details><summary>Hint 1 (after a day)</summary><p>After the first heads, your belief in the cheat is 2/3. Use that as the prior for the second toss and run Bayes again. What do you get?</p></details>
+<details><summary>Hint 2 (after another day)</summary><p>After n heads, the cheat's branch weight is <code>1/2 &times; 1</code>, and the fair coin's is <code>1/2 &times; (1/2)<sup>n</sup></code>. What share does the cheat get? Does that share ever reach 1? Now put a prior of 0 on the cheat.</p></details>
+<details><summary>The answer (try for three days first)</summary><p>After n heads the cheat's share is <code>1/(1 + 1/2<sup>n</sup>)</code>. After 10 heads that's 1024/1025, about 0.999. Very sure, but never exactly 1, because a fair coin <em>can</em> land heads ten times. And if your prior on the cheat was 0, your posterior stays 0 forever, whatever you see: 0 times anything is 0. Statisticians call this Cromwell's rule: never give a real possibility a prior of exactly 0. It's the "where it breaks" of the detective story, in action.</p></details>
+</div>
+
 <div class="beyond">
 <p>Bayes' theorem is one line, but a whole school of statistics stands on it. That school uses today's table on an unknown number instead of a machine.</p>
 <table>
@@ -198,7 +236,8 @@ So the posterior is simply <em>your route's share of the total</em>. If that cli
 
 <div class="insight">
 <h3>Why this matters for you</h3>
-<p><span class="tag">EXAM</span> &nbsp;Bayes and total probability are near-guaranteed marks in UGC-NET 107 Unit I, and they usually appear in exactly the three-machines shape: several sources, one observed defect, find the posterior. Beyond Unit I, the prior–likelihood–posterior triple is the backbone of Bayesian estimation in Unit IV, and "likelihood" in maximum likelihood estimation is the same P(data | parameter) you met in the middle column today. Learn the branch table once; reuse it for the rest of the syllabus.</p>
+<p><span class="tag">EXAM</span> &nbsp;Bayes and total probability are near-guaranteed marks in UGC-NET 107 Unit I. They usually come in exactly the three-machines shape: several sources, one observed defect, find the posterior.</p>
+<p>Beyond Unit I, prior, likelihood and posterior are the backbone of Bayesian estimation in Unit IV. The "likelihood" in maximum likelihood is the same P(data | parameter) as today's middle column. Learn the branch table once; reuse it for the rest of the syllabus.</p>
 </div>
 
 <div class="quiz" data-quiz>
@@ -280,7 +319,7 @@ So the posterior is simply <em>your route's share of the total</em>. If that cli
 </div>
 </details>
 
-<h2>7 · If you'd like to read a little</h2>
+<h2>8 · If you'd like to read a little</h2>
 <p><span class="tag">PRIMARY SOURCE</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class03-prep.pdf" target="_blank" rel="noopener">MIT 18.05, Class 3 reading: Conditional Probability, Independence and Bayes' Theorem</a> (Orloff &amp; Bloom). The second half is today's lesson, including the base-rate fallacy with a worked medical-test example.</p>
 <p><span class="tag">SEE IT MOVE</span> <a href="https://seeing-theory.brown.edu/bayesian-inference/index.html" target="_blank" rel="noopener">Seeing Theory — Bayesian Inference</a> (Brown University): set a prior, add data, and watch the posterior move.</p>
 <p><span class="tag">GENTLE SOURCE</span> <a href="https://www.mathsisfun.com/data/bayes-theorem.html" target="_blank" rel="noopener">Maths Is Fun — Bayes' Theorem</a>: the same ideas with tree diagrams and the "pizza" worked example, a five-minute read.</p>
