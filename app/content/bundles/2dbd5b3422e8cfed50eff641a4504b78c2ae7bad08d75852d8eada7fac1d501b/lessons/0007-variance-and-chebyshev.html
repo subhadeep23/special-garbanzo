@@ -7,15 +7,16 @@
 <link rel="stylesheet" href="../assets/lesson.css">
 <link rel="stylesheet" href="../assets/viz/viz.css">
 <link rel="stylesheet" href="../assets/more.css">
+<link rel="stylesheet" href="../assets/voice.css">
 </head>
 <body>
 <header class="lh">
   <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 7</div>
   <h1>Variance and Chebyshev — How Spread Out?</h1>
-  <p class="sub">The balance point says where. Variance says how wide. ~20 min.</p>
+  <p class="sub">Two games, the same average, completely different feel. ~20 min.</p>
 </header>
 
-<p><span class="tag">TODAY'S WIN</span> &nbsp;You'll be able to compute a variance with <code>Var(X) = E[X&sup2;] &minus; (E[X])&sup2;</code>, handle <code>Var(aX + b)</code> in one line, and use Chebyshev's inequality to bound how much probability can lie far from the mean when you know nothing about the shape.</p>
+<p><span class="tag">TODAY'S WIN</span> &nbsp;You'll measure spread with the variance, rescale it in one line, and use Chebyshev to promise something about any shape.</p>
 
 <h2>0 · Spaced recall — no peeking</h2>
 <div class="card">
@@ -24,32 +25,52 @@
 </div>
 <p class="src">Answers: 3 and 10, and 10 is bigger than 3² = 9 (L6). And 0.3, the jump at 5 (L4–L5). That gap of 1 between 10 and 9 is today's main character.</p>
 
-<h2>1 · Same balance point, different spread</h2>
-<p>Three street games, each worth 3 rupees a play on average:</p>
-<div class="axiom"><span class="n">A</span><span>You always get exactly 3.</span></div>
-<div class="axiom"><span class="n">B</span><span>A coin decides: 1 rupee or 5 rupees.</span></div>
-<div class="axiom"><span class="n">C</span><span>You get 1, 2, 3 or 4 with chances 0.1, 0.2, 0.3, 0.4 (L6's weights).</span></div>
-<p>All three balance at 3, yet they feel completely different. A never surprises you; B always lands 2 away from its mean. We need a second number: how far, typically, does X land from its balance point?</p>
-<p>The natural idea is "the average distance from the mean". Statistics uses the average <em>squared</em> distance instead, because squares behave well in algebra (you'll see why in a minute). The <dfn>variance</dfn> of X is</p>
-<p class="eq"><code>Var(X) = E[(X &minus; &mu;)&sup2;]</code>, &nbsp;where <code>&mu; = E[X]</code>.</p>
-<p>It's a weighted average, exactly like L6: each squared distance <code>(x &minus; &mu;)&sup2;</code> counts with its probability. Game A: every distance is 0, so the variance is 0. Game B: every distance is 2, so the variance is <code>2&sup2; = 4</code>.</p>
-<p>Squaring changed the units: rupees became rupees². To get back to rupees, take the square root. That's the <dfn>standard deviation</dfn>, <code>&sigma; = &radic;Var(X)</code>, a typical distance from the mean in the units of X. Game B's is 2.</p>
+<h2>1 · Two games with the same price</h2>
+<p>The stall owner has learned. His new games are both fair: each pays ₹3 a play on average, and each costs ₹3.</p>
+<div class="axiom"><span class="n">A</span><span>You always get exactly ₹3.</span></div>
+<div class="axiom"><span class="n">B</span><span>A coin decides: ₹1 or ₹5.</span></div>
+<p>Same mean, same price. Yet they feel completely different. A is boring. B is a small thrill every time. The mean from L6 can't tell them apart. We need a second number: <strong>how far from the mean does X usually land?</strong></p>
 
-<h2>2 · The shortcut you'll use every time</h2>
-<p>Expand the square and use linearity from L6 (μ is just a number):</p>
-<p class="eq"><code>E[(X &minus; &mu;)&sup2;] = E[X&sup2;] &minus; 2&mu;E[X] + &mu;&sup2; = E[X&sup2;] &minus; &mu;&sup2;</code></p>
+<div class="puzzle">
+<span class="label">Your puzzle · invent the number · 3 minutes</span>
+<p>Invent a number that is 0 for game A and bigger for game B. Small steps:</p>
+<ol>
+<li>For game B, how far is each payout from the mean, 3? Keep the sign: below is minus, above is plus.</li>
+<li>Average those two distances, using the chances. What do you get? Why is that useless?</li>
+<li>How could you stop the pluses and minuses cancelling?</li>
+</ol>
+<p>Two voices have a fix each.</p>
+<div class="voices">
+<p><strong>Voice A:</strong> "Drop the signs. Average the plain distances. Game B gives 2. Simple, and in rupees."</p>
+<p><strong>Voice B:</strong> "Square the distances, then average. Squares are never negative either. Game B gives 4."</p>
+</div>
+<p>Both stop the cancelling. Which would you pick, and why? Write it down.</p>
+</div>
+
+<h2>2 · What you already know: the gap from L6</h2>
+<p>In L6 you squared a coin-chosen side of a land plot, 1 m or 3 m. The average area was 5 m², but the square of the average side was only 4 m². That gap of 1 came from the spread: the sides sat 1 m either side of their mean.</p>
+<p>Voice B's number is exactly that gap. Statistics picked Voice B. The <dfn>variance</dfn> of X is the average squared distance from the mean:</p>
+<p class="eq"><code>Var(X) = E[(X &minus; &mu;)&sup2;]</code>, &nbsp;where <code>&mu; = E[X]</code>.</p>
+<p>It's a weighted average, just like L6. Each squared distance <code>(x &minus; &mu;)&sup2;</code> counts with its chance. Game A: every distance is 0, so the variance is 0. Game B: every distance is 2, so the variance is <code>2&sup2; = 4</code>.</p>
+<p>Voice A wasn't wrong. Its number exists, the mean absolute distance. But squares win for one big reason: they give a shortcut, and that shortcut connects back to L6. Your pocket question at the end shows what each choice is secretly best at.</p>
+<p>Squaring changes the units: rupees became rupees². To get back to rupees, take the square root. That's the <dfn>standard deviation</dfn>, <code>&sigma; = &radic;Var(X)</code>: a typical distance from the mean, in the units of X. Game B's is 2.</p>
+
+<h2>3 · The shortcut you'll use every time</h2>
+<p>Open up the square, one piece at a time. <code>(X &minus; &mu;)&sup2; = X&sup2; &minus; 2&mu;X + &mu;&sup2;</code>. Now take the mean of each piece, using L6's linearity. μ is just a fixed number, so <code>E[2&mu;X] = 2&mu;E[X] = 2&mu;&sup2;</code>:</p>
+<p class="eq"><code>E[(X &minus; &mu;)&sup2;] = E[X&sup2;] &minus; 2&mu;&sup2; + &mu;&sup2; = E[X&sup2;] &minus; &mu;&sup2;</code></p>
 <div class="insight">
 <h3>Say it in one line</h3>
-<p><strong>Variance = mean of the square minus square of the mean</strong>: <code>Var(X) = E[X&sup2;] &minus; (E[X])&sup2;</code>. It is the gap you met in L6, and it is never negative, because it's an average of squares.</p>
+<p><strong>Variance = mean of the square, minus square of the mean</strong>: <code>Var(X) = E[X&sup2;] &minus; (E[X])&sup2;</code>.</p>
+<p>It's the L6 gap, and it's never negative, because it is an average of squares.</p>
 </div>
-<p>Game C: <code>E[X&sup2;] = 10</code> and <code>E[X] = 3</code>, so <code>Var(X) = 10 &minus; 9 = 1</code> and <code>&sigma; = 1</code>. The mystery gap from last lesson was the variance all along.</p>
+<p>L6's weights x/10 had <code>E[X&sup2;] = 10</code> and <code>E[X] = 3</code>. So <code>Var(X) = 10 &minus; 9 = 1</code> and <code>&sigma; = 1</code>. The mystery gap from last lesson was the variance all along.</p>
 
 <div class="hook" data-kind="rhyme">
-<p><strong>"Mean of the square, minus square of the mean: never below zero, the gap in between."</strong> The order is the one thing people swap. Get it backwards and you'll compute <code>9 &minus; 10 = &minus;1</code>, an impossible negative variance. The rhyme also tells you the sanity check.</p>
+<p><strong>"Mean of the square, minus square of the mean: never below zero, the gap in between."</strong> The order is the one thing people swap. Swap it and you get <code>9 &minus; 10 = &minus;1</code>, an impossible negative variance. So the rhyme carries its own check.</p>
 </div>
 
-<h2>3 · Shift it, stretch it</h2>
-<p>What happens to the spread if every value is shifted by b, or multiplied by a? Predict before step 3.</p>
+<h2>4 · Shift it, stretch it</h2>
+<p>Think of exam marks. Add 5 grace marks to everyone: the class moves up, but nobody gets closer to anyone else. Double everyone's marks: every gap between two students doubles. What does that do to the variance? Predict before step 3.</p>
 
 <figure data-viz="shift-and-stretch">
   <details class="viz-text"><summary>Read this picture as text</summary>
@@ -58,17 +79,25 @@
 </figure>
 
 <p class="eq"><code>Var(aX + b) = a&sup2; Var(X)</code> &nbsp;and &nbsp;<code>SD(aX + b) = |a| SD(X)</code></p>
-<p>The b drops out because sliding doesn't change distances. The a comes out <em>squared</em> because variance measures squared distances, which is also why a negative a still gives a positive variance.</p>
+<p>The b drops out because sliding changes no distance. The a comes out <em>squared</em> because variance measures squared distances. That's also why a negative a still gives a positive variance: flipping the marks upside down doesn't make the class less spread out.</p>
 
+<h2>5 · Chebyshev: a promise for any shape</h2>
 <div class="hook" data-kind="analogy">
-<p><strong>Spinning the beam.</strong> Put L6's beam on an axle through its balance point and spin it. How hard it is to spin (its <em>moment of inertia</em>) is the sum of each weight times its squared distance from the axle: <code>&Sigma; p(x)(x &minus; &mu;)&sup2;</code>. That's exactly the variance. Weights far out make the beam hard to spin, just as far-out values make the variance big, and doubling every distance makes it four times harder.</p>
-<p class="breaks"><strong>Where it breaks:</strong> physics allows any total mass, while probability weights always total 1. And a real beam is finite, but a distribution can stretch so far that its variance is infinite even when its mean exists, so the "spin" number may not exist at all.</p>
+<p><strong>Two batsmen, both averaging 40.</strong> One scores between 35 and 45 nearly every match. The other makes ducks and centuries. Same average, very different players. The selectors want a second number, and it's the standard deviation.</p>
+<table class="map-table">
+<tr><th>In cricket</th><th>In probability</th></tr>
+<tr><td>batting average</td><td>the mean μ</td></tr>
+<tr><td>one innings minus the average</td><td>a distance x &minus; μ</td></tr>
+<tr><td>a typical miss</td><td>the SD σ</td></tr>
+<tr><td>a consistent batsman</td><td>a small variance</td></tr>
+</table>
+<p>Now say a selector knows only a batsman's average and SD, nothing else. Can they promise anything? Yes, and that promise is today's last big idea.</p>
+<p class="breaks"><strong>Where it breaks:</strong> the SD punishes a century exactly as much as a duck. In cricket a century is good news. Variance doesn't care which side the surprise is on. And the selector's promise is a worst case, not a forecast.</p>
 </div>
 
-<h2>4 · Chebyshev: a promise that needs no shape</h2>
-<p>Often you know the mean and the SD but not the shape of the distribution. Can you still say anything about the chance of landing far from the mean? Yes, and it's surprisingly strong. <dfn>Chebyshev's inequality</dfn>: for any X with mean μ and SD σ, and any <code>k &gt; 0</code>,</p>
-<p class="eq"><code>P(|X &minus; &mu;| &ge; k&sigma;) &le; 1/k&sup2;</code> &nbsp;or equivalently &nbsp;<code>P(|X &minus; &mu;| &lt; k&sigma;) &ge; 1 &minus; 1/k&sup2;</code></p>
-<p>At most a quarter of the probability lies 2 SDs or more away; at most a ninth lies 3 or more away. Any shape. Try to break it.</p>
+<p>Here is the promise, called <dfn>Chebyshev's inequality</dfn>. For any X with mean μ and SD σ, and any <code>k &gt; 0</code>:</p>
+<p class="eq"><code>P(|X &minus; &mu;| &ge; k&sigma;) &le; 1/k&sup2;</code></p>
+<p>In words: the chance of landing k or more SDs from the mean is at most 1/k². At most a quarter of the innings lie 2 SDs or more from the average. At most a ninth lie 3 or more away. Any batsman, any shape. Flip it and you get the same thing as a floor: <code>P(|X &minus; &mu;| &lt; k&sigma;) &ge; 1 &minus; 1/k&sup2;</code>. Try to break it.</p>
 
 <figure data-viz="chebyshev-band">
   <details class="viz-text"><summary>Read this picture as text</summary>
@@ -76,38 +105,49 @@
   </details>
 </figure>
 
-<p>Why must it be true? Every value at least kσ away contributes at least <code>(k&sigma;)&sup2;</code> to the variance's weighted sum, so if a share q of probability sits out there, the variance is at least <code>q k&sup2;&sigma;&sup2;</code>. But the variance is <code>&sigma;&sup2;</code>, so <code>q &le; 1/k&sup2;</code>. Too much mass far away would make the variance too big. (The Go-deeper block writes this out properly.)</p>
+<p>Why must it be true? Say a share q of the probability sits k SDs or more away. Each bit of it adds at least <code>(k&sigma;)&sup2;</code> to the variance's weighted sum. So the variance is at least <code>q &middot; k&sup2;&sigma;&sup2;</code>. But the variance is exactly <code>&sigma;&sup2;</code>. So q can't be more than 1/k². Too much weight far away would make the variance too big. (Go deeper writes this out properly.)</p>
 
 <div class="trap">
-<p><strong>"Chebyshev says about 25% of the data lies beyond 2 SDs."</strong> No. It says <em>at most</em> 25%, for the worst possible shape. It is a ceiling, not an estimate. In the picture, the bell has only 1/8 beyond 2 SDs and twin peaks has none; only the strange "extreme" shape reaches the ceiling. For the normal curve you'll meet in L13 the true figure is under 5%. Use Chebyshev when the shape is unknown and you need a guarantee; never quote it as the likely value. And it needs no normality, no symmetry, no large sample: just a finite mean and variance.</p>
+<p><strong>"Chebyshev says about 25% lies beyond 2 SDs."</strong> No. It says <em>at most</em> 25%, for the worst possible shape. It's a ceiling, not an estimate.</p>
+<p>In the picture, the bell has only 1/8 beyond 2 SDs, and twin peaks has none. Only the strange "extreme" shape touches the ceiling. For the normal curve in L13, the true figure is under 5%. Use Chebyshev when you don't know the shape and need a guarantee. Never quote it as the likely value. It needs no bell shape, no mirror-image shape, no big sample: only a mean and a variance that exist.</p>
 </div>
 
 <div class="card">
-<p><span class="tag">WATCH OUT</span> &nbsp;Your corpus proves Chebyshev from <strong>Markov's inequality</strong>, <code>P(X &ge; a) &le; E[X]/a</code>, and states Markov "for any non-zero quantity a" with no other condition. That's wrong: Markov needs <code>X &ge; 0</code> and <code>a &gt; 0</code>. Counterexample: X = −10 or 1, each with chance 1/2. Then <code>E[X] = &minus;4.5</code>, but <code>P(X &ge; 1) = 1/2</code>, which is not below <code>&minus;4.5/1</code>. The Chebyshev proof is safe, because it applies Markov to <code>(X &minus; &mu;)&sup2;</code>, which is never negative. That's the <strong>fifth</strong> confirmed slip in this corpus (the scanned page says the same, so it's not an OCR error).</p>
+<p><span class="tag">WATCH OUT</span> &nbsp;Your corpus proves Chebyshev from <strong>Markov's inequality</strong>, <code>P(X &ge; a) &le; E[X]/a</code>, and says Markov holds "for any non-zero quantity a". Wrong: Markov needs <code>X &ge; 0</code> and <code>a &gt; 0</code>. Try X = −10 or 1, each with chance 1/2. Then <code>E[X] = &minus;4.5</code>, but <code>P(X &ge; 1) = 1/2</code>, which is not below −4.5. The Chebyshev proof is still safe: it uses Markov on <code>(X &minus; &mu;)&sup2;</code>, which is never negative. That's the <strong>fifth</strong> confirmed slip in this corpus, and the scanned page says the same, so it's not an OCR error.</p>
 </div>
 
-<h2>5 · Worked examples: the bound in action</h2>
+<h2>6 · Worked examples: the promise in action</h2>
 <div class="card">
 <p><strong>(a)</strong> For L6's X (P(X = x) = x/10 on 1, 2, 3, 4), find the variance two ways, then compare Chebyshev's bound for <code>P(|X &minus; 3| &ge; 2)</code> with the truth. <strong>(b)</strong> A variable has mean 12 and variance 9. Give a lower bound for <code>P(6 &lt; X &lt; 18)</code>.</p>
 </div>
-<p><strong>(a) Variance, the shortcut:</strong> <code>Var(X) = 10 &minus; 3&sup2; = 1</code>, so σ = 1.</p>
-<p><strong>The long way</strong>, as a check: distances from 3 are −2, −1, 0, 1, so</p>
+<p><strong>(a) The shortcut first:</strong> <code>Var(X) = 10 &minus; 3&sup2; = 1</code>, so σ = 1.</p>
+<p><strong>The long way, as a check.</strong> The distances from 3 are −2, −1, 0, 1. Square each, weight it, add:</p>
 <p class="eq"><code>Var(X) = 4(0.1) + 1(0.2) + 0(0.3) + 1(0.4) = 1</code></p>
-<p><strong>Chebyshev:</strong> 2 = 2σ, so k = 2 and <code>P(|X &minus; 3| &ge; 2) &le; 1/2&sup2; = 1/4</code>.</p>
-<p><strong>Truth:</strong> |x − 3| ≥ 2 happens only at x = 1 (x = 5 isn't possible), so the true probability is <code>P(X = 1) = 1/10</code>. The bound holds, loosely: 1/10 against 1/4.</p>
-<p><strong>(b)</strong> Here μ = 12 and σ = 3. The event <code>6 &lt; X &lt; 18</code> is <code>|X &minus; 12| &lt; 6</code>, and 6 = 2σ, so k = 2:</p>
+<p><strong>Chebyshev.</strong> A distance of 2 is 2σ, so k = 2 and <code>P(|X &minus; 3| &ge; 2) &le; 1/2&sup2; = 1/4</code>.</p>
+<p><strong>The truth.</strong> Being 2 or more from 3 happens only at x = 1, since x = 5 isn't possible. So the true chance is <code>P(X = 1) = 1/10</code>. The promise holds, with room to spare: 1/10 against 1/4.</p>
+<p><strong>(b)</strong> Here μ = 12 and σ = √9 = 3. "Between 6 and 18" means "less than 6 from 12", and 6 = 2σ. So k = 2:</p>
 <p class="eq"><code>P(6 &lt; X &lt; 18) &ge; 1 &minus; 1/2&sup2; = 1 &minus; 9/36 = 3/4</code></p>
-<p>(The second form, <code>1 &minus; &sigma;&sup2;/c&sup2;</code> with c = 6, is how many exam keys write it.) Notice what was <em>not</em> given: the shape. That's exactly when Chebyshev is the right tool.</p>
+<p>Many exam keys write it as <code>1 &minus; &sigma;&sup2;/c&sup2;</code> with c = 6: the same number. Notice what was <em>not</em> given: the shape. That's exactly when Chebyshev is the right tool.</p>
 
 <div class="explain">
-<p>In one or two sentences of your own: why is Chebyshev's bound usually far above the true tail probability, and when is it exactly right?</p>
-<details><summary>Compare with a model answer</summary><p>The bound has to hold for every possible shape with that mean and SD, so it is set by the worst case, a distribution that puts all its far-away mass exactly at μ ± kσ and the rest at μ. Ordinary shapes spread their mass more evenly and sit well under it; only that extreme shape reaches it.</p></details>
+<p>In one or two sentences of your own: why is Chebyshev's bound usually far above the true chance, and when is it exactly right?</p>
+<details><summary>Compare with a model answer</summary><p>It must hold for every shape with that mean and SD, so it is set by the worst case: a shape with all its far weight exactly k SDs out and the rest at the mean. Ordinary shapes spread their weight more evenly and sit well under the ceiling.</p></details>
 </div>
 
 <div class="faded">
-<p><strong>Your turn, half done.</strong> Exam scores have mean 50 and SD 5, shape unknown. Find the narrowest interval centred on 50 that Chebyshev guarantees holds at least 96% of scores.</p>
-<p>Step 1: we need <code>1 &minus; 1/k&sup2; = 0.96</code>, so <code>1/k&sup2; = </code> ____ and k = ____ . Step 2: the interval is 50 ± k × 5, which is ____ to ____ .</p>
-<details><summary>Check your steps</summary><p>1/k² = 0.04, so k² = 25 and k = 5. The interval is 50 ± 25, from 25 to 75. A guarantee for any shape is expensive: it needs a band 5 SDs wide.</p></details>
+<p><strong>Your turn, half done.</strong> Exam scores have mean 50 and SD 5, shape unknown. Find the narrowest band centred on 50 that Chebyshev promises holds at least 96% of scores.</p>
+<p>Step 1: we need <code>1 &minus; 1/k&sup2; = 0.96</code>, so <code>1/k&sup2; = </code> ____ and k = ____ . Step 2: the band is 50 ± k × 5, which is ____ to ____ .</p>
+<details><summary>Check your steps</summary><p>1/k² = 0.04, so k² = 25 and k = 5. The interval is 50 ± 25, from 25 to 75. A promise for any shape is expensive: it needs a band 5 SDs wide.</p></details>
+</div>
+
+<div class="pocket">
+<span class="label">Your pocket question · carry it for a few days</span>
+<p>Back to the two voices. Pick any number c as your "centre". Voice B measures the average <em>squared</em> distance from c. Voice A measures the average <em>plain</em> distance from c.</p>
+<p><strong>Which c makes Voice B's number smallest? Which c makes Voice A's number smallest? Are they the same c?</strong></p>
+<p>Test it on a lopsided game first: ₹0 with chance 0.8, ₹10 with chance 0.2.</p>
+<details><summary>Hint 1 (after a day)</summary><p>For the lopsided game, try c = 0 and c = 2 (the mean). Work out both voices' numbers for each. Which c wins for which voice?</p></details>
+<details><summary>Hint 2 (after another day)</summary><p>For Voice B, write <code>X &minus; c = (X &minus; &mu;) + (&mu; &minus; c)</code> and open up the square, as in section 3. For Voice A, move c a tiny step to the right. Which values get closer, and which get further?</p></details>
+<details><summary>The answer (try for three days first)</summary><p>Voice B is smallest at the mean: the average squared distance from c is <code>Var(X) + (&mu; &minus; c)&sup2;</code>, so any c other than μ adds a penalty. Voice A is smallest at the median, the point with half the chance on each side. Moving c right brings the values above it closer and pushes the values below it further away; that only stops helping when the two sides weigh the same. In the lopsided game: from c = 2, Voice B gives 16 and Voice A gives 3.2; from c = 0, Voice B gives 20 and Voice A gives 2. Mean and median are different answers to two different questions.</p></details>
 </div>
 
 <div class="beyond">
@@ -124,13 +164,14 @@
 <p>That theorem is the <strong>weak law of large numbers</strong>.</p>
 <p>Standard errors, confidence intervals and the efficiency of estimators (Units III–IV) are all statements about variances.</p>
 <p>Data science leans on the same idea under the name <em>concentration inequalities</em>. Chebyshev's sharper cousins (Hoeffding, Bernstein) tell you how many samples a model needs.</p>
-<p>"Least squares" fitting picks the line that makes a variance-like sum smallest. Your corpus shows the seed of it: <code>E[(X &minus; a)&sup2;]</code> is smallest when a is the mean.</p>
+<p>"Least squares" fitting picks the line that makes a variance-like sum smallest. Your pocket question is its seed.</p>
 </details>
 </div>
 
 <div class="insight">
 <h3>Why this matters for you</h3>
-<p><span class="tag">EXAM</span> &nbsp;Expect: variance from a p.m.f. or p.d.f. (almost always by <code>E[X&sup2;] &minus; &mu;&sup2;</code>); <code>Var(aX + b)</code>; "a lower bound for P(a &lt; X &lt; b) given mean and variance"; "an upper bound for P(|X − μ| ≥ c)"; and statements to judge: "Chebyshev needs normality" (false), "Var(X + 5) = Var(X) + 5" (false), "a variance can be negative" (false). The bound <code>Var(X) &le; (b &minus; a)&sup2;/4</code> for X stuck in [a, b] also appears.</p>
+<p><span class="tag">EXAM</span> &nbsp;Expect a variance from a p.m.f. or density, almost always by <code>E[X&sup2;] &minus; &mu;&sup2;</code>. Expect <code>Var(aX + b)</code>, and "a lower bound for P(a &lt; X &lt; b) given the mean and variance".</p>
+<p>Expect true-or-false lines too. "Chebyshev needs a bell shape": false. "Var(X + 5) = Var(X) + 5": false. "A variance can be negative": false. The bound <code>Var(X) &le; (b &minus; a)&sup2;/4</code> for X stuck in [a, b] also appears.</p>
 </div>
 
 <div class="quiz" data-quiz>
@@ -221,7 +262,7 @@
 </div>
 </details>
 
-<h2>6 · If you'd like to read a little</h2>
+<h2>7 · If you'd like to read a little</h2>
 <p><span class="tag">PRIMARY SOURCE</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class05-prep-a.pdf" target="_blank" rel="noopener">MIT 18.05, Class 5 reading: Variance of Discrete Random Variables</a> (Orloff &amp; Bloom). Variance, SD, the shortcut formula and Var(aX + b), with short worked examples.</p>
 <p><span class="tag">NEXT STEP</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class06-prep-a.pdf" target="_blank" rel="noopener">MIT 18.05, Class 6 reading: Expectation and Variance for Continuous Random Variables</a>: the same ideas with integrals.</p>
 <p><span class="tag">REFERENCE</span> <a href="../reference/unit-i-probability-formulas.html">Unit&nbsp;I formula sheet</a> · <a href="../reference/glossary.html">Glossary</a></p>

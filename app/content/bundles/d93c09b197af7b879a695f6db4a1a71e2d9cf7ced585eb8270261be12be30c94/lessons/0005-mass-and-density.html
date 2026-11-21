@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L5 · Mass and Density — Discrete vs Continuous — UGC-NET 107</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/viz/viz.css">
+<link rel="stylesheet" href="../assets/more.css">
+<link rel="stylesheet" href="../assets/voice.css">
+</head>
+<body>
+<header class="lh">
+  <div class="kicker">UGC-NET Statistics 107 · Unit I — Probability · Lesson 5</div>
+  <h1>Mass and Density — Discrete vs Continuous</h1>
+  <p class="sub">A single point can have zero chance. Yet the dart always lands somewhere. ~20 min.</p>
+</header>
+
+<p><span class="tag">TODAY'S WIN</span> &nbsp;You'll tell a <em>mass function</em> from a <em>density</em>, turn one kind of picture into the other, and explain why a density can be bigger than 1.</p>
+
+<h2>0 · Spaced recall — no peeking</h2>
+<div class="card">
+  <p style="margin:.3rem 0">• Three fair coin tosses, X = number of heads. What is <code>P(X &lt; 1)</code>, and where do you read it on the staircase?</p>
+  <p style="margin:.3rem 0">• Told "the roll was odd", what happens to the bag of outcomes?</p>
+</div>
+<p class="src">Answers: 1/8, the height just <em>before</em> the jump at 1 (the hollow dot). And the even faces leave the bag; the three odd faces share all the probability.</p>
+
+<h2>1 · A strange offer at the fair</h2>
+<p>There's a stall at the fair with a wooden strip, exactly one metre long. A machine fires a dart at it. The dart lands at a random spot, and every spot is equally likely. No skill involved.</p>
+<p>The owner makes you an offer. "Pay me ₹10. If the dart lands <em>exactly</em> on the 50 cm mark, I pay you ₹1 crore."</p>
+<p>Exactly means exactly: 50.000000… cm, with zeros for ever. Not 50.0001. Not "close enough".</p>
+<p>The owner is either very generous or very good at probability. By section 3 you'll know which.</p>
+
+<div class="puzzle">
+<span class="label">Your puzzle · 3 minutes, pen and paper</span>
+<p>What is the chance the dart lands exactly on 50 cm? Write down a number and one sentence of reasons. Work up to it in small steps:</p>
+<ol>
+<li>The chance it lands in the left half of the strip?</li>
+<li>In the middle 10 cm, from 45 to 55?</li>
+<li>In the middle 1 mm?</li>
+<li>Exactly on 50 cm?</li>
+</ol>
+<p>Now listen to two voices in your head. Both sound right.</p>
+<div class="voices">
+<p><strong>Voice A:</strong> "It must be 0. One point out of points without end is nothing."</p>
+<p><strong>Voice B:</strong> "It can't be 0. The dart always lands on <em>some</em> exact point. If every point had chance 0, the impossible would happen on every throw."</p>
+</div>
+<p>Which voice wins? Write your guess down before you read on. A wrong guess is fine. It makes the answer stick better than no guess at all.</p>
+</div>
+
+<h2>2 · What you already know: the staircase</h2>
+<p>Start from solid ground. In L4 you met the <strong>distribution function</strong>, <code>F(x) = P(X &le; x)</code>. Think of it as a running total. Walk along the number line from left to right. F tells you how much probability you've collected so far.</p>
+<p>Toss three coins and count heads. The running total stays flat between 0, 1, 2 and 3 heads. At each of those values it jumps up, and the size of each jump is the chance of that exact value:</p>
+<table>
+<tr><th>Heads</th><th>Jump size</th><th>Running total after</th></tr>
+<tr><td>0</td><td>1/8</td><td>1/8</td></tr>
+<tr><td>1</td><td>3/8</td><td>4/8</td></tr>
+<tr><td>2</td><td>3/8</td><td>7/8</td></tr>
+<tr><td>3</td><td>1/8</td><td>1</td></tr>
+</table>
+<p>A variable whose running total moves only in jumps is a <dfn>discrete random variable</dfn>. The list of jump sizes is its <dfn>probability mass function</dfn>, or p.m.f.: <code>p(x) = P(X = x)</code>. "Mass" because each value carries a lump of probability, like a weight sitting on the line.</p>
+<p>How do you read a jump off the picture? Take the height just after the jump and subtract the height just before it. We write the height just before as <code>F(x&minus;)</code>:</p>
+<p class="eq"><code>p(x) = F(x) &minus; F(x&minus;)</code></p>
+<p>At 1 head: <code>4/8 &minus; 1/8 = 3/8</code>. Any list of numbers is a valid p.m.f. if it passes two checks:</p>
+<div class="axiom"><span class="n">1</span><span>No value is negative: <code>p(x) &ge; 0</code>.</span></div>
+<div class="axiom"><span class="n">2</span><span>They add to one: <code>&Sigma; p(x) = 1</code>. All the probability is somewhere.</span></div>
+<p>Going back is just adding. <code>F(x)</code> is the sum of all the jumps up to and including x. Hold on to this picture: <strong>jumps carry the probability</strong>.</p>
+
+<h2>3 · Zoom in on one point</h2>
+<p>Back to the fair. The dart's position can be any number between 0 and 1 metre, not just a few listed values. So where are the jumps? Make a prediction, then step through.</p>
+
+<figure data-viz="dart-point">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>A dart lands at a uniformly random point between 0 and 1, so the chance of landing in a stretch equals its length. A window around 0.5 shrinks tenfold at each step: 0 to 1 (probability 1), 0.45 to 0.55 (0.1), 0.495 to 0.505 (0.01), 0.4995 to 0.5005 (0.001). The single point 0.5 lies inside every one of these windows, so its probability is smaller than every one of them. The only such number is 0.</p>
+  </details>
+</figure>
+
+<p>Your puzzle had the same ladder: 1/2, then 1/10, then 1/1000. Each step divides the chance by ten. The single point sits inside every window, so its chance is smaller than all of them. The only number smaller than every one of them is 0.</p>
+<p><strong>Voice A wins.</strong> The chance is exactly 0. The owner is very good at probability. Keep your ₹10.</p>
+<p>But Voice B had a point. The dart does land somewhere, and that spot had chance 0 too. So for this kind of variable, <strong>chance 0 does not mean impossible</strong>. It means "too thin to hold any probability by itself". Probability lives on stretches, never on single points.</p>
+<p>A variable like this has no jumps at all. Its running total climbs smoothly. It is a <dfn>continuous random variable</dfn>.</p>
+<p class="aside">If Voice B still bothers you, good. Keep it. It comes back at the end as your pocket question.</p>
+
+<h2>4 · A new number: how crowded is it here?</h2>
+<p>Now we're stuck. Every point has chance 0. Suppose the machine is badly aimed and most darts bunch near the middle. Every point still has chance 0. Zero can't tell a crowded spot from an empty one.</p>
+<p>We need a different number at each point. Not "how much probability is here", but "how crowded is it here". You already own the perfect tool for this. You use it every time you ride a scooter.</p>
+
+<div class="hook" data-kind="analogy">
+<p><strong>Probability is distance. Density is speed.</strong></p>
+<p>Your scooter's trip meter shows the total distance so far. That's F, the running total. The speedometer shows how fast that total is growing right now. That's the new number.</p>
+<p>Ride at 40 km per hour. In one hour you cover 40 km. In one second, about 11 metres. In one instant, zero metres. Yet your speed at that instant is still 40. Speed is a perfectly good number at a moment when no distance is covered.</p>
+<p>How do you find speed? Take a short time, see how far you went, and divide by the time. Make the time shorter and shorter. The answer settles on one number.</p>
+<table class="map-table">
+<tr><th>On the scooter</th><th>On the number line</th></tr>
+<tr><td>trip meter</td><td>F(x), the running total</td></tr>
+<tr><td>speed</td><td>density at x</td></tr>
+<tr><td>distance in one instant: 0</td><td>chance of one point: 0</td></tr>
+<tr><td>distance ÷ short time</td><td>chance in a short stretch ÷ its length</td></tr>
+<tr><td>trip distance</td><td>area under the density</td></tr>
+</table>
+<p class="breaks"><strong>Where it breaks:</strong> a trip can be any length, but the total probability is always exactly 1. And a scooter can't jump ahead by a kilometre in no time. A discrete variable's running total can. That jump is the p.m.f. from section 2, and there's no speed at a jump.</p>
+</div>
+
+<p>Here is the same idea with probability. Take a short stretch from x to x + h. Find the chance of landing in it. Divide by its length h. As h shrinks, the chance shrinks towards 0, but the ratio settles on one number. That number is the <dfn>probability density function</dfn>, or p.d.f., written <code>f(x)</code>. Try it: guess first, then narrow the bins.</p>
+
+<figure data-viz="density-from-bins">
+  <details class="viz-text"><summary>Read this picture as text</summary>
+    <p>A triangle-shaped density on 1 to 5, peaking at height 1/2 at x = 3, with a histogram under it. The red bar covers the strip from 2 to 2 + h; its area is P(2 &lt; X &le; 2 + h) and its height is that probability divided by h. With h = 2 the strip holds 0.7500 and its height is 0.3750. With h = 1: 0.3750 and 0.3750. With h = 1/2: 0.1563 and 0.3125. With h = 1/4: 0.0703 and 0.2813. With h = 1/10: 0.0263 and 0.2625. The probability heads to 0 while the height settles toward the curve's value at 2, which is 1/4.</p>
+  </details>
+</figure>
+
+<p>That's the speedometer at work. The chance in the strip ran out to almost nothing, like the distance in one instant. The height settled at 1/4, like the speed.</p>
+
+<div class="insight">
+<h3>Say it in one line</h3>
+<p>Density is <strong>probability per unit length</strong>, the way speed is distance per hour.</p>
+<p>So you get probability back the way you get distance back: the area under the graph. For speed, 40 km/h for 2 hours is a rectangle 40 tall and 2 wide, so 80 km. For density, the chance of landing between a and b is the area under f from a to b. Maths writes that area with a long S, which stands for "sum":</p>
+<p class="eq"><code>P(a &lt; X &le; b) = &int;<sub>a</sub><sup>b</sup> f(x) dx = F(b) &minus; F(a)</code></p>
+<p>The right-hand side is the trip meter read twice: the reading at the end, take away the reading at the start. And the speedometer is how fast the trip meter climbs, so the density is how fast F climbs: <code>f = F&prime;</code> wherever F is smooth.</p>
+</div>
+
+<div class="hook" data-kind="mnemonic">
+<p><strong>"Jump = mass, climb = density."</strong> Look at F. Where it jumps, the jump size is <code>P(X = x)</code>. Where it climbs smoothly, how fast it climbs is <code>f(x)</code>. Add up the masses; take the area under the density.</p>
+</div>
+
+<h2>5 · The fact that trips everyone up</h2>
+<div class="trap">
+<p><strong>"A density is a probability, so it can't be bigger than 1."</strong> Wrong, and the scooter shows why. Your speedometer reads 40. Nobody panics because 40 is bigger than 1. Speed isn't distance.</p>
+<p>Now a dart strip that is only half a metre long, every spot equally likely. The total area under the density must be 1, and the length is 1/2. Area = height × length, so the height must be 2: <code>f(x) = 2</code>.</p>
+<p>Nothing is broken. A density of 2 isn't a 200% chance. Nothing is 200% likely, not even a power cut in exam week. Only areas are chances, and every area here is at most 1. The same question is in your Practice tab.</p>
+</div>
+
+<p>One more thing gets easier. On the staircase in L4, <code>P(X &lt; a)</code> and <code>P(X &le; a)</code> could be different, by the jump at a. A continuous variable has no jumps, so they are always equal. The end points carry no probability. One fewer trap.</p>
+<p>So a valid density needs only two checks, just like a p.m.f.:</p>
+<div class="axiom"><span class="n">1</span><span>It is never negative: <code>f(x) &ge; 0</code>. (It may be bigger than 1.)</span></div>
+<div class="axiom"><span class="n">2</span><span>The total area under it is one: <code>&int; f(x) dx = 1</code>.</span></div>
+
+<h2>6 · Worked example: the tent</h2>
+<p>Picture a tent seen from the side. It starts at x = 1 on the ground, rises in a straight line to a peak at x = 3, and comes back down to the ground at x = 5. The peak is 1/2 high. That tent is our density:</p>
+<p class="eq"><code>f(x) = (x &minus; 1)/4 for 1 &le; x &le; 3, and (5 &minus; x)/4 for 3 &le; x &le; 5</code></p>
+<p>It is 0 everywhere else. (Some books write both sides in one line, as <code>1/2 &minus; |x &minus; 3|/4</code>. Same tent.)</p>
+<div class="card">
+<p>(a) Show f is a density. (b) Find the running total F. (c) Find <code>P(2 &lt; X &lt; 4)</code> and <code>P(X = 3)</code>.</p>
+</div>
+<p><strong>(a) Two checks.</strong> f is never negative: it's 0 at the ends and 1/2 at the peak. The tent is a triangle with base 4 and height 1/2, so its area is <code>(1/2) &times; 4 &times; (1/2) = 1</code>. Both checks pass.</p>
+<p><strong>(b) The running total.</strong> Pick any point t on the rising side of the tent. F(t) is the area under the tent from 1 up to t. That area is a small triangle. Its base is <code>t &minus; 1</code>. Its height is the tent's height at t, which is <code>(t &minus; 1)/4</code>. Half of base times height:</p>
+<p class="eq"><code>F(t) = (t &minus; 1)&sup2;/8 &nbsp;for 1 &le; t &le; 3</code></p>
+<p>Check it at the peak: <code>F(3) = 4/8 = 1/2</code>. Half the tent lies left of its centre, as it must.</p>
+<p>Now pick t on the falling side. It's easier to look at the area you <em>haven't</em> covered yet: the small triangle from t to 5. It's the mirror image of the left one, so its area is <code>(5 &minus; t)&sup2;/8</code>. The total is 1, so subtract:</p>
+<p class="eq"><code>F(t) = 1 &minus; (5 &minus; t)&sup2;/8 &nbsp;for 3 &le; t &le; 5</code></p>
+<p><strong>(c) Read the trip meter twice.</strong> At 4, the uncovered corner is <code>1/8</code>, so F(4) = 7/8. At 2, F(2) = 1/8. Subtract:</p>
+<p class="eq"><code>P(2 &lt; X &lt; 4) = F(4) &minus; F(2) = 7/8 &minus; 1/8 = 3/4</code></p>
+<p>And <code>P(X = 3) = 0</code>, even though 3 is where the tent is tallest. Tallest means the most crowded <em>near</em> 3, not a lump of probability <em>at</em> 3. Top speed, still zero distance in one instant.</p>
+
+<div class="card">
+<p><span class="tag">WATCH OUT</span> &nbsp;Even good notes have mistakes. Your corpus (Ex. 11) prints <code>F(t) = t&sup2;/6 &minus; t/4 + 1/6</code> for the left half. Try t = 3: it gives 11/12, not 1/2. The tent is the same on both sides, so half of it must sit left of the peak, so that formula can't be right. The correct piece is <code>(t &minus; 1)&sup2;/8</code>. One quick check caught it in seconds. That's the habit worth keeping.</p>
+</div>
+
+<div class="explain">
+<p>In one or two sentences of your own: the tent's density reaches 1/2, and the half-metre strip's density reaches 2. Why does neither break the rule that chances are at most 1?</p>
+<details><summary>Compare with a model answer</summary><p>Because a density height is not a probability, just as a speed is not a distance. Chances are areas under the graph, and the total area is always exactly 1, however tall and narrow the shape is.</p></details>
+</div>
+
+<div class="faded">
+<p><strong>Your turn, half done.</strong> For the same tent, find <code>P(X &gt; 4.5)</code>.</p>
+<p>Step 1: it's the uncovered corner to the right of 4.5. Step 2: that corner's area is <code>(5 &minus; t)&sup2;/8</code> with t = 4.5. Step 3: <code>5 &minus; 4.5 = </code> ____, squared is ____, so the answer is ____ .</p>
+<details><summary>Check your steps</summary><p>5 − 4.5 = 1/2, squared is 1/4, so P(X &gt; 4.5) = (1/4)/8 = 1/32. That's the small corner triangle: base 1/2, height 1/8, area 1/32.</p></details>
+</div>
+
+<div class="pocket">
+<span class="label">Your pocket question · carry it for a few days</span>
+<p>Every point on the strip has chance 0. Add 0 to itself as many times as you like, and you still get 0. Yet all the points together hold chance 1. <strong>Where is the mistake?</strong></p>
+<p>Don't look it up. Think about it on the bus, in the shower, before sleep. If you get stuck, take one hint and put it away again. Studies of setting a problem aside find that a longer first try leads to a bigger later breakthrough.</p>
+<details><summary>Hint 1 (after a day)</summary><p>Which rule lets you add chances at all? Go back to L1's third rule. What exactly does it let you add?</p></details>
+<details><summary>Hint 2 (after another day)</summary><p>Rule 3 lets you add a list: a first piece, a second, a third, and so on, even without end. Could you write every point of the strip in such a list, with every point getting a place?</p></details>
+<details><summary>The answer (try for three days first)</summary><p>You can't. In 1874 Georg Cantor proved that the numbers between 0 and 1 can't be put in a list, first, second, third, without missing some. Rule 3 only adds chances of pieces you can list. So "add up all the zeros" is a move probability never allows. Your mistake was a step the rules don't permit. For a smooth variable, chance comes from area instead. A stretch has area; a point doesn't.</p></details>
+</div>
+
+<div class="beyond">
+<p>Real data reaches a density through the narrowing strips, run backwards.</p>
+<p>Say you time 20 phone calls and count how many fall in each 2-minute bin. Divide each count by 20 &times; 2. Then the bars' areas add to 1, just like a density's.</p>
+<table>
+<tr><th>Minutes</th><th>Calls</th><th>Bar height = calls &divide; (20 &times; 2)</th></tr>
+<tr><td>0 to 2</td><td>9</td><td>0.225</td></tr>
+<tr><td>2 to 4</td><td>6</td><td>0.15</td></tr>
+<tr><td>4 to 6</td><td>3</td><td>0.075</td></tr>
+<tr><td>6 to 8</td><td>2</td><td>0.05</td></tr>
+</table>
+<p>Each height is a density guess: chance per minute. The areas are 0.45, 0.3, 0.15 and 0.1, which add to 1.</p>
+<details class="more"><summary>Where this goes next</summary>
+<p>That bar chart is a <strong>histogram</strong>. <em>Kernel density estimation</em> smooths it into a curve.</p>
+<p>In <strong>maximum likelihood</strong> (Unit IV) you multiply density values together. Densities above 1 are routine there, one more reason to be at ease with them.</p>
+<p>Why are "add the masses" and "take the area" one idea, not two? In measure theory, both are integrals against a measure. That unification, the Radon–Nikodym theorem, is what ISI's M.Stat probability course builds toward. You don't need it for the exam; you'll recognise it if you meet it.</p>
+</details>
+</div>
+
+<div class="insight">
+<h3>Why this matters for you</h3>
+<p><span class="tag">EXAM</span> &nbsp;Expect "find c so that f is a density or p.m.f.", "find F from f" or "f from F", and "find P(a &lt; X &le; b)".</p>
+<p>Expect true-or-false lines too: "P(X = a) = 0 for a continuous X" is true; "f(x) &le; 1 for every density" is false. Every named distribution in the coming lessons is one of these two kinds.</p>
+</div>
+
+<div class="quiz" data-quiz>
+<h3>Quick check — from memory, not by peeking</h3>
+
+<div class="q" data-answer="1">
+<p class="stem">X is continuous with density f. Which statement is always true?</p>
+<button>f(x) is never larger than one</button>
+<button>P(X = a) equals zero always</button>
+<button>f(x) is exactly P(X = x)</button>
+<button>F jumps exactly where f peaks</button>
+<p class="fb" data-good="Right — a single point holds no probability for a continuous variable; probability lives on stretches." data-bad="For a continuous X, every single point has probability 0. A density can exceed 1, and its height is never itself a probability."></p>
+</div>
+
+<div class="q" data-answer="3">
+<p class="stem">A discrete X has F(2) = 0.7 and F(2−) = 0.4. Then P(X = 2) is…</p>
+<button>0.7, the height after jumping</button>
+<button>0.4, the height before jumping</button>
+<button>1.1, both heights added together</button>
+<button>0.3, the jump's own size</button>
+<p class="fb" data-good="Yes — mass at a point is the jump: F(2) − F(2−) = 0.3." data-bad="Mass at a point is the jump size: F(2) − F(2−) = 0.7 − 0.4 = 0.3."></p>
+</div>
+
+<div class="q" data-answer="0">
+<p class="stem">X is uniform on (0, 1/4). What is its density on that stretch?</p>
+<button>4, making the total area one</button>
+<button>1/4, the length of the stretch</button>
+<button>1, since densities cap at one</button>
+<button>0, since points have no probability</button>
+<p class="fb" data-good="Correct — height × width = 1 with width 1/4 forces height 4. Densities above 1 are fine." data-bad="The area must be 1 and the width is 1/4, so the height is 4. A density may exceed 1; only areas are probabilities."></p>
+</div>
+
+<div class="q" data-answer="2" data-from="L4">
+<p class="stem">From Lesson 4: for a discrete X, which pair can give different answers?</p>
+<button>P(X &gt; a) and 1 − F(a)</button>
+<button>P(X ≤ a) and plain F(a) itself</button>
+<button>P(X &lt; a) and P(X ≤ a)</button>
+<button>P(X ≥ a) and 1 − F(a−)</button>
+<p class="fb" data-good="Right — they differ by the jump at a, P(X = a). For a continuous X the jump is 0 and they agree." data-bad="The other pairs are identities. P(X < a) and P(X ≤ a) differ by the jump at a, which is P(X = a)."></p>
+</div>
+
+<div class="q" data-answer="1">
+<p class="stem">Which function could be a probability density?</p>
+<button>3 on (0, 1) and 0 elsewhere</button>
+<button>2x on (0, 1) and 0 elsewhere</button>
+<button>(x−1) on (0, 2) and 0 elsewhere</button>
+<button>1/2 on (0, 1) and 0 elsewhere</button>
+<p class="fb" data-good="Yes — 2x is never negative on (0, 1) and its area is 1. The others have area 3, dip below 0, or have area 1/2." data-bad="2x on (0, 1) has area 1 and is never negative. 3 has area 3; x − 1 is negative on (0, 1); 1/2 has area 1/2."></p>
+</div>
+</div>
+
+<details class="tiers">
+<summary>Go deeper — one proof, one ISI problem (optional, ~15 min)</summary>
+<div data-tier="derive">
+<h3>Prove it</h3>
+<p>Show that <code>P(X = a) = F(a) &minus; F(a&minus;)</code> for any random variable, where <code>F(a&minus;)</code> is the limit of F from the left. Conclude that if F is continuous at a, then <code>P(X = a) = 0</code>.</p>
+<details><summary>Worked proof</summary>
+<p>The events <code>A<sub>n</sub> = {X &le; a &minus; 1/n}</code> grow with n, and their union is <code>{X &lt; a}</code>: any value below a is eventually below <code>a &minus; 1/n</code>.</p>
+<p>Probability is continuous along a growing sequence of events (this follows from the third axiom, countable additivity, applied to the rings <code>A<sub>n+1</sub> &minus; A<sub>n</sub></code>). So</p>
+<p class="eq"><code>P(X &lt; a) = lim P(A<sub>n</sub>) = lim F(a &minus; 1/n) = F(a&minus;)</code></p>
+<p>Then</p>
+<p class="eq"><code>P(X = a) = P(X &le; a) &minus; P(X &lt; a) = F(a) &minus; F(a&minus;)</code></p>
+<p>If F is continuous at a, the two are equal and the difference is 0. &#8718;</p>
+<p class="src">This is the proof behind "jump = mass". ISI's first-year probability course proves exactly this kind of continuity result before using it.</p>
+</details>
+</div>
+<div data-tier="isi">
+<h3>An ISI entrance problem</h3>
+<p>Here is a real ISI question, in plain words first. A phone call lasts a random X minutes. The company bills whole minutes, rounding up: a 22.09-minute call is billed as 23. Call the billed minutes T. What is the distribution of T, and is T discrete or continuous?</p>
+<p class="src">Source: <a href="https://admission.isical.ac.in/PreviousQuestion/MStat-PSB-2024.pdf" target="_blank" rel="noopener">ISI M.Stat 2024 descriptive paper (PSB), Q6</a>, part one. In the paper's notation, X has density <code>f(x) = &lambda;e<sup>&minus;&lambda;x</sup></code> for x &gt; 0, and T = &lceil;X&rceil;.</p>
+<details><summary>Worked solution</summary>
+<p>T takes only the values 1, 2, 3, …, so it is <strong>discrete</strong>, even though X is continuous. Rounding piles each stretch of probability onto one point.</p>
+<table>
+<tr><th>The call lasts</th><th>Billed T</th><th>Chance</th></tr>
+<tr><td>more than 0, up to 1</td><td>1</td><td>F(1) &minus; F(0)</td></tr>
+<tr><td>more than 1, up to 2</td><td>2</td><td>F(2) &minus; F(1)</td></tr>
+<tr><td>more than 2, up to 3</td><td>3</td><td>F(3) &minus; F(2)</td></tr>
+<tr><td>more than k &minus; 1, up to k</td><td>k</td><td>F(k) &minus; F(k &minus; 1)</td></tr>
+</table>
+<p>The exponential has <code>F(x) = 1 &minus; e<sup>&minus;&lambda;x</sup></code>, so</p>
+<p class="eq"><code>P(T = k) = F(k) &minus; F(k &minus; 1) = e<sup>&minus;&lambda;(k&minus;1)</sup> &minus; e<sup>&minus;&lambda;k</sup> = (1 &minus; q) q<sup>k&minus;1</sup></code>, &nbsp;with <code>q = e<sup>&minus;&lambda;</sup></code>.</p>
+<p>That's a geometric distribution (L10) with success chance <code>1 &minus; e<sup>&minus;&lambda;</sup></code>. Check: the masses add to <code>(1 &minus; q)(1 + q + q&sup2; + &hellip;) = 1</code>.</p>
+<p class="src">The full ISI question then asks for the maximum likelihood estimator of &lambda; from n recorded calls. That is coming in Unit IV. The answer is <code>log(T&#772;/(T&#772; &minus; 1))</code> when the average recorded length T&#772; exceeds 1. A simulation with &lambda; = 0.4 and 400,000 calls agreed with both the mass function and the estimator.</p>
+</details>
+</div>
+</details>
+
+<h2>7 · If you'd like to read a little</h2>
+<p><span class="tag">PRIMARY SOURCE</span> <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/mit18_05_s22_class05-prep-b.pdf" target="_blank" rel="noopener">MIT 18.05, Class 5 reading: Continuous Random Variables</a> (Orloff &amp; Bloom). Short, careful, with the "probability is area" picture and worked examples.</p>
+<p><span class="tag">SEE IT MOVE</span> <a href="https://seeing-theory.brown.edu/probability-distributions/index.html" target="_blank" rel="noopener">Seeing Theory — Probability Distributions</a> (Brown University): drag the parameters of discrete and continuous distributions and watch mass and density respond.</p>
+<p><span class="tag">REFERENCE</span> <a href="../reference/unit-i-probability-formulas.html">Unit&nbsp;I formula sheet</a> · <a href="../reference/glossary.html">Glossary</a></p>
+<p class="src"><strong>Grounded in the corpus:</strong> <code>02_Probability/14_probability_theory_2.md</code> — discrete variables and the p.m.f. at lines 3515–3550, absolutely continuous variables and the p.d.f. at lines 3740–3790, the mass-density analogy at line 3838 (this lesson uses speed instead), "a density is not a probability" at line 3847, the triangle (Ex. 11) at lines 4021–4043. All numbers re-derived; the slip in Ex. 11(b) is corrected above. The notes are by <a href="https://www.ctanujit.org/teaching.html">Tanujit Chakraborty</a> (Indian Statistical Institute), free for non-commercial use.</p>
+
+<div class="ask">💬 <strong>I'm your teacher — lean on me.</strong> Stuck on the pocket question and want a third hint? Want three "find c" drills? Want to see what a running total that both jumps and climbs looks like? Ask.</div>
+
+<div class="nav">
+  <span>← <a href="0004-from-events-to-numbers.html">L4 · Random Variables</a></span>
+  <span>Next: <strong>L6 · Expectation — the balance point</strong></span>
+</div>
+
+<footer class="lf">
+UGC-NET Statistics (107) · Unit I · Lesson 5 · p.m.f., p.d.f., P(X = a) = 0, densities above 1
+</footer>
+<script src="../assets/quiz.js"></script>
+<script src="../assets/viz/gsap.min.js"></script>
+<script src="../assets/viz/core.js"></script>
+<script src="../assets/viz/dart-point.js"></script>
+<script src="../assets/viz/density-from-bins.js"></script>
+</body>
+</html>
